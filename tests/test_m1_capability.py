@@ -125,3 +125,21 @@ def test_search_returns_saved_positive_path_and_mobile_retains_fixed_option(setu
     union=include_fixed_option([fixed,mobile])[-1]
     assert union['achieved_displacement_m']==.02 and union['path_file']=='verified-fixed.npz'
     assert union['local_mobile_search']['achieved_displacement_m']==.01
+
+
+def test_saved_path_replay_detects_corrupted_boundary_slope(setup_c,tmp_path):
+    from h1_capability.reachability import search
+    from h1_capability.verification import initialize,replay
+    c,a,m,k,q,b=setup_c;options=copy.deepcopy(c['motion'])
+    options.update(max_displacement_m=.005,bisection_iterations=1)
+    path=tmp_path/'replay.npz';task=np.r_[c['force']['task_left_n'],c['force']['task_right_n']]
+    result=search(m,k,q,b,DIRECTIONS['left'],.3,c['profiles']['nominal'],False,options,task,path)
+    row=dict(result,case_id='test',candidate='test',experiment='main',path_file=str(path),horizon_s=.3)
+    initialize(c)
+    assert replay(row,True)['status']=='REPLAY_PASSED'
+    with np.load(path,allow_pickle=False) as data:corrupt={name:data[name] for name in data.files}
+    corrupt['slopes'][0,0]=100.
+    np.savez_compressed(path,**corrupt)
+    failed=replay(row,False)
+    assert failed['status']=='REPLAY_FAILED'
+    assert 'rest_boundary' in failed['reasons'] and 'velocity' in failed['reasons']

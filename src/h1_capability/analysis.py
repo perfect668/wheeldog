@@ -100,6 +100,15 @@ def analyze(output, plots=True):
     dump(out/'pair_comparisons.json', metrics)
     selected = select_pairs(metrics, config['force']['selected_pair_count'])
     dump(out/'selected_pairs.json', selected)
+    selected_ids={x for p in selected for x in [p['a'],p['b']]}
+    dump(out/'typical_configuration_constraints.json',dict(
+        usage='Review input candidates for a future stage only; no human recovery experiment performed',
+        force_semantics='Arm contact-torque-budget relaxation; unknown shared torso limits, no gravity or base stability',
+        motion_semantics='Achieved sampled paths, not a reachable envelope or causal controller guarantee',
+        model=config['model'],nominal_assumed_motion=config['profiles']['nominal'],
+        task_force=config['force'],
+        configurations=[r for r in accepted if r['id'] in selected_ids],
+        main_paths=[{k:v for k,v in r.items() if k!='attempts'} for r in reach if r['candidate'] in selected_ids]))
     pair_rows = [dict(a=p['a'], b=p['b'], force_gap=p['max_relative_gap'], **v)
                  for p in metrics for v in p['comparisons']]
     write_csv(out/'pair_comparisons.csv', pair_rows)

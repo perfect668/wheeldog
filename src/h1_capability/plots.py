@@ -121,7 +121,8 @@ def render_pairs(output):
     pairs=json.loads((out/'selected_pairs.json').read_text());records=json.loads((out/'force_and_instantaneous.json').read_text())
     chosen=[next(r for r in records if r['id']==x) for p in pairs for x in [p['a'],p['b']]]
     bounds=display_bounds(chosen,model.robot,checker)
-    fig=plt.figure(figsize=(10,5*len(pairs)),layout='constrained')
+    fig=plt.figure(figsize=(12,6*len(pairs)))
+    fig.subplots_adjust(hspace=.32,wspace=.02,top=.93,bottom=.04)
     for i,r in enumerate(chosen):
         ax=fig.add_subplot(len(pairs),2,i+1,projection='3d');b=r['base_xy_yaw']
         render_robot(ax,model.robot,checker,r['q_rad'],b,r['handle_world_poses'],
@@ -131,12 +132,14 @@ def render_pairs(output):
 
 
 def trajectory_example(output):
-    """Plot the saved motions of pair 1, largest gap ray, with actual FK."""
+    """First selected pair with positive bounds in all rays, then largest gap."""
     import yaml
     from scipy.interpolate import CubicHermiteSpline
     from .experiment import setup
     out=Path(output);config=yaml.safe_load((out/'config.yaml').read_text());_,model,_=setup(config)
-    pair=json.loads((out/'selected_pairs.json').read_text())[0]
+    pairs=json.loads((out/'selected_pairs.json').read_text())
+    pair=next((p for p in pairs if all(x['a_m']>0 and x['b_m']>0 for x in p['comparisons']
+        if x['horizon_s']==.3 and not x['mobile'])),pairs[0])
     comparison=max((x for x in pair['comparisons'] if x['horizon_s']==.3 and not x['mobile']),key=lambda x:x['gap_m'])
     direction=comparison['direction'];d=DIRECTIONS[direction]
     reach=json.loads((out/'reachability.json').read_text())
@@ -159,7 +162,7 @@ def trajectory_example(output):
         for ax,values,label in [(axes[1,col],velocity,'|joint velocity| / limit'),(axes[2,col],acceleration,'|joint acceleration| / assumed limit')]:
             ax.plot(times,values,alpha=.55,lw=.7);ax.axhline(1,color='black',ls=':');ax.axvline(.04,color='gray',ls=':')
             ax.set(ylabel=label,xlabel='time [s]',ylim=(-.03,1.08))
-    fig.suptitle(f'Saved fixed-base paths, pair 1; {direction} is its largest-gap ray (descriptive selection)\nBoth handles translate together; 14 arm joints, same limits and 40 ms delay')
+    fig.suptitle(f'Saved paths {pair["a"]} / {pair["b"]}; {direction} is this pair\'s largest-gap ray\nFirst selected pair with all fixed-base bounds positive; 14 arm joints, common limits, 40 ms delay')
     fig.savefig(out/'figures'/'trajectory_example.png',dpi=170,bbox_inches='tight',pad_inches=.2);plt.close(fig)
 
 
