@@ -1,0 +1,14 @@
+collision seconds/check 0.0072399979049805555
+shared ['1-Joint', '2-Joint', '3-Joint', '4-Joint'] force {'status': 'OPTIMAL', 'solver_status': 0, 'message': 'Optimization terminated successfully. (HiGHS Status 7: Optimal)', 'capacity_n': 578.2684359825872, 'forces_robot_on_human_n': [0.0, 0.0, 289.1342179912936, 0.0, 0.0, 289.1342179912936], 'compensating_torque_nm': [0.0, 0.0, 0.0, 0.0, -362.68067653947776, -379.5597817377401, -313.36873999804106, 3.1391299788907645e-05, 0.0, 0.0, -182.0, 1.523677881144361, -83.72660648587751, -1.7508904078472616, -1.56252783623746, -0.004720396317159813, 26.022071368440383, 169.92444245490867, 7.208151285220695, 89.32773388645336, -28.786845123245037, -0.13299393044377664, -0.004609083954419466, -26.022071368443722], 'limiting_dofs': [10], 'max_violation_nm': 0.0, 'max_equality_error_n': 0.0}
+Traceback (most recent call last):
+  File "<stdin>", line 16, in <module>
+  File "/home/user/wheeldog/src/h1_capability/reachability.py", line 167, in search
+    grid=np.linspace(0,cap,5);success=[test(float(x)) for x in grid]
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/src/h1_capability/reachability.py", line 167, in <listcomp>
+    grid=np.linspace(0,cap,5);success=[test(float(x)) for x in grid]
+                                       ^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/src/h1_capability/reachability.py", line 157, in test
+    attempts.append(dict(policy=policy,distance_m=float(distance),**serialize_attempt(result)))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: dict() got multiple values for keyword argument 'policy'
