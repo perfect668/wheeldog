@@ -1,1 +1,53 @@
-# wheeldog
+# Recoverability-Aware Whole-Body Assistance — M0 / EXP0
+
+CPU 上的可复现模型实验：固定 CoP 的二维 LIPM + 有界辅助合力，比较相同 150 N 静态能力下的响应时间常数、力变化率和命令延迟。所有参数为人为 toy model 假设。尚无 H1 模型、真实人体实验或新控制算法。
+
+研究约定见 [AGENTS.md](AGENTS.md)、[RESEARCH_BRIEF](docs/RESEARCH_BRIEF.md)；实际方程、单位、采样时序、oracle/因果反馈边界见 [EXP0_MODEL](docs/EXP0_MODEL.md)。正式结果见 [EXP0_RESULTS](docs/EXP0_RESULTS.md)。原仓库交接文件原文保留，整理到了根目录，原交接 README 位于 `docs/ORIGINAL_HANDOFF.md`。
+
+## 安装和运行
+
+Python >=3.10；numpy/scipy/matplotlib/PyYAML，测试用 pytest，不使用 GPU。通用安装：
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+unset PYTHONPATH  # 避免本机 ROS 路径注入其他版本的 pytest 插件
+python -m pip install -e '.[test]'
+python -m pytest
+python -m recoverability --config configs/exp0.yaml --output results/reproduction --seed 0
+```
+
+优先复用已有科学计算环境，安装本项目时可用 `python -m pip install --no-deps --no-build-isolation -e .`。本机实际使用已有 Python 与本地缓存包进行离线安装，精确版本见 `requirements-exp0.txt` 和结果 metadata；不需要重新下载机器人或仿真资产。已存在的 `.venv` 可直接 `source .venv/bin/activate`。
+
+一条实验命令运行参数扫描并生成 PNG/PDF 图。拒绝覆盖非空目录，复现请使用新 output 路径。CLI 的 `--seed` 被保存；当前实验是确定性的，不用随机噪声。
+
+仅运行 YAML 中的额外单个案例集合（未来速度脉冲和短时外力脉冲）：
+
+```bash
+python -m recoverability --config configs/exp0.yaml --output results/single --seed 0 --mode single
+```
+
+仅从已有原始数据重画，不重新求解：
+
+```bash
+python -m recoverability --output results/exp0 --mode plots
+```
+
+步长收敛、二分边界与全扫描审计：
+
+```bash
+python scripts/validate_exp0.py --config configs/exp0.yaml --input results/exp0 --output results/validation_reproduction --seed 0
+python scripts/validate_exp0.py --output results/validation --plots-only
+```
+
+## 输出与解释
+
+- `metrics.csv`：每个扰动/执行器/时域/方法的状态、参数、计时和误差。
+- `trajectories.npz`：`cXXXXX_state/force/command/jumps_m_s/disturbance_N`；`rows_json` 与 CSV 同行；`metadata_json` 可独立解释 NPZ。不使用 pickle。
+- `metadata.json / config.yaml / summary.json`：配置、seed、git hash、源文件哈希、软件版本、统计。
+- `boundaries.csv / figures/`：扫描网格边界、热图、典型轨迹、求解诊断和反馈结果。
+- `results/validation/convergence.csv`：dt=0.05/0.02/0.01/0.005 s 的边界二分，区间宽<=0.0005 m/s；`audit.json` 检查对称性与本扫描中的能力/时域一致性。
+
+离线 oracle 的 `INFEASIBLE` 和 `SOLVER_ERROR` 分开；反馈 `NOT_RECOVERED` 不是不可行证明。对于不可行 oracle，不生成虚构状态轨迹。终端箱并非已验证不变集，结果仅说明有限时域的模型内返回。
+
+`src/recoverability/` 包含独立的人体、执行器、扰动、oracle、反馈、指标、实验和绘图模块。`tests/` 用解析式、独立 ODE、镜像、约束篡改和故障注入验证；`configs/` 为全部实验假设。审阅后停在 M0，不自动进入 M1。

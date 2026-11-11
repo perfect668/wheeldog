@@ -3,27 +3,27 @@
 ## 当前任务：M0 / EXP0（首轮，CPU，最高优先级）
 
 ### M0-A：建立可复现 Python 项目
-- [ ] `pyproject.toml` + README 使用说明；本地干净环境安装成功。
-- [ ] 结构 `src/recoverability/`, `tests/`, `configs/`, `scripts/`, `results/`（results 通常 gitignore，仅保留小型示例）。
-- [ ] `python -m pytest` 无报错，`python -m ...` 可无界面执行。
+- [x] `pyproject.toml` + README 使用说明；本地干净环境安装成功。
+- [x] 结构 `src/recoverability/`, `tests/`, `configs/`, `scripts/`, `results/`（results 通常 gitignore，仅保留小型示例）。
+- [x] `python -m pytest` 无报错，`python -m ...` 可无界面执行。
 
 ### M0-B：建立人体简化动力学和受限执行器
-- [ ] LIPM 侧向 x/v 模型，固定足底 CoP，SI 单位。
-- [ ] 期望力→实际力，包含 F_max、变化率/滞后、可选延迟。
-- [ ] 不同扰动：Δv 速度脉冲和短时外力脉冲。
-- [ ] 集成数值验证、符号与单位测试。
+- [x] LIPM 侧向 x/v 模型，固定足底 CoP，SI 单位。
+- [x] 期望力→实际力，包含 F_max、变化率/滞后、可选延迟。
+- [x] 不同扰动：Δv 速度脉冲和短时外力脉冲。
+- [x] 集成数值验证、符号与单位测试。
 
 ### M0-C：可恢复性 oracle 求解器
-- [ ] 给定扰动后求解有限时域控制是否可行，恢复条件可配置。
-- [ ] `recoverable / infeasible / solver_error` 三种状态，记录 solver 原因。
-- [ ] 同时保存轨迹和求解耗时。
-- [ ] 动力学、限制、终端条件严格通过后验数值检查。
+- [x] 给定扰动后求解有限时域控制是否可行，恢复条件可配置。
+- [x] `recoverable / infeasible / solver_error` 三种状态，记录 solver 原因。
+- [x] 同时保存轨迹和求解耗时。
+- [x] 动力学、限制、终端条件严格通过后验数值检查。
 
 ### M0-D：实验对照与图表
-- [ ] 两种人工设置的辅助执行器能力，相同 F_max、不同 R_f/tau/delay；强调只是 toy model。
-- [ ] 扫描 Δv × horizon × 动态约束，保存 CSV/NPZ。
-- [ ] 画恢复热图、恢复阈值曲线、典型轨迹和求解成功/失败比例。
-- [ ] 人工一致性检查：对称扰动结果、能力单调性、无扰动稳定性。
+- [x] 两种人工设置的辅助执行器能力，相同 F_max、不同 R_f/tau/delay；强调只是 toy model。
+- [x] 扫描 Δv × horizon × 动态约束，保存 CSV/NPZ。
+- [x] 画恢复热图、恢复阈值曲线、典型轨迹和求解成功/失败比例。
+- [x] 人工一致性检查：对称扰动结果、能力单调性、无扰动稳定性。
 
 ### M0-E：Codex 交付
 - [ ] `docs/EXP0_RESULTS.md`：真实运行数据、发现、失败、限制、是否继续。
