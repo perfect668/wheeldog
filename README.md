@@ -1,6 +1,13 @@
-# Recoverability-Aware Whole-Body Assistance — M0 / EXP0
+# Recoverability-Aware Whole-Body Assistance
 
-CPU 上的可复现模型实验：固定 CoP 的二维 LIPM + 有界辅助合力，比较相同 150 N 静态能力下的响应时间常数、力变化率和命令延迟。所有参数为人为 toy model 假设。尚无 H1 模型、真实人体实验或新控制算法。
+当前交付为 **M1-C**：H1 URDF 内的名义施力预算与有限时间协同扶手路径分析。
+结果、假设与证据边界见 [M1-C 报告](docs/M1_CAPABILITY_RESULTS.md) 和
+[数学模型](docs/M1_CAPABILITY_MODEL.md)，原始数据位于 `results/m1c/run/`。
+M0 与 M1-A/B 原始结果保持冻结。M1-C 完成后等待审阅，未进入 M1-D。
+
+## M0 / EXP0
+
+CPU 上的可复现模型实验：固定 CoP 的二维 LIPM + 有界辅助合力，比较相同 150 N 静态能力下的响应时间常数、力变化率和命令延迟。M0 所有参数为人为 toy model 假设，不使用 H1 模型；没有真实人体实验或新控制算法。
 
 研究约定见 [AGENTS.md](AGENTS.md)、[RESEARCH_BRIEF](docs/RESEARCH_BRIEF.md)；实际方程、单位、采样时序、oracle/因果反馈边界见 [EXP0_MODEL](docs/EXP0_MODEL.md)。正式结果见 [EXP0_RESULTS](docs/EXP0_RESULTS.md)。原仓库交接文件原文保留，整理到了根目录，原交接 README 位于 `docs/ORIGINAL_HANDOFF.md`。
 
@@ -81,3 +88,36 @@ missing python-fcl was installed. No GPU or MuJoCo dynamic stepping is used.
 `ACCEPTED_CONDITIONAL` means URDF limits, target tolerances and supplied mesh
 surface clearance pass under the recorded exclusions; it is not physical robot
 feasibility, solid collision certification, force capability, or stability.
+
+## M1-C: nominal force and cooperative motion capability
+
+Branch `m1/capability-reachability` extends the validated M1-B geometry with
+arm-budget force LPs, cooperative instantaneous velocity LPs, offline finite-time
+path continuation and all-pair analysis. Shared torso loads are summed and
+recorded; their unknown limits, gravity and base stability are not modeled.
+Motion outputs are sampled, verified local path lower bounds, not global
+reachable sets, hardware capability or causal human recovery validation.
+
+Reuse `.venv-m1`, `requirements-m1.txt` and local assets. Run from the repository
+root; choose a new output directory for reproduction:
+
+```bash
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+env -u PYTHONPATH .venv-m1/bin/python -m pytest -q
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability --output results/m1c_reproduction --stage force
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability --output results/m1c_reproduction --stage reach --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability.analysis results/m1c_reproduction --no-plots
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability --output results/m1c_reproduction --stage sensitivity --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability.analysis results/m1c_reproduction
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability.plots results/m1c_reproduction --postures
+env -u PYTHONPATH .venv-m1/bin/python -m h1_capability.verification results/m1c_reproduction --workers 4
+env -u PYTHONPATH .venv-m1/bin/python scripts/validate_m1c_numerics.py results/m1c_reproduction
+# Verify delivered artifacts, without changing them:
+env -u PYTHONPATH .venv-m1/bin/python scripts/freeze_m1c.py results/m1c --verify
+```
+
+Main and sensitivity runs resume by case ID. Reusing a directory with a different
+configuration raises an error; changed algorithm semantics require a new output.
+All 48 initial candidates and 1128 pair filters are retained. The three examples
+are selected by aggregate six-direction motion differences after observing data;
+all 185 force-matched pairs remain available for review.
