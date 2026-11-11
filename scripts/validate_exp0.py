@@ -53,7 +53,7 @@ def audit_sweep(directory):
                 good=metrics['valid_path_dynamics'] and metrics['terminal_met']
                 accepted_status=row['status'] in ('RECOVERABLE','RECOVERED')
                 if good!=accepted_status:replay_errors.append(key+': replay classification mismatch')
-            elif row['status'] not in ('INFEASIBLE','SOLVER_ERROR'):
+            elif row['status'] not in ('INFEASIBLE','SOLVER_ERROR','SIMULATION_ERROR'):
                 replay_errors.append(key+': missing trajectory')
     result['raw_replay_cases']=len(all_rows)
     result['raw_replay_mismatches']=len(replay_errors)

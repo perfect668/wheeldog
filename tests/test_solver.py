@@ -123,3 +123,8 @@ def test_post_validation_rejection_is_unknown_not_infeasible(monkeypatch):
     monkeypatch.setattr(sol,'validate',lambda *a,**k:{'valid_path_dynamics':False,'terminal_met':True})
     r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1)
     assert r.status=='SOLVER_ERROR' and 'posterior' in r.reason
+
+
+def test_feedback_numerical_failure_recorded_without_fictitious_tail():
+    r=simulate_feedback(Model(),Actuator(),Disturbance(),2,initial=(np.finfo(float).max,0))
+    assert r.status=='SIMULATION_ERROR' and len(r.state)==0 and 'FloatingPointError' in r.reason

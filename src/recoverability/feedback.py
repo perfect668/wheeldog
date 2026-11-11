@@ -15,14 +15,18 @@ def simulate_feedback(model, actuator, disturbance, horizon_s, *, natural_freque
     act = ForceActuator(actuator,model.dt_s)
     A,B0,B1,Bd = model.matrices()
     wn = natural_frequency_s_inv
-    for k in range(n):
-        # Perfect current x,v sensing. All configured latency is in command FIFO.
-        desired = -model.mass_kg*((model.omega**2+wn**2)*state[k,0]+2*wn*state[k,1])
-        f0,f1,command[k] = act.advance(desired)
-        force[k+1] = f1
-        state[k+1] = A@state[k]+B0*f0+B1*f1+Bd*d[k]
-        state[k+1,1] += jumps[k+1]
-    metrics = validate(model,actuator,disturbance,state,force,command,initial)
+    try:
+        with np.errstate(over='raise',invalid='raise'):
+            for k in range(n):
+                # Perfect current x,v sensing. All configured latency is in command FIFO.
+                desired = -model.mass_kg*((model.omega**2+wn**2)*state[k,0]+2*wn*state[k,1])
+                f0,f1,command[k] = act.advance(desired)
+                force[k+1] = f1
+                state[k+1] = A@state[k]+B0*f0+B1*f1+Bd*d[k]
+                state[k+1,1] += jumps[k+1]
+            metrics = validate(model,actuator,disturbance,state,force,command,initial)
+    except (ValueError, FloatingPointError, OverflowError) as exc:
+        return Result('SIMULATION_ERROR',f'{type(exc).__name__}: {exc}',time.perf_counter()-start)
     numerical_ok = not metrics.get('nonfinite',False)
     # Path violations are an observed failure of this policy, not proof of infeasibility.
     recovered = metrics['valid_path_dynamics'] and metrics['terminal_met']
