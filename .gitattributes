@@ -1,4 +1,2 @@
-# Preserve standard CSV CRLF bytes and their recorded artifact hashes.
-*.csv -text whitespace=cr-at-eol
-# A patch intentionally contains context lines consisting of a single space.
-*.patch whitespace=-blank-at-eol
+# Preserve whitespace in the exact in-memory URDF recorded by the formal run.
+results/m1/run/kinematics_only.urdf whitespace=-blank-at-eol

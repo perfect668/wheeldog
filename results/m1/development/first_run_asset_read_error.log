@@ -1,0 +1,46 @@
+Traceback (most recent call last):
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/stl.py", line 45, in load_stl
+    return load_stl_binary(file_obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/stl.py", line 111, in load_stl_binary
+    raise HeaderError(
+trimesh.exchange.stl.HeaderError: Binary STL has incorrect length in header: 262060 vs [1866400]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/util.py", line 2374, in decode_text
+    text = text.decode(initial)
+           ^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x80 in position 94: invalid start byte
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/user/wheeldog/src/h1_kinematics/__main__.py", line 8, in <module>
+    run(a.config,a.output,a.seed)
+  File "/home/user/wheeldog/src/h1_kinematics/experiment.py", line 51, in run
+    asset=Asset(path); audit=asset.audit(); dump(out/'asset_audit.json',audit)
+                             ^^^^^^^^^^^^^
+  File "/home/user/wheeldog/src/h1_kinematics/assets.py", line 111, in audit
+    m = self.mesh(e)
+        ^^^^^^^^^^^^
+  File "/home/user/wheeldog/src/h1_kinematics/assets.py", line 74, in mesh
+    mesh = trimesh.load_mesh(self.mesh_path(e.get('filename')))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/load.py", line 276, in load_mesh
+    return load_scene(*args, **kwargs).to_mesh()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/load.py", line 216, in load_scene
+    mesh_loaders[arg.file_type](
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/stl.py", line 52, in load_stl
+    return load_stl_ascii(file_obj)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/exchange/stl.py", line 154, in load_stl_ascii
+    raw_mixed = util.decode_text(file_obj.read()).strip()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/wheeldog/.venv-m1/lib/python3.11/site-packages/trimesh/util.py", line 2377, in decode_text
+    from charset_normalizer import detect as charset_normalizer_detect
+ModuleNotFoundError: No module named 'charset_normalizer'

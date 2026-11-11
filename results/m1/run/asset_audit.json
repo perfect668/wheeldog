@@ -1,0 +1,4423 @@
+{
+  "robot": "Wheel_Robot",
+  "urdf_sha256": "484feff61bd4addd6aa949286c9f3e56c485c26000ad89ed0526eff3caec4aad",
+  "root": "base_link",
+  "joints": [
+    {
+      "name": "whee1-Joint",
+      "type": "continuous",
+      "parent": "base_link",
+      "child": "wheel1_Link",
+      "origin_xyz_m": [
+        0.0749999999999103,
+        -0.207880111156332,
+        -0.0135438495225527
+      ],
+      "origin_rpy_rad": [
+        -1.5707963267949,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "whee2-Joint",
+      "type": "continuous",
+      "parent": "base_link",
+      "child": "wheel2_Link",
+      "origin_xyz_m": [
+        0.0749999999998761,
+        0.228119888843668,
+        -0.0135438495225219
+      ],
+      "origin_rpy_rad": [
+        -1.5707963267949,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "whee3-Joint",
+      "type": "continuous",
+      "parent": "base_link",
+      "child": "wheel3_Link",
+      "origin_xyz_m": [
+        -0.331000000000129,
+        -0.207880111156331,
+        -0.0135438495224466
+      ],
+      "origin_rpy_rad": [
+        -1.5707963267949,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "whee4-Joint",
+      "type": "continuous",
+      "parent": "base_link",
+      "child": "wheel4_Link",
+      "origin_xyz_m": [
+        -0.331000000000129,
+        0.228119888843669,
+        -0.0135438495223606
+      ],
+      "origin_rpy_rad": [
+        -1.5707963267949,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "1-Joint",
+      "type": "revolute",
+      "parent": "base_link",
+      "child": "1_Link",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        -1.5708,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -1.222,
+        "upper": 0.087,
+        "effort": 0.087,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "2-Joint",
+      "type": "revolute",
+      "parent": "1_Link",
+      "child": "2_Link",
+      "origin_xyz_m": [
+        0.0,
+        -0.41,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -1.581,
+        "upper": 2.461,
+        "effort": 0.0,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "3-Joint",
+      "type": "revolute",
+      "parent": "2_Link",
+      "child": "3_Link",
+      "origin_xyz_m": [
+        0.0,
+        -0.48,
+        0.00075
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -2.269,
+        "upper": 1.571,
+        "effort": 0.0,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "4-Joint",
+      "type": "revolute",
+      "parent": "3_Link",
+      "child": "4_Link",
+      "origin_xyz_m": [
+        0.0,
+        -0.2112,
+        -0.00075
+      ],
+      "origin_rpy_rad": [
+        1.5708,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -3.177,
+        "upper": 1.606,
+        "effort": 0.0,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "5-Joint",
+      "type": "revolute",
+      "parent": "4_Link",
+      "child": "5_Link",
+      "origin_xyz_m": [
+        0.0,
+        -0.00025,
+        0.098
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -3.264,
+        "upper": 1.693,
+        "effort": 0.0,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "6-Joint",
+      "type": "revolute",
+      "parent": "5_Link",
+      "child": "6_Link",
+      "origin_xyz_m": [
+        0.03,
+        -0.043,
+        0.207
+      ],
+      "origin_rpy_rad": [
+        1.5708,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "lower": -0.716,
+        "upper": 0.489,
+        "effort": 0.0,
+        "velocity": 0.0
+      }
+    },
+    {
+      "name": "7-Joint",
+      "type": "fixed",
+      "parent": "6_Link",
+      "child": "7_Link",
+      "origin_xyz_m": [
+        0.05975,
+        0.074602,
+        -0.041404
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        1.5708,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "8-Joint",
+      "type": "fixed",
+      "parent": "7_Link",
+      "child": "8_Link",
+      "origin_xyz_m": [
+        -0.0284038897588589,
+        -0.109601612743496,
+        0.00075000204713066
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "9-Joint",
+      "type": "fixed",
+      "parent": "8_Link",
+      "child": "9_Link",
+      "origin_xyz_m": [
+        0.06,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "10-Joint",
+      "type": "fixed",
+      "parent": "9_Link",
+      "child": "10_Link",
+      "origin_xyz_m": [
+        0.0329444345716903,
+        0.0582999999999998,
+        -0.116644296675678
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "11-Joint",
+      "type": "fixed",
+      "parent": "10_Link",
+      "child": "11_Link",
+      "origin_xyz_m": [
+        -0.12588886914338,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "left_fixed",
+      "type": "fixed",
+      "parent": "4_Link",
+      "child": "AR5-5_08L-W4C1C9-ZY2_base",
+      "origin_xyz_m": [
+        0.0,
+        0.0775,
+        0.1429
+      ],
+      "origin_rpy_rad": [
+        -1.57,
+        1.57,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_1",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_base",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link1",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 113.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 3.0543261909900763
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_2",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link1",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link2",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.1745
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 113.0,
+        "lower": -2.0944,
+        "upper": 2.0944,
+        "velocity": 3.0543261909900763
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_3",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link2",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link3",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.332
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 70.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 4.71238898038469
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_4",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link3",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link4",
+      "origin_xyz_m": [
+        0.0105,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 70.0,
+        "lower": -1.0472,
+        "upper": 2.5307,
+        "velocity": 5.235987755982989
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_5",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link4",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link5",
+      "origin_xyz_m": [
+        -0.0105,
+        0.0,
+        0.278
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_6",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link5",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link6",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -1.0472,
+        "upper": 1.0472,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_joint_7",
+      "type": "revolute",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link6",
+      "child": "AR5-5_08L-W4C1C9-ZY2_link7",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -1.0472,
+        "upper": 1.0472,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_flan_joint",
+      "type": "fixed",
+      "parent": "AR5-5_08L-W4C1C9-ZY2_link7",
+      "child": "AR5-5_08L-W4C1C9-ZY2_flan_link",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.09
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "right_fixed",
+      "type": "fixed",
+      "parent": "4_Link",
+      "child": "AR5-5_08R-W4C1C9-ZY2_base",
+      "origin_xyz_m": [
+        0.0,
+        -0.0775,
+        0.1429
+      ],
+      "origin_rpy_rad": [
+        1.57,
+        1.57,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_1",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_base",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link1",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 113.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 3.0543261909900763
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_2",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link1",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link2",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.1745
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 113.0,
+        "lower": -2.0944,
+        "upper": 2.0944,
+        "velocity": 3.0543261909900763
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_3",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link2",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link3",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.332
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 70.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 4.71238898038469
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link3",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link4",
+      "origin_xyz_m": [
+        0.0105,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 70.0,
+        "lower": -1.0472,
+        "upper": 2.5307,
+        "velocity": 5.235987755982989
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_5",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link4",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link5",
+      "origin_xyz_m": [
+        -0.0105,
+        0.0,
+        0.278
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -3.1067,
+        "upper": 3.1067,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_6",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link5",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link6",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -1.0472,
+        "upper": 1.0472,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_joint_7",
+      "type": "revolute",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link6",
+      "child": "AR5-5_08R-W4C1C9-ZY2_link7",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": {
+        "effort": 19.0,
+        "lower": -1.0472,
+        "upper": 1.0472,
+        "velocity": 4.1887902047863905
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_flan_joint",
+      "type": "fixed",
+      "parent": "AR5-5_08R-W4C1C9-ZY2_link7",
+      "child": "AR5-5_08R-W4C1C9-ZY2_flan_link",
+      "origin_xyz_m": [
+        0.0,
+        0.0,
+        0.09
+      ],
+      "origin_rpy_rad": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "axis_joint_frame": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "limit": null
+    }
+  ],
+  "links": [
+    {
+      "name": "base_link",
+      "chain": [],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 95.8919408379661,
+        "origin_xyz_m": [
+          -0.122987707237122,
+          0.00067032736486056,
+          -0.0509027332327943
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            3.97617986645412,
+            0.00970387695392329,
+            -0.089985211466459
+          ],
+          [
+            0.00970387695392329,
+            4.00171914666874,
+            0.0101586007574832
+          ],
+          [
+            -0.089985211466459,
+            0.0101586007574832,
+            5.79029912073868
+          ]
+        ],
+        "principal_kg_m2": [
+          3.9685860267499624,
+          4.0048082905534566,
+          5.794803816558122
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "wheel1_Link",
+      "chain": [
+        "whee1-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 144.494198764598,
+        "origin_xyz_m": [
+          -0.157445565400803,
+          -0.167710714318151,
+          0.208287919545249
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            25.5872945220745,
+            2.68578829745185,
+            0.012659868371728
+          ],
+          [
+            2.68578829745185,
+            6.66540532034372,
+            -0.0307754302551921
+          ],
+          [
+            0.012659868371728,
+            -0.0307754302551921,
+            26.0621293726663
+          ]
+        ],
+        "principal_kg_m2": [
+          6.291515668107715,
+          25.96045505438551,
+          26.062858492591296
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "wheel2_Link",
+      "chain": [
+        "whee2-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 144.494198764598,
+        "origin_xyz_m": [
+          -0.157445565400769,
+          -0.16771071431812,
+          -0.227712080454751
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            25.5872945220745,
+            2.68578829745185,
+            0.0126598683717281
+          ],
+          [
+            2.68578829745185,
+            6.66540532034372,
+            -0.0307754302551926
+          ],
+          [
+            0.0126598683717281,
+            -0.0307754302551926,
+            26.0621293726664
+          ]
+        ],
+        "principal_kg_m2": [
+          6.2915156681077145,
+          25.96045505438551,
+          26.062858492591403
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "wheel3_Link",
+      "chain": [
+        "whee3-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 144.494198764598,
+        "origin_xyz_m": [
+          0.248554434599236,
+          -0.167710714318045,
+          0.208287919545248
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            25.5872945220745,
+            2.68578829745185,
+            0.0126598683717282
+          ],
+          [
+            2.68578829745185,
+            6.66540532034372,
+            -0.0307754302551926
+          ],
+          [
+            0.0126598683717282,
+            -0.0307754302551926,
+            26.0621293726664
+          ]
+        ],
+        "principal_kg_m2": [
+          6.291515668107712,
+          25.96045505438551,
+          26.0628584925914
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "wheel4_Link",
+      "chain": [
+        "whee4-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 144.494198764598,
+        "origin_xyz_m": [
+          0.248554434599236,
+          -0.167710714317959,
+          -0.227712080454752
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            25.5872945220745,
+            2.68578829745185,
+            0.0126598683717281
+          ],
+          [
+            2.68578829745185,
+            6.66540532034372,
+            -0.0307754302551926
+          ],
+          [
+            0.0126598683717281,
+            -0.0307754302551926,
+            26.0621293726663
+          ]
+        ],
+        "principal_kg_m2": [
+          6.2915156681077145,
+          25.96045505438551,
+          26.062858492591296
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "1_Link",
+      "chain": [
+        "1-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 22.687,
+        "origin_xyz_m": [
+          -0.0068197,
+          -0.19438,
+          -0.00037815
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.39971,
+            -0.011537,
+            5.9491e-05
+          ],
+          [
+            -0.011537,
+            0.14775,
+            -9.3127e-05
+          ],
+          [
+            5.9491e-05,
+            -9.3127e-05,
+            0.34095
+          ]
+        ],
+        "principal_kg_m2": [
+          0.14722279300402208,
+          0.3409499737060761,
+          0.40023723328990174
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "2_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 11.3149775376927,
+        "origin_xyz_m": [
+          0.00113120342958251,
+          -0.190634691793183,
+          0.000943201518392353
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.317806287023354,
+            0.00251227548753877,
+            2.42093630244276e-06
+          ],
+          [
+            0.00251227548753877,
+            0.052000287401772,
+            -0.000869899916600629
+          ],
+          [
+            2.42093630244276e-06,
+            -0.000869899916600629,
+            0.31058756747193
+          ]
+        ],
+        "principal_kg_m2": [
+          0.05197361867996448,
+          0.3105904888008708,
+          0.3178300344162207
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "3_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 4.0806,
+        "origin_xyz_m": [
+          -0.00013119,
+          -0.046914,
+          0.00035464
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.030282,
+            -3.5604e-05,
+            -2.9888e-06
+          ],
+          [
+            -3.5604e-05,
+            0.011078,
+            -0.00023901
+          ],
+          [
+            -2.9888e-06,
+            -0.00023901,
+            0.029355
+          ]
+        ],
+        "principal_kg_m2": [
+          0.011074808846597183,
+          0.02935811813147195,
+          0.03028207302193088
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "4_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 6.64088962222533,
+        "origin_xyz_m": [
+          0.000254622860197812,
+          -0.000620121985265416,
+          0.067982545194041
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.0608688604802293,
+            -0.000367720143184374,
+            0.000125756302216034
+          ],
+          [
+            -0.000367720143184374,
+            0.0451161848089195,
+            0.000602921074367938
+          ],
+          [
+            0.000125756302216034,
+            0.000602921074367938,
+            0.054643935664933
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0450692866736405,
+          0.05468024768153627,
+          0.06087944659890501
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "5_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.813079519773213,
+        "origin_xyz_m": [
+          0.0101116699005238,
+          -0.00291904758778533,
+          0.155897794385661
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00286151198426824,
+            5.31015859767238e-05,
+            -0.000417703179928702
+          ],
+          [
+            5.31015859767238e-05,
+            0.00290798640833098,
+            0.000155507121759703
+          ],
+          [
+            -0.000417703179928702,
+            0.000155507121759703,
+            0.000425539880541931
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0003456468871504604,
+          0.0028971748556186937,
+          0.0029522165303719978
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "6_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.35213596444403,
+        "origin_xyz_m": [
+          0.0125861281878246,
+          0.0292395115153412,
+          -0.0416444797828708
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00608453851170784,
+            0.000201900513891808,
+            3.69933032936363e-05
+          ],
+          [
+            0.000201900513891808,
+            0.00486617784318111,
+            -2.47972243560461e-06
+          ],
+          [
+            3.69933032936363e-05,
+            -2.47972243560461e-06,
+            0.00439477683919891
+          ]
+        ],
+        "principal_kg_m2": [
+          0.004393861252266883,
+          0.004833749653620703,
+          0.006117882288200277
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "7_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint",
+        "7-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.13149938551236,
+        "origin_xyz_m": [
+          0.00183365130013055,
+          -0.000226497571933937,
+          -0.0109931335238678
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            1.57327332619163e-05,
+            3.34281636491621e-07,
+            7.00679583266914e-07
+          ],
+          [
+            3.34281636491621e-07,
+            0.000160023061382893,
+            -2.8210599559069e-07
+          ],
+          [
+            7.00679583266914e-07,
+            -2.8210599559069e-07,
+            0.00016133071765287
+          ]
+        ],
+        "principal_kg_m2": [
+          1.5728580665556964e-05,
+          0.0001599663203185412,
+          0.00016139161131358126
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "8_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint",
+        "7-Joint",
+        "8-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.00185524099553967,
+        "origin_xyz_m": [
+          9.75955427584552e-15,
+          0.0,
+          -0.00220135230060842
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            2.77563318655978e-08,
+            -2.9661608914964e-40,
+            8.24329935785367e-26
+          ],
+          [
+            -2.9661608914964e-40,
+            2.77563318655978e-08,
+            1.12697981670313e-24
+          ],
+          [
+            8.24329935785367e-26,
+            1.12697981670313e-24,
+            5.06567041291279e-08
+          ]
+        ],
+        "principal_kg_m2": [
+          2.7756331865597795e-08,
+          2.77563318655978e-08,
+          5.0656704129127896e-08
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "9_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint",
+        "7-Joint",
+        "8-Joint",
+        "9-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.00158380739026962,
+        "origin_xyz_m": [
+          9.75955427584552e-15,
+          0.0,
+          -0.00191880633472194
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            2.2543533260714e-08,
+            -1.51936190120029e-40,
+            -3.63029618898167e-25
+          ],
+          [
+            -1.51936190120029e-40,
+            2.2543533260714e-08,
+            1.07111685554299e-24
+          ],
+          [
+            -3.63029618898167e-25,
+            1.07111685554299e-24,
+            4.19708287604839e-08
+          ]
+        ],
+        "principal_kg_m2": [
+          2.2543533260714e-08,
+          2.2543533260714008e-08,
+          4.19708287604839e-08
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "10_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint",
+        "7-Joint",
+        "8-Joint",
+        "9-Joint",
+        "10-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.00978182444407569,
+        "origin_xyz_m": [
+          -0.00920180537039884,
+          -2.98494460260201e-08,
+          0.00843176973288366
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            4.23304534080125e-07,
+            1.8026503486369e-11,
+            1.63124324967423e-07
+          ],
+          [
+            1.8026503486369e-11,
+            6.30755603892727e-07,
+            -1.02410583828056e-11
+          ],
+          [
+            1.63124324967423e-07,
+            -1.02410583828056e-11,
+            4.5184668587769e-07
+          ]
+        ],
+        "principal_kg_m2": [
+          2.7382821495192383e-07,
+          6.013230031339111e-07,
+          6.307556057647075e-07
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "11_Link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "5-Joint",
+        "6-Joint",
+        "7-Joint",
+        "8-Joint",
+        "9-Joint",
+        "10-Joint",
+        "11-Joint"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.00978182692043653,
+        "origin_xyz_m": [
+          0.00920168203614588,
+          -3.34495484644037e-08,
+          0.00843190336249491
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            4.23304085845063e-07,
+            -1.19429278459291e-11,
+            -1.63124237565917e-07
+          ],
+          [
+            -1.19429278459291e-11,
+            6.30755749724429e-07,
+            -1.71228957836321e-11
+          ],
+          [
+            -1.63124237565917e-07,
+            -1.71228957836321e-11,
+            4.51847156243009e-07
+          ]
+        ],
+        "principal_kg_m2": [
+          2.738282730372925e-07,
+          6.01322967182701e-07,
+          6.307557515925079e-07
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_base",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": null
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link1",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 2.166,
+        "origin_xyz_m": [
+          -0.000184,
+          0.0015680000000000002,
+          0.172804
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00332249,
+            3.2e-07,
+            -4.8e-07
+          ],
+          [
+            3.2e-07,
+            0.00260904,
+            -1.486e-05
+          ],
+          [
+            -4.8e-07,
+            -1.486e-05,
+            0.00317691
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0026086512776832414,
+          0.003177296948451268,
+          0.0033224917738654894
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link2",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.903,
+        "origin_xyz_m": [
+          -1.7e-05,
+          0.001795,
+          0.10668899999999999
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00779803,
+            2.48e-06,
+            -2.26e-06
+          ],
+          [
+            2.48e-06,
+            0.00674819,
+            -0.00049283
+          ],
+          [
+            -2.26e-06,
+            -0.00049283,
+            0.00305507
+          ]
+        ],
+        "principal_kg_m2": [
+          0.002990434518545412,
+          0.006812817024229835,
+          0.007798038457224755
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link3",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.845,
+        "origin_xyz_m": [
+          0.008227,
+          -0.0012729999999999998,
+          -0.020611
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00641285,
+            9.09e-06,
+            0.00034765
+          ],
+          [
+            9.09e-06,
+            0.00591595,
+            -2.314e-05
+          ],
+          [
+            0.00034765,
+            -2.314e-05,
+            0.00276583
+          ]
+        ],
+        "principal_kg_m2": [
+          0.002732806915968489,
+          0.00591604014502503,
+          0.006445782939006479
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link4",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3",
+        "AR5-5_08L-W4C1C9-ZY2_joint_4"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.037,
+        "origin_xyz_m": [
+          -0.009242,
+          -0.0021720000000000003,
+          0.084042
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00294639,
+            -2.418e-05,
+            -0.00012203
+          ],
+          [
+            -2.418e-05,
+            0.00244447,
+            0.00022029
+          ],
+          [
+            -0.00012203,
+            0.00022029,
+            0.00140961
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0013563789652440814,
+          0.002484529386148407,
+          0.002959561648607513
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link5",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3",
+        "AR5-5_08L-W4C1C9-ZY2_joint_4",
+        "AR5-5_08L-W4C1C9-ZY2_joint_5"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.279,
+        "origin_xyz_m": [
+          -0.000756,
+          0.000723,
+          -0.086764
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00241349,
+            -3.807e-05,
+            -4.536e-05
+          ],
+          [
+            -3.807e-05,
+            0.00200246,
+            6.623e-05
+          ],
+          [
+            -4.536e-05,
+            6.623e-05,
+            0.00158693
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0015748085019090458,
+          0.0020079011114754503,
+          0.002420170386615505
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link6",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3",
+        "AR5-5_08L-W4C1C9-ZY2_joint_4",
+        "AR5-5_08L-W4C1C9-ZY2_joint_5",
+        "AR5-5_08L-W4C1C9-ZY2_joint_6"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.906,
+        "origin_xyz_m": [
+          -0.005104,
+          0.000251,
+          5.6e-05
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00061429,
+            -8.8e-07,
+            1.04e-06
+          ],
+          [
+            -8.8e-07,
+            0.00074781,
+            -4.7e-07
+          ],
+          [
+            1.04e-06,
+            -4.7e-07,
+            0.00075897
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0006142767699433217,
+          0.0007477954662318637,
+          0.000758997763824815
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_link7",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3",
+        "AR5-5_08L-W4C1C9-ZY2_joint_4",
+        "AR5-5_08L-W4C1C9-ZY2_joint_5",
+        "AR5-5_08L-W4C1C9-ZY2_joint_6",
+        "AR5-5_08L-W4C1C9-ZY2_joint_7"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.33,
+        "origin_xyz_m": [
+          -0.001562,
+          -0.000366,
+          0.05392
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00046062,
+            2.69e-06,
+            3.859e-05
+          ],
+          [
+            2.69e-06,
+            0.00068652,
+            -9.5e-07
+          ],
+          [
+            3.859e-05,
+            -9.5e-07,
+            0.00043943
+          ]
+        ],
+        "principal_kg_m2": [
+          0.000409986380332737,
+          0.0004900305916267491,
+          0.0006865530280405138
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08L-W4C1C9-ZY2_flan_link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "left_fixed",
+        "AR5-5_08L-W4C1C9-ZY2_joint_1",
+        "AR5-5_08L-W4C1C9-ZY2_joint_2",
+        "AR5-5_08L-W4C1C9-ZY2_joint_3",
+        "AR5-5_08L-W4C1C9-ZY2_joint_4",
+        "AR5-5_08L-W4C1C9-ZY2_joint_5",
+        "AR5-5_08L-W4C1C9-ZY2_joint_6",
+        "AR5-5_08L-W4C1C9-ZY2_joint_7",
+        "AR5-5_08L-W4C1C9-ZY2_flan_joint"
+      ],
+      "visual_count": 0,
+      "collision_count": 0,
+      "inertial": {
+        "mass_kg": 0.0,
+        "origin_xyz_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_base",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": null
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link1",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 2.166,
+        "origin_xyz_m": [
+          0.000186,
+          -0.0015429999999999999,
+          0.172784
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00329374,
+            2.9e-07,
+            4.8e-07
+          ],
+          [
+            2.9e-07,
+            0.00258807,
+            1.496e-05
+          ],
+          [
+            4.8e-07,
+            1.496e-05,
+            0.00314817
+          ]
+        ],
+        "principal_kg_m2": [
+          0.002587670601546712,
+          0.0031485676522034415,
+          0.0032937417462498447
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link2",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.903,
+        "origin_xyz_m": [
+          1.7e-05,
+          -0.001795,
+          0.10669100000000001
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00779827,
+            2.48e-06,
+            2.26e-06
+          ],
+          [
+            2.48e-06,
+            0.00674843,
+            0.00049284
+          ],
+          [
+            2.26e-06,
+            0.00049284,
+            0.00305518
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0029905441381358282,
+          0.006813057404673038,
+          0.007798278457191136
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link3",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.845,
+        "origin_xyz_m": [
+          0.009022,
+          0.0009,
+          -0.019936
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00635592,
+            1.599e-05,
+            0.00029945
+          ],
+          [
+            1.599e-05,
+            0.00581609,
+            4.683e-05
+          ],
+          [
+            0.00029945,
+            4.683e-05,
+            0.00269115
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0026661891418890797,
+          0.00581605426676165,
+          0.0063809165913492685
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link4",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3",
+        "AR5-5_08R-W4C1C9-ZY2_joint_4"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.037,
+        "origin_xyz_m": [
+          -0.009272,
+          0.002169,
+          0.084042
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.0029461,
+            2.481e-05,
+            -0.0001185
+          ],
+          [
+            2.481e-05,
+            0.00244455,
+            -0.00022011
+          ],
+          [
+            -0.0001185,
+            -0.00022011,
+            0.00140934
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0013566989739235357,
+          0.0024845370553943273,
+          0.0029587539706821364
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link5",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3",
+        "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "AR5-5_08R-W4C1C9-ZY2_joint_5"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 1.279,
+        "origin_xyz_m": [
+          -0.000776,
+          -0.000804,
+          -0.08673399999999999
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00240951,
+            4.151e-05,
+            -4.311e-05
+          ],
+          [
+            4.151e-05,
+            0.00200115,
+            -6.491e-05
+          ],
+          [
+            -4.311e-05,
+            -6.491e-05,
+            0.00158266
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0015712326892209413,
+          0.002005444648768697,
+          0.002416642662010361
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link6",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3",
+        "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "AR5-5_08R-W4C1C9-ZY2_joint_5",
+        "AR5-5_08R-W4C1C9-ZY2_joint_6"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.906,
+        "origin_xyz_m": [
+          -0.005059,
+          -0.00025,
+          -5.5e-05
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.00061487,
+            9.2e-07,
+            -9.7e-07
+          ],
+          [
+            9.2e-07,
+            0.00074943,
+            -4.7e-07
+          ],
+          [
+            -9.7e-07,
+            -4.7e-07,
+            0.00076056
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0006148572954319667,
+          0.0007494159179813153,
+          0.0007605867865867178
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_link7",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3",
+        "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "AR5-5_08R-W4C1C9-ZY2_joint_5",
+        "AR5-5_08R-W4C1C9-ZY2_joint_6",
+        "AR5-5_08R-W4C1C9-ZY2_joint_7"
+      ],
+      "visual_count": 1,
+      "collision_count": 1,
+      "inertial": {
+        "mass_kg": 0.33,
+        "origin_xyz_m": [
+          -0.00122,
+          0.0006730000000000001,
+          0.053984000000000004
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.0004602,
+            -2.66e-06,
+            4.064e-05
+          ],
+          [
+            -2.66e-06,
+            0.00068698,
+            4.24e-06
+          ],
+          [
+            4.064e-05,
+            4.24e-06,
+            0.00043963
+          ]
+        ],
+        "principal_kg_m2": [
+          0.00040790489697392575,
+          0.0004918349379532099,
+          0.0006870701650728648
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    },
+    {
+      "name": "AR5-5_08R-W4C1C9-ZY2_flan_link",
+      "chain": [
+        "1-Joint",
+        "2-Joint",
+        "3-Joint",
+        "4-Joint",
+        "right_fixed",
+        "AR5-5_08R-W4C1C9-ZY2_joint_1",
+        "AR5-5_08R-W4C1C9-ZY2_joint_2",
+        "AR5-5_08R-W4C1C9-ZY2_joint_3",
+        "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "AR5-5_08R-W4C1C9-ZY2_joint_5",
+        "AR5-5_08R-W4C1C9-ZY2_joint_6",
+        "AR5-5_08R-W4C1C9-ZY2_joint_7",
+        "AR5-5_08R-W4C1C9-ZY2_flan_joint"
+      ],
+      "visual_count": 0,
+      "collision_count": 0,
+      "inertial": {
+        "mass_kg": 0.0,
+        "origin_xyz_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "origin_rpy_rad": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tensor_kg_m2": [
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        "principal_kg_m2": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "positive_semidefinite": true,
+        "triangle_inequality": true
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "link": "base_link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/base_link.STL",
+      "resolved_relative_path": "meshes/base_link.STL",
+      "sha256": "efced632ba244bd13c3bfc133be14fb3e9708bdad161b79fb6ee07b66c7fae2c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 19470,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.46799999475479126,
+          -0.32004478573799133,
+          -0.24055220186710358
+        ],
+        [
+          0.21199999749660492,
+          0.32004478573799133,
+          0.16714900732040405
+        ]
+      ]
+    },
+    {
+      "link": "base_link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/base_link.STL",
+      "resolved_relative_path": "meshes/base_link.STL",
+      "sha256": "efced632ba244bd13c3bfc133be14fb3e9708bdad161b79fb6ee07b66c7fae2c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 19470,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.46799999475479126,
+          -0.32004478573799133,
+          -0.24055220186710358
+        ],
+        [
+          0.21199999749660492,
+          0.32004478573799133,
+          0.16714900732040405
+        ]
+      ]
+    },
+    {
+      "link": "wheel1_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/wheel1_Link.STL",
+      "resolved_relative_path": "meshes/wheel1_Link.STL",
+      "sha256": "effdf83f63027399787d73fcb64627a23cf3412167286ba13b86937e97e2997b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel1_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/wheel1_Link.STL",
+      "resolved_relative_path": "meshes/wheel1_Link.STL",
+      "sha256": "effdf83f63027399787d73fcb64627a23cf3412167286ba13b86937e97e2997b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel2_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/wheel2_Link.STL",
+      "resolved_relative_path": "meshes/wheel2_Link.STL",
+      "sha256": "4581c8cacea4c269d7f2a7ed8a1ff3c0f38fd653cf671bbce920d1c8083755a3",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel2_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/wheel2_Link.STL",
+      "resolved_relative_path": "meshes/wheel2_Link.STL",
+      "sha256": "4581c8cacea4c269d7f2a7ed8a1ff3c0f38fd653cf671bbce920d1c8083755a3",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel3_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/wheel3_Link.STL",
+      "resolved_relative_path": "meshes/wheel3_Link.STL",
+      "sha256": "052f79adc3c001e88ef8c435d2fe19e9f72885f36bd51f27808bba1b2ec015c1",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel3_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/wheel3_Link.STL",
+      "resolved_relative_path": "meshes/wheel3_Link.STL",
+      "sha256": "052f79adc3c001e88ef8c435d2fe19e9f72885f36bd51f27808bba1b2ec015c1",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel4_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/wheel4_Link.STL",
+      "resolved_relative_path": "meshes/wheel4_Link.STL",
+      "sha256": "636f9f34d12a2402d54ab6e3baf388e18c94f0938991c5aabce56cff8b1f7b5b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "wheel4_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/wheel4_Link.STL",
+      "resolved_relative_path": "meshes/wheel4_Link.STL",
+      "sha256": "636f9f34d12a2402d54ab6e3baf388e18c94f0938991c5aabce56cff8b1f7b5b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 20051,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08023998141288757,
+          0.04400834068655968,
+          -0.0991198867559433
+        ],
+        [
+          0.08023025095462799,
+          0.24700835347175598,
+          0.07012009620666504
+        ]
+      ]
+    },
+    {
+      "link": "1_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/1_Link.STL",
+      "resolved_relative_path": "meshes/1_Link.STL",
+      "sha256": "8a20ba354bb9bd55f48892eeee33b725080d2d40eba8255c5293bde38052a656",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 2258,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.07999999821186066,
+          -0.49000000953674316,
+          -0.09974999725818634
+        ],
+        [
+          0.07999999821186066,
+          0.07999999821186066,
+          0.09975000470876694
+        ]
+      ]
+    },
+    {
+      "link": "1_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/1_Link.STL",
+      "resolved_relative_path": "meshes/1_Link.STL",
+      "sha256": "8a20ba354bb9bd55f48892eeee33b725080d2d40eba8255c5293bde38052a656",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 2258,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.07999999821186066,
+          -0.49000000953674316,
+          -0.09974999725818634
+        ],
+        [
+          0.07999999821186066,
+          0.07999999821186066,
+          0.09975000470876694
+        ]
+      ]
+    },
+    {
+      "link": "2_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/2_Link.STL",
+      "resolved_relative_path": "meshes/2_Link.STL",
+      "sha256": "85cf765397151a5e117844a553df91c44bd566c3455b86ab7ff20abf4a6a041c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 3446,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08049999922513962,
+          -0.5600006580352783,
+          -0.1187235414981842
+        ],
+        [
+          0.08049999922513962,
+          0.07999998331069946,
+          0.12022354453802109
+        ]
+      ]
+    },
+    {
+      "link": "2_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/2_Link.STL",
+      "resolved_relative_path": "meshes/2_Link.STL",
+      "sha256": "85cf765397151a5e117844a553df91c44bd566c3455b86ab7ff20abf4a6a041c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 3446,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08049999922513962,
+          -0.5600006580352783,
+          -0.1187235414981842
+        ],
+        [
+          0.08049999922513962,
+          0.07999998331069946,
+          0.12022354453802109
+        ]
+      ]
+    },
+    {
+      "link": "3_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/3_Link.STL",
+      "resolved_relative_path": "meshes/3_Link.STL",
+      "sha256": "2f6df4895fcad5d89c62a22699467be62e4ed917744d5a51ad3d8178ea97e84a",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 2708,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.07699999958276749,
+          -0.21119998395442963,
+          -0.07300000637769699
+        ],
+        [
+          0.07699999958276749,
+          0.07657821476459503,
+          0.07799999415874481
+        ]
+      ]
+    },
+    {
+      "link": "3_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/3_Link.STL",
+      "resolved_relative_path": "meshes/3_Link.STL",
+      "sha256": "2f6df4895fcad5d89c62a22699467be62e4ed917744d5a51ad3d8178ea97e84a",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 2708,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.07699999958276749,
+          -0.21119998395442963,
+          -0.07300000637769699
+        ],
+        [
+          0.07699999958276749,
+          0.07657821476459503,
+          0.07799999415874481
+        ]
+      ]
+    },
+    {
+      "link": "4_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/4_Link.STL",
+      "resolved_relative_path": "meshes/4_Link.STL",
+      "sha256": "b78f75c1ec4af7f01083f9fc98c45b6b3b813eeeec72b5026ae723b1548ea39d",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 31564,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.11184448003768921,
+          -0.1738204061985016,
+          -0.12549999356269836
+        ],
+        [
+          0.09613388776779175,
+          0.17332041263580322,
+          0.2167927324771881
+        ]
+      ]
+    },
+    {
+      "link": "4_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/4_Link.STL",
+      "resolved_relative_path": "meshes/4_Link.STL",
+      "sha256": "b78f75c1ec4af7f01083f9fc98c45b6b3b813eeeec72b5026ae723b1548ea39d",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 31564,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.11184448003768921,
+          -0.1738204061985016,
+          -0.12549999356269836
+        ],
+        [
+          0.09613388776779175,
+          0.17332041263580322,
+          0.2167927324771881
+        ]
+      ]
+    },
+    {
+      "link": "5_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/5_Link.STL",
+      "resolved_relative_path": "meshes/5_Link.STL",
+      "sha256": "5f44f7595c164a70e38a6bbb6f2dd12e1343f733fd9a572beeb635fc3573a002",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 606,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.01822749152779579,
+          -0.0430000014603138,
+          -0.001999996369704604
+        ],
+        [
+          0.052000001072883606,
+          0.023000018671154976,
+          0.22889067232608795
+        ]
+      ]
+    },
+    {
+      "link": "5_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/5_Link.STL",
+      "resolved_relative_path": "meshes/5_Link.STL",
+      "sha256": "5f44f7595c164a70e38a6bbb6f2dd12e1343f733fd9a572beeb635fc3573a002",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 606,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.01822749152779579,
+          -0.0430000014603138,
+          -0.001999996369704604
+        ],
+        [
+          0.052000001072883606,
+          0.023000018671154976,
+          0.22889067232608795
+        ]
+      ]
+    },
+    {
+      "link": "6_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/6_Link.STL",
+      "resolved_relative_path": "meshes/6_Link.STL",
+      "sha256": "76a1585dabae1ad7aa1599c51e5ba1b4d19b39bedbb42591d068a42bac51d9b7",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 10576,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08111009001731873,
+          -0.06176787242293358,
+          -0.13798971474170685
+        ],
+        [
+          0.060388706624507904,
+          0.1080884337425232,
+          0.05199999734759331
+        ]
+      ]
+    },
+    {
+      "link": "6_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/6_Link.STL",
+      "resolved_relative_path": "meshes/6_Link.STL",
+      "sha256": "76a1585dabae1ad7aa1599c51e5ba1b4d19b39bedbb42591d068a42bac51d9b7",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 10576,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.08111009001731873,
+          -0.06176787242293358,
+          -0.13798971474170685
+        ],
+        [
+          0.060388706624507904,
+          0.1080884337425232,
+          0.05199999734759331
+        ]
+      ]
+    },
+    {
+      "link": "7_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/7_Link.STL",
+      "resolved_relative_path": "meshes/7_Link.STL",
+      "sha256": "9feb13ec786d588329aec61d54000b5be45102af2a65bb92c8369e5af7e64622",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 82014,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.06041502580046654,
+          -0.014522832818329334,
+          -0.026950007304549217
+        ],
+        [
+          0.06360724568367004,
+          0.01450833398848772,
+          0.002227873308584094
+        ]
+      ]
+    },
+    {
+      "link": "7_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/7_Link.STL",
+      "resolved_relative_path": "meshes/7_Link.STL",
+      "sha256": "9feb13ec786d588329aec61d54000b5be45102af2a65bb92c8369e5af7e64622",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 82014,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.06041502580046654,
+          -0.014522832818329334,
+          -0.026950007304549217
+        ],
+        [
+          0.06360724568367004,
+          0.01450833398848772,
+          0.002227873308584094
+        ]
+      ]
+    },
+    {
+      "link": "8_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/8_Link.STL",
+      "resolved_relative_path": "meshes/8_Link.STL",
+      "sha256": "0bdc782490f1b94313a1db0e1ec86490e375f19bfb773b5873f2e6e063f1c5ee",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 378,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.007999998517334461,
+          -0.007972676306962967,
+          -0.004100000485777855
+        ],
+        [
+          0.00800000037997961,
+          0.007972676306962967,
+          3.2798708193837456e-11
+        ]
+      ]
+    },
+    {
+      "link": "8_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/8_Link.STL",
+      "resolved_relative_path": "meshes/8_Link.STL",
+      "sha256": "0bdc782490f1b94313a1db0e1ec86490e375f19bfb773b5873f2e6e063f1c5ee",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 378,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.007999998517334461,
+          -0.007972676306962967,
+          -0.004100000485777855
+        ],
+        [
+          0.00800000037997961,
+          0.007972676306962967,
+          3.2798708193837456e-11
+        ]
+      ]
+    },
+    {
+      "link": "9_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/9_Link.STL",
+      "resolved_relative_path": "meshes/9_Link.STL",
+      "sha256": "ee1057184a222a5095d43818a2cc019cf5d888b3042280b8836e321e7c8a4890",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 238,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.007499998901039362,
+          -0.007493917364627123,
+          -0.0035999994724988937
+        ],
+        [
+          0.007475679274648428,
+          0.007499999832361937,
+          3.2798708193837456e-11
+        ]
+      ]
+    },
+    {
+      "link": "9_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/9_Link.STL",
+      "resolved_relative_path": "meshes/9_Link.STL",
+      "sha256": "ee1057184a222a5095d43818a2cc019cf5d888b3042280b8836e321e7c8a4890",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 238,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.007499998901039362,
+          -0.007493917364627123,
+          -0.0035999994724988937
+        ],
+        [
+          0.007475679274648428,
+          0.007499999832361937,
+          3.2798708193837456e-11
+        ]
+      ]
+    },
+    {
+      "link": "10_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/10_Link.STL",
+      "resolved_relative_path": "meshes/10_Link.STL",
+      "sha256": "39ca613a4770c612abf2f673c90eb87b7041c5ffda56f4899ceb837190071093",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 15800,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.02431514300405979,
+          -0.0079897316172719,
+          -0.004749475046992302
+        ],
+        [
+          0.004215591587126255,
+          0.0079897316172719,
+          0.023581067100167274
+        ]
+      ]
+    },
+    {
+      "link": "10_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/10_Link.STL",
+      "resolved_relative_path": "meshes/10_Link.STL",
+      "sha256": "39ca613a4770c612abf2f673c90eb87b7041c5ffda56f4899ceb837190071093",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 15800,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.02431514300405979,
+          -0.0079897316172719,
+          -0.004749475046992302
+        ],
+        [
+          0.004215591587126255,
+          0.0079897316172719,
+          0.023581067100167274
+        ]
+      ]
+    },
+    {
+      "link": "11_Link",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot/meshes/11_Link.STL",
+      "resolved_relative_path": "meshes/11_Link.STL",
+      "sha256": "bdbc88d1ec69541181df076372bcc9ab9dd1b06f0d253e34aaabbd078613574b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 15800,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.004215591587126255,
+          -0.0079897316172719,
+          -0.004749475046992302
+        ],
+        [
+          0.02431514300405979,
+          0.0079897316172719,
+          0.023581067100167274
+        ]
+      ]
+    },
+    {
+      "link": "11_Link",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot/meshes/11_Link.STL",
+      "resolved_relative_path": "meshes/11_Link.STL",
+      "sha256": "bdbc88d1ec69541181df076372bcc9ab9dd1b06f0d253e34aaabbd078613574b",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "triangles": 15800,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.004215591587126255,
+          -0.0079897316172719,
+          -0.004749475046992302
+        ],
+        [
+          0.02431514300405979,
+          0.0079897316172719,
+          0.023581067100167274
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_base",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_base.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_base.stl",
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 23188,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05249961853027344,
+          -0.05648447036743164,
+          -3.5852720792206583e-13
+        ],
+        [
+          0.0565,
+          0.05649812316894531,
+          0.1031999969482422
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_base",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_base.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_base.stl",
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 23188,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05249961853027344,
+          -0.05648447036743164,
+          -3.5852720792206583e-13
+        ],
+        [
+          0.0565,
+          0.05649812316894531,
+          0.1031999969482422
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link1",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link1.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link1.stl",
+      "sha256": "fdb3ee7308f8e5e0db4013408a7203b0158da17b946ce9401f0369a507d20ffb",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13364,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.0519981918334961,
+          -0.06229691314697266,
+          0.101
+        ],
+        [
+          0.05199892044067383,
+          0.055,
+          0.2265
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link1",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link1.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link1.stl",
+      "sha256": "fdb3ee7308f8e5e0db4013408a7203b0158da17b946ce9401f0369a507d20ffb",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13364,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.0519981918334961,
+          -0.06229691314697266,
+          0.101
+        ],
+        [
+          0.05199892044067383,
+          0.055,
+          0.2265
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link2",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link2.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link2.stl",
+      "sha256": "183d4e17efd76881812f53c255cfb98e9e40205a36a9ba5642b3b0d1eb3309cd",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 47534,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05658098602294922,
+          -0.07084302520751953,
+          -0.056654964447021484
+        ],
+        [
+          0.056581188201904296,
+          0.07084302520751953,
+          0.183
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link2",
+      "kind": "collision",
+      "uri": "package://robot_model_v2/meshes/AR5_P_L/AR5-5_08L-W4C1C9-ZY2_link2.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link2.stl",
+      "sha256": "183d4e17efd76881812f53c255cfb98e9e40205a36a9ba5642b3b0d1eb3309cd",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 47534,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05658098602294922,
+          -0.07084302520751953,
+          -0.056654964447021484
+        ],
+        [
+          0.056581188201904296,
+          0.07084302520751953,
+          0.183
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link3",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link3.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link3.stl",
+      "sha256": "85ceba87b6e18580d6b69be2d0ce37f44314ca32ca56386e28c2026c9a838f9d",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 37328,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04837018585205078,
+          -0.052352195739746095,
+          -0.16
+        ],
+        [
+          0.06181215667724609,
+          0.059252197265625,
+          0.05132260513305664
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link3",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link3.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link3.stl",
+      "sha256": "85ceba87b6e18580d6b69be2d0ce37f44314ca32ca56386e28c2026c9a838f9d",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 37328,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04837018585205078,
+          -0.052352195739746095,
+          -0.16
+        ],
+        [
+          0.06181215667724609,
+          0.059252197265625,
+          0.05132260513305664
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link4",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link4.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link4.stl",
+      "sha256": "68e13a43dccbfb70d030c3426b8c87bd9d2aaac0ebdde0c6c92375950fe5c776",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 36124,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05625145721435547,
+          -0.0667626953125,
+          -0.049574581146240235
+        ],
+        [
+          0.04957443618774414,
+          0.0667608871459961,
+          0.14
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link4",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link4.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link4.stl",
+      "sha256": "68e13a43dccbfb70d030c3426b8c87bd9d2aaac0ebdde0c6c92375950fe5c776",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 36124,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05625145721435547,
+          -0.0667626953125,
+          -0.049574581146240235
+        ],
+        [
+          0.04957443618774414,
+          0.0667608871459961,
+          0.14
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link5",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link5.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link5.stl",
+      "sha256": "0125e5bf7c7738bdbc2a62e55400aea27ce786839078ddc3d622a60cf4182b1c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 84768,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.04460064697265625,
+          -0.05335042190551758,
+          -0.14100000000000001
+        ],
+        [
+          0.04460064697265625,
+          0.05335042190551758,
+          0.01414504337310791
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link5",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link5.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link5.stl",
+      "sha256": "0125e5bf7c7738bdbc2a62e55400aea27ce786839078ddc3d622a60cf4182b1c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 84768,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.04460064697265625,
+          -0.05335042190551758,
+          -0.14100000000000001
+        ],
+        [
+          0.04460064697265625,
+          0.05335042190551758,
+          0.01414504337310791
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link6",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link6.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link6.stl",
+      "sha256": "e6120969880a60e984e9ac1e1ad57b09ff27c76f159393554f7eb939b1a90b98",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13664,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04090000152587891,
+          -0.038,
+          -0.03899925231933594
+        ],
+        [
+          0.052400001525878905,
+          0.044899986267089846,
+          0.038999256134033204
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link6",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link6.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link6.stl",
+      "sha256": "e6120969880a60e984e9ac1e1ad57b09ff27c76f159393554f7eb939b1a90b98",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13664,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04090000152587891,
+          -0.038,
+          -0.03899925231933594
+        ],
+        [
+          0.052400001525878905,
+          0.044899986267089846,
+          0.038999256134033204
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link7",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link7.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link7.stl",
+      "sha256": "ff61bfc769d0256477c7d04edca37ce843b7664af5aef68d776ff38a73fe3adb",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 54284,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05486178970336914,
+          -0.03569779586791992,
+          -0.035714595794677735
+        ],
+        [
+          0.054858001708984375,
+          0.03568913269042969,
+          0.09
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08L-W4C1C9-ZY2_link7",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08L-W4C1C9-ZY2_link7.stl",
+      "resolved_relative_path": "meshes/AR5-5_08L-W4C1C9-ZY2_link7.stl",
+      "sha256": "ff61bfc769d0256477c7d04edca37ce843b7664af5aef68d776ff38a73fe3adb",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 54284,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05486178970336914,
+          -0.03569779586791992,
+          -0.035714595794677735
+        ],
+        [
+          0.054858001708984375,
+          0.03568913269042969,
+          0.09
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_base",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_base.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_base.stl",
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 23188,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05249961853027344,
+          -0.05648447036743164,
+          -3.5852720792206583e-13
+        ],
+        [
+          0.0565,
+          0.05649812316894531,
+          0.1031999969482422
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_base",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_base.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_base.stl",
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 23188,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.05249961853027344,
+          -0.05648447036743164,
+          -3.5852720792206583e-13
+        ],
+        [
+          0.0565,
+          0.05649812316894531,
+          0.1031999969482422
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link1",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link1.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link1.stl",
+      "sha256": "87def8c59f505c3c54535aef2f1c7955e8b1166de335a3435b987bc0b94d70b6",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13364,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.051998908996582036,
+          -0.055,
+          0.101
+        ],
+        [
+          0.05199820327758789,
+          0.06229691314697266,
+          0.2265
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link1",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link1.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link1.stl",
+      "sha256": "87def8c59f505c3c54535aef2f1c7955e8b1166de335a3435b987bc0b94d70b6",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 13364,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.051998908996582036,
+          -0.055,
+          0.101
+        ],
+        [
+          0.05199820327758789,
+          0.06229691314697266,
+          0.2265
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link2",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link2.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link2.stl",
+      "sha256": "4418b25a88f15494f081a3ccd87b14ad2094e32852cf22c4db8679f75dbe9a66",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 47534,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.056581188201904296,
+          -0.07084302520751953,
+          -0.056654964447021484
+        ],
+        [
+          0.05658098602294922,
+          0.07084302520751953,
+          0.183
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link2",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link2.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link2.stl",
+      "sha256": "4418b25a88f15494f081a3ccd87b14ad2094e32852cf22c4db8679f75dbe9a66",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 47534,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.056581188201904296,
+          -0.07084302520751953,
+          -0.056654964447021484
+        ],
+        [
+          0.05658098602294922,
+          0.07084302520751953,
+          0.183
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link3",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link3.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link3.stl",
+      "sha256": "63c99f8a08819e17986aed7d1a518d48b3f82abfa85f074959d07513e0883bc9",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 37328,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04837018585205078,
+          -0.059252197265625,
+          -0.16
+        ],
+        [
+          0.06181215667724609,
+          0.052352195739746095,
+          0.05132260513305664
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link3",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link3.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link3.stl",
+      "sha256": "63c99f8a08819e17986aed7d1a518d48b3f82abfa85f074959d07513e0883bc9",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 37328,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04837018585205078,
+          -0.059252197265625,
+          -0.16
+        ],
+        [
+          0.06181215667724609,
+          0.052352195739746095,
+          0.05132260513305664
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link4",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link4.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link4.stl",
+      "sha256": "1246afa1fe4e081e30e549c7aeafecc1aa7ef819f5ea5c867b9bc93859705db1",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 36154,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05625145721435547,
+          -0.0667608871459961,
+          -0.049574581146240235
+        ],
+        [
+          0.04957443618774414,
+          0.0667626953125,
+          0.14
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link4",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link4.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link4.stl",
+      "sha256": "1246afa1fe4e081e30e549c7aeafecc1aa7ef819f5ea5c867b9bc93859705db1",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 36154,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05625145721435547,
+          -0.0667608871459961,
+          -0.049574581146240235
+        ],
+        [
+          0.04957443618774414,
+          0.0667626953125,
+          0.14
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link5",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5_P_R/AR5-5_08R-W4C1C9-ZY2_link5.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link5.stl",
+      "sha256": "abb885d5bb977d62443aa6a4501d5223debb42d5ec9fdec4e5aab88f2c604f70",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 85876,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04460064697265625,
+          -0.05335042190551758,
+          -0.14100000000000001
+        ],
+        [
+          0.04460064697265625,
+          0.05335042190551758,
+          0.01414504337310791
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link5",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5-5_08R-W4C1C9-ZY2_link5.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link5.stl",
+      "sha256": "abb885d5bb977d62443aa6a4501d5223debb42d5ec9fdec4e5aab88f2c604f70",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 85876,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04460064697265625,
+          -0.05335042190551758,
+          -0.14100000000000001
+        ],
+        [
+          0.04460064697265625,
+          0.05335042190551758,
+          0.01414504337310791
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link6",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5_P_R/AR5-5_08R-W4C1C9-ZY2_link6.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link6.stl",
+      "sha256": "80a70e99f5a5c40a671af3d57d93503da2b6974fb2d1bae481f82fdd44f7249c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 14284,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04090000152587891,
+          -0.044899986267089846,
+          -0.03899925231933594
+        ],
+        [
+          0.052400001525878905,
+          0.038,
+          0.038999256134033204
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link6",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5_P_R/AR5-5_08R-W4C1C9-ZY2_link6.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link6.stl",
+      "sha256": "80a70e99f5a5c40a671af3d57d93503da2b6974fb2d1bae481f82fdd44f7249c",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 14284,
+      "watertight": true,
+      "bounds_link_frame_m": [
+        [
+          -0.04090000152587891,
+          -0.044899986267089846,
+          -0.03899925231933594
+        ],
+        [
+          0.052400001525878905,
+          0.038,
+          0.038999256134033204
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link7",
+      "kind": "visual",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5_P_R/AR5-5_08R-W4C1C9-ZY2_link7.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link7.stl",
+      "sha256": "430c3461cd039ca4e83b5bc5dfdce6426473e6f1916f9f1c6db6416e6d77e01f",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 54455,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05486178970336914,
+          -0.03570290374755859,
+          -0.035714595794677735
+        ],
+        [
+          0.054858001708984375,
+          0.03570322036743164,
+          0.09
+        ]
+      ]
+    },
+    {
+      "link": "AR5-5_08R-W4C1C9-ZY2_link7",
+      "kind": "collision",
+      "uri": "package://Wheel_Robot 0.8/meshes/AR5_P_R/AR5-5_08R-W4C1C9-ZY2_link7.stl",
+      "resolved_relative_path": "meshes/AR5-5_08R-W4C1C9-ZY2_link7.stl",
+      "sha256": "430c3461cd039ca4e83b5bc5dfdce6426473e6f1916f9f1c6db6416e6d77e01f",
+      "resolution_rule": "unique supplied basename; original URI preserved",
+      "scale": [
+        0.001,
+        0.001,
+        0.001
+      ],
+      "triangles": 54455,
+      "watertight": false,
+      "bounds_link_frame_m": [
+        [
+          -0.05486178970336914,
+          -0.03570290374755859,
+          -0.035714595794677735
+        ],
+        [
+          0.054858001708984375,
+          0.03570322036743164,
+          0.09
+        ]
+      ]
+    }
+  ],
+  "source_files": [
+    {
+      "path": "CMakeLists.txt",
+      "size": 289,
+      "sha256": "d99a99c3b61f942198d4c11e6aac1842f98ca164248765dbbfe5d7b52450f456"
+    },
+    {
+      "path": "config/joint_names_Wheel_Robot.yaml",
+      "size": 158,
+      "sha256": "c7b56a4852c86423fa982d4d26d159c8973a134b56b5195c15d8c478577ebb3a"
+    },
+    {
+      "path": "export.log",
+      "size": 4822799,
+      "sha256": "c39a9ab17637e55d8c0718479fa39d1fb30a38b49c40179c7cf1e0a13f861193"
+    },
+    {
+      "path": "launch/display.launch",
+      "size": 494,
+      "sha256": "fce1891178b2d4461c220dffd2e9e04f4623fa3e8b57b81c9124b59be4cb9bdc"
+    },
+    {
+      "path": "launch/gazebo.launch",
+      "size": 561,
+      "sha256": "79e613e5be5eb1b097e0e9ecbba2a432daba1e40452fc26fede7f116e88c12ca"
+    },
+    {
+      "path": "meshes/10_Link.STL",
+      "size": 790084,
+      "sha256": "39ca613a4770c612abf2f673c90eb87b7041c5ffda56f4899ceb837190071093"
+    },
+    {
+      "path": "meshes/11_Link.STL",
+      "size": 790084,
+      "sha256": "bdbc88d1ec69541181df076372bcc9ab9dd1b06f0d253e34aaabbd078613574b"
+    },
+    {
+      "path": "meshes/1_Link.STL",
+      "size": 112984,
+      "sha256": "8a20ba354bb9bd55f48892eeee33b725080d2d40eba8255c5293bde38052a656"
+    },
+    {
+      "path": "meshes/2_Link.STL",
+      "size": 172384,
+      "sha256": "85cf765397151a5e117844a553df91c44bd566c3455b86ab7ff20abf4a6a041c"
+    },
+    {
+      "path": "meshes/3_Link.STL",
+      "size": 135484,
+      "sha256": "2f6df4895fcad5d89c62a22699467be62e4ed917744d5a51ad3d8178ea97e84a"
+    },
+    {
+      "path": "meshes/4_Link.STL",
+      "size": 1578284,
+      "sha256": "b78f75c1ec4af7f01083f9fc98c45b6b3b813eeeec72b5026ae723b1548ea39d"
+    },
+    {
+      "path": "meshes/5_Link.STL",
+      "size": 30384,
+      "sha256": "5f44f7595c164a70e38a6bbb6f2dd12e1343f733fd9a572beeb635fc3573a002"
+    },
+    {
+      "path": "meshes/6_Link.STL",
+      "size": 528884,
+      "sha256": "76a1585dabae1ad7aa1599c51e5ba1b4d19b39bedbb42591d068a42bac51d9b7"
+    },
+    {
+      "path": "meshes/7_Link.STL",
+      "size": 4100784,
+      "sha256": "9feb13ec786d588329aec61d54000b5be45102af2a65bb92c8369e5af7e64622"
+    },
+    {
+      "path": "meshes/8_Link.STL",
+      "size": 18984,
+      "sha256": "0bdc782490f1b94313a1db0e1ec86490e375f19bfb773b5873f2e6e063f1c5ee"
+    },
+    {
+      "path": "meshes/9_Link.STL",
+      "size": 11984,
+      "sha256": "ee1057184a222a5095d43818a2cc019cf5d888b3042280b8836e321e7c8a4890"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_base.stl",
+      "size": 1159484,
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link1.stl",
+      "size": 668284,
+      "sha256": "fdb3ee7308f8e5e0db4013408a7203b0158da17b946ce9401f0369a507d20ffb"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link2.stl",
+      "size": 2376784,
+      "sha256": "183d4e17efd76881812f53c255cfb98e9e40205a36a9ba5642b3b0d1eb3309cd"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link3.stl",
+      "size": 1866484,
+      "sha256": "85ceba87b6e18580d6b69be2d0ce37f44314ca32ca56386e28c2026c9a838f9d"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link4.stl",
+      "size": 1806284,
+      "sha256": "68e13a43dccbfb70d030c3426b8c87bd9d2aaac0ebdde0c6c92375950fe5c776"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link5.stl",
+      "size": 4238484,
+      "sha256": "0125e5bf7c7738bdbc2a62e55400aea27ce786839078ddc3d622a60cf4182b1c"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link6.stl",
+      "size": 683284,
+      "sha256": "e6120969880a60e984e9ac1e1ad57b09ff27c76f159393554f7eb939b1a90b98"
+    },
+    {
+      "path": "meshes/AR5-5_08L-W4C1C9-ZY2_link7.stl",
+      "size": 2714284,
+      "sha256": "ff61bfc769d0256477c7d04edca37ce843b7664af5aef68d776ff38a73fe3adb"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_base.stl",
+      "size": 1159484,
+      "sha256": "4bbc32045fe84b14e460875dfd2741288e3cc7c33257f411d8e6cb7633660a5c"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link1.stl",
+      "size": 668284,
+      "sha256": "87def8c59f505c3c54535aef2f1c7955e8b1166de335a3435b987bc0b94d70b6"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link2.stl",
+      "size": 2376784,
+      "sha256": "4418b25a88f15494f081a3ccd87b14ad2094e32852cf22c4db8679f75dbe9a66"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link3.stl",
+      "size": 1866484,
+      "sha256": "63c99f8a08819e17986aed7d1a518d48b3f82abfa85f074959d07513e0883bc9"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link4.stl",
+      "size": 1807784,
+      "sha256": "1246afa1fe4e081e30e549c7aeafecc1aa7ef819f5ea5c867b9bc93859705db1"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link5.stl",
+      "size": 4293884,
+      "sha256": "abb885d5bb977d62443aa6a4501d5223debb42d5ec9fdec4e5aab88f2c604f70"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link6.stl",
+      "size": 714284,
+      "sha256": "80a70e99f5a5c40a671af3d57d93503da2b6974fb2d1bae481f82fdd44f7249c"
+    },
+    {
+      "path": "meshes/AR5-5_08R-W4C1C9-ZY2_link7.stl",
+      "size": 2722834,
+      "sha256": "430c3461cd039ca4e83b5bc5dfdce6426473e6f1916f9f1c6db6416e6d77e01f"
+    },
+    {
+      "path": "meshes/base_link.STL",
+      "size": 973584,
+      "sha256": "efced632ba244bd13c3bfc133be14fb3e9708bdad161b79fb6ee07b66c7fae2c"
+    },
+    {
+      "path": "meshes/wheel1_Link.STL",
+      "size": 1002634,
+      "sha256": "effdf83f63027399787d73fcb64627a23cf3412167286ba13b86937e97e2997b"
+    },
+    {
+      "path": "meshes/wheel2_Link.STL",
+      "size": 1002634,
+      "sha256": "4581c8cacea4c269d7f2a7ed8a1ff3c0f38fd653cf671bbce920d1c8083755a3"
+    },
+    {
+      "path": "meshes/wheel3_Link.STL",
+      "size": 1002634,
+      "sha256": "052f79adc3c001e88ef8c435d2fe19e9f72885f36bd51f27808bba1b2ec015c1"
+    },
+    {
+      "path": "meshes/wheel4_Link.STL",
+      "size": 1002634,
+      "sha256": "636f9f34d12a2402d54ab6e3baf388e18c94f0938991c5aabce56cff8b1f7b5b"
+    },
+    {
+      "path": "package.xml",
+      "size": 648,
+      "sha256": "46290aa3ffe891cfa8c4018d284a730075e634f2a95f2466e528a3913c4a6716"
+    },
+    {
+      "path": "urdf/Wheel_Robot.csv",
+      "size": 8438,
+      "sha256": "400253264e17c80321ed47478587a2fa6101cb78cf7fb442e1f394e6fefcf467"
+    },
+    {
+      "path": "urdf/Wheel_Robot.urdf",
+      "size": 39166,
+      "sha256": "484feff61bd4addd6aa949286c9f3e56c485c26000ad89ed0526eff3caec4aad"
+    }
+  ],
+  "declared_mass_sum_kg": 739.8439206257563
+}

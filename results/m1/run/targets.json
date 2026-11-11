@@ -1,0 +1,124 @@
+{
+  "frame": "world: aligned with reference base_link; z=0 NOT ground",
+  "tip_names": [
+    "AR5-5_08L-W4C1C9-ZY2_flan_link",
+    "AR5-5_08R-W4C1C9-ZY2_flan_link"
+  ],
+  "handle_transform": "identity on flange; explicit virtual fixture",
+  "reference_q_rad": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    -0.3,
+    0.6,
+    -0.3,
+    0.0,
+    0.0,
+    0.0,
+    -1.5707963267948966,
+    0.8,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.5707963267948966,
+    0.8,
+    0.0,
+    1.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "world_targets": [
+    [
+      [
+        -0.22797745125077323,
+        0.0007963267107332084,
+        0.9736660862867572,
+        0.6271839408517156
+      ],
+      [
+        -0.9736663950053748,
+        -3.3306690738754696e-16,
+        -0.22797752353518835,
+        0.4019104492732094
+      ],
+      [
+        -0.00018154459143754353,
+        -0.9999996829318345,
+        0.0007753565576862353,
+        1.204832445648017
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    [
+      [
+        -0.22797745125077312,
+        -0.0007963267107331529,
+        0.9736660862867572,
+        0.6271839408517156
+      ],
+      [
+        0.9736663950053748,
+        1.6653345369377348e-16,
+        0.2279775235351882,
+        -0.4019026514299501
+      ],
+      [
+        -0.00018154459143804313,
+        0.9999996829318345,
+        0.0007753565576859578,
+        1.2048324456480173
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  ],
+  "check": {
+    "status": "ACCEPTED_CONDITIONAL",
+    "reasons": [],
+    "joint_limit_violations": [],
+    "collision": {
+      "passed": true,
+      "collision_pairs": [],
+      "below_clearance": [],
+      "min_distance_m": 0.005705001900984885,
+      "closest_pair": [
+        "2_Link",
+        "4_Link"
+      ],
+      "checked_pairs": 441,
+      "clearance_m": 0.002,
+      "narrow_phase_pairs": [
+        [
+          "AR5-5_08L-W4C1C9-ZY2_link5",
+          "AR5-5_08L-W4C1C9-ZY2_link7"
+        ],
+        [
+          "AR5-5_08R-W4C1C9-ZY2_link5",
+          "AR5-5_08R-W4C1C9-ZY2_link7"
+        ]
+      ],
+      "criterion": "supplied_mesh_surface_clearance; no solid-occupancy guarantee"
+    },
+    "position_errors_m": [
+      0.0,
+      0.0
+    ],
+    "orientation_errors_rad": [
+      0.0,
+      0.0
+    ]
+  }
+}
