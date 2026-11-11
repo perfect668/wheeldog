@@ -3,6 +3,8 @@ from pathlib import Path
 import hashlib
 import json
 import zipfile
+import tempfile
+import os
 import xml.etree.ElementTree as ET
 import numpy as np
 import trimesh
@@ -22,7 +24,25 @@ def unpack(archive, destination):
             p = Path(i.filename)
             if p.is_absolute() or '..' in p.parts or (i.external_attr >> 16) & 0o170000 == 0o120000:
                 raise ValueError(f'Unsafe ZIP entry: {i.filename}')
-        z.extractall(destination)
+        # Existing assets are immutable; independent runs may share this directory.
+        # Publish each new file atomically so a reader cannot see a partial STL.
+        for i in z.infolist():
+            target = destination / i.filename
+            if not target.resolve().is_relative_to(destination):
+                raise ValueError('Extraction target escapes through a symlink')
+            if i.is_dir():
+                target.mkdir(parents=True, exist_ok=True)
+                continue
+            content = z.read(i)
+            if target.exists():
+                if target.read_bytes() != content:
+                    raise ValueError(f'Existing asset differs from archive: {target}')
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with tempfile.NamedTemporaryFile(dir=target.parent, delete=False) as f:
+                temporary = Path(f.name)
+                f.write(content)
+            os.replace(temporary, target)
     return destination / 'Wheel_Robot 0.8/urdf/Wheel_Robot.urdf'
 
 def vector(element, key, default='0 0 0'):

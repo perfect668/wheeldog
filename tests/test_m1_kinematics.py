@@ -92,3 +92,13 @@ def test_bad_inputs_and_local_target_failure_not_success(setup_model):
     assert check['status']=='REJECTED' and 'target_position' in check['reasons']
     bad=q.copy();bad[r.index['1-Joint']]=1.0
     assert 'joint_limit' in evaluate(r,c,bad,np.zeros(3),config)['reasons']
+
+
+def test_repeated_asset_import_is_read_only_and_detects_corruption(tmp_path):
+    path=unpack('assets/h1/source.zip',tmp_path/'assets')
+    stamp=path.stat().st_mtime_ns
+    unpack('assets/h1/source.zip',tmp_path/'assets')
+    assert path.stat().st_mtime_ns==stamp
+    path.write_bytes(b'corrupted')
+    with pytest.raises(ValueError,match='differs from archive'):
+        unpack('assets/h1/source.zip',tmp_path/'assets')
