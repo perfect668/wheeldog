@@ -14,6 +14,7 @@ import yaml
 from scipy.stats import spearmanr
 from h1_kinematics.assets import dump,sha256
 from .model import DIRECTIONS
+from .pairing import match_pairs
 
 
 def write_csv(path, rows):
@@ -153,9 +154,17 @@ def analyze(output, plots=True):
         and lookup[(r['candidate'],r['horizon_s'],False,r['direction'])]['achieved_displacement_m'] is not None]
     write_csv(out/'base_gains.csv', base_gains)
     force_status = Counter(x['status'] for r in accepted for kinds in r['force'].values() for ds in kinds.values() for x in ds.values())
+    budget_sensitivity={}
+    for budget in ['nominal','urdf','nominal_half']:
+        variant_records=[dict(r,force_match_vector_n=[r['force'][budget][kind][d]['capacity_n']
+            for kind in ['unloaded','residual'] for d in DIRECTIONS]) for r in accepted]
+        budget_sensitivity[budget]=dict(matched_pairs=sum(p['status']=='MATCHED' for p in match_pairs(
+            variant_records,config['force']['match_relative_tolerance'],config['force']['match_floor_n'])),
+            residual_median_n={d:float(np.median([r['force'][budget]['residual'][d]['capacity_n'] for r in accepted])) for d in DIRECTIONS})
     summary = dict(interpretation='Offline local path-family bounds, URDF geometry plus nominal/assumed constraints; not H1 hardware or human recovery validation',
         candidate_statuses=dict(Counter(r['status'] for r in force)),matched_pairs=len(metrics),
         total_pairs=len(read('all_force_pairs.json')),force_lp_statuses=dict(force_status),
+        budget_sensitivity=budget_sensitivity,
         main=summarize_cases(reach),population=populations,pair_population=pair_populations,
         correlation=correlation,base_gain_m=describe([r['gain_m'] for r in base_gains]),
         pairs_with_practical_difference_fixed_03=sum(p['primary_practical_directions']>0 for p in metrics),
