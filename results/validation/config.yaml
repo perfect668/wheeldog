@@ -1,0 +1,70 @@
+model:
+  mass_kg: 70.0
+  height_m: 1.0
+  gravity_m_s2: 9.81
+  dt_s: 0.02
+  x_safe_m: 0.2
+  v_abs_max_m_s: 2.0
+  x_terminal_m: 0.01
+  v_terminal_m_s: 0.03
+actuators:
+  A_fast:
+    force_max_N: 150.0
+    command_max_N: 150.0
+    rate_N_s: 1500.0
+    response_tau_s: 0.04
+    delay_s: 0.0
+  rate_only:
+    force_max_N: 150.0
+    command_max_N: 150.0
+    rate_N_s: 300.0
+    response_tau_s: 0.04
+    delay_s: 0.0
+  lag_only:
+    force_max_N: 150.0
+    command_max_N: 150.0
+    rate_N_s: 1500.0
+    response_tau_s: 0.16
+    delay_s: 0.0
+  delay_only:
+    force_max_N: 150.0
+    command_max_N: 150.0
+    rate_N_s: 1500.0
+    response_tau_s: 0.04
+    delay_s: 0.1
+  B_slow:
+    force_max_N: 150.0
+    command_max_N: 150.0
+    rate_N_s: 300.0
+    response_tau_s: 0.16
+    delay_s: 0.1
+sweep:
+  delta_v_min_m_s: -0.8
+  delta_v_max_m_s: 0.8
+  delta_v_step_m_s: 0.04
+  horizons_s:
+  - 0.4
+  - 0.8
+  - 1.2
+  - 1.6
+  - 2.0
+solver:
+  time_limit_s: 5.0
+feedback:
+  natural_frequency_s_inv: 4.0
+  horizons_s:
+  - 2.0
+cases:
+- name: future_impulse
+  horizon_s: 2.0
+  disturbance:
+    kind: velocity_impulse
+    onset_s: 0.2
+    delta_v_m_s: 0.36
+- name: force_pulse
+  horizon_s: 2.0
+  disturbance:
+    kind: force_pulse
+    onset_s: 0.2
+    force_N: 126.0
+    duration_s: 0.2

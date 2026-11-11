@@ -1,0 +1,132 @@
+{
+  "created_utc": "2026-11-11T07:30:09.332794+00:00",
+  "config": {
+    "model": {
+      "mass_kg": 70.0,
+      "height_m": 1.0,
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.02,
+      "x_safe_m": 0.2,
+      "v_abs_max_m_s": 2.0,
+      "x_terminal_m": 0.01,
+      "v_terminal_m_s": 0.03
+    },
+    "actuators": {
+      "A_fast": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.0
+      },
+      "rate_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 300.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.0
+      },
+      "lag_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.16,
+        "delay_s": 0.0
+      },
+      "delay_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.1
+      },
+      "B_slow": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 300.0,
+        "response_tau_s": 0.16,
+        "delay_s": 0.1
+      }
+    },
+    "sweep": {
+      "delta_v_min_m_s": -0.8,
+      "delta_v_max_m_s": 0.8,
+      "delta_v_step_m_s": 0.04,
+      "horizons_s": [
+        0.4,
+        0.8,
+        1.2,
+        1.6,
+        2.0
+      ]
+    },
+    "solver": {
+      "time_limit_s": 5.0
+    },
+    "feedback": {
+      "natural_frequency_s_inv": 4.0,
+      "horizons_s": [
+        2.0
+      ]
+    },
+    "cases": [
+      {
+        "name": "future_impulse",
+        "horizon_s": 2.0,
+        "disturbance": {
+          "kind": "velocity_impulse",
+          "onset_s": 0.2,
+          "delta_v_m_s": 0.36
+        }
+      },
+      {
+        "name": "force_pulse",
+        "horizon_s": 2.0,
+        "disturbance": {
+          "kind": "force_pulse",
+          "onset_s": 0.2,
+          "force_N": 126.0,
+          "duration_s": 0.2
+        }
+      }
+    ]
+  },
+  "seed": 0,
+  "deterministic": true,
+  "git_commit": "678c5b454c9aeacef1da6bd900d4bbc2f2cb1ada",
+  "git_status": "D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/AGENTS.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/PROMPT_TO_CODEX.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/README.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/TASKS.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/EXPERIMENT_PROTOCOL.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/H1_ASSET_CHECKLIST.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/MODEL_SPEC.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/RESEARCH_BRIEF.md\n D H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/REVIEW_PROTOCOL.md\n M README.md\n?? .gitignore\n?? AGENTS.md\n?? PROMPT_TO_CODEX.md\n?? TASKS.md\n?? configs/\n?? docs/\n?? pyproject.toml\n?? requirements-exp0.txt\n?? scripts/\n?? src/\n?? tests/",
+  "implementation_status": "?? configs/\n?? pyproject.toml\n?? scripts/\n?? src/\n?? tests/",
+  "source_sha256": {
+    "configs/exp0.yaml": "cefa2a9c726a90c2b70938149f2918d3f9222497030b7d6a94a67f05037107bc",
+    "pyproject.toml": "2d78b58130eb0a4fef179e93ade1f09ce79073c7c6e697a413c6d4c9ccd56516",
+    "scripts/validate_exp0.py": "4da4198df4ecc23c1b63615be5bc19844cec6d251aa4b530155a5fd77cd40958",
+    "src/recoverability/__init__.py": "14210d8d1006bf37377a5a864462e325c38143720781194e0ca15a8098ebae05",
+    "src/recoverability/__main__.py": "d8db48dbbcc54d20181c715b064f445f669037bcfc8d9cc65c6731a4ee22e03b",
+    "src/recoverability/actuator.py": "08530b3796a243e34db9d28d085b50aa6b7a9d2ef80236b6e9f3e6d90c856e56",
+    "src/recoverability/disturbance.py": "e5a7c1b05a4b7c73aca1b2c74b0fa031558d6001b30dfde06679cd99df8516f0",
+    "src/recoverability/experiment.py": "6b9e66c11e06f5075d98d9c38e647f2b19a65b570af63e827e364d1989faaba6",
+    "src/recoverability/feedback.py": "cdbcc02feb09898173676502784be0cf11b2498c6e72cce4a04725e29129739a",
+    "src/recoverability/metrics.py": "817a8f277f6c7d1c905fb5dc6b421bf5f29a8bbd9a0f5826746c9cc2fff3b3d7",
+    "src/recoverability/model.py": "b2eade653ad584437f21d4693db2a47d58d9808e01db8b5e8506ccf6384d3104",
+    "src/recoverability/plots.py": "3e8db4dfb1a61f3e3890ce591ef08e4e23144df5198983379ebed57c3f66ab33",
+    "src/recoverability/solver.py": "295afa5214a0ce2307e6c10acdaad7f6f7ebdc346e303887e3e934df2a2caed2",
+    "tests/test_model.py": "c207be9401ce5be3bdeb4bba7f382d527d6924e5dcca47454d0b114c5c020c42",
+    "tests/test_pipeline.py": "dfeb92b00bea88cf4e3560ba4515c4b12ad074709f7669ab01b027c40de00706",
+    "tests/test_solver.py": "4e068c711e9a15c9ae7a430aafba5fe3d89de8de39683d2c61ddd7c3ac827f33"
+  },
+  "python": "3.12.13 (main, Jul 18 2026, 17:02:19) [Clang 22.1.3 ]",
+  "python_executable": "/home/user/wheeldog/.venv/bin/python",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "cpu": "x86_64",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "PyYAML": "6.0.3",
+    "pytest": "9.2.0",
+    "wheeldog-recoverability": "0.1.0"
+  },
+  "solver": "scipy.optimize.linprog / HiGHS",
+  "interpretation": "toy simulation; known-disturbance offline oracle and separate causal fixed PD",
+  "run_elapsed_s": 8.142273948993534
+}

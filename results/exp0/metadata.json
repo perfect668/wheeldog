@@ -1,0 +1,132 @@
+{
+  "created_utc": "2026-11-11T07:41:07.690654+00:00",
+  "config": {
+    "model": {
+      "mass_kg": 70.0,
+      "height_m": 1.0,
+      "gravity_m_s2": 9.81,
+      "dt_s": 0.02,
+      "x_safe_m": 0.2,
+      "v_abs_max_m_s": 2.0,
+      "x_terminal_m": 0.01,
+      "v_terminal_m_s": 0.03
+    },
+    "actuators": {
+      "A_fast": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.0
+      },
+      "rate_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 300.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.0
+      },
+      "lag_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.16,
+        "delay_s": 0.0
+      },
+      "delay_only": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 1500.0,
+        "response_tau_s": 0.04,
+        "delay_s": 0.1
+      },
+      "B_slow": {
+        "force_max_N": 150.0,
+        "command_max_N": 150.0,
+        "rate_N_s": 300.0,
+        "response_tau_s": 0.16,
+        "delay_s": 0.1
+      }
+    },
+    "sweep": {
+      "delta_v_min_m_s": -0.8,
+      "delta_v_max_m_s": 0.8,
+      "delta_v_step_m_s": 0.04,
+      "horizons_s": [
+        0.4,
+        0.8,
+        1.2,
+        1.6,
+        2.0
+      ]
+    },
+    "solver": {
+      "time_limit_s": 5.0
+    },
+    "feedback": {
+      "natural_frequency_s_inv": 4.0,
+      "horizons_s": [
+        2.0
+      ]
+    },
+    "cases": [
+      {
+        "name": "future_impulse",
+        "horizon_s": 2.0,
+        "disturbance": {
+          "kind": "velocity_impulse",
+          "onset_s": 0.2,
+          "delta_v_m_s": 0.36
+        }
+      },
+      {
+        "name": "force_pulse",
+        "horizon_s": 2.0,
+        "disturbance": {
+          "kind": "force_pulse",
+          "onset_s": 0.2,
+          "force_N": 126.0,
+          "duration_s": 0.2
+        }
+      }
+    ]
+  },
+  "seed": 0,
+  "deterministic": true,
+  "git_commit": "ae0d139285190b7c3b449db4f82e8bde86c046d5",
+  "git_status": "",
+  "implementation_status": "",
+  "source_sha256": {
+    "configs/exp0.yaml": "cefa2a9c726a90c2b70938149f2918d3f9222497030b7d6a94a67f05037107bc",
+    "pyproject.toml": "2d78b58130eb0a4fef179e93ade1f09ce79073c7c6e697a413c6d4c9ccd56516",
+    "scripts/validate_exp0.py": "1cafc89d10fb51786953a318a858a9dce4a8cfc5c7aa750649f1f69e31e596f4",
+    "src/recoverability/__init__.py": "14210d8d1006bf37377a5a864462e325c38143720781194e0ca15a8098ebae05",
+    "src/recoverability/__main__.py": "d8db48dbbcc54d20181c715b064f445f669037bcfc8d9cc65c6731a4ee22e03b",
+    "src/recoverability/actuator.py": "08530b3796a243e34db9d28d085b50aa6b7a9d2ef80236b6e9f3e6d90c856e56",
+    "src/recoverability/disturbance.py": "e5a7c1b05a4b7c73aca1b2c74b0fa031558d6001b30dfde06679cd99df8516f0",
+    "src/recoverability/experiment.py": "07d644534eeff16790130a19e757ce9a78330132d126d290a42f8d43262d6535",
+    "src/recoverability/feedback.py": "71acd37c1a81a6d1212beca74af06bf97913e41050d3a5fcd2dda4610b187ea8",
+    "src/recoverability/metrics.py": "f05234f21801f65052374f45c7bd15b4ef1a3bbd1ced1bc809d1469590f0b296",
+    "src/recoverability/model.py": "b2eade653ad584437f21d4693db2a47d58d9808e01db8b5e8506ccf6384d3104",
+    "src/recoverability/plots.py": "ae3578240983a1a20f22a8b5caddcded3cc4dcaf79e303f8a5944d9ade645ce7",
+    "src/recoverability/solver.py": "591f4726ea9b9d783854480797684933767fa04354de11a68de766c758f8e3a3",
+    "tests/test_model.py": "c207be9401ce5be3bdeb4bba7f382d527d6924e5dcca47454d0b114c5c020c42",
+    "tests/test_pipeline.py": "dfeb92b00bea88cf4e3560ba4515c4b12ad074709f7669ab01b027c40de00706",
+    "tests/test_solver.py": "49797a912a65b807332e732a0bef37b7f48f02ac71b390f227577557907155e8"
+  },
+  "python": "3.12.13 (main, Jul 18 2026, 17:02:19) [Clang 22.1.3 ]",
+  "python_executable": "/home/user/wheeldog/.venv/bin/python",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "cpu": "x86_64",
+  "versions": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "PyYAML": "6.0.3",
+    "pytest": "9.2.0",
+    "wheeldog-recoverability": "0.1.0"
+  },
+  "solver": "scipy.optimize.linprog / HiGHS IPM, explicit variable/row scaling",
+  "interpretation": "toy simulation; known-disturbance offline oracle and separate causal fixed PD",
+  "run_elapsed_s": 10.933989162032958
+}

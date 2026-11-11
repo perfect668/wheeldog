@@ -1,0 +1,1551 @@
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..bdc74e2
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,12 @@
++.venv/
++__pycache__/
++*.py[cod]
++*.egg-info/
++.pytest_cache/
++results/*
++!results/exp0/
++!results/exp0/**
++!results/validation/
++!results/validation/**
++!results/diagnostics/
++!results/diagnostics/**
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/AGENTS.md b/AGENTS.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/AGENTS.md
+rename to AGENTS.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/PROMPT_TO_CODEX.md b/PROMPT_TO_CODEX.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/PROMPT_TO_CODEX.md
+rename to PROMPT_TO_CODEX.md
+diff --git a/README.md b/README.md
+index cd25e03..cc61616 100644
+--- a/README.md
++++ b/README.md
+@@ -1 +1,53 @@
+-# wheeldog
+\ No newline at end of file
++# Recoverability-Aware Whole-Body Assistance — M0 / EXP0
++
++CPU 上的可复现模型实验：固定 CoP 的二维 LIPM + 有界辅助合力，比较相同 150 N 静态能力下的响应时间常数、力变化率和命令延迟。所有参数为人为 toy model 假设。尚无 H1 模型、真实人体实验或新控制算法。
++
++研究约定见 [AGENTS.md](AGENTS.md)、[RESEARCH_BRIEF](docs/RESEARCH_BRIEF.md)；实际方程、单位、采样时序、oracle/因果反馈边界见 [EXP0_MODEL](docs/EXP0_MODEL.md)。正式结果见 [EXP0_RESULTS](docs/EXP0_RESULTS.md)。原仓库交接文件原文保留，整理到了根目录，原交接 README 位于 `docs/ORIGINAL_HANDOFF.md`。
++
++## 安装和运行
++
++Python >=3.10；numpy/scipy/matplotlib/PyYAML，测试用 pytest，不使用 GPU。通用安装：
++
++```bash
++python3 -m venv .venv
++source .venv/bin/activate
++unset PYTHONPATH  # 避免本机 ROS 路径注入其他版本的 pytest 插件
++python -m pip install -e '.[test]'
++python -m pytest
++python -m recoverability --config configs/exp0.yaml --output results/reproduction --seed 0
++```
++
++优先复用已有科学计算环境，安装本项目时可用 `python -m pip install --no-deps --no-build-isolation -e .`。本机实际使用已有 Python 与本地缓存包进行离线安装，精确版本见 `requirements-exp0.txt` 和结果 metadata；不需要重新下载机器人或仿真资产。已存在的 `.venv` 可直接 `source .venv/bin/activate`。
++
++一条实验命令运行参数扫描并生成 PNG/PDF 图。拒绝覆盖非空目录，复现请使用新 output 路径。CLI 的 `--seed` 被保存；当前实验是确定性的，不用随机噪声。
++
++仅运行 YAML 中的额外单个案例集合（未来速度脉冲和短时外力脉冲）：
++
++```bash
++python -m recoverability --config configs/exp0.yaml --output results/single --seed 0 --mode single
++```
++
++仅从已有原始数据重画，不重新求解：
++
++```bash
++python -m recoverability --output results/exp0 --mode plots
++```
++
++步长收敛、二分边界与全扫描审计：
++
++```bash
++python scripts/validate_exp0.py --config configs/exp0.yaml --input results/exp0 --output results/validation_reproduction --seed 0
++python scripts/validate_exp0.py --output results/validation --plots-only
++```
++
++## 输出与解释
++
++- `metrics.csv`：每个扰动/执行器/时域/方法的状态、参数、计时和误差。
++- `trajectories.npz`：`cXXXXX_state/force/command/jumps_m_s/disturbance_N`；`rows_json` 与 CSV 同行；`metadata_json` 可独立解释 NPZ。不使用 pickle。
++- `metadata.json / config.yaml / summary.json`：配置、seed、git hash、源文件哈希、软件版本、统计。
++- `boundaries.csv / figures/`：扫描网格边界、热图、典型轨迹、求解诊断和反馈结果。
++- `results/validation/convergence.csv`：dt=0.05/0.02/0.01/0.005 s 的边界二分，区间宽<=0.0005 m/s；`audit.json` 检查对称性与本扫描中的能力/时域一致性。
++
++离线 oracle 的 `INFEASIBLE` 和 `SOLVER_ERROR` 分开；反馈 `NOT_RECOVERED` 不是不可行证明。对于不可行 oracle，不生成虚构状态轨迹。终端箱并非已验证不变集，结果仅说明有限时域的模型内返回。
++
++`src/recoverability/` 包含独立的人体、执行器、扰动、oracle、反馈、指标、实验和绘图模块。`tests/` 用解析式、独立 ODE、镜像、约束篡改和故障注入验证；`configs/` 为全部实验假设。审阅后停在 M0，不自动进入 M1。
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/TASKS.md b/TASKS.md
+similarity index 65%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/TASKS.md
+rename to TASKS.md
+index 452cae7..3644ba1 100644
+--- a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/TASKS.md
++++ b/TASKS.md
+@@ -3,27 +3,27 @@
+ ## 当前任务：M0 / EXP0（首轮，CPU，最高优先级）
+ 
+ ### M0-A：建立可复现 Python 项目
+-- [ ] `pyproject.toml` + README 使用说明；本地干净环境安装成功。
+-- [ ] 结构 `src/recoverability/`, `tests/`, `configs/`, `scripts/`, `results/`（results 通常 gitignore，仅保留小型示例）。
+-- [ ] `python -m pytest` 无报错，`python -m ...` 可无界面执行。
++- [x] `pyproject.toml` + README 使用说明；本地干净环境安装成功。
++- [x] 结构 `src/recoverability/`, `tests/`, `configs/`, `scripts/`, `results/`（results 通常 gitignore，仅保留小型示例）。
++- [x] `python -m pytest` 无报错，`python -m ...` 可无界面执行。
+ 
+ ### M0-B：建立人体简化动力学和受限执行器
+-- [ ] LIPM 侧向 x/v 模型，固定足底 CoP，SI 单位。
+-- [ ] 期望力→实际力，包含 F_max、变化率/滞后、可选延迟。
+-- [ ] 不同扰动：Δv 速度脉冲和短时外力脉冲。
+-- [ ] 集成数值验证、符号与单位测试。
++- [x] LIPM 侧向 x/v 模型，固定足底 CoP，SI 单位。
++- [x] 期望力→实际力，包含 F_max、变化率/滞后、可选延迟。
++- [x] 不同扰动：Δv 速度脉冲和短时外力脉冲。
++- [x] 集成数值验证、符号与单位测试。
+ 
+ ### M0-C：可恢复性 oracle 求解器
+-- [ ] 给定扰动后求解有限时域控制是否可行，恢复条件可配置。
+-- [ ] `recoverable / infeasible / solver_error` 三种状态，记录 solver 原因。
+-- [ ] 同时保存轨迹和求解耗时。
+-- [ ] 动力学、限制、终端条件严格通过后验数值检查。
++- [x] 给定扰动后求解有限时域控制是否可行，恢复条件可配置。
++- [x] `recoverable / infeasible / solver_error` 三种状态，记录 solver 原因。
++- [x] 同时保存轨迹和求解耗时。
++- [x] 动力学、限制、终端条件严格通过后验数值检查。
+ 
+ ### M0-D：实验对照与图表
+-- [ ] 两种人工设置的辅助执行器能力，相同 F_max、不同 R_f/tau/delay；强调只是 toy model。
+-- [ ] 扫描 Δv × horizon × 动态约束，保存 CSV/NPZ。
+-- [ ] 画恢复热图、恢复阈值曲线、典型轨迹和求解成功/失败比例。
+-- [ ] 人工一致性检查：对称扰动结果、能力单调性、无扰动稳定性。
++- [x] 两种人工设置的辅助执行器能力，相同 F_max、不同 R_f/tau/delay；强调只是 toy model。
++- [x] 扫描 Δv × horizon × 动态约束，保存 CSV/NPZ。
++- [x] 画恢复热图、恢复阈值曲线、典型轨迹和求解成功/失败比例。
++- [x] 人工一致性检查：对称扰动结果、能力单调性、无扰动稳定性。
+ 
+ ### M0-E：Codex 交付
+ - [ ] `docs/EXP0_RESULTS.md`：真实运行数据、发现、失败、限制、是否继续。
+diff --git a/configs/exp0.yaml b/configs/exp0.yaml
+new file mode 100644
+index 0000000..30fc8c7
+--- /dev/null
++++ b/configs/exp0.yaml
+@@ -0,0 +1,30 @@
++# All numbers are illustrative toy-model assumptions, not H1/patient measurements.
++model:
++  mass_kg: 70.0
++  height_m: 1.0
++  gravity_m_s2: 9.81
++  dt_s: 0.02
++  x_safe_m: 0.20
++  v_abs_max_m_s: 2.0
++  x_terminal_m: 0.01
++  v_terminal_m_s: 0.03
++actuators:
++  A_fast: {force_max_N: 150.0, command_max_N: 150.0, rate_N_s: 1500.0, response_tau_s: 0.04, delay_s: 0.0}
++  rate_only: {force_max_N: 150.0, command_max_N: 150.0, rate_N_s: 300.0, response_tau_s: 0.04, delay_s: 0.0}
++  lag_only: {force_max_N: 150.0, command_max_N: 150.0, rate_N_s: 1500.0, response_tau_s: 0.16, delay_s: 0.0}
++  delay_only: {force_max_N: 150.0, command_max_N: 150.0, rate_N_s: 1500.0, response_tau_s: 0.04, delay_s: 0.10}
++  B_slow: {force_max_N: 150.0, command_max_N: 150.0, rate_N_s: 300.0, response_tau_s: 0.16, delay_s: 0.10}
++sweep:
++  delta_v_min_m_s: -0.8
++  delta_v_max_m_s: 0.8
++  delta_v_step_m_s: 0.04
++  horizons_s: [0.4, 0.8, 1.2, 1.6, 2.0]
++solver:
++  time_limit_s: 5.0
++feedback:
++  natural_frequency_s_inv: 4.0
++  horizons_s: [2.0]
++# Separate disturbance types, also test a future event without leaking it to PD.
++cases:
++  - {name: future_impulse, horizon_s: 2.0, disturbance: {kind: velocity_impulse, onset_s: 0.2, delta_v_m_s: 0.36}}
++  - {name: force_pulse, horizon_s: 2.0, disturbance: {kind: force_pulse, onset_s: 0.2, force_N: 126.0, duration_s: 0.2}}
+diff --git a/docs/EXP0_MODEL.md b/docs/EXP0_MODEL.md
+new file mode 100644
+index 0000000..b739fc6
+--- /dev/null
++++ b/docs/EXP0_MODEL.md
+@@ -0,0 +1,103 @@
++# EXP0 的实际数学模型与数值契约
++
++以下是代码的规范，原始 `MODEL_SPEC.md` 保留为研究需求。全部参数均为 toy model 假设，未标定 H1 或患者。状态是二维侧向相空间 `[x,v]`，不是二维平面运动。正 x、v、辅助合力 f、外力 d 均沿同一任意选定的侧向轴；固定 CoP 为世界参考原点。
++
++## 1. 人体动力学与单位
++
++\[
++\dot x=v,\quad\dot v=\omega^2 x+(f+d)/m,\qquad\omega=\sqrt{g/h}.
++\]
++
++| 参数 | 默认值 | 单位 / 含义 |
++|---|---:|---|
++| m | 70 | kg，点质量 |
++| h | 1.0 | m，恒定质心高度 |
++| g | 9.81 | m/s²，重力加速度 |
++| CoP | 0 | m，固定，不是优化变量 |
++| dt | 0.02 | s，50 Hz 采样 |
++| x_safe | 0.20 | m，模型路径限制，非生理跌倒阈值 |
++| v_abs_max | 2.0 | m/s，模型路径限制 |
++| x_terminal | 0.01 | m，终端目标半宽 |
++| v_terminal | 0.03 | m/s，终端目标半宽 |
++| 初始状态 | x=v=f=0 | 扰动发生前，命令队列全零 |
++
++这些数值不是人体测量值，也未引用生物力学数据。固定足接触、恒定高度、无踝/髋/迈步控制；没有上肢、扶手力分配、竖直承载、底盘稳定性或滑移模型。
++
++## 2. 抽象执行器：采样滞后 + 连续斜坡 + 有界变化率
++
++令 D=delay/dt 为非负整数，已发出的命令 `u_k` 单位 N。队列中负索引命令为零。
++
++\[
++\alpha=1-e^{-dt/\tau}\quad(\tau=0\Rightarrow\alpha=1),\qquad
++q_k=\begin{cases}0&k<D\\u_{k-D}&k\ge D\end{cases},
++\]
++\[
++f_{k+1}=(1-\alpha)f_k+\alpha q_k,
++\quad |f_k|\le F,\ |u_k|\le F,\ |f_{k+1}-f_k|\le R\,dt.
++\]
++
++区间内 `f(t)=f_k+(t-k dt)(f_{k+1}-f_k)/dt`，因而连续时间 `|df/dt|<=R`。这是**离散一阶响应并线性插值**的定义，不是连续 `df/dt=(u-f)/tau` 的精确区间解；tau 是采样响应的参数。步长敏感性需单独验证。零延迟时第一段斜坡从 t=0 开始；D>0 时 f 在 `[0,D dt]` 为零，第 D 段开始变化，没有隐藏的额外一步延迟。
++
++命令在节点发出后，区间内的插值过程在数学模型中即时确定，是抽象的力轨迹执行器。硬件中如何实现这样的力控制不在本轮范围。双向 ±150 N 为理想化水平合力，未声称实际扶手允许任意拉推。
++
++| 条件 | F / F_cmd (N) | R (N/s) | tau (s) | delay (s) |
++|---|---:|---:|---:|---:|
++| A_fast | 150 / 150 | 1500 | 0.04 | 0 |
++| rate_only | 150 / 150 | 300 | 0.04 | 0 |
++| lag_only | 150 / 150 | 1500 | 0.16 | 0 |
++| delay_only | 150 / 150 | 1500 | 0.04 | 0.10 |
++| B_slow | 150 / 150 | 300 | 0.16 | 0.10 |
++
++从 f=0 起的率限制爬升时间下界 F/R 分别为 0.1 或 0.5 s；这不是同时考虑滞后后的精确到达时间。所有条件静态平衡力范围相同，在 x=v=f=0 时报告的当前力范围余量均为 150 N。这一静态标量没有包含 v 或恢复时间，不能用它单独预测动态恢复。五种条件由人为设置，绝不代表 H1 的五种姿态。
++
++## 3. 扰动和时间顺序
++
++- `velocity_impulse`：在节点 j 瞬时 `v_j^+=v_j^-+delta_v`，单位 m/s；不是持续外力。
++- `force_pulse`：从节点 j 开始的指定整数区间上 `d_k=force_N`，单位 N；其面积/m 是速度增量的惯性贡献，不等于 LIPM 中完整状态变化。
++- 保存的状态是每个节点施加速度跳变后的状态。先测量当前 x,v → 因果规则发命令 → 经过队列和执行器确定力斜坡 → 积分当前区间 → 在下一节点施加速度跳变。
++- 扫描采用 onset=0、delta_v∈[-0.8,0.8] m/s、步长 0.04 m/s，H∈{0.4,0.8,1.2,1.6,2.0} s。
++- 两个额外样本：t=0.2 s 的 +0.36 m/s 跳变；t∈[0.2,0.4) s 的 +126 N 外力。后者面积/m=0.36 m/s，二者不可等同。
++
++## 4. 精确积分和连续路径检查
++
++每段 d 恒定、f 线性。使用扩展状态 `[x,v,f,r,d]`，其中 `r=(f_{k+1}-f_k)/dt`，矩阵指数得
++
++\[
++s_{k+1}^{-}=A s_k^{+}+B_0 f_k+B_1 f_{k+1}+B_d d_k.
++\]
++
++`model.py` 的 `matrices()` 计算精确离散矩阵。无 Euler 截断误差；执行器插值模型仍有 dt 依赖。独立 `at_time()` 使用双曲函数解析式重放。
++
++路径验证不仅检查节点：每段速度可写 `a cosh(omega t)+b sinh(omega t)+c`。令 `z=exp(omega t)`，速度零点来自二次方程，给出位置极值；加速度零点给出速度极值。检查这些点和跳变前后端点，从而检查整个连续区间的 x/v 限制。力是线性的，端点限幅足以限制区间峰值。
++
++## 5. 离线存在性 oracle
++
++优化变量是所有节点 x,v,f 和命令 u，以及 |u| 的辅助变量。上述动力学、执行器、命令历史和路径节点约束均为线性。终端为 `|x_N|<=0.01 m, |v_N|<=0.03 m/s`。用 SciPy `linprog(method='highs-ipm')` 求解 LP；软 L1 命令代价仅选一个可行解，没有隐藏的硬动作预算，不改变存在性。
++
++- `RECOVERABLE`：LP 成功，并通过独立动力学、队列、力、变化率、全连续路径和终端验证。
++- `INFEASIBLE`：HiGHS 返回 infeasible，表示在所定义采样控制类中无可行解；是数值优化判定，没有附加形式证明证书。
++- `SOLVER_ERROR`：超时、异常、NaN、非成功且非 infeasible，或后验验证失败。此时可行性未知，不能并入不可行或成功。
++
++LP 只施加节点路径约束，后验再检查全部区间。若节点 LP 的最优解越过区间边界，报告 `SOLVER_ERROR`，而不声称不存在其他满足连续约束的解。这是保守接受策略，不是对所有输入的完备连续可达性算法。无可行解时没有物理轨迹，NPZ 中存空数组，图上明确写 no trajectory。
++
++LP 变量按状态边界和力界限无量纲化，再按各行最大系数缩放等式/不等式；解还原 SI 单位后验证。这只是数值预处理，不改变物理可行域。默认求解器 primal/dual tolerance 均为无量纲化后的 1e-8。后验状态量容差 2e-7 m 或 m/s；力和力增量容差 2e-5 N。分别记录各单位残差，不将混合单位残差合为一个物理误差。求解 time_limit 为 HiGHS 的 5 s 预算，不是整个 Python 调用的硬实时截止时间。
++
++终端箱**未经不变性验证**，未约束终端力和未送达的命令，成功仅表示到时刻 H 的有限时间返回。不能据此推断 H 之后持续稳定。相同 tau/delay 时，放宽 F 和 R 的 LP 约束显然保持嵌套；时域延长一般不保证箱终端的单调性，代码只将本扫描中的观察作为一致性检查，不声称普遍定理。
++
++## 6. 因果反馈对照
++
++不开发 MPC。固定 PD 规则
++
++\[
++u_k^{raw}=-m[(\omega^2+\omega_n^2)x_k+2\omega_n v_k],\quad\omega_n=4\ s^{-1}.
++\]
++
++当前状态被理想准确测量，所有实验延迟均在命令 FIFO 中，未加入另一个感知延迟。命令 governor 利用自身已知队列预测新命令到达时的力，将 raw 命令投影到可满足 F 和 R 的区间，然后入队。它不接收未来扰动、符号、起点或脉冲结束时间。不同未来扰动在相同观测历史上必须发相同命令，测试显式验证。
++
++oracle 可以预知整个扰动序列，在未来事件发生前从 t=0 开始预动作；t<0 的预动作被禁止。未来脉冲样本展示了信息差异。扫 onset=0 时也不把 oracle 当成反馈，因为其完整序列优化仍利用已知扰动与模型。
++
++反馈状态为 `RECOVERED / NOT_RECOVERED / SIMULATION_ERROR`。`NOT_RECOVERED` 仅为该规则失败，不能判定模型不存在可恢复策略。若反馈轨迹越过路径限制，记录首次发生区间的起点（非精确越界时刻）；随后状态只作为方程外推的诊断数据，不能视为 LIPM 对真实人体的有效预测。两类方法的力限制、人体模型、扰动、终端要求一致；其信息结构不同，不能用性能差值宣称新控制方法优越。
++
++## 7. 数据与不确定性
++
++实验完全确定性；保存 seed=0 便于统一协议，但不虚构随机种子置信区间。CSV 逐行保存参数、初始状态、方法、求解状态与残差；NPZ 保存所有候选轨迹和相同逐行元数据，另含 config、seed、git hash、代码 SHA256、实际软件版本。图的区间是扰动扫描网格或二分边界的数值区间，不是统计置信区间。计时有机器与系统负载依赖。
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/EXPERIMENT_PROTOCOL.md b/docs/EXPERIMENT_PROTOCOL.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/EXPERIMENT_PROTOCOL.md
+rename to docs/EXPERIMENT_PROTOCOL.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/H1_ASSET_CHECKLIST.md b/docs/H1_ASSET_CHECKLIST.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/H1_ASSET_CHECKLIST.md
+rename to docs/H1_ASSET_CHECKLIST.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/MODEL_SPEC.md b/docs/MODEL_SPEC.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/MODEL_SPEC.md
+rename to docs/MODEL_SPEC.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/README.md b/docs/ORIGINAL_HANDOFF.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/README.md
+rename to docs/ORIGINAL_HANDOFF.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/RESEARCH_BRIEF.md b/docs/RESEARCH_BRIEF.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/RESEARCH_BRIEF.md
+rename to docs/RESEARCH_BRIEF.md
+diff --git a/H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/REVIEW_PROTOCOL.md b/docs/REVIEW_PROTOCOL.md
+similarity index 100%
+rename from H1_recoverability_Codex_handoff_v0.1/recoverability_codex_handoff/docs/REVIEW_PROTOCOL.md
+rename to docs/REVIEW_PROTOCOL.md
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..bf4ebbb
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,20 @@
++[build-system]
++requires = ["setuptools>=61"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "wheeldog-recoverability"
++version = "0.1.0"
++description = "EXP0: finite-horizon recoverability of a toy LIPM and constrained actuator"
++requires-python = ">=3.10"
++dependencies = ["numpy>=1.21", "scipy>=1.8", "matplotlib>=3.5", "PyYAML>=5.4"]
++
++[project.optional-dependencies]
++test = ["pytest>=6.2"]
++
++[tool.setuptools.packages.find]
++where = ["src"]
++
++[tool.pytest.ini_options]
++testpaths = ["tests"]
++addopts = "-ra"
+diff --git a/requirements-exp0.txt b/requirements-exp0.txt
+new file mode 100644
+index 0000000..80816a3
+--- /dev/null
++++ b/requirements-exp0.txt
+@@ -0,0 +1,20 @@
++contourpy==1.4.0
++cycler==0.12.1
++fonttools==4.67.0
++iniconfig==2.3.1
++kiwisolver==1.5.1
++matplotlib==3.11.2
++numpy==2.5.4
++packaging==26.3
++pillow==13.0.0
++pluggy==1.7.0
++pygments==2.21.0
++pyparsing==3.3.3
++pytest==9.2.0
++python-dateutil==2.9.0.post0
++pyyaml==6.0.3
++scipy==1.18.1
++six==1.17.0
++-e .
++# Build backend actually used by the offline editable installation:
++setuptools==84.2.1
+diff --git a/scripts/validate_exp0.py b/scripts/validate_exp0.py
+new file mode 100644
+index 0000000..40e7435
+--- /dev/null
++++ b/scripts/validate_exp0.py
+@@ -0,0 +1,137 @@
++"""Audit main sweep and bisect positive oracle boundaries across dt (CPU only)."""
++import argparse
++from dataclasses import replace
++import csv
++import json
++from pathlib import Path
++import sys
++import numpy as np
++import yaml
++from recoverability.model import Model
++from recoverability.actuator import Actuator
++from recoverability.disturbance import Disturbance
++from recoverability.solver import solve_oracle
++from recoverability.experiment import Dataset, provenance
++from recoverability.plots import load_rows, COLORS
++from recoverability.metrics import validate
++
++
++def audit_sweep(directory):
++    all_rows=load_rows(directory)
++    rows=[r for r in all_rows if r['family']=='sweep' and r['method']=='oracle']
++    lookup={(r['actuator'],float(r['horizon_s']),round(float(r['delta_v_m_s']),8)):r['status'] for r in rows}
++    names=sorted(set(r['actuator'] for r in rows))
++    hs=sorted(set(float(r['horizon_s']) for r in rows))
++    vs=sorted(set(round(float(r['delta_v_m_s']),8) for r in rows))
++    symmetry=sum(lookup.get((name,h,v)) != lookup.get((name,h,-v)) for name in names for h in hs for v in vs if v>0)
++    horizon_anomalies=sum(lookup[name,hs[j],v]=='RECOVERABLE' and lookup[name,hs[j+1],v]!='RECOVERABLE'
++                         for name in names for j in range(len(hs)-1) for v in vs)
++    capability_anomalies=sum(lookup[name,h,v]=='RECOVERABLE' and lookup['A_fast',h,v]!='RECOVERABLE'
++                             for name in names if name!='A_fast' for h in hs for v in vs)
++    errors=sum(r['status']=='SOLVER_ERROR' for r in rows)
++    accepted=[r for r in rows if r['status']=='RECOVERABLE']
++    result={'oracle_sweep_cases':len(rows),'symmetry_disagreements':symmetry,
++            'observed_horizon_anomalies':horizon_anomalies,'observed_capability_anomalies':capability_anomalies,
++            'solver_errors':errors,'posterior_validated_recoverable_cases':len(accepted),
++            'all_accepted_pass_checks':all(r['valid_path_dynamics']=='True' and r['terminal_met']=='True' for r in accepted)}
++    for k in ('dynamics_x_error_m','dynamics_v_error_m_s','actuator_error_N','increment_violation_N','x_path_violation_m','v_path_violation_m_s'):
++        result['max_'+k]=max(float(r[k]) for r in accepted)
++    replay_errors=[]
++    with np.load(Path(directory)/'trajectories.npz',allow_pickle=False) as data:
++        saved=[json.loads(r) for r in data['rows_json']]
++        if len(saved)!=len(all_rows):replay_errors.append('CSV/NPZ row count mismatch')
++        for row,packed in zip(all_rows,saved):
++            key=row['case_id']
++            if row['status']!=packed['status'] or row['git_commit']!=packed['git_commit']:
++                replay_errors.append(key+': metadata mismatch')
++            state,force,u=(data[key+suffix] for suffix in ('_state','_force','_command'))
++            if len(state):
++                m=Model(**json.loads(row['model_json']));a=Actuator(**json.loads(row['actuator_json']))
++                d=Disturbance(kind=row['kind'],onset_s=float(row['onset_s']),
++                              delta_v_m_s=float(row['delta_v_m_s']),force_N=float(row['force_N']),duration_s=float(row['duration_s']))
++                metrics=validate(m,a,d,state,force,u)
++                good=metrics['valid_path_dynamics'] and metrics['terminal_met']
++                accepted_status=row['status'] in ('RECOVERABLE','RECOVERED')
++                if good!=accepted_status:replay_errors.append(key+': replay classification mismatch')
++            elif row['status'] not in ('INFEASIBLE','SOLVER_ERROR','SIMULATION_ERROR'):
++                replay_errors.append(key+': missing trajectory')
++    result['raw_replay_cases']=len(all_rows)
++    result['raw_replay_mismatches']=len(replay_errors)
++    result['raw_replay_errors']=replay_errors
++    return result
++
++
++def plot_convergence(output):
++    import matplotlib
++    matplotlib.use('Agg')
++    import matplotlib.pyplot as plt
++    with (output/'convergence.csv').open() as f: rows=list(csv.DictReader(f))
++    fig,axes=plt.subplots(1,2,figsize=(11,4.5),sharey=True)
++    for ax,h in zip(axes,(.8,2.0)):
++        for name,color in zip(dict.fromkeys(r['actuator'] for r in rows),COLORS):
++            group=sorted([r for r in rows if r['actuator']==name and float(r['horizon_s'])==h],key=lambda r:float(r['dt_s']))
++            x=[float(r['dt_s']) for r in group]
++            lo=np.array([float(r['confirmed_low_m_s']) for r in group]);hi=np.array([float(r['confirmed_high_m_s']) for r in group])
++            ax.errorbar(x,(lo+hi)/2,yerr=(hi-lo)/2,marker='o',label=name,color=color,capsize=3)
++        ax.set(xlabel='dt (s)',title=f'H={h:g} s');ax.grid(alpha=.2)
++    axes[0].set_ylabel('Positive oracle boundary Δv (m/s)')
++    axes[1].legend(fontsize=8)
++    fig.suptitle('Toy simulation · time-step sensitivity\nerror bars = bisection brackets, not confidence intervals')
++    fig.subplots_adjust(top=.78,bottom=.14,left=.08,right=.98,wspace=.12)
++    for ext in ('png','pdf'):fig.savefig(output/f'time_step_sensitivity.{ext}',bbox_inches='tight',dpi=160)
++    plt.close(fig)
++
++
++def main():
++    parser=argparse.ArgumentParser()
++    parser.add_argument('--config',type=Path,default=Path('configs/exp0.yaml'))
++    parser.add_argument('--input',type=Path,default=Path('results/exp0'))
++    parser.add_argument('--output',type=Path,default=Path('results/validation'))
++    parser.add_argument('--seed',type=int,default=0)
++    parser.add_argument('--plots-only',action='store_true')
++    args=parser.parse_args()
++    if args.plots_only:
++        plot_convergence(args.output);return
++    if args.output.exists() and any(args.output.iterdir()):parser.error('output must be empty')
++    config=yaml.safe_load(args.config.read_text())
++    meta=provenance(config,args.seed)
++    meta['validation_settings']={'dt_s':[.05,.02,.01,.005],'horizons_s':[.8,2.0],
++                                  'bisection_tolerance_m_s':.0005,'initial_bracket_m_s':[0,.8]}
++    dataset=Dataset(meta);boundaries=[]
++    for dt in meta['validation_settings']['dt_s']:
++        model=replace(Model(**config['model']),dt_s=dt)
++        for name,parameters in config['actuators'].items():
++            actuator=Actuator(**parameters)
++            for horizon in (.8,2.0):
++                low,high=0.0,.8;errors=0
++                def evaluate(v):
++                    d=Disturbance(delta_v_m_s=v)
++                    result=solve_oracle(model,actuator,d,horizon,time_limit_s=config['solver']['time_limit_s'])
++                    dataset.add(model,actuator,name,d,horizon,'oracle',result,family='bisection')
++                    return result.status
++                low_status,high_status=evaluate(low),evaluate(high)
++                if low_status!='RECOVERABLE' or high_status!='INFEASIBLE':
++                    raise RuntimeError(f'Invalid initial bracket: {low_status}, {high_status}')
++                while high-low > .0005:
++                    mid=(low+high)/2
++                    status=evaluate(mid)
++                    if status=='RECOVERABLE':low=mid
++                    elif status=='INFEASIBLE':high=mid
++                    else:errors+=1;break  # UNKNOWN: retain wide bracket, never convert error to failure
++                boundaries.append({'actuator':name,'dt_s':dt,'horizon_s':horizon,
++                                   'confirmed_low_m_s':low,'confirmed_high_m_s':high,
++                                   'bracket_width_m_s':high-low,'solver_errors':errors,
++                                   'seed':args.seed,'git_commit':meta['git_commit']})
++        print(f'dt={dt:g}s completed',flush=True)
++    dataset.save(args.output)
++    with (args.output/'convergence.csv').open('w',newline='') as f:
++        w=csv.DictWriter(f,fieldnames=list(boundaries[0]));w.writeheader();w.writerows(boundaries)
++    audit=audit_sweep(args.input)
++    (args.output/'audit.json').write_text(json.dumps(audit,indent=2)+'\n')
++    plot_convergence(args.output)
++    print(json.dumps(audit,indent=2),flush=True)
++    if audit['solver_errors'] or audit['raw_replay_mismatches'] or any(r['solver_errors'] for r in boundaries):
++        sys.exit(2)
++
++
++if __name__=='__main__':main()
+diff --git a/src/recoverability/__init__.py b/src/recoverability/__init__.py
+new file mode 100644
+index 0000000..5674d09
+--- /dev/null
++++ b/src/recoverability/__init__.py
+@@ -0,0 +1,2 @@
++"""A model experiment, with no H1 parameters or robot control interface."""
++__version__ = "0.1.0"
+diff --git a/src/recoverability/__main__.py b/src/recoverability/__main__.py
+new file mode 100644
+index 0000000..6721fce
+--- /dev/null
++++ b/src/recoverability/__main__.py
+@@ -0,0 +1,25 @@
++"""One entry point for running and plotting EXP0."""
++import argparse
++from pathlib import Path
++import yaml
++from .experiment import run
++from .plots import plot_all
++
++
++def main():
++    p=argparse.ArgumentParser(description='EXP0 toy simulation; CPU only')
++    p.add_argument('--config',type=Path,default=Path('configs/exp0.yaml'))
++    p.add_argument('--output',type=Path,default=Path('results/local'))
++    p.add_argument('--seed',type=int,default=0)
++    p.add_argument('--mode',choices=['sweep','single','plots'],default='sweep')
++    args=p.parse_args()
++    if args.mode!='plots':
++        if args.output.exists() and any(args.output.iterdir()):
++            p.error('output directory is not empty; use a new directory to preserve raw evidence')
++        config=yaml.safe_load(args.config.read_text())
++        run(config,args.output,args.seed,args.mode)
++    plot_all(args.output)
++
++
++if __name__=='__main__':
++    main()
+diff --git a/src/recoverability/actuator.py b/src/recoverability/actuator.py
+new file mode 100644
+index 0000000..0f9e4e3
+--- /dev/null
++++ b/src/recoverability/actuator.py
+@@ -0,0 +1,59 @@
++"""Sampled first-order response, continuous linear force ramps, command FIFO."""
++from dataclasses import dataclass, asdict
++import math
++import numpy as np
++
++
++@dataclass(frozen=True)
++class Actuator:
++    force_max_N: float = 150.0
++    command_max_N: float = 150.0
++    rate_N_s: float = 1500.0
++    response_tau_s: float = 0.04
++    delay_s: float = 0.0
++
++    def __post_init__(self):
++        for k, v in asdict(self).items():
++            if not math.isfinite(v) or v < 0 or (k in ('force_max_N', 'command_max_N', 'rate_N_s') and v == 0):
++                raise ValueError(f"invalid actuator parameter {k}")
++        if self.command_max_N != self.force_max_N:
++            raise ValueError("EXP0 requires equal command and actual force bounds")
++
++    def delay_steps(self, dt):
++        n = int(round(self.delay_s/dt))
++        if not math.isclose(n*dt, self.delay_s, abs_tol=1e-10):
++            raise ValueError("delay_s must be an integer multiple of dt_s")
++        return n
++
++    def alpha(self, dt):
++        return 1.0 if self.response_tau_s == 0 else -math.expm1(-dt/self.response_tau_s)
++
++
++class ForceActuator:
++    """Causal simulator. Governor bounds a command at its future arrival state.
++
++    For delayed command q: f[k+1]=(1-alpha)f[k]+alpha*q.
++    Force is linearly interpolated on [k*dt,(k+1)*dt].
++    Queue initially zero; governor uses only its own known queued commands.
++    """
++    def __init__(self, parameters, dt):
++        self.parameters, self.dt = parameters, dt
++        self.alpha = parameters.alpha(dt)
++        self.queue = [0.0] * parameters.delay_steps(dt)
++        self.force = 0.0
++
++    def advance(self, desired):
++        if not math.isfinite(desired):
++            raise ValueError("nonfinite command")
++        p, a = self.parameters, self.alpha
++        arrival_force = self.force
++        for queued in self.queue:
++            arrival_force = (1-a)*arrival_force + a*queued
++        limit = p.rate_N_s*self.dt/a
++        command = float(np.clip(desired, max(-p.command_max_N, arrival_force-limit),
++                                min(p.command_max_N, arrival_force+limit)))
++        self.queue.append(command)
++        applied = self.queue.pop(0)
++        start = self.force
++        self.force = (1-a)*start+a*applied
++        return start, self.force, command
+diff --git a/src/recoverability/disturbance.py b/src/recoverability/disturbance.py
+new file mode 100644
+index 0000000..1c090b8
+--- /dev/null
++++ b/src/recoverability/disturbance.py
+@@ -0,0 +1,36 @@
++"""Explicit velocity jumps (m/s) and separate piecewise constant forces (N)."""
++from dataclasses import dataclass, asdict
++import math
++import numpy as np
++
++
++@dataclass(frozen=True)
++class Disturbance:
++    kind: str = 'velocity_impulse'
++    onset_s: float = 0.0
++    delta_v_m_s: float = 0.0
++    force_N: float = 0.0
++    duration_s: float = 0.0
++
++    def arrays(self, model, n):
++        values = asdict(self)
++        if any(not math.isfinite(v) for k,v in values.items() if k != 'kind'):
++            raise ValueError("nonfinite disturbance")
++        j = int(round(self.onset_s/model.dt_s))
++        if self.onset_s < 0 or not math.isclose(j*model.dt_s, self.onset_s, abs_tol=1e-10) or j >= n:
++            raise ValueError("onset must be a grid node before horizon")
++        jumps, force = np.zeros(n+1), np.zeros(n)
++        if self.kind == 'velocity_impulse':
++            if self.force_N != 0 or self.duration_s != 0:
++                raise ValueError("velocity impulse must not include force or duration")
++            jumps[j] = self.delta_v_m_s
++        elif self.kind == 'force_pulse':
++            if self.delta_v_m_s != 0:
++                raise ValueError("force pulse must not include delta_v")
++            length = model.steps(self.duration_s)
++            if j+length > n:
++                raise ValueError("pulse ends after horizon")
++            force[j:j+length] = self.force_N
++        else:
++            raise ValueError("unknown disturbance kind")
++        return jumps, force
+diff --git a/src/recoverability/experiment.py b/src/recoverability/experiment.py
+new file mode 100644
+index 0000000..41c6346
+--- /dev/null
++++ b/src/recoverability/experiment.py
+@@ -0,0 +1,136 @@
++"""CPU-only deterministic experiments, complete raw data and provenance."""
++from dataclasses import asdict
++from datetime import datetime, timezone
++import csv
++import hashlib
++import importlib.metadata
++import json
++from pathlib import Path
++import platform
++import subprocess
++import sys
++import time
++import numpy as np
++import yaml
++from .model import Model
++from .actuator import Actuator
++from .disturbance import Disturbance
++from .solver import solve_oracle
++from .feedback import simulate_feedback
++
++
++def provenance(config, seed):
++    root = Path(__file__).resolve().parents[2]
++    def git(*args):
++        try:
++            return subprocess.check_output(['git',*args],cwd=root,stderr=subprocess.DEVNULL,text=True).strip()
++        except (OSError,subprocess.CalledProcessError):
++            return 'unavailable'
++    paths = sorted([p for directory in ('src','configs','scripts','tests') for p in (root/directory).rglob('*')
++                    if p.is_file() and p.suffix in ('.py','.yaml')]+[root/'pyproject.toml'])
++    files = {str(p.relative_to(root)):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths}
++    versions = {}
++    for package in ('numpy','scipy','matplotlib','PyYAML','pytest','wheeldog-recoverability'):
++        try:
++            versions[package] = importlib.metadata.version(package)
++        except importlib.metadata.PackageNotFoundError:
++            versions[package] = 'not installed'
++    return {'created_utc':datetime.now(timezone.utc).isoformat(), 'config':config,'seed':seed,
++            'deterministic':True,'git_commit':git('rev-parse','HEAD'),
++            'git_status':git('status','--porcelain'),
++            'implementation_status':git('status','--porcelain','--','src','configs','scripts','tests','pyproject.toml'),
++            'source_sha256':files,'python':sys.version,'python_executable':sys.executable,
++            'platform':platform.platform(),'cpu':platform.processor(),
++            'versions':versions,'solver':'scipy.optimize.linprog / HiGHS IPM, explicit variable/row scaling',
++            'interpretation':'toy simulation; known-disturbance offline oracle and separate causal fixed PD'}
++
++
++class Dataset:
++    def __init__(self, metadata):
++        self.metadata, self.rows, self.arrays = metadata, [], {}
++
++    def add(self, model, actuator, name, disturbance, horizon, method, result, family='sweep'):
++        i = len(self.rows)
++        row = {'case_id':f'c{i:05d}','family':family,'method':method,'actuator':name,
++               'horizon_s':horizon,'dt_s':model.dt_s,**asdict(disturbance),
++               'initial_x_m':0.0,'initial_v_m_s':0.0,'initial_force_N':0.0,
++               'static_current_margin_N':actuator.force_max_N,
++               'status':result.status,'recovery_criterion_met':result.metrics.get('valid_path_dynamics',False) and result.metrics.get('terminal_met',False),
++               'solver_status':result.solver_status,'reason':result.reason,'elapsed_s':result.elapsed_s,
++               'solver_time_s':result.solver_time_s,'seed':self.metadata['seed'],
++               'git_commit':self.metadata['git_commit'],'model_json':json.dumps(asdict(model),sort_keys=True),
++               'actuator_json':json.dumps(asdict(actuator),sort_keys=True),
++               'config_json':json.dumps(self.metadata['config'],sort_keys=True),
++               **result.metrics}
++        self.rows.append(row)
++        prefix = row['case_id']
++        self.arrays[prefix+'_state'] = result.state
++        self.arrays[prefix+'_force'] = result.force
++        self.arrays[prefix+'_command'] = result.command
++        jumps,d = disturbance.arrays(model,model.steps(horizon))
++        self.arrays[prefix+'_jumps_m_s'],self.arrays[prefix+'_disturbance_N'] = jumps,d
++
++    def save(self, output):
++        output = Path(output)
++        output.mkdir(parents=True,exist_ok=True)
++        fields = list(dict.fromkeys(k for row in self.rows for k in row))
++        with (output/'metrics.csv').open('w',newline='') as f:
++            w=csv.DictWriter(f,fieldnames=fields); w.writeheader(); w.writerows(self.rows)
++        (output/'metadata.json').write_text(json.dumps(self.metadata,indent=2,ensure_ascii=False)+'\n')
++        (output/'config.yaml').write_text(yaml.safe_dump(self.metadata['config'],sort_keys=False))
++        # Standalone NPZ includes every per-case parameter, status, seed, and global versions/source hashes.
++        np.savez_compressed(output/'trajectories.npz',**self.arrays,
++                            rows_json=np.array([json.dumps(r,sort_keys=True) for r in self.rows]),
++                            metadata_json=np.array(json.dumps(self.metadata,sort_keys=True)))
++        counts = {}
++        for row in self.rows:
++            key = row['method']+':'+row['status']
++            counts[key] = counts.get(key,0)+1
++        elapsed=np.array([r['elapsed_s'] for r in self.rows])
++        summary={'cases':len(self.rows),'counts':counts,
++                 'case_elapsed_s_median':float(np.median(elapsed)),
++                 'case_elapsed_s_p95':float(np.quantile(elapsed,.95)),
++                 'case_elapsed_s_max':float(np.max(elapsed))}
++        (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')
++        return summary
++
++
++def run(config, output, seed=0, mode='sweep'):
++    metadata=provenance(config,seed)
++    dataset=Dataset(metadata)
++    model=Model(**config['model'])
++    actuators={k:Actuator(**v) for k,v in config['actuators'].items()}
++    budget=config.get('solver',{}).get('time_limit_s',5.0)
++    started=time.perf_counter()
++    if mode == 'sweep':
++        sweep=config['sweep']
++        lo,hi,step=[sweep[k] for k in ('delta_v_min_m_s','delta_v_max_m_s','delta_v_step_m_s')]
++        if step <= 0 or hi < lo or not np.isclose((hi-lo)/step,round((hi-lo)/step)):
++            raise ValueError('invalid disturbance grid')
++        values=np.round(np.linspace(lo,hi,round((hi-lo)/step)+1),10)
++        for name,actuator in actuators.items():
++            for horizon in sweep['horizons_s']:
++                for value in values:
++                    disturbance=Disturbance(delta_v_m_s=float(value))
++                    result=solve_oracle(model,actuator,disturbance,horizon,time_limit_s=budget)
++                    dataset.add(model,actuator,name,disturbance,horizon,'oracle',result)
++                    if horizon in config.get('feedback',{}).get('horizons_s',[]):
++                        result=simulate_feedback(model,actuator,disturbance,horizon,
++                            natural_frequency_s_inv=config['feedback']['natural_frequency_s_inv'])
++                        dataset.add(model,actuator,name,disturbance,horizon,'causal_pd',result)
++                print(f'{name} H={horizon:g}s complete',flush=True)
++    for case in config.get('cases',[]):
++        for name,actuator in actuators.items():
++            disturbance=Disturbance(**case['disturbance'])
++            horizon=case['horizon_s']
++            for method in ('oracle','causal_pd'):
++                result=(solve_oracle(model,actuator,disturbance,horizon,time_limit_s=budget) if method=='oracle'
++                        else simulate_feedback(model,actuator,disturbance,horizon,
++                          natural_frequency_s_inv=config.get('feedback',{}).get('natural_frequency_s_inv',4.0)))
++                dataset.add(model,actuator,name,disturbance,horizon,method,result,family=case['name'])
++    if not dataset.rows:
++        raise ValueError('configuration produced no cases')
++    metadata['run_elapsed_s']=time.perf_counter()-started
++    summary=dataset.save(output)
++    print(json.dumps(summary,indent=2),flush=True)
++    return summary
+diff --git a/src/recoverability/feedback.py b/src/recoverability/feedback.py
+new file mode 100644
+index 0000000..bab81a4
+--- /dev/null
++++ b/src/recoverability/feedback.py
+@@ -0,0 +1,35 @@
++"""A fixed PD feedback comparator, with no access to future disturbance inputs."""
++import time
++import numpy as np
++from .actuator import ForceActuator
++from .metrics import validate
++from .solver import Result
++
++
++def simulate_feedback(model, actuator, disturbance, horizon_s, *, natural_frequency_s_inv=4.0, initial=(0.0,0.0)):
++    start = time.perf_counter()
++    n = model.steps(horizon_s)
++    jumps,d = disturbance.arrays(model,n)  # environment only; never supplied to feedback rule
++    state, force, command = np.zeros((n+1,2)),np.zeros(n+1),np.zeros(n)
++    state[0] = np.asarray(initial)+[0,jumps[0]]
++    act = ForceActuator(actuator,model.dt_s)
++    A,B0,B1,Bd = model.matrices()
++    wn = natural_frequency_s_inv
++    try:
++        with np.errstate(over='raise',invalid='raise'):
++            for k in range(n):
++                # Perfect current x,v sensing. All configured latency is in command FIFO.
++                desired = -model.mass_kg*((model.omega**2+wn**2)*state[k,0]+2*wn*state[k,1])
++                f0,f1,command[k] = act.advance(desired)
++                force[k+1] = f1
++                state[k+1] = A@state[k]+B0*f0+B1*f1+Bd*d[k]
++                state[k+1,1] += jumps[k+1]
++            metrics = validate(model,actuator,disturbance,state,force,command,initial)
++    except (ValueError, FloatingPointError, OverflowError) as exc:
++        return Result('SIMULATION_ERROR',f'{type(exc).__name__}: {exc}',time.perf_counter()-start)
++    numerical_ok = not metrics.get('nonfinite',False)
++    # Path violations are an observed failure of this policy, not proof of infeasibility.
++    recovered = metrics['valid_path_dynamics'] and metrics['terminal_met']
++    status = ('RECOVERED' if recovered else 'NOT_RECOVERED') if numerical_ok else 'SIMULATION_ERROR'
++    return Result(status,'causal fixed PD; NOT_RECOVERED is not an infeasibility certificate',
++                  time.perf_counter()-start,state,force,command,metrics)
+diff --git a/src/recoverability/metrics.py b/src/recoverability/metrics.py
+new file mode 100644
+index 0000000..9f51980
+--- /dev/null
++++ b/src/recoverability/metrics.py
+@@ -0,0 +1,63 @@
++"""Independent posterior validation; never trust a solver status alone."""
++import numpy as np
++
++STATE_TOL = 2e-7  # m or m/s, applied to each explicitly named quantity
++FORCE_TOL = 2e-5  # N (force-increment check is in N, not N/s)
++
++
++def validate(model, actuator, disturbance, state, force, command, initial=(0.0, 0.0)):
++    n = len(command)
++    if state.shape != (n+1, 2) or force.shape != (n+1,):
++        raise ValueError('invalid trajectory shape')
++    if not all(np.all(np.isfinite(a)) for a in (state, force, command)):
++        return {'valid_path_dynamics': False, 'terminal_met': False, 'nonfinite': True}
++    jumps, d = disturbance.arrays(model, n)
++    A, B0, B1, Bd = model.matrices()
++    predicted = state[:-1] @ A.T + force[:-1,None]*B0 + force[1:,None]*B1 + d[:,None]*Bd
++    predicted[:,1] += jumps[1:]
++    dynamics = np.max(np.abs(state[1:]-predicted), axis=0)
++    delay, alpha = actuator.delay_steps(model.dt_s), actuator.alpha(model.dt_s)
++    delivered = np.zeros(n)
++    if delay < n:
++        delivered[delay:] = command[:n-delay]
++    actuator_error = np.max(np.abs(force[1:] - (1-alpha)*force[:-1]-alpha*delivered))
++    initial_error = np.abs(state[0] - (np.asarray(initial)+[0,jumps[0]]))
++    extrema = np.array([model.interval_extrema(state[k], force[k], force[k+1], d[k]) for k in range(n)])
++    peaks = np.maximum(np.max(np.abs(state), axis=0), np.max(extrema, axis=0))
++    outside = np.flatnonzero((extrema[:,0] > model.x_safe_m+STATE_TOL)
++                             | (extrema[:,1] > model.v_abs_max_m_s+STATE_TOL))
++    outside_nodes = np.flatnonzero((np.abs(state[:,0]) > model.x_safe_m+STATE_TOL)
++                                   | (np.abs(state[:,1]) > model.v_abs_max_m_s+STATE_TOL))
++    first_outside = min([float(k*model.dt_s) for k in outside[:1]]
++                        + [float(k*model.dt_s) for k in outside_nodes[:1]],default=None)
++    result = {
++        'contains_extrapolation_outside_path_domain': first_outside is not None,
++        'first_violating_interval_start_s': first_outside,
++        'nonfinite': False,
++        'dynamics_x_error_m': float(dynamics[0]),
++        'dynamics_v_error_m_s': float(dynamics[1]),
++        'initial_x_error_m': float(initial_error[0]),
++        'initial_v_error_m_s': float(initial_error[1]),
++        'initial_force_error_N': float(abs(force[0])),
++        'actuator_error_N': float(actuator_error),
++        'force_violation_N': float(max(0,np.max(np.abs(force))-actuator.force_max_N)),
++        'command_violation_N': float(max(0,np.max(np.abs(command))-actuator.command_max_N)),
++        'increment_violation_N': float(max(0,np.max(np.abs(np.diff(force)))-actuator.rate_N_s*model.dt_s)),
++        'peak_abs_x_m': float(peaks[0]), 'peak_abs_v_m_s': float(peaks[1]),
++        'x_path_violation_m': float(max(0,peaks[0]-model.x_safe_m)),
++        'v_path_violation_m_s': float(max(0,peaks[1]-model.v_abs_max_m_s)),
++        'terminal_x_m': float(state[-1,0]), 'terminal_v_m_s': float(state[-1,1]),
++        'terminal_force_N': float(force[-1]),
++        'force_effort_N_s': float(np.sum(np.where(force[:-1]*force[1:] >= 0,
++            (np.abs(force[:-1])+np.abs(force[1:]))/2,
++            (force[:-1]**2+force[1:]**2)/(2*np.maximum(np.abs(force[:-1])+np.abs(force[1:]),1e-30))))*model.dt_s),
++    }
++    state_keys = ['dynamics_x_error_m','dynamics_v_error_m_s','initial_x_error_m',
++                  'initial_v_error_m_s','x_path_violation_m','v_path_violation_m_s']
++    force_keys = ['initial_force_error_N','actuator_error_N','force_violation_N',
++                  'command_violation_N','increment_violation_N']
++    result['valid_path_dynamics'] = bool(all(result[k] <= STATE_TOL for k in state_keys)
++                                          and all(result[k] <= FORCE_TOL for k in force_keys))
++    result['terminal_met'] = bool(abs(state[-1,0]) <= model.x_terminal_m+STATE_TOL
++                                  and abs(state[-1,1]) <= model.v_terminal_m_s+STATE_TOL)
++    return result
+diff --git a/src/recoverability/model.py b/src/recoverability/model.py
+new file mode 100644
+index 0000000..f727ce1
+--- /dev/null
++++ b/src/recoverability/model.py
+@@ -0,0 +1,83 @@
++"""SI-unit LIPM, exact integration for piecewise-linear actual force."""
++from dataclasses import dataclass, asdict
++import math
++import numpy as np
++from scipy.linalg import expm
++
++
++@dataclass(frozen=True)
++class Model:
++    mass_kg: float = 70.0
++    height_m: float = 1.0
++    gravity_m_s2: float = 9.81
++    dt_s: float = 0.02
++    x_safe_m: float = 0.20
++    v_abs_max_m_s: float = 2.0
++    x_terminal_m: float = 0.01
++    v_terminal_m_s: float = 0.03
++
++    def __post_init__(self):
++        for k, v in asdict(self).items():
++            if not math.isfinite(v) or v <= 0:
++                raise ValueError(f"{k} must be finite and positive")
++        if self.x_terminal_m > self.x_safe_m or self.v_terminal_m_s > self.v_abs_max_m_s:
++            raise ValueError("terminal box must lie within path box")
++
++    @property
++    def omega(self):
++        return math.sqrt(self.gravity_m_s2 / self.height_m)
++
++    def steps(self, seconds):
++        n = int(round(seconds / self.dt_s))
++        if n < 1 or not math.isclose(n * self.dt_s, seconds, abs_tol=1e-10):
++            raise ValueError("time must be a positive integer multiple of dt_s")
++        return n
++
++    def matrices(self, duration=None):
++        """s_next=A s+B0 f_start+B1 f_end+Bd d; d constant per interval."""
++        t = self.dt_s if duration is None else duration
++        # Augmented state [x, v, f, force_slope, d]; exact continuous flow.
++        M = np.zeros((5, 5))
++        M[0, 1] = 1
++        M[1, 0] = self.omega**2
++        M[1, 2] = M[1, 4] = 1 / self.mass_kg
++        M[2, 3] = 1
++        E = expm(M * t)
++        return E[:2, :2], E[:2, 2] - E[:2, 3] / t, E[:2, 3] / t, E[:2, 4]
++
++    def step(self, state, f_start, f_end, disturbance=0.0):
++        A, B0, B1, Bd = self.matrices()
++        return A @ state + B0 * f_start + B1 * f_end + Bd * disturbance
++
++    def at_time(self, state, f_start, f_end, disturbance, t):
++        """Exact state at t within one interval, used for independent path checks."""
++        if not 0 <= t <= self.dt_s:
++            raise ValueError("time outside interval")
++        w = self.omega
++        r = (f_end - f_start) / self.dt_s
++        c, s = math.cosh(w * t), math.sinh(w * t)
++        q = (f_start + disturbance) / self.mass_kg
++        x, v = state
++        return np.array([c*x+s*v/w+(c-1)*q/w**2+(s/w-t)*r/(self.mass_kg*w**2),
++                         w*s*x+c*v+s*q/w+(c-1)*r/(self.mass_kg*w**2)])
++
++    def interval_extrema(self, state, f_start, f_end, disturbance):
++        """Exact x and v extrema: velocity roots reduce to a quadratic in exp(w t)."""
++        w = self.omega
++        r = (f_end-f_start) / self.dt_s
++        a = state[1] + r / (self.mass_kg*w**2)
++        b = w*state[0] + (f_start+disturbance) / (self.mass_kg*w)
++        c = -r / (self.mass_kg*w**2)
++        times = [0.0, self.dt_s]
++        coeff = np.trim_zeros(np.array([(a+b)/2, c, (a-b)/2]), 'f')
++        if len(coeff) > 1:
++            for z in np.roots(coeff):
++                if abs(z.imag) < 1e-9 and 1 < z.real < math.exp(w*self.dt_s):
++                    times.append(math.log(z.real)/w)
++        # Acceleration roots locate velocity extrema.
++        if abs(a+b) > 1e-14 and (a-b)/(a+b) > 0:
++            z = math.sqrt((a-b)/(a+b))
++            if 1 < z < math.exp(w*self.dt_s):
++                times.append(math.log(z)/w)
++        values = np.array([self.at_time(state, f_start, f_end, disturbance, t) for t in times])
++        return np.max(np.abs(values), axis=0)
+diff --git a/src/recoverability/plots.py b/src/recoverability/plots.py
+new file mode 100644
+index 0000000..27531a7
+--- /dev/null
++++ b/src/recoverability/plots.py
+@@ -0,0 +1,147 @@
++"""Regenerate every figure from saved CSV/NPZ; no optimization during plotting."""
++import csv
++import json
++from pathlib import Path
++import numpy as np
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from matplotlib.colors import ListedColormap, BoundaryNorm
++from matplotlib.patches import Patch
++
++COLORS=['#167d9a','#c78627','#8364a5','#539453','#bb4d56']
++
++
++def load_rows(directory):
++    with (Path(directory)/'metrics.csv').open() as f:
++        return list(csv.DictReader(f))
++
++
++def boundary_rows(rows):
++    output=[]
++    groups=sorted(set((r['method'],r['actuator'],float(r['horizon_s'])) for r in rows if r['family']=='sweep'))
++    for method,name,horizon in groups:
++        group=[r for r in rows if r['family']=='sweep' and r['method']==method and r['actuator']==name
++               and float(r['horizon_s'])==horizon and float(r['delta_v_m_s']) >= 0]
++        group=sorted(group,key=lambda r:float(r['delta_v_m_s']))
++        success='RECOVERABLE' if method=='oracle' else 'RECOVERED'
++        good=[float(r['delta_v_m_s']) for r in group if r['status']==success]
++        low=max(good) if good else float('nan')
++        following=[r for r in group if float(r['delta_v_m_s'])>low]
++        high=float(following[0]['delta_v_m_s']) if following else float('nan')
++        # A policy need not have a connected success set; flag holes rather than hide them.
++        holes=sum(r['status']!=success for r in group if float(r['delta_v_m_s'])<low)
++        errors=sum('ERROR' in r['status'] for r in group)
++        output.append({'method':method,'actuator':name,'horizon_s':horizon,
++                       'largest_recovered_grid_m_s':low,'next_grid_m_s':high,
++                       'next_grid_status':following[0]['status'] if following else 'grid_end',
++                       'holes_below_largest':holes,'errors_positive_half':errors})
++    return output
++
++
++def plot_all(directory):
++    directory=Path(directory)
++    rows=load_rows(directory)
++    figures=directory/'figures'; figures.mkdir(exist_ok=True)
++    plt.rcParams.update({'font.size':10,'axes.spines.top':False,'axes.spines.right':False,
++                         'savefig.dpi':160,'pdf.fonttype':42})
++    def save(fig,name):
++        fig.savefig(figures/(name+'.png'),bbox_inches='tight')
++        fig.savefig(figures/(name+'.pdf'),bbox_inches='tight')
++        plt.close(fig)
++    boundaries=boundary_rows(rows)
++    if boundaries:
++        with (directory/'boundaries.csv').open('w',newline='') as f:
++            w=csv.DictWriter(f,fieldnames=list(boundaries[0])); w.writeheader(); w.writerows(boundaries)
++        oracle=[r for r in rows if r['family']=='sweep' and r['method']=='oracle']
++        names=list(dict.fromkeys(r['actuator'] for r in oracle))
++        hs=sorted(set(float(r['horizon_s']) for r in oracle))
++        vs=sorted(set(float(r['delta_v_m_s']) for r in oracle))
++        fig,axes=plt.subplots(1,len(names),figsize=(3.2*len(names),5),sharey=True,squeeze=False)
++        cmap=ListedColormap(['#dce2e8','#167d9a','#e6a33c'])
++        for ax,name in zip(axes[0],names):
++            grid=np.full((len(vs),len(hs)),2.0)
++            for r in oracle:
++                if r['actuator']==name:
++                    grid[vs.index(float(r['delta_v_m_s'])),hs.index(float(r['horizon_s']))]={'INFEASIBLE':0,'RECOVERABLE':1,'SOLVER_ERROR':2}[r['status']]
++            ax.imshow(grid,origin='lower',aspect='auto',cmap=cmap,norm=BoundaryNorm([-.5,.5,1.5,2.5],3),
++                      extent=[-.5,len(hs)-.5,vs[0]-(vs[1]-vs[0])/2,vs[-1]+(vs[1]-vs[0])/2])
++            ax.set_xticks(range(len(hs)),[f'{h:g}' for h in hs]);ax.set_xlabel('Horizon (s)')
++            ax.set_title(f'{name}\nerrors: {int(np.sum(grid==2))}');ax.axhline(0,color='white',lw=.6)
++        axes[0,0].set_ylabel('Velocity impulse Δv (m/s)')
++        caps=sorted(set(json.loads(r['actuator_json'])['force_max_N'] for r in oracle))
++        fig.suptitle(f'Toy simulation · offline known-disturbance oracle · force bounds {caps} N',y=1.02)
++        fig.legend(handles=[Patch(color=cmap(i),label=l) for i,l in enumerate(['Infeasible','Recoverable','Solver / validation error'])],
++                   loc='lower center',ncol=3,bbox_to_anchor=(.5,-.07))
++        save(fig,'recoverability_heatmaps')
++        fig,ax=plt.subplots(figsize=(8,5))
++        for color,name in zip(COLORS,names):
++            b=sorted([r for r in boundaries if r['method']=='oracle' and r['actuator']==name],key=lambda r:r['horizon_s'])
++            x=[r['horizon_s'] for r in b]; y=[r['largest_recovered_grid_m_s'] for r in b]
++            ax.plot(x,y,'o-',color=color,label=name)
++            ax.fill_between(x,y,[r['next_grid_m_s'] for r in b],color=color,alpha=.12)
++        ax.set(xlabel='Horizon (s)',ylabel='Positive Δv boundary (m/s)',title='Toy simulation · oracle grid boundary\nshading: boundary bracket on a 0.04 m/s grid (not a confidence interval)')
++        ax.legend(ncol=2);ax.grid(alpha=.2);save(fig,'recovery_boundaries')
++        # Causal success patterns shown point by point, so no policy monotonicity is assumed.
++        causal=[r for r in rows if r['family']=='sweep' and r['method']=='causal_pd']
++        if causal:
++            fig,ax=plt.subplots(figsize=(9,4.5))
++            for i,name in enumerate(names):
++                group=sorted([r for r in causal if r['actuator']==name],key=lambda r:float(r['delta_v_m_s']))
++                for r in group:
++                    ax.scatter(float(r['delta_v_m_s']),i,color=COLORS[i],marker='o' if r['status']=='RECOVERED' else 'x',s=28)
++            ax.set_yticks(range(len(names)),names)
++            ax.set(xlabel='Velocity impulse Δv (m/s)',title='Toy simulation · causal fixed PD at H=2 s\no = recovered; × = this policy did not recover')
++            ax.grid(alpha=.2);save(fig,'causal_feedback')
++        fig,axes=plt.subplots(1,2,figsize=(12,4.5))
++        statuses=['RECOVERABLE','INFEASIBLE','SOLVER_ERROR']
++        bottom=np.zeros(len(names))
++        for status,color in zip(statuses,['#167d9a','#dce2e8','#e6a33c']):
++            vals=np.array([sum(r['status']==status for r in oracle if r['actuator']==name) /
++                           sum(r['actuator']==name for r in oracle) for name in names])
++            axes[0].bar(names,vals,bottom=bottom,label=status,color=color);bottom+=vals
++        axes[0].set(ylabel='Fraction of actual solves',ylim=(0,1));axes[0].legend(fontsize=8)
++        axes[0].tick_params(axis='x',rotation=25)
++        for name,color in zip(names,COLORS):
++            vals=np.array([float(r['elapsed_s'])*1000 for r in oracle if r['actuator']==name])
++            axes[1].hist(vals,bins=30,histtype='step',label=name,color=color)
++        axes[1].set(xlabel='End-to-end oracle time (ms)',ylabel='Cases');axes[1].legend(fontsize=8)
++        fig.suptitle('Toy simulation · oracle status and CPU timing');save(fig,'solver_diagnostics')
++    # Shared fixed samples: include recovered and impossible disturbances, never invent a failed oracle path.
++    data=np.load(directory/'trajectories.npz',allow_pickle=False)
++    examples=[]
++    for family,value in [('sweep',.20),('sweep',.36),('sweep',.64),('future_impulse',None),('force_pulse',None)]:
++        selection=[r for r in rows if r['family']==family and float(r['horizon_s'])==2.0
++                   and r['actuator'] in ('A_fast','B_slow')
++                   and (value is None or abs(float(r['delta_v_m_s'])-value)<1e-9)]
++        if selection:
++            examples.append((family,value,selection))
++    for family,value,selection in examples:
++        fig,axes=plt.subplots(4,1,figsize=(9,9),sharex=True)
++        for r in selection:
++            key=r['case_id']; state=data[key+'_state'];force=data[key+'_force'];u=data[key+'_command']
++            label=f"{r['actuator']} / {r['method']} / {r['status']}"
++            if not len(state):
++                # Report an infeasible solve explicitly; it has no physical trajectory to plot.
++                axes[0].plot([],[],color='none',label=label+' (no trajectory)')
++                continue
++            t=np.arange(len(force))*float(r['dt_s'])
++            color=COLORS[0] if r['actuator']=='A_fast' else COLORS[4]
++            style='-' if r['method']=='oracle' else '--'
++            axes[0].plot(t,state[:,0],style,color=color,label=label)
++            axes[1].plot(t,state[:,1],style,color=color)
++            axes[2].plot(t,force,style,color=color)
++            axes[3].step(t[:-1],u,where='post',linestyle=style,color=color)
++        model=json.loads(selection[0]['model_json'])
++        cap=max(json.loads(r['actuator_json'])['force_max_N'] for r in selection)
++        for ax,bound in zip(axes,[model['x_safe_m'],model['v_abs_max_m_s'],cap,cap]):
++            for s in (-1,1):ax.axhline(s*bound,color='gray',lw=.7)
++            ax.grid(alpha=.15)
++        for ax,bound in zip(axes[:2],[model['x_terminal_m'],model['v_terminal_m_s']]):
++            ax.plot([2],[bound],marker='|',color='black');ax.plot([2],[-bound],marker='|',color='black')
++        for ax,label in zip(axes,['x (m)','v (m/s)','Actual force f (N)','Issued command u (N)']):ax.set_ylabel(label)
++        axes[0].legend(fontsize=7,loc='best');axes[-1].set_xlabel('Time (s)')
++        fig.suptitle(f'Toy simulation · {family}'+('' if value is None else f' · Δv={value:.2f} m/s'))
++        fig.text(.5,.01,'Curves after path-limit violation are mathematical extrapolation outside the evaluation domain.',ha='center',fontsize=8)
++        save(fig,'trajectory_'+family+('' if value is None else f'_{value:.2f}'))
++    data.close()
+diff --git a/src/recoverability/solver.py b/src/recoverability/solver.py
+new file mode 100644
+index 0000000..e32f5a7
+--- /dev/null
++++ b/src/recoverability/solver.py
+@@ -0,0 +1,124 @@
++"""Sparse linear-programming existence oracle; offline known disturbance only."""
++from dataclasses import dataclass, field
++from enum import Enum
++import time
++import numpy as np
++from scipy.optimize import linprog
++from scipy.sparse import coo_matrix, diags
++from .metrics import validate
++
++
++class Status(str, Enum):
++    RECOVERABLE = 'RECOVERABLE'
++    INFEASIBLE = 'INFEASIBLE'
++    SOLVER_ERROR = 'SOLVER_ERROR'
++
++
++@dataclass
++class Result:
++    status: str
++    reason: str
++    elapsed_s: float
++    state: np.ndarray = field(default_factory=lambda: np.empty((0,2)))
++    force: np.ndarray = field(default_factory=lambda: np.empty(0))
++    command: np.ndarray = field(default_factory=lambda: np.empty(0))
++    metrics: dict = field(default_factory=dict)
++    solver_status: int | None = None
++    solver_time_s: float = 0.0
++
++
++class SparseRows:
++    def __init__(self, width):
++        self.width, self.row, self.col, self.val, self.rhs = width, [], [], [], []
++
++    def add(self, entries, rhs):
++        i = len(self.rhs)
++        for j, v in entries.items():
++            if v:
++                self.row.append(i); self.col.append(j); self.val.append(v)
++        self.rhs.append(rhs)
++
++    def matrix(self):
++        return coo_matrix((self.val,(self.row,self.col)),shape=(len(self.rhs),self.width)).tocsr()
++
++
++def solve_oracle(model, actuator, disturbance, horizon_s, *, initial=(0.0,0.0), time_limit_s=5.0):
++    """Global LP, continuous linear ramps; accepted only after exact path validation.
++
++    No pre-t=0 actuation: f0=0 and empty command history, even for the oracle.
++    A future disturbance IS known to this routine, allowing preaction after t=0.
++    """
++    start = time.perf_counter()
++    n = model.steps(horizon_s)
++    jumps, d = disturbance.arrays(model,n)
++    delay, alpha = actuator.delay_steps(model.dt_s), actuator.alpha(model.dt_s)
++    if len(initial) != 2 or not np.all(np.isfinite(initial)):
++        raise ValueError('initial state must contain two finite SI quantities')
++    # Variables [x0,v0,...,xN,vN, f0,...,fN, u0,...,uN-1, |u0|,...].
++    fi, ui, ai = 2*(n+1), 3*(n+1), 3*(n+1)+n
++    size = ai+n
++    eq, ub = SparseRows(size), SparseRows(size)
++    A, B0, B1, Bd = model.matrices()
++    for k in range(n):
++        for j in range(2):
++            eq.add({2*(k+1)+j:1, 2*k:-A[j,0], 2*k+1:-A[j,1],
++                    fi+k:-B0[j], fi+k+1:-B1[j]}, Bd[j]*d[k]+(j==1)*jumps[k+1])
++        entries = {fi+k+1:1, fi+k:-(1-alpha)}
++        if k >= delay:
++            entries[ui+k-delay] = -alpha
++        eq.add(entries, 0)
++        ub.add({fi+k+1:1, fi+k:-1}, actuator.rate_N_s*model.dt_s)
++        ub.add({fi+k+1:-1, fi+k:1}, actuator.rate_N_s*model.dt_s)
++        ub.add({ui+k:1, ai+k:-1}, 0)
++        ub.add({ui+k:-1, ai+k:-1}, 0)
++        if jumps[k+1]:
++            # Also bound the pre-jump endpoint velocity.
++            ub.add({2*(k+1)+1:1}, model.v_abs_max_m_s+jumps[k+1])
++            ub.add({2*(k+1)+1:-1}, model.v_abs_max_m_s-jumps[k+1])
++    bounds = [b for _ in range(n+1) for b in [(-model.x_safe_m,model.x_safe_m),
++                                                             (-model.v_abs_max_m_s,model.v_abs_max_m_s)]]
++    bounds += [(-actuator.force_max_N,actuator.force_max_N)]*(n+1)
++    bounds += [(-actuator.command_max_N,actuator.command_max_N)]*n
++    bounds += [(0,actuator.command_max_N)]*n
++    # Equality initial conditions must coexist with path bounds (not overwrite them).
++    eq.add({0:1}, initial[0]); eq.add({1:1},initial[1]+jumps[0]); eq.add({fi:1},0)
++    bounds[2*n] = (-model.x_terminal_m,model.x_terminal_m)
++    bounds[2*n+1] = (-model.v_terminal_m_s,model.v_terminal_m_s)
++    c = np.zeros(size)
++    c[ai:] = model.dt_s/actuator.command_max_N  # soft L1 tie breaker; never a hard budget
++    # Explicit dimensionless variable and row scaling; physical constraints stay identical.
++    scales = np.array([b for _ in range(n+1) for b in (model.x_safe_m,model.v_abs_max_m_s)]
++                      + [actuator.force_max_N]*(n+1)+[actuator.command_max_N]*(2*n))
++    def scaled_rows(rows):
++        matrix = rows.matrix() @ diags(scales)
++        norms = np.asarray(abs(matrix).max(axis=1).toarray()).ravel()
++        row_scales = 1/np.maximum(norms,1e-15)
++        return diags(row_scales) @ matrix,np.asarray(rows.rhs)*row_scales
++    eq_matrix, eq_rhs = scaled_rows(eq)
++    ub_matrix, ub_rhs = scaled_rows(ub)
++    scaled_bounds = [(lo/scale,hi/scale) for (lo,hi),scale in zip(bounds,scales)]
++    solver_start = time.perf_counter()
++    try:
++        answer = linprog(c*scales,A_ub=ub_matrix,b_ub=ub_rhs,A_eq=eq_matrix,b_eq=eq_rhs,
++                         bounds=scaled_bounds,method='highs-ipm',
++                         options={'time_limit':time_limit_s,'primal_feasibility_tolerance':1e-8,
++                                  'dual_feasibility_tolerance':1e-8})
++    except Exception as exc:
++        return Result(Status.SOLVER_ERROR.value,f'{type(exc).__name__}: {exc}',time.perf_counter()-start)
++    solver_time = time.perf_counter()-solver_start
++    elapsed = time.perf_counter()-start
++    if answer.status == 2:
++        return Result(Status.INFEASIBLE.value,answer.message,elapsed,solver_status=answer.status,solver_time_s=solver_time)
++    if answer.status != 0 or answer.x is None:
++        return Result(Status.SOLVER_ERROR.value,answer.message,elapsed,solver_status=answer.status,solver_time_s=solver_time)
++    physical = answer.x*scales
++    state = physical[:fi].reshape(n+1,2)
++    force, command = physical[fi:ui],physical[ui:ai]
++    try:
++        metrics = validate(model,actuator,disturbance,state,force,command,initial)
++        valid = metrics['valid_path_dynamics'] and metrics['terminal_met']
++        reason = answer.message if valid else 'LP optimum failed independent posterior validation (unknown feasibility)'
++    except Exception as exc:
++        valid, metrics, reason = False, {}, f'validation error: {type(exc).__name__}: {exc}'
++    return Result(Status.RECOVERABLE.value if valid else Status.SOLVER_ERROR.value,
++                  reason,time.perf_counter()-start,state,force,command,metrics,answer.status,solver_time)
+diff --git a/tests/test_model.py b/tests/test_model.py
+new file mode 100644
+index 0000000..300df93
+--- /dev/null
++++ b/tests/test_model.py
+@@ -0,0 +1,109 @@
++from dataclasses import replace
++import numpy as np
++import pytest
++from scipy.integrate import solve_ivp
++from recoverability.model import Model
++from recoverability.actuator import Actuator, ForceActuator
++from recoverability.disturbance import Disturbance
++from recoverability.metrics import validate
++
++
++def test_zero_equilibrium():
++    m=Model()
++    s=np.zeros(2)
++    for _ in range(100): s=m.step(s,0,0)
++    np.testing.assert_array_equal(s,[0,0])
++
++
++def test_unforced_analytic_impulse_and_sign():
++    m=Model();v=.3; t=m.dt_s
++    expected=[v*np.sinh(m.omega*t)/m.omega,v*np.cosh(m.omega*t)]
++    np.testing.assert_allclose(m.step([0,v],0,0),expected,rtol=1e-13)
++    assert m.step([0,0],100,100)[1]>0
++    assert m.step([.01,0],0,0)[1]>0
++
++
++def test_exact_ramp_flow_against_independent_ode():
++    m=Model(dt_s=.05)
++    state=np.array([.02,-.1]);f0,f1,d=-20,30,40
++    expected=solve_ivp(lambda t,s:[s[1],m.omega**2*s[0]+(f0+(f1-f0)*t/m.dt_s+d)/m.mass_kg],
++                       [0,m.dt_s],state,rtol=1e-12,atol=1e-13).y[:,-1]
++    np.testing.assert_allclose(m.step(state,f0,f1,d),expected,atol=1e-12)
++    np.testing.assert_allclose(m.at_time(state,f0,f1,d,m.dt_s),expected,atol=1e-12)
++
++
++def test_force_units_and_static_equilibrium():
++    m=Model();x=.1;f=-m.mass_kg*m.omega**2*x
++    np.testing.assert_allclose(m.step([x,0],f,f),[x,0],atol=1e-14)
++    # Doubling mass halves the velocity increment from the same external force.
++    light=m.step([0,0],0,0,100)
++    heavy=replace(m,mass_kg=2*m.mass_kg).step([0,0],0,0,100)
++    np.testing.assert_allclose(light,2*heavy)
++
++
++def test_force_pulse_not_conflated_with_velocity_jump():
++    m=Model();n=100
++    j,d=Disturbance(kind='force_pulse',onset_s=.2,force_N=126,duration_s=.2).arrays(m,n)
++    assert np.count_nonzero(j)==0 and np.count_nonzero(d)==10
++    assert np.sum(d)*m.dt_s/m.mass_kg == pytest.approx(.36)
++    # Equal force impulse area is not identical LIPM trajectory to instantaneous delta-v.
++    s=np.zeros(2)
++    for value in d[:20]: s=m.step(s,0,0,value)
++    assert not np.allclose(s,[0,.36])
++
++
++@pytest.mark.parametrize('kwargs',[{'mass_kg':0},{'dt_s':float('nan')},{'height_m':-1}])
++def test_invalid_model_parameters(kwargs):
++    with pytest.raises(ValueError):Model(**kwargs)
++
++
++@pytest.mark.parametrize('disturbance',[
++    Disturbance(onset_s=.001),Disturbance(kind='unknown'),Disturbance(force_N=2),
++    Disturbance(kind='force_pulse',force_N=10,duration_s=.2,delta_v_m_s=.1),
++    Disturbance(kind='force_pulse',onset_s=1.9,force_N=10,duration_s=.2),
++    Disturbance(delta_v_m_s=float('nan'))])
++def test_invalid_disturbances(disturbance):
++    with pytest.raises(ValueError):disturbance.arrays(Model(),100)
++
++
++def test_grid_and_delay_validation():
++    with pytest.raises(ValueError):Model().steps(.013)
++    with pytest.raises(ValueError):Actuator(delay_s=.013).delay_steps(.02)
++    with pytest.raises(ValueError):Actuator(rate_N_s=-1)
++    with pytest.raises(ValueError):Actuator(command_max_N=200)
++
++
++def test_queue_rate_lag_and_command_limits_with_reversals():
++    p=Actuator(rate_N_s=200,delay_s=.1,response_tau_s=.16)
++    a=ForceActuator(p,.02)
++    fs=[0];us=[]
++    for k in range(100):
++        _,f,u=a.advance(1000 if k%30<15 else -1000)
++        fs.append(f);us.append(u)
++    fs,us=np.array(fs),np.array(us)
++    assert np.max(np.abs(np.diff(fs))) <= 4+1e-12
++    assert np.max(abs(fs))<=150 and np.max(abs(us))<=150
++    np.testing.assert_array_equal(fs[:6],np.zeros(6))
++    delivered=np.r_[np.zeros(5),us[:-5]]
++    np.testing.assert_allclose(fs[1:],(1-a.alpha)*fs[:-1]+a.alpha*delivered,atol=1e-12)
++
++
++def test_continuous_path_extrema_detect_node_hidden_violation():
++    m=Model(dt_s=.1,x_safe_m=.02)
++    # Concave arc starts and ends below .02 but peaks in the interval.
++    initial=np.array([.019,.08]); f=-120
++    end=m.step(initial,f,f)
++    peaks=m.interval_extrema(initial,f,f,0)
++    dense=np.array([m.at_time(initial,f,f,0,t) for t in np.linspace(0,.1,10001)])
++    np.testing.assert_allclose(peaks,np.max(np.abs(dense),axis=0),atol=2e-10)
++    assert max(initial[0],end[0]) < m.x_safe_m < peaks[0]
++
++
++def test_extrema_random_independent_dense_sampling():
++    rng=np.random.default_rng(74);m=Model(dt_s=.05)
++    for _ in range(30):
++        s=rng.uniform(-.2,.2,2);f0,f1,d=rng.uniform(-150,150,3)
++        extrema=m.interval_extrema(s,f0,f1,d)
++        dense=np.array([m.at_time(s,f0,f1,d,t) for t in np.linspace(0,.05,301)])
++        assert np.all(extrema >= np.max(np.abs(dense),axis=0)-1e-10)
++        assert np.max(extrema-np.max(np.abs(dense),axis=0))<2e-6
+diff --git a/tests/test_pipeline.py b/tests/test_pipeline.py
+new file mode 100644
+index 0000000..eeb70ba
+--- /dev/null
++++ b/tests/test_pipeline.py
+@@ -0,0 +1,24 @@
++import json
++import numpy as np
++import yaml
++from recoverability.experiment import run
++from recoverability.plots import load_rows, boundary_rows
++
++
++def test_raw_data_reproducible_and_self_describing(tmp_path):
++    config=yaml.safe_load(open('configs/exp0.yaml'))
++    config['actuators']={'A_fast':config['actuators']['A_fast']}
++    config['sweep']={'delta_v_min_m_s':-.2,'delta_v_max_m_s':.2,'delta_v_step_m_s':.2,'horizons_s':[.4]}
++    config['feedback']['horizons_s']=[.4]
++    config['cases']=[]
++    first,second=tmp_path/'one',tmp_path/'two'
++    run(config,first,seed=17);run(config,second,seed=17)
++    rows=load_rows(first)
++    assert len(rows)==6
++    assert all(r['seed']=='17' and r['model_json'] and r['actuator_json'] for r in rows)
++    with np.load(first/'trajectories.npz',allow_pickle=False) as a,np.load(second/'trajectories.npz',allow_pickle=False) as b:
++        for key in a.files:
++            if key.endswith(('_state','_force','_command')):np.testing.assert_array_equal(a[key],b[key])
++        assert json.loads(str(a['metadata_json']))['versions']['scipy']
++        assert len(a['rows_json'])==6
++    assert boundary_rows(rows)
+diff --git a/tests/test_solver.py b/tests/test_solver.py
+new file mode 100644
+index 0000000..bb886c7
+--- /dev/null
++++ b/tests/test_solver.py
+@@ -0,0 +1,130 @@
++from dataclasses import replace
++from types import SimpleNamespace
++import numpy as np
++import pytest
++import recoverability.solver as sol
++from recoverability.actuator import Actuator
++from recoverability.disturbance import Disturbance
++from recoverability.feedback import simulate_feedback
++from recoverability.metrics import validate
++from recoverability.model import Model
++
++
++def test_oracle_zero_and_analytic_impossibility():
++    m=Model();a=Actuator()
++    zero=sol.solve_oracle(m,a,Disturbance(),2)
++    assert zero.status=='RECOVERABLE'
++    np.testing.assert_allclose(zero.state,0,atol=1e-10)
++    # DCM capture bound for any |f|<=F is F/(m*omega) < .8; finite response cannot improve it.
++    assert .8 > a.force_max_N/(m.mass_kg*m.omega)
++    # Even instantaneous maximum opposing force cannot bring the divergent component
++    # into the terminal box by H=2 s (a necessary finite-horizon condition).
++    w=m.omega; growth=np.exp(w*2)
++    xi_lower=(.8/w)*growth-a.force_max_N/(m.mass_kg*w*w)*(growth-1)
++    assert xi_lower > m.x_terminal_m+m.v_terminal_m_s/w
++    impossible=sol.solve_oracle(m,a,Disturbance(delta_v_m_s=.8),2)
++    assert impossible.status=='INFEASIBLE' and len(impossible.state)==0
++
++
++@pytest.mark.parametrize('velocity',[.04,.2,.4,.64])
++def test_symmetric_disturbance_classification_and_mirrored_paths(velocity):
++    m=Model();a=Actuator()
++    left=sol.solve_oracle(m,a,Disturbance(delta_v_m_s=velocity),1.2)
++    right=sol.solve_oracle(m,a,Disturbance(delta_v_m_s=-velocity),1.2)
++    assert left.status==right.status!='SOLVER_ERROR'
++    if left.status=='RECOVERABLE':
++        # L1 optima can be nonunique; compare reflected feasibility, not arbitrary optimizer choices.
++        mirrored=validate(m,a,Disturbance(delta_v_m_s=-velocity),-left.state,-left.force,-left.command)
++        assert mirrored['valid_path_dynamics'] and mirrored['terminal_met']
++        assert left.metrics['force_effort_N_s']==pytest.approx(right.metrics['force_effort_N_s'],abs=1e-5)
++
++
++@pytest.mark.parametrize('velocity',[.08,.2,.36,.48,.64])
++def test_force_rate_delay_horizon_consistency(velocity):
++    m=Model();a=Actuator(rate_N_s=300,delay_s=.1)
++    d=Disturbance(delta_v_m_s=velocity)
++    original=sol.solve_oracle(m,a,d,1.2)
++    for stronger in (replace(a,force_max_N=200,command_max_N=200),replace(a,rate_N_s=1500),replace(a,delay_s=0)):
++        r=sol.solve_oracle(m,stronger,d,1.2)
++        assert r.status!='SOLVER_ERROR'
++        if original.status=='RECOVERABLE':assert r.status=='RECOVERABLE'
++    # Empirical regression on this grid; box terminal set does NOT imply a general horizon theorem.
++    longer=sol.solve_oracle(m,a,d,2)
++    if original.status=='RECOVERABLE':assert longer.status=='RECOVERABLE'
++
++
++def test_oracle_posterior_and_tampering():
++    m=Model();a=Actuator(delay_s=.1)
++    d=Disturbance(delta_v_m_s=.2)
++    r=sol.solve_oracle(m,a,d,2)
++    assert r.status=='RECOVERABLE'
++    assert r.metrics['valid_path_dynamics'] and r.metrics['terminal_met']
++    np.testing.assert_allclose(r.force[:6],0,atol=1e-9)
++    bad=r.force.copy();bad[2]=1
++    assert not validate(m,a,d,r.state,bad,r.command)['valid_path_dynamics']
++    bad=r.state.copy();bad[5,0]+=1e-3
++    assert not validate(m,a,d,bad,r.force,r.command)['valid_path_dynamics']
++    bad[1,0]=np.nan
++    assert validate(m,a,d,bad,r.force,r.command)['nonfinite']
++
++
++def test_future_disturbance_nonanticipation():
++    m=Model();a=Actuator(delay_s=.1)
++    zero=simulate_feedback(m,a,Disturbance(),2)
++    plus=simulate_feedback(m,a,Disturbance(onset_s=.4,delta_v_m_s=.3),2)
++    minus=simulate_feedback(m,a,Disturbance(onset_s=.4,delta_v_m_s=-.3),2)
++    for r in (plus,minus):
++        np.testing.assert_array_equal(r.command[:20],zero.command[:20])
++        np.testing.assert_array_equal(r.force[:26],0)
++    np.testing.assert_allclose(plus.state,-minus.state,atol=1e-12)
++
++
++def test_force_pulse_feedback_sees_no_future_inputs():
++    m=Model();a=Actuator()
++    d=Disturbance(kind='force_pulse',onset_s=.2,force_N=100,duration_s=.2)
++    r=simulate_feedback(m,a,d,2)
++    np.testing.assert_array_equal(r.command[:11],0) # force first affects measured state at next node
++    assert len(r.state)==101
++    assert sol.solve_oracle(m,a,d,2).status=='RECOVERABLE'
++
++
++@pytest.mark.parametrize('status',[1,3,4])
++def test_solver_failure_not_infeasibility_or_success(monkeypatch,status):
++    monkeypatch.setattr(sol,'linprog',lambda *a,**k:SimpleNamespace(status=status,message='injected diagnostic',x=None))
++    r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1)
++    assert r.status=='SOLVER_ERROR' and r.solver_status==status
++
++
++def test_solver_exception_recorded(monkeypatch):
++    def broken(*args,**kwargs):raise RuntimeError('injected numerical failure')
++    monkeypatch.setattr(sol,'linprog',broken)
++    r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1)
++    assert r.status=='SOLVER_ERROR' and 'RuntimeError' in r.reason
++
++
++def test_false_solver_success_rejected(monkeypatch):
++    def corrupt(c,**kwargs):return SimpleNamespace(status=0,message='injected NaN',x=np.full(len(c),np.nan))
++    monkeypatch.setattr(sol,'linprog',corrupt)
++    r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1)
++    assert r.status=='SOLVER_ERROR' and r.metrics['nonfinite']
++
++
++def test_initial_outside_path_is_not_silently_accepted():
++    r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1,initial=(.21,0))
++    assert r.status=='INFEASIBLE'
++
++
++def test_feedback_failure_is_not_infeasibility_certificate():
++    r=simulate_feedback(Model(),Actuator(),Disturbance(delta_v_m_s=.8),2)
++    assert r.status=='NOT_RECOVERED'
++
++
++def test_post_validation_rejection_is_unknown_not_infeasible(monkeypatch):
++    monkeypatch.setattr(sol,'validate',lambda *a,**k:{'valid_path_dynamics':False,'terminal_met':True})
++    r=sol.solve_oracle(Model(),Actuator(),Disturbance(),1)
++    assert r.status=='SOLVER_ERROR' and 'posterior' in r.reason
++
++
++def test_feedback_numerical_failure_recorded_without_fictitious_tail():
++    r=simulate_feedback(Model(),Actuator(),Disturbance(),2,initial=(np.finfo(float).max,0))
++    assert r.status=='SIMULATION_ERROR' and len(r.state)==0 and 'FloatingPointError' in r.reason
