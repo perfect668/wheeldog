@@ -12,7 +12,7 @@ from recoverability.actuator import Actuator
 from recoverability.disturbance import Disturbance
 from recoverability.solver import solve_oracle
 from recoverability.experiment import Dataset, provenance
-from recoverability.plots import load_rows
+from recoverability.plots import load_rows, COLORS
 from recoverability.metrics import validate
 
 
@@ -68,15 +68,16 @@ def plot_convergence(output):
     with (output/'convergence.csv').open() as f: rows=list(csv.DictReader(f))
     fig,axes=plt.subplots(1,2,figsize=(11,4.5),sharey=True)
     for ax,h in zip(axes,(.8,2.0)):
-        for name in dict.fromkeys(r['actuator'] for r in rows):
+        for name,color in zip(dict.fromkeys(r['actuator'] for r in rows),COLORS):
             group=sorted([r for r in rows if r['actuator']==name and float(r['horizon_s'])==h],key=lambda r:float(r['dt_s']))
             x=[float(r['dt_s']) for r in group]
             lo=np.array([float(r['confirmed_low_m_s']) for r in group]);hi=np.array([float(r['confirmed_high_m_s']) for r in group])
-            ax.errorbar(x,(lo+hi)/2,yerr=(hi-lo)/2,marker='o',label=name,capsize=3)
+            ax.errorbar(x,(lo+hi)/2,yerr=(hi-lo)/2,marker='o',label=name,color=color,capsize=3)
         ax.set(xlabel='dt (s)',title=f'H={h:g} s');ax.grid(alpha=.2)
     axes[0].set_ylabel('Positive oracle boundary Δv (m/s)')
     axes[1].legend(fontsize=8)
     fig.suptitle('Toy simulation · time-step sensitivity\nerror bars = bisection brackets, not confidence intervals')
+    fig.subplots_adjust(top=.78,bottom=.14,left=.08,right=.98,wspace=.12)
     for ext in ('png','pdf'):fig.savefig(output/f'time_step_sensitivity.{ext}',bbox_inches='tight',dpi=160)
     plt.close(fig)
 
