@@ -1,0 +1,29 @@
+# Static geometry only. World z=0 is reference base_link, not a ground plane.
+seed: 20261111
+archive: assets/h1/source.zip
+asset_directory: assets/h1/original
+random_validation_count: 10
+random_attempt_budget: 250
+# Sampling domain chosen for numerical experiment, NOT hardware operating limits.
+base_x_m: [-0.06, 0.06]
+base_y_m: [-0.04, 0.04]
+base_yaw_rad: [-0.10, 0.10]
+search_count: 48
+ik_max_nfev: 160
+ik_seed_std_rad: 0.35
+position_tolerance_m: 0.00001
+orientation_tolerance_rad: 0.00001
+orientation_scale_m: 0.25
+self_clearance_m: 0.002
+finite_difference_steps_rad: [0.00001, 0.000001, 0.0000001]
+# Fixture target chosen by FK of a deterministic non-colliding seed; no real handle.
+reference_joint_positions_rad:
+  1-Joint: -0.3
+  2-Joint: 0.6
+  3-Joint: -0.3
+  AR5-5_08L-W4C1C9-ZY2_joint_2: 0.8
+  AR5-5_08L-W4C1C9-ZY2_joint_4: 1.0
+  AR5-5_08R-W4C1C9-ZY2_joint_2: 0.8
+  AR5-5_08R-W4C1C9-ZY2_joint_4: 1.0
+  AR5-5_08L-W4C1C9-ZY2_joint_1: -1.5707963267948966
+  AR5-5_08R-W4C1C9-ZY2_joint_1: 1.5707963267948966

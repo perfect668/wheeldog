@@ -51,3 +51,33 @@ python scripts/validate_exp0.py --output results/validation --plots-only
 离线 oracle 的 `INFEASIBLE` 和 `SOLVER_ERROR` 分开；反馈 `NOT_RECOVERED` 不是不可行证明。对于不可行 oracle，不生成虚构状态轨迹。终端箱并非已验证不变集，结果仅说明有限时域的模型内返回。
 
 `src/recoverability/` 包含独立的人体、执行器、扰动、oracle、反馈、指标、实验和绘图模块。`tests/` 用解析式、独立 ODE、镜像、约束篡改和故障注入验证；`configs/` 为全部实验假设。审阅后停在 M0，不自动进入 M1。
+
+## M1-A / M1-B: supplied asset and static kinematics
+
+Work is on `m1/asset-kinematics`, based on the reviewed M0 branch. Scope:
+URDF/manual audit, FK/Jacobian finite differences, bounded dual IK, and redundant
+static configurations at identical world flange targets. No dynamics/control.
+See `docs/M1_ASSET_AUDIT.md`, `docs/M1_KINEMATICS_RESULTS.md`, and
+`docs/M0_REVIEW_ADDENDUM.md`. Vendor archive and manual remain local; source
+hashes and mesh mapping are saved. Place the supplied archive at
+`assets/h1/source.zip` (see `assets/h1/README.md`).
+
+A clean Python 3.11 environment can install the tested dependencies:
+
+```bash
+python3.11 -m venv .venv-m1
+env -u PYTHONPATH .venv-m1/bin/python -m pip install -r requirements-m1.txt
+env -u PYTHONPATH .venv-m1/bin/python -m pip install -e . --no-deps
+# Choose a new empty output directory; runs never overwrite saved experiments.
+env -u PYTHONPATH .venv-m1/bin/python -m pytest -q
+env -u PYTHONPATH .venv-m1/bin/python -m h1_kinematics --config configs/m1_kinematics.yaml --output results/m1_reproduction --seed 20261111
+env -u PYTHONPATH .venv-m1/bin/python -m h1_kinematics.plots results/m1_reproduction
+.venv/bin/python scripts/verify_frozen_exp0.py
+```
+
+On the development laptop `.venv-m1` reuses the installed `rl` environment's
+MuJoCo/numerical packages and the installed pure Python trimesh package. Only
+missing python-fcl was installed. No GPU or MuJoCo dynamic stepping is used.
+`ACCEPTED_CONDITIONAL` means URDF limits, target tolerances and supplied mesh
+surface clearance pass under the recorded exclusions; it is not physical robot
+feasibility, solid collision certification, force capability, or stability.
