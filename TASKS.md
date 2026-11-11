@@ -1,6 +1,6 @@
 # 分阶段任务单
 
-## 当前任务：M0 / EXP0（首轮，CPU，最高优先级）
+## 已完成：M0 / EXP0（CPU，原始数据冻结）
 
 ### M0-A：建立可复现 Python 项目
 - [x] `pyproject.toml` + README 使用说明；本地干净环境安装成功。
@@ -30,9 +30,12 @@
 - [x] commit + 测试命令 + 环境版本 + 数据/图表路径。
 - [x] 不创建“新算法”也可以完成第一轮；第一轮目标是模型验证。
 
-## 下一任务：M1 / H1 资产建模（仅 M0 完成且收到真实 URDF 后）
-- [ ] 审计 URDF + meshes / links / joints / limits / inertial parameters。
-- [ ] 正运动学、雅可比、IK、冗余全身配置搜索。
+## 当前审阅点：M1-A / M1-B（用户已授权，资产已提供）
+- [x] M1-A：审计 URDF + meshes / links / joints / limits / inertial parameters，并对照产品手册。
+- [x] M1-B：URDF内正运动学、雅可比差分、双臂IK、冗余静态配置搜索；真实H1语义冲突待厂家核实。
+
+本轮结果：`docs/M1_ASSET_AUDIT.md`、`docs/M1_KINEMATICS_RESULTS.md`；仅几何条件性通过，停在审阅点。M0限定审阅G0/G1通过，G2/G3仍未验证。以下后续任务尚未授权：
+
 - [ ] 匹配扶手目标与当前辅助余量的配置对。
 - [ ] 计算与真实硬件约束相关的未来可达性和辅助能力。
 - [ ] 初步使用 MuJoCo 验证动态接触，但不训练 RL。
