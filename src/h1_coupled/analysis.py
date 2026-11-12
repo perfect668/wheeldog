@@ -12,7 +12,8 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from h1_kinematics.assets import dump
-from .experiment import check_frozen
+from .experiment import check_frozen,init_worker,get_chart
+from .contact import CoupledModel
 
 
 SUCCESS={'RECOVERED_OFFLINE','RECOVERED_CAUSAL'}
@@ -28,6 +29,22 @@ def write_csv(path,rows):
 
 
 def export(out):
+    config=yaml.safe_load((out/'config.yaml').read_text());init_worker(config,out);initial=[]
+    for candidate in IDS:
+        _,chart,_=get_chart(candidate,'fixed');robot=chart.model
+        budget=robot.budgets().copy();budget[robot.torso_indices]=config['robot']['torso_budget_nm']
+        A=robot.contact_map(chart.q0,chart.b0);task=np.tile([0.,0.,config['contact']['vertical_per_hand_n']],2)
+        tau=A@task;mask=np.isfinite(budget);model=CoupledModel(config['_human'],config['contact'],config['experiment']['dt_s'])
+        lo,hi=-model.cap_y,model.cap_y;slope=A@np.tile([0.,1.,0.],2)
+        for j in np.flatnonzero(mask):
+            if abs(slope[j])>1e-12:
+                l,h=sorted([(-budget[j]-tau[j])/slope[j],(budget[j]-tau[j])/slope[j]])
+                lo=max(lo,l);hi=min(hi,h)
+        initial.append(dict(candidate=candidate,q_rad=chart.q0.tolist(),base_xy_yaw=chart.b0.tolist(),
+            world_handle_poses=np.array(chart.initial).tolist(),per_hand_current_force_n=[0,0,model.fz],
+            contact_compensation_torque_nm=tau.tolist(),max_current_torque_ratio=float(max(abs(tau[mask])/budget[mask])),
+            current_equal_per_hand_horizontal_force_interval_n=[lo,hi]))
+    dump(out/'initial_tasks.json',initial)
     rows=[json.loads(p.read_text()) for p in sorted((out/'cases').glob('*.json'))]
     flat=[]
     for r in rows:
@@ -81,6 +98,24 @@ def export(out):
         case_wall_max_s=float(max(r['elapsed_s'] for r in rows)),
         accepted_without_settled_recovery_time=sum(r['metrics']['recovery_time_s'] is None for r in accepted),
         interpretation='Conditional model results; restricted failures are not global impossibility')
+    summary['direct_versions']={}
+    for name in ['direct','direct_refined']:
+        if not (out/(name+'.json')).exists():continue
+        direct=json.loads((out/(name+'.json')).read_text())
+        summary['direct_versions'][name]=dict(statuses=dict(Counter(r['status'] for r in direct)),
+            attempts=sum(len(r['attempts']) for r in direct),
+            valid_iterates=sum(a.get('validation',{}).get('valid',False) for r in direct for a in r['attempts']),
+            rejection_reasons=dict(Counter(reason for r in direct for a in r['attempts'] for reason in a.get('validation',{}).get('reasons',[]))))
+    if (out/'passive.json').exists():
+        passive=json.loads((out/'passive.json').read_text())['cases']
+        summary['stationary_handle_baseline']=dict(cases=len(passive),recovered=sum(r['recovered'] for r in passive))
+    # A moving-base IK curve is not the union of all fixed/moving-base paths.
+    summary['mobile_curve_failures_with_fixed_curve_success']=[]
+    for r in main:
+        if r['mode']!='fixed' or r['method']!='offline' or r['status'] not in SUCCESS:continue
+        other=next(v for v in main if (v['candidate'],v['mode'],v['method'],v['horizon_s'],v['disturbance']['delta_v_m_s'])==
+            (r['candidate'],'mobile',r['method'],r['horizon_s'],r['disturbance']['delta_v_m_s']))
+        if other['status'] not in SUCCESS:summary['mobile_curve_failures_with_fixed_curve_success'].append(other['case_id'])
     dump(out/'summary.json',summary)
     return main,sens,boundaries,stats
 

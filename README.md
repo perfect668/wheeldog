@@ -121,3 +121,44 @@ configuration raises an error; changed algorithm semantics require a new output.
 All 48 initial candidates and 1128 pair filters are retained. The three examples
 are selected by aggregate six-direction motion differences after observing data;
 all 185 force-matched pairs remain available for review.
+
+## M1-D: coupled lateral human–H1 recovery
+
+Branch `m1/coupled-recovery` reuses M0's LIPM and M1-C's geometry/constraints.
+A bilateral spring–damper contact produces actual modeled forces from handle
+position/velocity relative to the human. All contact/dynamic parameters remain
+explicit assumptions. See `docs/M1_COUPLED_RECOVERY_MODEL.md`,
+`docs/M1_COUPLED_RECOVERY_RESULTS.md`, and `docs/M1_COUPLED_TEST_REPORT.md`.
+Offline known-disturbance LPs and causal feedback are reported separately.
+Restricted path failure is not global unrecoverability.
+
+Reuse the local audited archive, `.venv-m1` and `requirements-m1.txt`; no asset
+or GPU simulator download is required. Run from the repository root:
+
+```bash
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+env -u PYTHONPATH .venv-m1/bin/python -m pytest -q
+# Choose a new directory; prepare refuses an existing saved config.
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled --output results/m1d_reproduction --stage prepare
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled --output results/m1d_reproduction --stage main --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled --output results/m1d_reproduction --stage sensitivity --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled --output results/m1d_reproduction --stage future --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled --output results/m1d_reproduction --stage boundaries
+# Original knot-only optimization and its midpoint geometry correction:
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled.direct results/m1d_reproduction --workers 2
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled.direct results/m1d_reproduction --override configs/m1_direct_refined.yaml --workers 2
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled.passive results/m1d_reproduction
+env -u PYTHONPATH .venv-m1/bin/python scripts/probe_m1d_direct.py results/m1d_reproduction
+env -u PYTHONPATH .venv-m1/bin/python scripts/validate_m1d.py results/m1d_reproduction
+env -u PYTHONPATH .venv-m1/bin/python -m h1_coupled.analysis results/m1d_reproduction
+# Verify the delivered data without rerunning experiments:
+env -u PYTHONPATH .venv-m1/bin/python scripts/freeze_m1d.py --verify
+```
+
+`results/m1d/run/cases/` retains solver/feedback statuses and failure reasons;
+`paths/` contains coupled states, actual contact forces, true FK handle traces,
+joints/base, constraint usage and independent human ODE trajectories. Direct
+optimizer iterations (including rejected ones) are in `direct_paths/`.
+`boundaries.csv` contains local success/failure brackets, not global proofs;
+`figures/` contains data-generated PNG/PDF plots. M0/M1/M1-C stay frozen.
+This milestone stops for review; no subsequent method or hardware phase starts.
