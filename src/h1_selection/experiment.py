@@ -26,12 +26,12 @@ def main():
         dump(out/'artifact_sha256.json',{str(p):sha256(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name!='artifact_sha256.json'})
         return
     if a.stage=='test' and not (out/'selection.json').exists():raise ValueError('freeze selection before test')
+    if a.stage=='select' and (out/'test_selection_freeze.json').exists():raise ValueError('selection frozen for holdout')
     provenance(out,a.stage)
     if a.stage=='score':
         from .scoring import run
         run(c,out,a.workers)
     elif a.stage=='select':
-        if (out/'test_selection_freeze.json').exists():raise ValueError('selection frozen for holdout')
         from .scoring import select
         select(c,out)
     elif a.stage=='test':

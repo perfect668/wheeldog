@@ -189,7 +189,10 @@ def cases(c):
 
 
 def run(c,out,workers=4):
-    out=Path(out);selection=sha256(out/'selection.json');dump(out/'test_selection_freeze.json',dict(sha256=selection))
+    out=Path(out);selection=sha256(out/'selection.json');freeze=out/'test_selection_freeze.json'
+    if freeze.exists():
+        if json.loads(freeze.read_text())['sha256']!=selection:raise ValueError('selection changed since original holdout start')
+    else:dump(freeze,dict(sha256=selection))
     for name in ['cases','paths']:(out/name).mkdir(exist_ok=True)
     plan=cases(c);dump(out/'test_plan.json',plan)
     pending=[x for x in plan if not (out/'cases'/(x['case_id']+'.json')).exists()]
