@@ -124,6 +124,17 @@ def run(c,out):
     # Paired differences use identical scenarios, never independent resampling.
     paired=[]
     index={(r['variant'],r['scenario']['id'],r['candidate'],r['controller']):r for r in rows}
+    paired_peaks=[]
+    for ctrl in ['fixed','mpc']:
+        for group in ['nominal','all']:
+            events=sorted({(r['variant'],r['scenario']['id']) for r in rows if group=='all' or r['variant']=='nominal'})
+            common=[(v,s) for v,s in events if all(index[(v,s,id,ctrl)]['observation_complete'] and index[(v,s,id,ctrl)]['valid'] for id in sel['methods'].values())]
+            for method,id in sel['methods'].items():
+                rr=[index[(v,s,id,ctrl)] for v,s in common]
+                paired_peaks.append(dict(group=group,controller=ctrl,method=method,n_common=len(rr),
+                    mean_peak_x_m=float(np.mean([r['peak_human_x_m'] for r in rr])) if rr else None,
+                    max_peak_x_m=max([r['peak_human_x_m'] for r in rr]) if rr else None))
+    csv_write(out/'paired_complete_peak_summary.csv',paired_peaks)
     for ctrl in ['fixed','mpc']:
         for baseline in ['A_default','B_force','C_kinematic']:
             a=sel['methods'][baseline];d=sel['methods']['D_future'];pairs=[]
