@@ -124,3 +124,12 @@ def test_selection_has_no_test_outcome_dependency():
     from h1_selection.scoring import select
     source=inspect.getsource(select)
     assert 'closed_loop' not in source and 'test_plan' not in source and 'case_summary' not in source
+
+
+def test_resume_rejects_changed_choice_and_preserves_original_freeze(config_model,tmp_path):
+    from h1_selection.evaluation import run
+    c,_=config_model;freeze=tmp_path/'test_selection_freeze.json'
+    original=json.dumps(dict(sha256='original selection checksum'))
+    freeze.write_text(original);(tmp_path/'selection.json').write_text('{"methods": "tampered"}')
+    with pytest.raises(ValueError,match='selection changed'):run(c,tmp_path,1)
+    assert freeze.read_text()==original
