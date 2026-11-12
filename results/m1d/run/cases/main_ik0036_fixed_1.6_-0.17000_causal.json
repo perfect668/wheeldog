@@ -1,0 +1,393 @@
+{
+  "case_id": "main_ik0036_fixed_1.6_-0.17000_causal",
+  "candidate": "ik0036",
+  "mode": "fixed",
+  "horizon_s": 1.6,
+  "method": "causal",
+  "variant": "main",
+  "disturbance": {
+    "kind": "velocity_impulse",
+    "onset_s": 0.0,
+    "delta_v_m_s": -0.17
+  },
+  "path_file": "results/m1d/run/paths/main_ik0036_fixed_1.6_-0.17000_causal.npz",
+  "status": "NOT_RECOVERED_CAUSAL",
+  "metrics": {
+    "valid": true,
+    "terminal_met": false,
+    "complete": true,
+    "reasons": [],
+    "recovery_time_s": null,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 1.3995570327662854e-11,
+    "independent_ode_v_error_m_s": 2.137684820824326e-11,
+    "max_handle_position_error_m": 4.525566705446047e-11,
+    "max_handle_rotation_error_rad": 9.734680165461273e-11,
+    "contact_force_model_max_error_n": 5.1880252982527963e-08,
+    "max_joint_velocity_ratio": 0.23287997835876606,
+    "max_joint_acceleration_ratio": 0.48613101045237334,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.48180593001584937,
+    "max_contact_cap_ratio": 0.5445906452465847,
+    "min_sampled_clearance_m": 0.0057260124333319935,
+    "peak_human_x_m": 0.05408669583463044,
+    "peak_human_v_m_s": 0.17,
+    "peak_per_hand_lateral_force_n": 31.592806359938734,
+    "peak_handle_displacement_m": 0.07033064528456323,
+    "peak_handle_speed_m_s": 0.3293825494531063,
+    "terminal_state": [
+      -0.010163771652000383,
+      0.024087689838983205,
+      -0.0026765228142693258,
+      -0.001896166047493176
+    ],
+    "terminal_independent_human": [
+      -0.010163771638004812,
+      0.024087689860360053
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "attempts": [
+    {
+      "status": "SIMULATED",
+      "reason": "completed",
+      "command_logs": [
+        {
+          "raw": 7.556343633564888,
+          "sent": 2.3199340417144962,
+          "delivered": 0.0,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 6.113606253287758,
+          "sent": 2.3199340417144962,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 4.216559745371105,
+          "sent": 2.3199340417144962,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 1.8139359133292388,
+          "sent": 1.2747616111841675,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 1.2747616111841675
+        },
+        {
+          "raw": -0.31523637179422703,
+          "sent": -0.31523637179422703,
+          "delivered": 1.2747616111841675,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 0.0
+        },
+        {
+          "raw": -1.581646138124523,
+          "sent": -1.581646138124523,
+          "delivered": -0.31523637179422703,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 0.3152363717942266
+        },
+        {
+          "raw": -1.957067223498064,
+          "sent": -1.957067223498064,
+          "delivered": -1.581646138124523,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 1.8968825099187496
+        },
+        {
+          "raw": -1.8971168847677942,
+          "sent": -1.8971168847677942,
+          "delivered": -1.957067223498064,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -1.6464195857350508,
+          "sent": -1.6464195857350508,
+          "delivered": -1.8971168847677942,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -1.3329746929554225,
+          "sent": -1.3329746929554225,
+          "delivered": -1.6464195857350508,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -1.0208192822314268,
+          "sent": -1.0208192822314268,
+          "delivered": -1.3329746929554225,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -0.7393462737262635,
+          "sent": -0.7393462737262635,
+          "delivered": -1.0208192822314268,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -0.49956438986781837,
+          "sent": -0.49956438986781837,
+          "delivered": -0.7393462737262635,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -0.3030619757855848,
+          "sent": -0.3030619757855848,
+          "delivered": -0.49956438986781837,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -0.14690135661411174,
+          "sent": -0.14690135661411174,
+          "delivered": -0.3030619757855848,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": -0.026249763062328846,
+          "sent": -0.026249763062328846,
+          "delivered": -0.14690135661411174,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.06424308226673081,
+          "sent": 0.06424308226673081,
+          "delivered": -0.026249763062328846,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.12975647970583437,
+          "sent": 0.12975647970583437,
+          "delivered": 0.06424308226673081,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.17498480425019913,
+          "sent": 0.17498480425019913,
+          "delivered": 0.12975647970583437,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.20402327484839944,
+          "sent": 0.20402327484839944,
+          "delivered": 0.17498480425019913,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.2203567751440858,
+          "sent": 0.2203567751440858,
+          "delivered": 0.20402327484839944,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.22689870991198746,
+          "sent": 0.22689870991198746,
+          "delivered": 0.2203567751440858,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.2260512094860352,
+          "sent": 0.2260512094860352,
+          "delivered": 0.22689870991198746,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.21977150699159576,
+          "sent": 0.21977150699159576,
+          "delivered": 0.2260512094860352,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.20963677670642733,
+          "sent": 0.20963677670642733,
+          "delivered": 0.21977150699159576,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.1969038067827642,
+          "sent": 0.1969038067827642,
+          "delivered": 0.20963677670642733,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.1825620815273712,
+          "sent": 0.1825620815273712,
+          "delivered": 0.1969038067827642,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.1673800047837939,
+          "sent": 0.1673800047837939,
+          "delivered": 0.1825620815273712,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.15194457509751902,
+          "sent": 0.15194457509751902,
+          "delivered": 0.1673800047837939,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.13669508696304122,
+          "sent": 0.13669508696304122,
+          "delivered": 0.15194457509751902,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.12195152644152119,
+          "sent": 0.12195152644152119,
+          "delivered": 0.13669508696304122,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.10793833483816329,
+          "sent": 0.10793833483816329,
+          "delivered": 0.12195152644152119,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.09480417568607047,
+          "sent": 0.09480417568607047,
+          "delivered": 0.10793833483816329,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.08263828245650928,
+          "sent": 0.08263828245650928,
+          "delivered": 0.09480417568607047,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.07148390034350305,
+          "sent": 0.07148390034350305,
+          "delivered": 0.08263828245650928,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.06134927199861484,
+          "sent": 0.06134927199861484,
+          "delivered": 0.07148390034350305,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.05221655758490762,
+          "sent": 0.05221655758490762,
+          "delivered": 0.06134927199861484,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.044049025437400635,
+          "sent": 0.044049025437400635,
+          "delivered": 0.05221655758490762,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.036796801395155176,
+          "sent": 0.036796801395155176,
+          "delivered": 0.044049025437400635,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 0.030401422406562628,
+          "sent": 0.030401422406562628,
+          "delivered": 0.036796801395155176,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        }
+      ],
+      "first_failure_node": null,
+      "elapsed_s": 0.002083901024889201,
+      "information": "fixed linear state feedback, current exact state and own queue only; failure is not infeasibility",
+      "envelope": {
+        "radius_m": 0.08,
+        "y_lower_m": -0.08,
+        "y_upper_m": 0.08,
+        "speed_m_s": 0.3293825494531063,
+        "acceleration_m_s2": 2.3199340417144962,
+        "per_hand_force_lower_n": -74.16198487095663,
+        "per_hand_force_upper_n": 74.16198487095663,
+        "derivative_abs_bound": [
+          0.47529316221658996,
+          1.5845731691979297,
+          0.5006065085466518,
+          3.1740528717474707,
+          0.3625479825011726,
+          3.3311279307460255,
+          0.37830175382757086,
+          0.865015595776086,
+          1.2666329183352152,
+          0.4255004317621494,
+          4.525990744219696,
+          0.4433788995365189,
+          3.978707764631271,
+          0.3181668579617369
+        ],
+        "second_derivative_abs_bound": [
+          7.26840012625695,
+          12.078985742774206,
+          3.704058778142252,
+          24.195823731533817,
+          5.677470952851464,
+          10.548625130628588,
+          3.0280642600297143,
+          15.05694052081473,
+          18.39898555400042,
+          8.158662719915048,
+          37.433337591067115,
+          13.583422556305333,
+          16.9996342451446,
+          6.001522590749481
+        ],
+        "max_chart_position_error_m": 7.633973338064082e-10,
+        "max_chart_rotation_error_rad": 1.6693847046628708e-09,
+        "min_sampled_clearance_m": 0.00494200709615895,
+        "limiting_torque_updates": [],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    }
+  ],
+  "elapsed_s": 1.5464791400008835,
+  "terminal_definition": "Human terminal box AND handle y/w near zero; offline additionally enforces all nominal terminal states zero",
+  "information": "causal current observations and own queue only"
+}

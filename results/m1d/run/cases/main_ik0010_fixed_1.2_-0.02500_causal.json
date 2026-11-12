@@ -1,0 +1,323 @@
+{
+  "case_id": "main_ik0010_fixed_1.2_-0.02500_causal",
+  "candidate": "ik0010",
+  "mode": "fixed",
+  "horizon_s": 1.2,
+  "method": "causal",
+  "variant": "main",
+  "disturbance": {
+    "kind": "velocity_impulse",
+    "onset_s": 0.0,
+    "delta_v_m_s": -0.025
+  },
+  "path_file": "results/m1d/run/paths/main_ik0010_fixed_1.2_-0.02500_causal.npz",
+  "status": "RECOVERED_CAUSAL",
+  "metrics": {
+    "valid": true,
+    "terminal_met": true,
+    "complete": true,
+    "reasons": [],
+    "recovery_time_s": 0.72,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 6.626695130129701e-10,
+    "independent_ode_v_error_m_s": 1.3137498432874706e-09,
+    "max_handle_position_error_m": 1.6549910195632946e-09,
+    "max_handle_rotation_error_rad": 3.4272859627531526e-09,
+    "contact_force_model_max_error_n": 7.399204910996104e-07,
+    "max_joint_velocity_ratio": 0.05983365464724497,
+    "max_joint_acceleration_ratio": 0.44369500518016153,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.4743395127536612,
+    "max_contact_cap_ratio": 0.37866068589971535,
+    "min_sampled_clearance_m": 0.0057017301994415764,
+    "peak_human_x_m": 0.0068414434138626785,
+    "peak_human_v_m_s": 0.025,
+    "peak_per_hand_lateral_force_n": 4.2020300206774515,
+    "peak_handle_displacement_m": 0.009835935397977535,
+    "peak_handle_speed_m_s": 0.055862078971632645,
+    "terminal_state": [
+      -0.0028024829994374957,
+      0.005628206245599301,
+      0.0001985356633417062,
+      -0.0035708860930038873
+    ],
+    "terminal_independent_human": [
+      -0.0028024823367679827,
+      0.005628207559349144
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "attempts": [
+    {
+      "status": "SIMULATED",
+      "reason": "completed",
+      "command_logs": [
+        {
+          "raw": 1.111227004936013,
+          "sent": 1.111227004936013,
+          "delivered": 0.0,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.2853249693548029,
+          "sent": 0.2853249693548029,
+          "delivered": 1.111227004936013,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.10524540915698452,
+          "sent": -0.10524540915698452,
+          "delivered": 0.2853249693548029,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.2648927512902524,
+          "sent": -0.2648927512902524,
+          "delivered": -0.10524540915698452,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.3060766504976423,
+          "sent": -0.3060766504976423,
+          "delivered": -0.2648927512902524,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.2900319330048488,
+          "sent": -0.2900319330048488,
+          "delivered": -0.3060766504976423,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 0.6879897935537055
+        },
+        {
+          "raw": -0.24955095507172187,
+          "sent": -0.24955095507172187,
+          "delivered": -0.2900319330048488,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 0.11741126587637944
+        },
+        {
+          "raw": -0.2017156092099538,
+          "sent": -0.2017156092099538,
+          "delivered": -0.24955095507172187,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 0.005453670409369391
+        },
+        {
+          "raw": -0.15500123762885526,
+          "sent": -0.15500123762885526,
+          "delivered": -0.2017156092099538,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 0.24909194750049884
+        },
+        {
+          "raw": -0.11323030761962455,
+          "sent": -0.11323030761962455,
+          "delivered": -0.15500123762885526,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 0.7560183282682398
+        },
+        {
+          "raw": -0.07776408104370863,
+          "sent": -0.07776408104370863,
+          "delivered": -0.11323030761962455,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.04870989390721364,
+          "sent": -0.04870989390721364,
+          "delivered": -0.07776408104370863,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.02557949174378149,
+          "sent": -0.02557949174378149,
+          "delivered": -0.04870989390721364,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": -0.007642138477246041,
+          "sent": -0.007642138477246041,
+          "delivered": -0.02557949174378149,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.0058912018918035325,
+          "sent": 0.0058912018918035325,
+          "delivered": -0.007642138477246041,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.01577648248351321,
+          "sent": 0.01577648248351321,
+          "delivered": 0.0058912018918035325,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.022695555901388526,
+          "sent": 0.022695555901388526,
+          "delivered": 0.01577648248351321,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.027241946622646174,
+          "sent": 0.027241946622646174,
+          "delivered": 0.022695555901388526,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.029920384458043014,
+          "sent": 0.029920384458043014,
+          "delivered": 0.027241946622646174,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.031152959818616655,
+          "sent": 0.031152959818616655,
+          "delivered": 0.029920384458043014,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.03128804352013015,
+          "sent": 0.03128804352013015,
+          "delivered": 0.031152959818616655,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.030609936232226853,
+          "sent": 0.030609936232226853,
+          "delivered": 0.03128804352013015,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.029348218740987808,
+          "sent": 0.029348218740987808,
+          "delivered": 0.030609936232226853,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.027686324345350982,
+          "sent": 0.027686324345350982,
+          "delivered": 0.029348218740987808,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.02576915080952627,
+          "sent": 0.02576915080952627,
+          "delivered": 0.027686324345350982,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.023709684353547367,
+          "sent": 0.023709684353547367,
+          "delivered": 0.02576915080952627,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.021594685399546898,
+          "sent": 0.021594685399546898,
+          "delivered": 0.023709684353547367,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.019489520519559794,
+          "sent": 0.019489520519559794,
+          "delivered": 0.021594685399546898,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.0174422369390331,
+          "sent": 0.0174422369390331,
+          "delivered": 0.019489520519559794,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        },
+        {
+          "raw": 0.015486975972968886,
+          "sent": 0.015486975972968886,
+          "delivered": 0.0174422369390331,
+          "allowed_lower": -1.3120843817881966,
+          "allowed_upper": 1.3120843817881966
+        }
+      ],
+      "first_failure_node": null,
+      "elapsed_s": 0.001577262009959668,
+      "information": "fixed linear state feedback, current exact state and own queue only; failure is not infeasibility",
+      "envelope": {
+        "radius_m": 0.01,
+        "y_lower_m": -0.01,
+        "y_upper_m": 0.01,
+        "speed_m_s": 0.1183036320803278,
+        "acceleration_m_s2": 1.3120843817881966,
+        "per_hand_force_lower_n": -74.16198487095663,
+        "per_hand_force_upper_n": 74.16198487095663,
+        "derivative_abs_bound": [
+          0.014396124220785145,
+          1.0088831849628583,
+          0.07515105197810006,
+          2.216715587627647,
+          0.09631542227906642,
+          3.046173524372624,
+          0.1324883870852364,
+          1.3690607311122014,
+          1.8120486822562936,
+          0.34076329080102313,
+          8.002534094407782,
+          0.4345704803906558,
+          5.653508209591278,
+          1.639115951919619
+        ],
+        "second_derivative_abs_bound": [
+          1.0182540873685781,
+          8.966585966804663,
+          0.4617487657273406,
+          14.337916408442286,
+          1.313105644821913,
+          5.401293342288227,
+          0.3444321182068666,
+          51.69897438920157,
+          124.14458328729428,
+          31.06513431968255,
+          290.1773884734746,
+          24.354600955864612,
+          144.79998725230558,
+          67.8951637071672
+        ],
+        "max_chart_position_error_m": 6.854360879106998e-09,
+        "max_chart_rotation_error_rad": 5.6168465224898255e-09,
+        "min_sampled_clearance_m": 0.0057017301994415764,
+        "limiting_torque_updates": [],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    }
+  ],
+  "elapsed_s": 1.0537949959980324,
+  "terminal_definition": "Human terminal box AND handle y/w near zero; offline additionally enforces all nominal terminal states zero",
+  "information": "causal current observations and own queue only"
+}

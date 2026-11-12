@@ -1,0 +1,1148 @@
+{
+  "case_id": "contact_cap_120_ik0036_fixed_1.6_-0.24000_causal",
+  "candidate": "ik0036",
+  "mode": "fixed",
+  "horizon_s": 1.6,
+  "method": "causal",
+  "variant": "contact_cap_120",
+  "disturbance": {
+    "kind": "velocity_impulse",
+    "onset_s": 0.0,
+    "delta_v_m_s": -0.24
+  },
+  "path_file": "results/m1d/run/paths/contact_cap_120_ik0036_fixed_1.6_-0.24000_causal.npz",
+  "status": "NOT_RECOVERED_CAUSAL",
+  "metrics": {
+    "valid": true,
+    "terminal_met": false,
+    "complete": false,
+    "reasons": [],
+    "recovery_time_s": null,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 2.3038931873387014e-12,
+    "independent_ode_v_error_m_s": 3.779826451832946e-11,
+    "max_handle_position_error_m": 3.53101273405798e-11,
+    "max_handle_rotation_error_rad": 7.500895305073562e-11,
+    "contact_force_model_max_error_n": 5.199661146093604e-08,
+    "max_joint_velocity_ratio": 0.2528171463854847,
+    "max_joint_acceleration_ratio": 0.48613101045237334,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.4889353921531904,
+    "max_contact_cap_ratio": 0.423626555682069,
+    "min_sampled_clearance_m": 0.0057260124333319935,
+    "peak_human_x_m": 0.06701994811986568,
+    "peak_human_v_m_s": 0.24,
+    "peak_per_hand_lateral_force_n": 41.03920326929318,
+    "peak_handle_displacement_m": 0.06838492372389406,
+    "peak_handle_speed_m_s": 0.3293825494531063,
+    "terminal_state": [
+      -0.06701994811986568,
+      -0.1498164691563041,
+      0.06838492372389406,
+      0.3293825494531063
+    ],
+    "terminal_independent_human": [
+      -0.06701994812216958,
+      -0.14981646916799102
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "attempts": [
+    {
+      "status": "FEEDBACK_CONSTRAINT_FAILURE",
+      "reason": "governor_no_admissible_acceleration",
+      "command_logs": [
+        {
+          "raw": 10.667779247385722,
+          "sent": 2.3199340417144962,
+          "delivered": 0.0,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 9.392317289543763,
+          "sent": 2.3199340417144962,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 7.669119560226273,
+          "sent": 2.3199340417144962,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 2.3199340417144962
+        },
+        {
+          "raw": 5.447305432899373,
+          "sent": 1.2747616111841675,
+          "delivered": 2.3199340417144962,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 1.2747616111841675
+        },
+        {
+          "raw": 3.506304752986282,
+          "sent": 0.0,
+          "delivered": 1.2747616111841675,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 0.0
+        },
+        {
+          "raw": 2.1846017300177256,
+          "sent": 0.0,
+          "delivered": 0.0,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 0.0
+        },
+        {
+          "raw": 0.6888704526469001,
+          "sent": 0.0,
+          "delivered": 0.0,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": 0.0
+        },
+        {
+          "raw": -0.9897530326257842,
+          "sent": -1.9502821275228779,
+          "delivered": 0.0,
+          "allowed_lower": -2.3199340417144962,
+          "allowed_upper": -1.9502821275228779
+        },
+        {
+          "reason": "governor_no_admissible_acceleration",
+          "raw": -1.3061406212287547,
+          "lower": -2.3199340417144962,
+          "upper": -50.27425287043833
+        }
+      ],
+      "first_failure_node": 8,
+      "elapsed_s": 0.0012024820316582918,
+      "information": "fixed linear state feedback, current exact state and own queue only; failure is not infeasibility",
+      "envelope": {
+        "radius_m": 0.08,
+        "y_lower_m": -0.08,
+        "y_upper_m": 0.08,
+        "speed_m_s": 0.3293825494531063,
+        "acceleration_m_s2": 2.3199340417144962,
+        "per_hand_force_lower_n": -85.02933696708045,
+        "per_hand_force_upper_n": 85.17125000662527,
+        "derivative_abs_bound": [
+          0.47529316221658996,
+          1.5845731691979297,
+          0.5006065085466518,
+          3.1740528717474707,
+          0.3625479825011726,
+          3.3311279307460255,
+          0.37830175382757086,
+          0.865015595776086,
+          1.2666329183352152,
+          0.4255004317621494,
+          4.525990744219696,
+          0.4433788995365189,
+          3.978707764631271,
+          0.3181668579617369
+        ],
+        "second_derivative_abs_bound": [
+          7.26840012625695,
+          12.078985742774206,
+          3.704058778142252,
+          24.195823731533817,
+          5.677470952851464,
+          10.548625130628588,
+          3.0280642600297143,
+          15.05694052081473,
+          18.39898555400042,
+          8.158662719915048,
+          37.433337591067115,
+          13.583422556305333,
+          16.9996342451446,
+          6.001522590749481
+        ],
+        "max_chart_position_error_m": 7.633973338064082e-10,
+        "max_chart_rotation_error_rad": 1.6693847046628708e-09,
+        "min_sampled_clearance_m": 0.00494200709615895,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.08,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -85.02933696708045
+          },
+          {
+            "y_m": -0.08,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.39773403341194
+          },
+          {
+            "y_m": -0.079,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.39006852981528
+          },
+          {
+            "y_m": -0.078,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.38240298307713
+          },
+          {
+            "y_m": -0.077,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.3747374775651
+          },
+          {
+            "y_m": -0.076,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.36707193274222
+          },
+          {
+            "y_m": -0.07500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.35940642549653
+          },
+          {
+            "y_m": -0.07400000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.35174088240748
+          },
+          {
+            "y_m": -0.07300000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.34407537359033
+          },
+          {
+            "y_m": -0.07200000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.33640983207259
+          },
+          {
+            "y_m": -0.07100000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.32874432182946
+          },
+          {
+            "y_m": -0.07,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.32107878173775
+          },
+          {
+            "y_m": -0.069,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.31341327019908
+          },
+          {
+            "y_m": -0.068,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.30574773140295
+          },
+          {
+            "y_m": -0.067,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.29808221868612
+          },
+          {
+            "y_m": -0.066,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.29041668106812
+          },
+          {
+            "y_m": -0.065,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.28275116727885
+          },
+          {
+            "y_m": -0.064,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.27508563073324
+          },
+          {
+            "y_m": -0.063,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.26742011596704
+          },
+          {
+            "y_m": -0.062,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.25975458039848
+          },
+          {
+            "y_m": -0.061,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.25208906474143
+          },
+          {
+            "y_m": -0.060000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.24442353006361
+          },
+          {
+            "y_m": -0.059000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.2367580135939
+          },
+          {
+            "y_m": -0.058,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.22909247972879
+          },
+          {
+            "y_m": -0.057,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.22142696251726
+          },
+          {
+            "y_m": -0.056,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.21376142939393
+          },
+          {
+            "y_m": -0.05500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.2060959115048
+          },
+          {
+            "y_m": -0.054000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.19843037905912
+          },
+          {
+            "y_m": -0.053000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.1907648605508
+          },
+          {
+            "y_m": -0.052000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.18309932872428
+          },
+          {
+            "y_m": -0.051000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.17543380965006
+          },
+          {
+            "y_m": -0.05,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.16776827838945
+          },
+          {
+            "y_m": -0.049,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.16010275879779
+          },
+          {
+            "y_m": -0.048,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.15243722805461
+          },
+          {
+            "y_m": -0.047,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.14477170798978
+          },
+          {
+            "y_m": -0.046,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.1371061777198
+          },
+          {
+            "y_m": -0.045,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.12944065722208
+          },
+          {
+            "y_m": -0.044000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.12177512738495
+          },
+          {
+            "y_m": -0.043000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.11410960649138
+          },
+          {
+            "y_m": -0.042,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.10644407705014
+          },
+          {
+            "y_m": -0.041,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.09877855579447
+          },
+          {
+            "y_m": -0.04,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.09111302671529
+          },
+          {
+            "y_m": -0.03900000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.08344750512859
+          },
+          {
+            "y_m": -0.038000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.07578197638044
+          },
+          {
+            "y_m": -0.037000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.06811645449108
+          },
+          {
+            "y_m": -0.036000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.06045092604563
+          },
+          {
+            "y_m": -0.035,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.0527854038797
+          },
+          {
+            "y_m": -0.034,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.04511987571082
+          },
+          {
+            "y_m": -0.033,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.03745435329223
+          },
+          {
+            "y_m": -0.032,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.02978882537592
+          },
+          {
+            "y_m": -0.031,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.02212330272685
+          },
+          {
+            "y_m": -0.03,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.01445777504111
+          },
+          {
+            "y_m": -0.029,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 86.00679225218175
+          },
+          {
+            "y_m": -0.028000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.99912672470629
+          },
+          {
+            "y_m": -0.027000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.99146120165533
+          },
+          {
+            "y_m": -0.026000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.98379567437141
+          },
+          {
+            "y_m": -0.025,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.9761301511461
+          },
+          {
+            "y_m": -0.024,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.96846462403661
+          },
+          {
+            "y_m": -0.023,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.96079910065279
+          },
+          {
+            "y_m": -0.022,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.95313357370182
+          },
+          {
+            "y_m": -0.021,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.94546805017417
+          },
+          {
+            "y_m": -0.020000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.93780252336694
+          },
+          {
+            "y_m": -0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.93013699970903
+          },
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.92247147303213
+          },
+          {
+            "y_m": -0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.9148059492565
+          },
+          {
+            "y_m": -0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.90714042269724
+          },
+          {
+            "y_m": -0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.89947489881555
+          },
+          {
+            "y_m": -0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.89180937236247
+          },
+          {
+            "y_m": -0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.88414384838539
+          },
+          {
+            "y_m": -0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.87647832202761
+          },
+          {
+            "y_m": -0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.86881279796519
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.8611472716928
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.85348174755428
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.84581622135792
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.83815069715196
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.83048517102313
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.82281964675762
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.81515412068829
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.80748859637082
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.79982307035348
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.79215754599096
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.78449202001862
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.7768264959676
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.76916096968382
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.76149544564935
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.75382991934892
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.74616439532859
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.73849886901412
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.7308333450056
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.7231678186793
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.71550229468065
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.70783676834449
+          },
+          {
+            "y_m": 0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.70017124435398
+          },
+          {
+            "y_m": 0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.69250571800963
+          },
+          {
+            "y_m": 0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.68484019402577
+          },
+          {
+            "y_m": 0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.67717466767479
+          },
+          {
+            "y_m": 0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.6695091436963
+          },
+          {
+            "y_m": 0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.66184361733993
+          },
+          {
+            "y_m": 0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.6541780933658
+          },
+          {
+            "y_m": 0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.64651256700515
+          },
+          {
+            "y_m": 0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.63884704303439
+          },
+          {
+            "y_m": 0.020000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.63118151667027
+          },
+          {
+            "y_m": 0.021,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.62351599270228
+          },
+          {
+            "y_m": 0.022,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.6158504663355
+          },
+          {
+            "y_m": 0.023,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.6081849423696
+          },
+          {
+            "y_m": 0.024,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.60051941600057
+          },
+          {
+            "y_m": 0.025,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.59285389203657
+          },
+          {
+            "y_m": 0.026000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.58518836566577
+          },
+          {
+            "y_m": 0.027000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.57752284170334
+          },
+          {
+            "y_m": 0.028000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.56985731533094
+          },
+          {
+            "y_m": 0.029,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.56219179137003
+          },
+          {
+            "y_m": 0.03,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.55452626499613
+          },
+          {
+            "y_m": 0.031,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.54686074103678
+          },
+          {
+            "y_m": 0.032,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.53919521466132
+          },
+          {
+            "y_m": 0.033,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.53152969070375
+          },
+          {
+            "y_m": 0.034,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.52386416432643
+          },
+          {
+            "y_m": 0.035,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.51619864037099
+          },
+          {
+            "y_m": 0.036000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.50853311399163
+          },
+          {
+            "y_m": 0.037000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.5008675900387
+          },
+          {
+            "y_m": 0.038000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.49320206365677
+          },
+          {
+            "y_m": 0.03900000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.48553653970708
+          },
+          {
+            "y_m": 0.04,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.47787101332197
+          },
+          {
+            "y_m": 0.041,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.47020548937611
+          },
+          {
+            "y_m": 0.042,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.46253996298712
+          },
+          {
+            "y_m": 0.043000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.45487443904602
+          },
+          {
+            "y_m": 0.044000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.44720891265227
+          },
+          {
+            "y_m": 0.045,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.43954338871687
+          },
+          {
+            "y_m": 0.046,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.43187786231744
+          },
+          {
+            "y_m": 0.047,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.42421233838883
+          },
+          {
+            "y_m": 0.048,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.41654681198263
+          },
+          {
+            "y_m": 0.049,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.40888128806203
+          },
+          {
+            "y_m": 0.05,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.40121576164779
+          },
+          {
+            "y_m": 0.051000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.39355023773655
+          },
+          {
+            "y_m": 0.052000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.38588471131295
+          },
+          {
+            "y_m": 0.053000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.37821918741264
+          },
+          {
+            "y_m": 0.054000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.3705536609781
+          },
+          {
+            "y_m": 0.05500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.3628881370904
+          },
+          {
+            "y_m": 0.056,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.35522261064334
+          },
+          {
+            "y_m": 0.057,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.34755708676997
+          },
+          {
+            "y_m": 0.058,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.3398915603085
+          },
+          {
+            "y_m": 0.059000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.33222603645153
+          },
+          {
+            "y_m": 0.060000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.32456050997368
+          },
+          {
+            "y_m": 0.061,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.31689498613524
+          },
+          {
+            "y_m": 0.062,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.30922945963877
+          },
+          {
+            "y_m": 0.063,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.30156393582138
+          },
+          {
+            "y_m": 0.064,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.29389840930398
+          },
+          {
+            "y_m": 0.065,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.28623288551012
+          },
+          {
+            "y_m": 0.066,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.2785673589691
+          },
+          {
+            "y_m": 0.067,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.27090183520166
+          },
+          {
+            "y_m": 0.068,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.2632363086343
+          },
+          {
+            "y_m": 0.069,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.25557078489632
+          },
+          {
+            "y_m": 0.07,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.24790525829943
+          },
+          {
+            "y_m": 0.07100000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.24023973459441
+          },
+          {
+            "y_m": 0.07200000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.23257420796463
+          },
+          {
+            "y_m": 0.07300000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.22490868429621
+          },
+          {
+            "y_m": 0.07400000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.21724315762984
+          },
+          {
+            "y_m": 0.07500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.20957763400212
+          },
+          {
+            "y_m": 0.076,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.20191210729497
+          },
+          {
+            "y_m": 0.077,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.19424658371246
+          },
+          {
+            "y_m": 0.078,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.18658105696012
+          },
+          {
+            "y_m": 0.079,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.17891553342777
+          },
+          {
+            "y_m": 0.08,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 85.17125000662527
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    }
+  ],
+  "elapsed_s": 5.974253120017238,
+  "terminal_definition": "Human terminal box AND handle y/w near zero; offline additionally enforces all nominal terminal states zero",
+  "information": "causal current observations and own queue only"
+}

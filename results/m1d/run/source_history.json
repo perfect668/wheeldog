@@ -1,0 +1,55 @@
+{
+  "branch": "m1/coupled-recovery",
+  "baseline": "c546434dbb8f15569812e06ecb853705307388f4",
+  "reporting_source_commit": "1b373036d54c0c58966493c907e84975f36cc11c",
+  "clean_tracked_status": "",
+  "python": "3.11.15",
+  "cpu_model": "Intel(R) Core(TM) Ultra 7 155H",
+  "logical_cpus": 22,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "numerical_stages": {
+    "boundaries_provenance.json": {
+      "source_commit": "f06a90094cb4889933b22078d2d17338935bfa54",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:42:56.370238+00:00"
+    },
+    "direct_provenance.json": {
+      "source_commit": "f06a90094cb4889933b22078d2d17338935bfa54",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:41:32.453120+00:00"
+    },
+    "direct_refined_provenance.json": {
+      "source_commit": "821d04fc3619b8492597cdcd6f912f1b81422525",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:49:34.581250+00:00"
+    },
+    "future_provenance.json": {
+      "source_commit": "f06a90094cb4889933b22078d2d17338935bfa54",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:42:47.358832+00:00"
+    },
+    "main_provenance.json": {
+      "source_commit": "48f011974e25df87dfc63e084259fc01c1f1ea26",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:38:02.377339+00:00"
+    },
+    "sensitivity_provenance.json": {
+      "source_commit": "6d80fc1144348cbf80bc3393488337afe0719fb9",
+      "tracked_status": "",
+      "started_utc": "2026-11-12T03:40:00.011170+00:00"
+    }
+  },
+  "timing_from_actual_pipeline_stdout_s": {
+    "prepare": 42.1,
+    "main": 117.65,
+    "sensitivity": 167.28,
+    "future": 8.98,
+    "boundaries": 391.61,
+    "direct_probes": 6.17,
+    "validation": 35.39
+  },
+  "note": "Stage times overlap independent optimization; cumulative case wall times are not total CPU or elapsed time. Each stage records its own source; final data commit is reported in the handoff."
+}

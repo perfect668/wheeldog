@@ -1,0 +1,2589 @@
+{
+  "case_id": "contact_cap_120_ik0024_fixed_1.6_-0.16000_offline",
+  "candidate": "ik0024",
+  "mode": "fixed",
+  "horizon_s": 1.6,
+  "method": "offline",
+  "variant": "contact_cap_120",
+  "disturbance": {
+    "kind": "velocity_impulse",
+    "onset_s": 0.0,
+    "delta_v_m_s": -0.16
+  },
+  "path_file": "results/m1d/run/paths/contact_cap_120_ik0024_fixed_1.6_-0.16000_offline.npz",
+  "status": "RESTRICTED_CLASS_INFEASIBLE",
+  "metrics": null,
+  "attempts": [
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.016039473994169384,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.005,
+        "y_lower_m": -0.005,
+        "y_upper_m": 0.005,
+        "speed_m_s": 0.10403359364929944,
+        "acceleration_m_s2": 1.1474812772908696,
+        "per_hand_force_lower_n": -78.54606245708221,
+        "per_hand_force_upper_n": 78.57037627600582,
+        "derivative_abs_bound": [
+          0.052419716810176605,
+          0.9497121127220994,
+          0.10346660821154413,
+          2.006860314145242,
+          0.06416279367385856,
+          2.8581673946715385,
+          0.038976121782893496,
+          3.0695836965652514,
+          1.430693728258088,
+          1.0027853157845283,
+          9.150476097344118,
+          1.2130645239852669,
+          5.491104991197089,
+          3.2394999880753392
+        ],
+        "second_derivative_abs_bound": [
+          1.4318178697357713,
+          9.3582706224844,
+          0.5887233834249578,
+          17.17283036348949,
+          0.9909014847626768,
+          7.754891320630897,
+          0.16730599991947315,
+          129.17890077956784,
+          124.01347810826158,
+          79.68016513594033,
+          375.2429340222001,
+          73.52719167495891,
+          154.57493978598436,
+          156.56856229954298
+        ],
+        "max_chart_position_error_m": 1.7677367366082185e-08,
+        "max_chart_rotation_error_rad": 2.1247798464613663e-08,
+        "min_sampled_clearance_m": 0.005132146436085793,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.005,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.54606245708221
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.0045000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57343773663847
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.0045000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57053734040146
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    },
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.016891883977223188,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.01,
+        "y_lower_m": -0.01,
+        "y_upper_m": 0.01,
+        "speed_m_s": 0.07405595771516695,
+        "acceleration_m_s2": 0.8914760962862428,
+        "per_hand_force_lower_n": -78.544450480248,
+        "per_hand_force_upper_n": 78.56876508735968,
+        "derivative_abs_bound": [
+          0.05973904176409661,
+          0.9935658815855355,
+          0.1061693371482724,
+          2.093905669484355,
+          0.06841929856653825,
+          2.897465015690933,
+          0.039815186808617564,
+          3.9649917957071548,
+          2.3000419360649595,
+          1.5150352352910479,
+          11.778218220030176,
+          1.648207940033136,
+          6.575308367381728,
+          4.339882854122982
+        ],
+        "second_derivative_abs_bound": [
+          1.4931005695853483,
+          9.623557350326383,
+          0.5917106859503612,
+          17.65251775771093,
+          1.0571210206259674,
+          7.968507859338114,
+          0.17391440484881837,
+          252.21572612840058,
+          243.5128447150583,
+          165.6390655636992,
+          740.5249898509609,
+          113.04355148499965,
+          304.12746325320495,
+          313.39156806005076
+        ],
+        "max_chart_position_error_m": 4.660967854672742e-08,
+        "max_chart_rotation_error_rad": 4.002671050831074e-08,
+        "min_sampled_clearance_m": 0.004696493495159012,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.01,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.544450480248
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57520943522374
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57488975422758
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57456500039588
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57424421458012
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5739205656045
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5700539569196
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5697318162843
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56940952213962
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56908736387373
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56876508735968
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    },
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.016152129974216223,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.02,
+        "y_lower_m": -0.018000000000000002,
+        "y_upper_m": 0.02,
+        "speed_m_s": 0.008064675615384423,
+        "acceleration_m_s2": 0.1454655138521057,
+        "per_hand_force_lower_n": -78.5418727410763,
+        "per_hand_force_upper_n": 78.56554291346012,
+        "derivative_abs_bound": [
+          0.0754456694848616,
+          1.0615718380698487,
+          0.11040656881023737,
+          2.2758129332610153,
+          0.07467045767807963,
+          2.979610269574437,
+          0.04173355770337462,
+          23.74115914424003,
+          22.51017507625249,
+          12.382752324240824,
+          72.18205691470841,
+          10.856449873072279,
+          31.75959739647546,
+          29.47492759115944
+        ],
+        "second_derivative_abs_bound": [
+          1.6514468711235089,
+          10.216435864158887,
+          0.6259951584886991,
+          18.76349476104801,
+          1.1716337942109116,
+          8.480062949168595,
+          0.21568850248653032,
+          20368.16510486764,
+          20913.907444312987,
+          11285.505943147105,
+          62443.310179350396,
+          9267.693627304436,
+          26056.985040929463,
+          25948.285336336543
+        ],
+        "max_chart_position_error_m": 5.0462703148041913e-05,
+        "max_chart_rotation_error_rad": 1.8020130393255814e-05,
+        "min_sampled_clearance_m": 0.003737550873357575,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.5418727410763
+          },
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57778717429136
+          },
+          {
+            "y_m": -0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57714273949844
+          },
+          {
+            "y_m": -0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5768821624375
+          },
+          {
+            "y_m": -0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57649830789548
+          },
+          {
+            "y_m": -0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57618987682817
+          },
+          {
+            "y_m": -0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.575853870284
+          },
+          {
+            "y_m": -0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57553686775633
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57520943522374
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57488975422758
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57456500039588
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57424421458012
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5739205656045
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5700539569196
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5697318162843
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56940952213962
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56908736387373
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56876508735968
+          },
+          {
+            "y_m": 0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56844291634016
+          },
+          {
+            "y_m": 0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56812065257975
+          },
+          {
+            "y_m": 0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56779847214946
+          },
+          {
+            "y_m": 0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56747621779981
+          },
+          {
+            "y_m": 0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56715403030472
+          },
+          {
+            "y_m": 0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56683178301995
+          },
+          {
+            "y_m": 0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56650959014047
+          },
+          {
+            "y_m": 0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56618734824
+          },
+          {
+            "y_m": 0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56586515120216
+          },
+          {
+            "y_m": 0.02,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56554291346012
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    },
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.016378019005060196,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.04,
+        "y_lower_m": -0.018000000000000002,
+        "y_upper_m": 0.04,
+        "speed_m_s": 0.008064675615384423,
+        "acceleration_m_s2": 0.1454655138521057,
+        "per_hand_force_lower_n": -78.5418727410763,
+        "per_hand_force_upper_n": 78.55909856566097,
+        "derivative_abs_bound": [
+          0.11196474569872424,
+          1.0615718380698487,
+          0.11040656881023737,
+          2.6792725033386033,
+          0.07467045767807963,
+          3.1628095387525965,
+          0.04719472298988454,
+          23.74115914424003,
+          22.51017507625249,
+          12.382752324240824,
+          72.18205691470841,
+          10.856449873072279,
+          31.75959739647546,
+          29.47492759115944
+        ],
+        "second_derivative_abs_bound": [
+          2.0695334107020873,
+          11.747608658592508,
+          0.8042047349340351,
+          21.79187536109334,
+          1.5191642194147559,
+          9.953075036042172,
+          0.38805515038864524,
+          20368.16510486764,
+          20913.907444312987,
+          11285.505943147105,
+          62443.310179350396,
+          9267.693627304436,
+          26056.985040929463,
+          25948.285336336543
+        ],
+        "max_chart_position_error_m": 5.0462703148041913e-05,
+        "max_chart_rotation_error_rad": 1.8020130393255814e-05,
+        "min_sampled_clearance_m": 0.003737550873357575,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.5418727410763
+          },
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57778717429136
+          },
+          {
+            "y_m": -0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57714273949844
+          },
+          {
+            "y_m": -0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5768821624375
+          },
+          {
+            "y_m": -0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57649830789548
+          },
+          {
+            "y_m": -0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57618987682817
+          },
+          {
+            "y_m": -0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.575853870284
+          },
+          {
+            "y_m": -0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57553686775633
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57520943522374
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57488975422758
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57456500039588
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57424421458012
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5739205656045
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5700539569196
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5697318162843
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56940952213962
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56908736387373
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56876508735968
+          },
+          {
+            "y_m": 0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56844291634016
+          },
+          {
+            "y_m": 0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56812065257975
+          },
+          {
+            "y_m": 0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56779847214946
+          },
+          {
+            "y_m": 0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56747621779981
+          },
+          {
+            "y_m": 0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56715403030472
+          },
+          {
+            "y_m": 0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56683178301995
+          },
+          {
+            "y_m": 0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56650959014047
+          },
+          {
+            "y_m": 0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56618734824
+          },
+          {
+            "y_m": 0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56586515120216
+          },
+          {
+            "y_m": 0.020000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56554291346012
+          },
+          {
+            "y_m": 0.021,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56522071317286
+          },
+          {
+            "y_m": 0.022,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56489847868018
+          },
+          {
+            "y_m": 0.023,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56457627582739
+          },
+          {
+            "y_m": 0.024,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56425404390026
+          },
+          {
+            "y_m": 0.025,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56393183900337
+          },
+          {
+            "y_m": 0.026000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56360960912036
+          },
+          {
+            "y_m": 0.027000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56328740258182
+          },
+          {
+            "y_m": 0.028000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56296517434046
+          },
+          {
+            "y_m": 0.029,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5626429664744
+          },
+          {
+            "y_m": 0.03,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56232073956058
+          },
+          {
+            "y_m": 0.031,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56199853061487
+          },
+          {
+            "y_m": 0.032,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5616763047806
+          },
+          {
+            "y_m": 0.033,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56135409495293
+          },
+          {
+            "y_m": 0.034,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5610318700007
+          },
+          {
+            "y_m": 0.035,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56070965945
+          },
+          {
+            "y_m": 0.036000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56038743522085
+          },
+          {
+            "y_m": 0.037000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56006522407635
+          },
+          {
+            "y_m": 0.038000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55974300044089
+          },
+          {
+            "y_m": 0.03900000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55942078880874
+          },
+          {
+            "y_m": 0.04,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55909856566097
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    },
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.01743191498098895,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.08,
+        "y_lower_m": -0.018000000000000002,
+        "y_upper_m": 0.08,
+        "speed_m_s": 0.008064675615384423,
+        "acceleration_m_s2": 0.1454655138521057,
+        "per_hand_force_lower_n": -78.5418727410763,
+        "per_hand_force_upper_n": 78.54620987006282,
+        "derivative_abs_bound": [
+          0.21733520910868587,
+          1.0615718380698487,
+          0.11040656881023737,
+          3.7625586987184954,
+          0.07467045767807963,
+          3.6698998906229665,
+          0.07454913175423922,
+          23.74115914424003,
+          22.51017507625249,
+          12.382752324240824,
+          72.18205691470841,
+          10.856449873072279,
+          31.75959739647546,
+          29.47492759115944
+        ],
+        "second_derivative_abs_bound": [
+          3.711323468836427,
+          17.766662617930315,
+          1.8658859777657604,
+          34.587874169893475,
+          2.8808994976984974,
+          16.59006132326811,
+          1.4215262532882704,
+          20368.16510486764,
+          20913.907444312987,
+          11285.505943147105,
+          62443.310179350396,
+          9267.693627304436,
+          26056.985040929463,
+          25948.285336336543
+        ],
+        "max_chart_position_error_m": 5.0462703148041913e-05,
+        "max_chart_rotation_error_rad": 1.8020130393255814e-05,
+        "min_sampled_clearance_m": 0.003737550873357575,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.5418727410763
+          },
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57778717429136
+          },
+          {
+            "y_m": -0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57714273949844
+          },
+          {
+            "y_m": -0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5768821624375
+          },
+          {
+            "y_m": -0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57649830789548
+          },
+          {
+            "y_m": -0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57618987682817
+          },
+          {
+            "y_m": -0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.575853870284
+          },
+          {
+            "y_m": -0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57553686775633
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57520943522374
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57488975422758
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57456500039588
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57424421458012
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5739205656045
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5700539569196
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5697318162843
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56940952213962
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56908736387373
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56876508735968
+          },
+          {
+            "y_m": 0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56844291634016
+          },
+          {
+            "y_m": 0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56812065257975
+          },
+          {
+            "y_m": 0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56779847214946
+          },
+          {
+            "y_m": 0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56747621779981
+          },
+          {
+            "y_m": 0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56715403030472
+          },
+          {
+            "y_m": 0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56683178301995
+          },
+          {
+            "y_m": 0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56650959014047
+          },
+          {
+            "y_m": 0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56618734824
+          },
+          {
+            "y_m": 0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56586515120216
+          },
+          {
+            "y_m": 0.020000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56554291346012
+          },
+          {
+            "y_m": 0.021,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56522071317286
+          },
+          {
+            "y_m": 0.022,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56489847868018
+          },
+          {
+            "y_m": 0.023,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56457627582739
+          },
+          {
+            "y_m": 0.024,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56425404390026
+          },
+          {
+            "y_m": 0.025,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56393183900337
+          },
+          {
+            "y_m": 0.026000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56360960912036
+          },
+          {
+            "y_m": 0.027000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56328740258182
+          },
+          {
+            "y_m": 0.028000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56296517434046
+          },
+          {
+            "y_m": 0.029,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5626429664744
+          },
+          {
+            "y_m": 0.03,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56232073956058
+          },
+          {
+            "y_m": 0.031,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56199853061487
+          },
+          {
+            "y_m": 0.032,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5616763047806
+          },
+          {
+            "y_m": 0.033,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56135409495293
+          },
+          {
+            "y_m": 0.034,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5610318700007
+          },
+          {
+            "y_m": 0.035,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56070965945
+          },
+          {
+            "y_m": 0.036000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56038743522085
+          },
+          {
+            "y_m": 0.037000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56006522407635
+          },
+          {
+            "y_m": 0.038000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55974300044089
+          },
+          {
+            "y_m": 0.03900000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55942078880874
+          },
+          {
+            "y_m": 0.04,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55909856566097
+          },
+          {
+            "y_m": 0.041,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55877635362906
+          },
+          {
+            "y_m": 0.042,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55845413088113
+          },
+          {
+            "y_m": 0.043000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55813191852292
+          },
+          {
+            "y_m": 0.044000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5578096961012
+          },
+          {
+            "y_m": 0.045,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55748748347914
+          },
+          {
+            "y_m": 0.046,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55716526132129
+          },
+          {
+            "y_m": 0.047,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5568430484887
+          },
+          {
+            "y_m": 0.048,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5565208265414
+          },
+          {
+            "y_m": 0.049,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55619861354454
+          },
+          {
+            "y_m": 0.05,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55587639176146
+          },
+          {
+            "y_m": 0.051000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55555417864096
+          },
+          {
+            "y_m": 0.052000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55523195698156
+          },
+          {
+            "y_m": 0.053000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55490974377365
+          },
+          {
+            "y_m": 0.054000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55458752220163
+          },
+          {
+            "y_m": 0.05500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55426530893916
+          },
+          {
+            "y_m": 0.056,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55394308742177
+          },
+          {
+            "y_m": 0.057,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55362087413498
+          },
+          {
+            "y_m": 0.058,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55329865264187
+          },
+          {
+            "y_m": 0.059000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55297643935907
+          },
+          {
+            "y_m": 0.060000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55265421786193
+          },
+          {
+            "y_m": 0.061,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55233200461022
+          },
+          {
+            "y_m": 0.062,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55200978308203
+          },
+          {
+            "y_m": 0.063,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55168756988769
+          },
+          {
+            "y_m": 0.064,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5513653483021
+          },
+          {
+            "y_m": 0.065,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55104313519122
+          },
+          {
+            "y_m": 0.066,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5507209135222
+          },
+          {
+            "y_m": 0.067,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55039870052093
+          },
+          {
+            "y_m": 0.068,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5500764787423
+          },
+          {
+            "y_m": 0.069,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54975426587744
+          },
+          {
+            "y_m": 0.07,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5494320439624
+          },
+          {
+            "y_m": 0.07100000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54910983126183
+          },
+          {
+            "y_m": 0.07200000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54878760918251
+          },
+          {
+            "y_m": 0.07300000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54846539667555
+          },
+          {
+            "y_m": 0.07400000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54814317440255
+          },
+          {
+            "y_m": 0.07500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5478209621205
+          },
+          {
+            "y_m": 0.076,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54749873962264
+          },
+          {
+            "y_m": 0.077,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54717652759919
+          },
+          {
+            "y_m": 0.078,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54685430484277
+          },
+          {
+            "y_m": 0.079,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54653209311452
+          },
+          {
+            "y_m": 0.08,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54620987006282
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    },
+    {
+      "status": "RESTRICTED_LP_INFEASIBLE",
+      "solver_status": 2,
+      "reason": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+      "elapsed_s": 0.01776960800634697,
+      "information": "offline known complete disturbance; infeasibility only within specified chart/envelope/control class",
+      "envelope": {
+        "radius_m": 0.12,
+        "y_lower_m": -0.018000000000000002,
+        "y_upper_m": 0.12,
+        "speed_m_s": 0.008064675615384423,
+        "acceleration_m_s2": 0.1454655138521057,
+        "per_hand_force_lower_n": -78.5418727410763,
+        "per_hand_force_upper_n": 78.53332117446472,
+        "derivative_abs_bound": [
+          0.430102306485976,
+          1.133700259195057,
+          0.11040656881023737,
+          5.9000791984186485,
+          0.21500364799468774,
+          4.737339199978512,
+          0.18281256633579787,
+          23.74115914424003,
+          22.51017507625249,
+          12.382752324240824,
+          72.18205691470841,
+          10.856449873072279,
+          31.75959739647546,
+          29.47492759115944
+        ],
+        "second_derivative_abs_bound": [
+          9.40551194230982,
+          41.56992741962376,
+          6.977915748864451,
+          87.11785254276501,
+          7.620532628677836,
+          44.70821087749082,
+          6.337661192219884,
+          20368.16510486764,
+          20913.907444312987,
+          11285.505943147105,
+          62443.310179350396,
+          9267.693627304436,
+          26056.985040929463,
+          25948.285336336543
+        ],
+        "max_chart_position_error_m": 5.0462703148041913e-05,
+        "max_chart_rotation_error_rad": 1.8020130393255814e-05,
+        "min_sampled_clearance_m": 0.003737550873357575,
+        "limiting_torque_updates": [
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "lower",
+            "joint": "4-Joint",
+            "force_n": -78.5418727410763
+          },
+          {
+            "y_m": -0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57778717429136
+          },
+          {
+            "y_m": -0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57714273949844
+          },
+          {
+            "y_m": -0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5768821624375
+          },
+          {
+            "y_m": -0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57649830789548
+          },
+          {
+            "y_m": -0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57618987682817
+          },
+          {
+            "y_m": -0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.575853870284
+          },
+          {
+            "y_m": -0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57553686775633
+          },
+          {
+            "y_m": -0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57520943522374
+          },
+          {
+            "y_m": -0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57488975422758
+          },
+          {
+            "y_m": -0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57456500039588
+          },
+          {
+            "y_m": -0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57424421458012
+          },
+          {
+            "y_m": -0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5739205656045
+          },
+          {
+            "y_m": -0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57359923980347
+          },
+          {
+            "y_m": -0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57327613082111
+          },
+          {
+            "y_m": -0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57295450889157
+          },
+          {
+            "y_m": -0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57263169604003
+          },
+          {
+            "y_m": -0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57230989757878
+          },
+          {
+            "y_m": 0.0,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57198726125917
+          },
+          {
+            "y_m": 0.001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57166523625712
+          },
+          {
+            "y_m": 0.002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57134282647975
+          },
+          {
+            "y_m": 0.003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57102074704105
+          },
+          {
+            "y_m": 0.004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57069839169958
+          },
+          {
+            "y_m": 0.005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.57037627600582
+          },
+          {
+            "y_m": 0.006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5700539569196
+          },
+          {
+            "y_m": 0.007,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5697318162843
+          },
+          {
+            "y_m": 0.008,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56940952213962
+          },
+          {
+            "y_m": 0.009000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56908736387373
+          },
+          {
+            "y_m": 0.01,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56876508735968
+          },
+          {
+            "y_m": 0.011,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56844291634016
+          },
+          {
+            "y_m": 0.012,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56812065257975
+          },
+          {
+            "y_m": 0.013000000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56779847214946
+          },
+          {
+            "y_m": 0.014,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56747621779981
+          },
+          {
+            "y_m": 0.015,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56715403030472
+          },
+          {
+            "y_m": 0.016,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56683178301995
+          },
+          {
+            "y_m": 0.017,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56650959014047
+          },
+          {
+            "y_m": 0.018000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56618734824
+          },
+          {
+            "y_m": 0.019000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56586515120216
+          },
+          {
+            "y_m": 0.020000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56554291346012
+          },
+          {
+            "y_m": 0.021,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56522071317286
+          },
+          {
+            "y_m": 0.022,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56489847868018
+          },
+          {
+            "y_m": 0.023,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56457627582739
+          },
+          {
+            "y_m": 0.024,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56425404390026
+          },
+          {
+            "y_m": 0.025,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56393183900337
+          },
+          {
+            "y_m": 0.026000000000000002,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56360960912036
+          },
+          {
+            "y_m": 0.027000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56328740258182
+          },
+          {
+            "y_m": 0.028000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56296517434046
+          },
+          {
+            "y_m": 0.029,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5626429664744
+          },
+          {
+            "y_m": 0.03,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56232073956058
+          },
+          {
+            "y_m": 0.031,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56199853061487
+          },
+          {
+            "y_m": 0.032,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5616763047806
+          },
+          {
+            "y_m": 0.033,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56135409495293
+          },
+          {
+            "y_m": 0.034,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5610318700007
+          },
+          {
+            "y_m": 0.035,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56070965945
+          },
+          {
+            "y_m": 0.036000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56038743522085
+          },
+          {
+            "y_m": 0.037000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.56006522407635
+          },
+          {
+            "y_m": 0.038000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55974300044089
+          },
+          {
+            "y_m": 0.03900000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55942078880874
+          },
+          {
+            "y_m": 0.04,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55909856566097
+          },
+          {
+            "y_m": 0.041,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55877635362906
+          },
+          {
+            "y_m": 0.042,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55845413088113
+          },
+          {
+            "y_m": 0.043000000000000003,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55813191852292
+          },
+          {
+            "y_m": 0.044000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5578096961012
+          },
+          {
+            "y_m": 0.045,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55748748347914
+          },
+          {
+            "y_m": 0.046,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55716526132129
+          },
+          {
+            "y_m": 0.047,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5568430484887
+          },
+          {
+            "y_m": 0.048,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5565208265414
+          },
+          {
+            "y_m": 0.049,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55619861354454
+          },
+          {
+            "y_m": 0.05,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55587639176146
+          },
+          {
+            "y_m": 0.051000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55555417864096
+          },
+          {
+            "y_m": 0.052000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55523195698156
+          },
+          {
+            "y_m": 0.053000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55490974377365
+          },
+          {
+            "y_m": 0.054000000000000006,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55458752220163
+          },
+          {
+            "y_m": 0.05500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55426530893916
+          },
+          {
+            "y_m": 0.056,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55394308742177
+          },
+          {
+            "y_m": 0.057,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55362087413498
+          },
+          {
+            "y_m": 0.058,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55329865264187
+          },
+          {
+            "y_m": 0.059000000000000004,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55297643935907
+          },
+          {
+            "y_m": 0.060000000000000005,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55265421786193
+          },
+          {
+            "y_m": 0.061,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55233200461022
+          },
+          {
+            "y_m": 0.062,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55200978308203
+          },
+          {
+            "y_m": 0.063,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55168756988769
+          },
+          {
+            "y_m": 0.064,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5513653483021
+          },
+          {
+            "y_m": 0.065,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55104313519122
+          },
+          {
+            "y_m": 0.066,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5507209135222
+          },
+          {
+            "y_m": 0.067,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.55039870052093
+          },
+          {
+            "y_m": 0.068,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5500764787423
+          },
+          {
+            "y_m": 0.069,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54975426587744
+          },
+          {
+            "y_m": 0.07,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5494320439624
+          },
+          {
+            "y_m": 0.07100000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54910983126183
+          },
+          {
+            "y_m": 0.07200000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54878760918251
+          },
+          {
+            "y_m": 0.07300000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54846539667555
+          },
+          {
+            "y_m": 0.07400000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54814317440255
+          },
+          {
+            "y_m": 0.07500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5478209621205
+          },
+          {
+            "y_m": 0.076,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54749873962264
+          },
+          {
+            "y_m": 0.077,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54717652759919
+          },
+          {
+            "y_m": 0.078,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54685430484277
+          },
+          {
+            "y_m": 0.079,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54653209311452
+          },
+          {
+            "y_m": 0.08,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54620987006282
+          },
+          {
+            "y_m": 0.081,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54588765867021
+          },
+          {
+            "y_m": 0.082,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54556543528291
+          },
+          {
+            "y_m": 0.083,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54524322427042
+          },
+          {
+            "y_m": 0.084,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54492100050307
+          },
+          {
+            "y_m": 0.085,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54459878992039
+          },
+          {
+            "y_m": 0.08600000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54427656572314
+          },
+          {
+            "y_m": 0.08700000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54395435562607
+          },
+          {
+            "y_m": 0.08800000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54363213094322
+          },
+          {
+            "y_m": 0.089,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54330992139471
+          },
+          {
+            "y_m": 0.09,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5429876961633
+          },
+          {
+            "y_m": 0.091,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54266548723477
+          },
+          {
+            "y_m": 0.092,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5423432613834
+          },
+          {
+            "y_m": 0.093,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54202105315639
+          },
+          {
+            "y_m": 0.094,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5416988266035
+          },
+          {
+            "y_m": 0.095,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54137661917159
+          },
+          {
+            "y_m": 0.096,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54105439182358
+          },
+          {
+            "y_m": 0.097,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54073218529481
+          },
+          {
+            "y_m": 0.098,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54040995704366
+          },
+          {
+            "y_m": 0.099,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.54008775154335
+          },
+          {
+            "y_m": 0.1,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53976552226378
+          },
+          {
+            "y_m": 0.101,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53944331793812
+          },
+          {
+            "y_m": 0.10200000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53912108748384
+          },
+          {
+            "y_m": 0.10300000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53879888450447
+          },
+          {
+            "y_m": 0.10400000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53847665270393
+          },
+          {
+            "y_m": 0.10500000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53815445127341
+          },
+          {
+            "y_m": 0.10600000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53783221792408
+          },
+          {
+            "y_m": 0.10700000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53751001828319
+          },
+          {
+            "y_m": 0.108,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53718778314415
+          },
+          {
+            "y_m": 0.109,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.536865585581
+          },
+          {
+            "y_m": 0.11,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53654334836422
+          },
+          {
+            "y_m": 0.111,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53622115322602
+          },
+          {
+            "y_m": 0.112,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53589891358433
+          },
+          {
+            "y_m": 0.113,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53557672129276
+          },
+          {
+            "y_m": 0.114,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53525447880443
+          },
+          {
+            "y_m": 0.115,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53493228987611
+          },
+          {
+            "y_m": 0.116,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.5346100440245
+          },
+          {
+            "y_m": 0.117,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53428785909816
+          },
+          {
+            "y_m": 0.11800000000000001,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53396560924465
+          },
+          {
+            "y_m": 0.119,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53364342911769
+          },
+          {
+            "y_m": 0.12,
+            "bound": "upper",
+            "joint": "4-Joint",
+            "force_n": 78.53332117446472
+          }
+        ],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4",
+        "status": "ACCEPTED"
+      }
+    }
+  ],
+  "elapsed_s": 4.621234655031003,
+  "terminal_definition": "Human terminal box AND handle y/w near zero; offline additionally enforces all nominal terminal states zero",
+  "information": "offline complete future disturbance known"
+}

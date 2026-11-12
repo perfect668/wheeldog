@@ -1,0 +1,182 @@
+{
+  "source_commit": "1b373036d54c0c58966493c907e84975f36cc11c",
+  "frozen_integrity": {
+    "results/diagnostics/artifact_sha256.json": {
+      "count": 48,
+      "all_match": true,
+      "inventory_sha256": "43218b8f1277d5a57dc1feda5bb5a7047a5082409ed04a13d893dd2cada2e7d9"
+    },
+    "results/m1/artifact_sha256.json": {
+      "count": 26,
+      "all_match": true,
+      "inventory_sha256": "7135d33b914a8decd8e319b920923eee5cfcff2e0ed29b375f8f06e55943bbcb"
+    },
+    "results/m1c/artifact_sha256.json": {
+      "count": 4519,
+      "all_match": true,
+      "inventory_sha256": "8abe1ed471dd897ac74bef47ba4dbe5c180c1eb53e188981469b5ca5b856d161"
+    }
+  },
+  "unique_cases": 1135,
+  "all_statuses": {
+    "NOT_RECOVERED_CAUSAL": 376,
+    "RESTRICTED_CLASS_INFEASIBLE": 360,
+    "RECOVERED_CAUSAL": 188,
+    "RECOVERED_OFFLINE": 211
+  },
+  "main_statuses": {
+    "RESTRICTED_CLASS_INFEASIBLE": 172,
+    "NOT_RECOVERED_CAUSAL": 188,
+    "RECOVERED_OFFLINE": 92,
+    "RECOVERED_CAUSAL": 76
+  },
+  "sensitivity_statuses": {
+    "RESTRICTED_CLASS_INFEASIBLE": 78,
+    "NOT_RECOVERED_CAUSAL": 86,
+    "RECOVERED_OFFLINE": 26,
+    "RECOVERED_CAUSAL": 18
+  },
+  "accepted_trajectory_maxima": {
+    "max_handle_position_error_m": 1.1314447121303192e-07,
+    "max_handle_rotation_error_rad": 4.127363441325429e-08,
+    "dynamics_max_abs_error": 7.963074644123935e-14,
+    "independent_ode_x_error_m": 2.8362602305439882e-08,
+    "independent_ode_v_error_m_s": 3.3038115197089136e-08,
+    "contact_force_model_max_error_n": 2.4115552035297583e-05,
+    "max_joint_velocity_ratio": 0.3971696998014733,
+    "max_joint_acceleration_ratio": 0.71776165443347,
+    "max_base_velocity_ratio": 0.2289550026203948,
+    "max_base_acceleration_ratio": 0.7024925479837743,
+    "max_torque_ratio": 0.8097156548750959,
+    "max_contact_cap_ratio": 0.9050962671716987,
+    "peak_human_x_m": 0.13115443492883683,
+    "peak_per_hand_lateral_force_n": 63.477133388166294
+  },
+  "attempt_statuses": {
+    "FEEDBACK_CONSTRAINT_FAILURE": 286,
+    "RESTRICTED_LP_INFEASIBLE": 2829,
+    "SIMULATED": 278,
+    "LP_FEASIBLE": 211
+  },
+  "validation_reasons": {},
+  "future_prefix": [
+    {
+      "case_id": "future_main_ik0024_fixed_2_-0.24000_causal",
+      "status": "NOT_RECOVERED_CAUSAL",
+      "method": "causal",
+      "max_pre_event_y_m": 0.0,
+      "max_pre_event_acceleration_m_s2": 0.0
+    },
+    {
+      "case_id": "future_main_ik0024_fixed_2_+0.24000_causal",
+      "status": "NOT_RECOVERED_CAUSAL",
+      "method": "causal",
+      "max_pre_event_y_m": 0.0,
+      "max_pre_event_acceleration_m_s2": 0.0
+    },
+    {
+      "case_id": "future_main_ik0036_fixed_2_-0.24000_offline",
+      "status": "RECOVERED_OFFLINE",
+      "method": "offline",
+      "max_pre_event_y_m": 0.029738284010777216,
+      "max_pre_event_acceleration_m_s2": 2.3199340417144962
+    },
+    {
+      "case_id": "future_main_ik0036_fixed_2_-0.24000_causal",
+      "status": "NOT_RECOVERED_CAUSAL",
+      "method": "causal",
+      "max_pre_event_y_m": 0.0,
+      "max_pre_event_acceleration_m_s2": 0.0
+    },
+    {
+      "case_id": "future_main_ik0036_fixed_2_+0.24000_offline",
+      "status": "RECOVERED_OFFLINE",
+      "method": "offline",
+      "max_pre_event_y_m": 0.029738284010777223,
+      "max_pre_event_acceleration_m_s2": 2.3199340417144962
+    },
+    {
+      "case_id": "future_main_ik0036_fixed_2_+0.24000_causal",
+      "status": "NOT_RECOVERED_CAUSAL",
+      "method": "causal",
+      "max_pre_event_y_m": 0.0,
+      "max_pre_event_acceleration_m_s2": 0.0
+    }
+  ],
+  "nonmonotonic_groups": 0,
+  "total_case_wall_s": 1489.894943556632,
+  "case_wall_median_s": 1.0050317250424996,
+  "case_wall_max_s": 9.257585582963657,
+  "accepted_without_settled_recovery_time": 269,
+  "interpretation": "Conditional model results; restricted failures are not global impossibility",
+  "direct_versions": {
+    "direct": {
+      "statuses": {
+        "VERIFIED_DIRECT_RECOVERY": 3,
+        "NO_VERIFIED_DIRECT_RECOVERY": 1
+      },
+      "attempts": 192,
+      "valid_iterates": 22,
+      "rejection_reasons": {
+        "handle_coordination": 170
+      }
+    },
+    "direct_refined": {
+      "statuses": {
+        "VERIFIED_DIRECT_RECOVERY": 4
+      },
+      "attempts": 192,
+      "valid_iterates": 192,
+      "rejection_reasons": {}
+    }
+  },
+  "stationary_handle_baseline": {
+    "cases": 24,
+    "recovered": 0
+  },
+  "mobile_curve_failures_with_fixed_curve_success": [],
+  "mobile_curve_boundary_below_fixed_curve": [
+    {
+      "candidate": "ik0036",
+      "horizon_s": 1.2,
+      "sign": -1,
+      "fixed_lower_m_s": 0.12,
+      "mobile_upper_m_s": 0.085
+    },
+    {
+      "candidate": "ik0036",
+      "horizon_s": 1.2,
+      "sign": 1,
+      "fixed_lower_m_s": 0.12,
+      "mobile_upper_m_s": 0.085
+    },
+    {
+      "candidate": "ik0036",
+      "horizon_s": 1.6,
+      "sign": -1,
+      "fixed_lower_m_s": 0.2,
+      "mobile_upper_m_s": 0.19
+    },
+    {
+      "candidate": "ik0036",
+      "horizon_s": 1.6,
+      "sign": 1,
+      "fixed_lower_m_s": 0.2,
+      "mobile_upper_m_s": 0.19
+    },
+    {
+      "candidate": "ik0001",
+      "horizon_s": 1.2,
+      "sign": -1,
+      "fixed_lower_m_s": 0.11,
+      "mobile_upper_m_s": 0.085
+    },
+    {
+      "candidate": "ik0001",
+      "horizon_s": 1.2,
+      "sign": 1,
+      "fixed_lower_m_s": 0.11,
+      "mobile_upper_m_s": 0.085
+    }
+  ]
+}

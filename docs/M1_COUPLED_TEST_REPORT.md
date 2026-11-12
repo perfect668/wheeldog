@@ -12,6 +12,7 @@ env -u PYTHONPATH .venv-m1/bin/python scripts/freeze_m1d.py --verify
 ```
 
 自动测试：**70 passed in 20.91s**，见 `results/m1d/logs/pytest_final.log`。
+最终交付再次运行：**70 passed in 19.91s**，见`results/m1d/logs/pytest_delivery.log`。
 M1-D 新增10项，原60项仍通过。依赖沿用 `requirements-m1.txt` 和运行元数据中的实际版本。
 
 ## 覆盖内容

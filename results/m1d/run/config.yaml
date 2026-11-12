@@ -1,0 +1,280 @@
+seed: 20261112
+capability_config: configs/m1_capability.yaml
+human_config: configs/exp0.yaml
+candidates:
+- ik0024
+- ik0036
+- ik0001
+- ik0010
+contact:
+  stiffness_per_hand_n_m: 250.0
+  damping_per_hand_ns_m: 15.0
+  vertical_per_hand_n: 30.0
+  resultant_cap_per_hand_n: 80.0
+  vertical_load_correction: true
+robot:
+  torso_budget_nm: 100.0
+  profile: nominal
+  clearance_m: 0.002
+  position_tolerance_m: 0.0005
+  rotation_tolerance_rad: 0.001
+chart:
+  step_m: 0.002
+  extent_m: 0.12
+  domains_m:
+  - 0.005
+  - 0.01
+  - 0.02
+  - 0.04
+  - 0.08
+  - 0.12
+  inverse_policy: speed_weighted
+  acceleration_allocation: 0.7
+  velocity_safety_factor: 0.95
+experiment:
+  dt_s: 0.04
+  horizons_s:
+  - 1.2
+  - 1.6
+  - 2.0
+  impulses_m_s:
+  - -0.4
+  - -0.32
+  - -0.24
+  - -0.16
+  - -0.08
+  - 0.0
+  - 0.08
+  - 0.16
+  - 0.24
+  - 0.32
+  - 0.4
+  modes:
+  - fixed
+  - mobile
+  validation_dt_s: 0.005
+  collision_stride: 4
+  boundary_resolution_m_s: 0.005
+  lp_time_limit_s: 5.0
+feedback:
+  poles_s_inv:
+  - -3.0
+  - -4.0
+  - -5.0
+  - -6.0
+  terminal_y_m: 0.005
+  terminal_speed_m_s: 0.02
+  minimum_settled_s: 0.2
+sensitivity:
+  candidates:
+  - ik0024
+  - ik0036
+  horizon_s: 1.6
+  impulses_m_s:
+  - -0.24
+  - -0.16
+  - 0.16
+  - 0.24
+  variants:
+    torso_60:
+      torso_budget_nm: 60.0
+    torso_200:
+      torso_budget_nm: 200.0
+    contact_cap_50:
+      resultant_cap_per_hand_n: 50.0
+    contact_cap_120:
+      resultant_cap_per_hand_n: 120.0
+    stiffness_150:
+      stiffness_per_hand_n_m: 150.0
+    stiffness_400:
+      stiffness_per_hand_n_m: 400.0
+    damping_5:
+      damping_per_hand_ns_m: 5.0
+    damping_30:
+      damping_per_hand_ns_m: 30.0
+    arm_acc_5:
+      joint_acceleration_rad_s2: 5.0
+    arm_acc_30:
+      joint_acceleration_rad_s2: 30.0
+    delay_0:
+      delay_s: 0.0
+    delay_0_08:
+      delay_s: 0.08
+    dt_0_02:
+      dt_s: 0.02
+direct:
+  candidates:
+  - ik0024
+  - ik0036
+  horizon_s: 1.6
+  signs:
+  - -1
+  - 1
+  sequential_iterations: 24
+  trust_region_rad: 0.015
+  convergence_rad: 0.002
+  impulse_cap_m_s: 0.5
+  starts:
+  - chart_seed
+  - zero_seed
+_capability:
+  seed: 20261111
+  archive: assets/h1/source.zip
+  asset_directory: assets/h1/original
+  candidates: results/m1/run/candidates.json
+  world_targets: results/m1/run/targets.json
+  model:
+    joint_ranges_deg:
+    - - -178
+      - 178
+    - - -120
+      - 120
+    - - -178
+      - 178
+    - - -60
+      - 145
+    - - -178
+      - 178
+    - - -60
+      - 60
+    - - -90
+      - 90
+    nominal_torque_nm:
+    - 182
+    - 182
+    - 134
+    - 134
+    - 35
+    - 35
+    - 35
+    urdf_torque_nm:
+    - 113
+    - 113
+    - 70
+    - 70
+    - 19
+    - 19
+    - 19
+    velocity_deg_s:
+    - 175
+    - 175
+    - 270
+    - 300
+    - 240
+    - 240
+    - 240
+    robot_total_mass_kg: 190.0
+    axis_overrides: {}
+    handle_frame:
+      left:
+        xyz_m:
+        - 0
+        - 0
+        - 0
+        rpy_rad:
+        - 0
+        - 0
+        - 0
+      right:
+        xyz_m:
+        - 0
+        - 0
+        - 0
+        rpy_rad:
+        - 0
+        - 0
+        - 0
+    torso_torque_limits_nm: null
+    move_torso: false
+    torso_velocity_rad_s: null
+    torso_acceleration_rad_s2: null
+    base_velocity_m_s: 1.5
+  force:
+    task_left_n:
+    - 0
+    - 0
+    - 30
+    task_right_n:
+    - 0
+    - 0
+    - 30
+    sharing: equal_increment
+    match_relative_tolerance: 0.1
+    match_floor_n: 1.0
+    selected_pair_count: 3
+    practical_reach_gap_m: 0.01
+    practical_reach_ratio: 1.25
+  motion:
+    horizons_s:
+    - 0.2
+    - 0.3
+    - 0.5
+    dt_s: 0.02
+    max_displacement_m: 0.3
+    bisection_iterations: 7
+    pose_position_tolerance_m: 1.0e-05
+    pose_rotation_tolerance_rad: 1.0e-05
+    self_clearance_m: 0.002
+    collision_substeps: 2
+    projection_max_iterations: 10
+    projection_tolerance: 1.0e-08
+    inverse_policies:
+    - speed_weighted
+    - uniform
+  profiles:
+    low:
+      joint_acceleration_rad_s2: 5.0
+      base_acceleration_m_s2: 0.5
+      base_yaw_velocity_rad_s: 0.3
+      base_yaw_acceleration_rad_s2: 0.5
+      delay_s: 0.08
+    nominal:
+      joint_acceleration_rad_s2: 15.0
+      base_acceleration_m_s2: 1.5
+      base_yaw_velocity_rad_s: 0.6
+      base_yaw_acceleration_rad_s2: 1.5
+      delay_s: 0.04
+    high:
+      joint_acceleration_rad_s2: 30.0
+      base_acceleration_m_s2: 3.0
+      base_yaw_velocity_rad_s: 1.2
+      base_yaw_acceleration_rad_s2: 3.0
+      delay_s: 0.0
+  sensitivity:
+    horizon_s: 0.3
+    joint7_limit_deg:
+    - 60
+    - 90
+    torque_scales:
+    - 0.5
+    - 1.0
+    acceleration_rad_s2:
+    - 5.0
+    - 15.0
+    - 30.0
+    delays_s:
+    - 0.0
+    - 0.04
+    - 0.08
+    base_accelerations_m_s2:
+    - 0.5
+    - 1.5
+    - 3.0
+    time_steps_s:
+    - 0.01
+    - 0.02
+_human:
+  mass_kg: 70.0
+  height_m: 1.0
+  gravity_m_s2: 9.81
+  dt_s: 0.02
+  x_safe_m: 0.2
+  v_abs_max_m_s: 2.0
+  x_terminal_m: 0.01
+  v_terminal_m_s: 0.03
+_profile:
+  joint_acceleration_rad_s2: 15.0
+  base_acceleration_m_s2: 1.5
+  base_yaw_velocity_rad_s: 0.6
+  base_yaw_acceleration_rad_s2: 1.5
+  delay_s: 0.04

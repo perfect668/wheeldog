@@ -36,7 +36,7 @@ numpy2.4.6、scipy1.17.1、MuJoCo3.10.0（只作运动学）、trimesh4.12.2、p
 
 \[
 f_i=250(y_i-x)+15(\dot y_i-\dot x)\quad[\mathrm N],\qquad
-\ddot x=(9.81-60/70)x+(f_L+f_R+d)/70.
+\ddot x=\frac{g-2F_z/m}{h}x+\frac{f_L+f_R+d}{m}.
 \]
 
 刚度单位N/m，阻尼N·s/m；向上60N对腿部法向力的影响显式进入LIPM。接触能量/耗散恒等式及独立ODE验证通过。力由实际相对位置/速度产生，**没有把扶手最大位移映射成最大辅助力**。
