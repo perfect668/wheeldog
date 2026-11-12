@@ -54,7 +54,7 @@ def run(c,out):
         print('dense score',r['candidate'],r['sign'],v['valid'],v['reasons'],flush=True)
     loop_audit=[]
     for r in rows:
-        if r['variant']!='nominal' or r['scenario']['id'] not in ['pulse_n26','pulse_p26'] or r['candidate'] not in {sel['methods']['A_default'],sel['methods']['D_future']}:continue
+        if r['variant']!='nominal' or r['scenario']['id'] not in ['pulse_n10','pulse_p10','pulse_n26','pulse_p26'] or r['candidate'] not in {sel['methods']['A_default'],sel['methods']['D_future']}:continue
         cc=variant(c,'nominal');cc['experiment']['validation_dt_s']=.0025;cc['experiment']['collision_stride']=4
         chart,e,_,_=ctx.controller_chart(r['candidate'],cc);m=CoupledModel(cc['_human'],cc['contact'],c['control']['dt_s'])
         with np.load(r['path_file'],allow_pickle=False) as d:
