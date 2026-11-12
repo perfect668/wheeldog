@@ -34,6 +34,8 @@ def run(c,out):
     rows=json.loads((out/'closed_loop.json').read_text());sel=json.loads((out/'selection.json').read_text())
     metrics=sel['metrics'];scores=json.loads((out/'directional_scores.json').read_text())
     methods=dict(sel['methods']);methods['A_seeded_random']='seeded';methods['A_uniform_expected']='uniform'
+    methods['B_capped_order_tie']=sel['B_contact_capped_order_tie']
+    for method,candidate in sel['core_four_methods'].items():methods['core4_'+method]=candidate
     table=[]
     for group in ['nominal','sensitivity','all']+list(c['evaluation']['variants']):
         if group=='nominal' and any(t['group']=='nominal' for t in table):continue
@@ -53,6 +55,13 @@ def run(c,out):
         rr=[r for r in rows if r['candidate']==m['candidate'] and r['variant']=='nominal' and r['controller']=='mpc']
         candidate_rates.append(dict(candidate=m['candidate'],score=m['recovery_min_m_s'],**statistics(rr)))
     csv_write(out/'candidate_rates.csv',candidate_rates)
+    full_rates=[]
+    for id in c['candidates']:
+        for ctrl in ['fixed','mpc']:
+            for group in ['nominal','sensitivity','all']:
+                rr=[r for r in rows if r['candidate']==id and r['controller']==ctrl and (group=='all' or (group=='sensitivity' and r['variant']!='nominal') or r['variant']==group)]
+                full_rates.append(dict(candidate=id,controller=ctrl,group=group,**statistics(rr)))
+    csv_write(out/'all_candidate_rates.csv',full_rates)
     rank=spearmanr([r['score'] for r in candidate_rates],[r['sustained_rate'] for r in candidate_rates])
     command=[l for r in rows if r['controller']=='mpc' for l in r['command_logs']]
     iters=[a for s in scores for a in s['attempts']]
@@ -73,6 +82,10 @@ def run(c,out):
         maximum_fk_rotation_error_rad=max(r['validation'].get('max_handle_rotation_error_rad',0) for r in rows),
         timing_caveat='4 CPU workers; no interruptible wall-time limit or simulated deadline jitter; max_iter identical',
         peak_caveat='Failed truncated trajectories have incomplete maxima; conditional completed-run metrics are selection-biased')
+    positions=np.array([np.array(r['world_handle_poses'])[:,:3,3] for r in metrics])
+    summary['initial_handle_position_spread_m']=float(np.max(np.linalg.norm(positions-positions[0],axis=2)))
+    summary['B_contact_capped_argmax']=sel['B_contact_capped_argmax']
+    summary['static_metric_spearman']={key:float(spearmanr([m[key] for m in metrics],[r['sustained_rate'] for r in candidate_rates]).statistic) for key in ['force_proxy_min_n','instantaneous_min_m_s']}
     # Paired differences use identical scenarios, never independent resampling.
     paired=[]
     index={(r['variant'],r['scenario']['id'],r['candidate'],r['controller']):r for r in rows}

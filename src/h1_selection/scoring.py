@@ -99,9 +99,17 @@ def select(c,out):
             world_handle_poses=np.array(chart.initial).tolist()))
     def choose(key):return max(rows,key=lambda r:(r[key],-c['candidates'].index(r['candidate'])))['candidate']
     methods=dict(A_default=c['selection']['default'],B_force=choose('force_proxy_min_n'),C_kinematic=choose('instantaneous_min_m_s'),D_future=choose('recovery_min_m_s'))
+    capmax=max(r['contact_capped_force_min_n'] for r in rows)
+    capped_ties=[r['candidate'] for r in rows if abs(r['contact_capped_force_min_n']-capmax)<1e-8]
     selected=dict(methods=methods,random_uniform_candidates=c['candidates'],metrics=rows,
+        B_contact_capped_argmax=capped_ties,B_contact_capped_order_tie=capped_ties[0],
         core_four_methods=dict(A_default=c['selection']['default'],**{name:max(rows[:4],key=lambda r:(r[key],-c['candidates'].index(r['candidate'])))['candidate'] for name,key in [('B_force','force_proxy_min_n'),('C_kinematic','instantaneous_min_m_s'),('D_future','recovery_min_m_s')]}),
         source='Only initial geometry, nominal model and offline scoring set; no test outcome read',
         force_caveat='B ranks nominal contact-torque-only residual rays; capped actual contact metric may tie. No kN ray is delivered to human.')
     dump(out/'selection.json',selected)
+    geometry=[]
+    for id in c['candidates']:
+        _,env,policy,rejected=ctx.controller_chart(id,cc)
+        geometry.append(dict(candidate=id,policy=policy,envelope=env,rejected=rejected))
+    dump(out/'online_envelopes.json',geometry)
     print(json.dumps(dict(methods=methods,metrics=[{k:v for k,v in r.items() if k in ['candidate','recovery_min_m_s','recovery_mean_m_s','force_proxy_min_n','contact_capped_force_min_n','instantaneous_min_m_s']} for r in rows]),indent=2))
