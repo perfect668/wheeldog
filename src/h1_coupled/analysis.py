@@ -47,6 +47,7 @@ def export(out):
     dump(out/'initial_tasks.json',initial)
     rows=[json.loads(p.read_text()) for p in sorted((out/'cases').glob('*.json'))]
     flat=[]
+    settling=[]
     for r in rows:
         row={k:r[k] for k in ['case_id','candidate','mode','horizon_s','method','variant','status','elapsed_s']}
         row.update(r['disturbance']);row.update(r.get('metrics') or {})
@@ -54,6 +55,17 @@ def export(out):
         for key in ['reasons','terminal_state','terminal_independent_human']:
             if key in row:row[key]=json.dumps(row[key])
         flat.append(row)
+        entry=None;duration=None
+        if r['status'] in SUCCESS:
+            with np.load(r['path_file'],allow_pickle=False) as d:
+                h=d['independent_human_nodes'];s=d['node_state'];t=d['node_time_s']
+                inside=(abs(h[:,0])<=config['_human']['x_terminal_m'])&(abs(h[:,1])<=config['_human']['v_terminal_m_s'])
+                inside&=(abs(s[:,2])<=config['feedback']['terminal_y_m'])&(abs(s[:,3])<=config['feedback']['terminal_speed_m_s'])
+                onset=r['disturbance']['onset_s']
+                first=next((k for k in range(len(t)) if t[k]>=onset-1e-9 and inside[k:].all()),None)
+                if first is not None:entry=float(t[first]);duration=float(t[-1]-entry)
+        settling.append(dict(case_id=r['case_id'],status=r['status'],terminal_entry_time_s=entry,observed_settled_duration_s=duration,
+            recovery_time_s=(r.get('metrics') or {}).get('recovery_time_s'),time_resolution_s=config['experiment']['dt_s'] if r['variant']!='dt_0_02' else .02))
     write_csv(out/'cases.csv',flat)
     boundaries=json.loads((out/'boundaries.json').read_text());write_csv(out/'boundaries.csv',boundaries)
     main=json.loads((out/'main.json').read_text());sens=json.loads((out/'sensitivity.json').read_text())
@@ -102,6 +114,17 @@ def export(out):
     for name in ['direct','direct_refined']:
         if not (out/(name+'.json')).exists():continue
         direct=json.loads((out/(name+'.json')).read_text())
+        for r in direct:
+            entry=None;duration=None
+            if r['path_file']:
+                with np.load(r['path_file'],allow_pickle=False) as d:
+                    h=d['human_state'];y=d['handle_y_m'];w=d['handle_v_m_s'];t=d['time_s']
+                    inside=(abs(h[:,0])<=config['_human']['x_terminal_m'])&(abs(h[:,1])<=config['_human']['v_terminal_m_s'])
+                    inside&=(np.max(abs(y),axis=1)<=config['feedback']['terminal_y_m'])&(np.max(abs(w),axis=1)<=config['feedback']['terminal_speed_m_s'])
+                    first=next((k for k in range(len(t)) if inside[k:].all()),None)
+                    if first is not None:entry=float(t[first]);duration=float(t[-1]-entry)
+            settling.append(dict(case_id=r['case_id'],status=r['status'],terminal_entry_time_s=entry,observed_settled_duration_s=duration,
+                recovery_time_s=entry if duration is not None and duration>=.2-1e-9 else None,time_resolution_s=.005))
         summary['direct_versions'][name]=dict(statuses=dict(Counter(r['status'] for r in direct)),
             attempts=sum(len(r['attempts']) for r in direct),
             valid_iterates=sum(a.get('validation',{}).get('valid',False) for r in direct for a in r['attempts']),
@@ -116,6 +139,15 @@ def export(out):
         other=next(v for v in main if (v['candidate'],v['mode'],v['method'],v['horizon_s'],v['disturbance']['delta_v_m_s'])==
             (r['candidate'],'mobile',r['method'],r['horizon_s'],r['disturbance']['delta_v_m_s']))
         if other['status'] not in SUCCESS:summary['mobile_curve_failures_with_fixed_curve_success'].append(other['case_id'])
+    summary['mobile_curve_boundary_below_fixed_curve']=[]
+    for b in boundaries:
+        if b['mode']!='fixed' or b['method']!='offline':continue
+        other=next(v for v in boundaries if (v['candidate'],v['mode'],v['method'],v['horizon_s'],v['sign'])==
+            (b['candidate'],'mobile',b['method'],b['horizon_s'],b['sign']))
+        if other['upper_m_s'] is not None and other['upper_m_s']<b['lower_m_s']:
+            summary['mobile_curve_boundary_below_fixed_curve'].append(dict(candidate=b['candidate'],horizon_s=b['horizon_s'],sign=b['sign'],
+                fixed_lower_m_s=b['lower_m_s'],mobile_upper_m_s=other['upper_m_s']))
+    write_csv(out/'settling_times.csv',settling)
     dump(out/'summary.json',summary)
     return main,sens,boundaries,stats
 
