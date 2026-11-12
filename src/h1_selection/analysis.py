@@ -23,6 +23,7 @@ def statistics(rows,weights=None):
     complete=[r for r in rows if r['observation_complete']]
     recovered=[r for r in rows if r['sustained_recovered'] and r['recovery_time_s'] is not None]
     return dict(n_scenarios=float(sum(w)),terminal_rate=avg('terminal_recovered'),sustained_rate=avg('sustained_recovered'),
+        human_only_terminal_rate=avg('human_only_terminal'),human_only_sustained_rate=avg('human_only_sustained'),
         completed_fraction=avg('observation_complete'),mean_peak_x_complete_m=float(np.mean([r['peak_human_x_m'] for r in complete])) if complete else None,
         mean_recovery_s_conditional=float(np.mean([r['recovery_time_s'] for r in recovered])) if recovered else None,
         max_recorded_per_hand_force_n=max(r['peak_per_hand_force_n'] for r in rows),
@@ -32,6 +33,26 @@ def statistics(rows,weights=None):
 def run(c,out):
     out=Path(out);fig=out/'figures';fig.mkdir(exist_ok=True)
     rows=json.loads((out/'closed_loop.json').read_text());sel=json.loads((out/'selection.json').read_text())
+    # Post-hoc diagnostic only: separate human target from the additional
+    # handle-return requirement. Primary saved decisions are never changed.
+    diagnosis=[];h=c['_coupled']['_human']
+    for r in rows:
+        index=int(round(r['terminal_time_s']/c['control']['dt_s']))
+        with np.load(r['path_file'],allow_pickle=False) as d:
+            node=d['observed_node_state'];human=False;handle=False;sustained=False;endpoint=None
+            if len(node)>index:
+                endpoint=node[index].tolist();s=node[index]
+                human=bool(abs(s[0])<=h['x_terminal_m'] and abs(s[1])<=h['v_terminal_m_s'])
+                handle=bool(abs(s[2])<=c['_coupled']['feedback']['terminal_y_m'] and abs(s[3])<=c['_coupled']['feedback']['terminal_speed_m_s'])
+                post=d['actual_state'][d['time_s']>=r['terminal_time_s']-1e-9]
+                hs=np.vstack([post[:,:2],node[index:,:2]])
+                sustained=bool(r['observation_complete'] and human and np.all(abs(hs[:,0])<=h['x_terminal_m']) and np.all(abs(hs[:,1])<=h['v_terminal_m_s']))
+        r['human_only_terminal']=bool(r['valid'] and human);r['human_only_sustained']=bool(r['valid'] and sustained)
+        reason=('RECOVERED' if r['sustained_recovered'] else ('INVALID_REPLAY' if not r['valid'] else ('EARLY_CONTROLLER_STOP' if not r['observation_complete'] else ('HUMAN_TERMINAL_BOX' if not human else ('HANDLE_RETURN_BOX' if not handle else 'OBSERVATION_ESCAPE')))))
+        r['outcome_reason']=reason
+        diagnosis.append(dict(case_id=r['case_id'],outcome_reason=reason,terminal_state=endpoint,
+            human_terminal_box=human,handle_terminal_box=handle,human_only_terminal=r['human_only_terminal'],human_only_sustained=r['human_only_sustained']))
+    dump(out/'outcome_diagnosis.json',diagnosis)
     metrics=sel['metrics'];scores=json.loads((out/'directional_scores.json').read_text())
     methods=dict(sel['methods']);methods['A_seeded_random']='seeded';methods['A_uniform_expected']='uniform'
     methods['B_capped_order_tie']=sel['B_contact_capped_order_tie']
@@ -48,7 +69,7 @@ def run(c,out):
                 table.append(dict(group=group,controller=controller,method=method,selected=candidate,**stat))
     csv_write(out/'policy_summary.csv',table);dump(out/'policy_summary.json',table)
     csv_write(out/'candidate_metrics.csv',[{k:r[k] for k in ['candidate','R_negative_m_s','R_positive_m_s','recovery_min_m_s','recovery_mean_m_s','force_proxy_min_n','contact_capped_force_min_n','instantaneous_min_m_s','task_max_torque_ratio']} for r in metrics])
-    keys=['case_id','candidate','controller','variant','terminal_recovered','sustained_recovered','valid','observation_complete','peak_human_x_m','peak_per_hand_force_n','recovery_time_s','actual_max_torque_ratio','control_wall_mean_s','control_wall_max_s','missed_control_periods','fallback_calls']
+    keys=['case_id','candidate','controller','variant','terminal_recovered','sustained_recovered','human_only_terminal','human_only_sustained','outcome_reason','valid','observation_complete','peak_human_x_m','peak_per_hand_force_n','recovery_time_s','actual_max_torque_ratio','control_wall_mean_s','control_wall_max_s','missed_control_periods','fallback_calls']
     csv_write(out/'case_summary.csv',[{k:r[k] for k in keys}|dict(failures=';'.join(r['failures'])) for r in rows])
     candidate_rates=[]
     for m in metrics:
@@ -62,12 +83,25 @@ def run(c,out):
                 rr=[r for r in rows if r['candidate']==id and r['controller']==ctrl and (group=='all' or (group=='sensitivity' and r['variant']!='nominal') or r['variant']==group)]
                 full_rates.append(dict(candidate=id,controller=ctrl,group=group,**statistics(rr)))
     csv_write(out/'all_candidate_rates.csv',full_rates)
+    constraints=[]
+    for id in c['candidates']:
+        for ctrl in ['fixed','mpc']:
+            rr=[r for r in rows if r['candidate']==id and r['controller']==ctrl and r['variant']=='nominal']
+            def peak(key):return max(r['validation'].get(key,0) for r in rr)
+            constraints.append(dict(candidate=id,controller=ctrl,
+                max_joint_velocity_ratio=peak('max_joint_velocity_ratio'),max_joint_acceleration_ratio=peak('max_joint_acceleration_ratio'),
+                max_contact_torque_ratio=max([r['actual_max_torque_ratio'] or 0 for r in rr]),max_contact_cap_ratio=peak('max_contact_cap_ratio'),
+                max_handle_speed_ratio=max(r['validation'].get('peak_handle_speed_m_s',0)/r['envelope']['speed_m_s'] for r in rr),
+                max_domain_ratio=max(r['validation'].get('peak_handle_displacement_m',0)/max(abs(r['envelope']['y_lower_m']),abs(r['envelope']['y_upper_m'])) for r in rr),
+                fallback_calls=sum(r['fallback_calls'] for r in rr),completed=sum(r['observation_complete'] for r in rr)))
+    csv_write(out/'constraints_by_candidate.csv',constraints)
     rank=spearmanr([r['score'] for r in candidate_rates],[r['sustained_rate'] for r in candidate_rates])
     command=[l for r in rows if r['controller']=='mpc' for l in r['command_logs']]
     iters=[a for s in scores for a in s['attempts']]
     failure=Counter(reason for r in rows for reason in r['failures'])
     summary=dict(selection=sel['methods'],runs=len(rows),terminal=sum(r['terminal_recovered'] for r in rows),
         sustained=sum(r['sustained_recovered'] for r in rows),failure_counts=dict(failure),
+        outcome_reason_counts=dict(Counter(r['outcome_reason'] for r in rows)),
         score_attempts=len(iters),accepted_score_iterates=sum(a.get('validation',{}).get('valid',False) for a in iters),
         score_status_counts=dict(Counter(a['status'] for a in iters)),
         duplicate_initializations=sum(s['duplicate_of'] is not None for r in scores for s in r['seeds']),
@@ -75,6 +109,7 @@ def run(c,out):
         rank_caveat='Exploratory 8-candidate deterministic sample, no population significance claim',
         mpc_command_calls=len(command),mpc_fallback_calls=sum(l['fallback'] for l in command),
         mpc_qp_status=dict(Counter(l['qp_status'] for l in command)),
+        mpc_pending_queue_constraint_violations=sum(l['pending_queue_constraint_violation'] for l in command),
         mpc_wall_quantiles_s={str(q):float(np.quantile([l['wall_s'] for l in command],q)) for q in [.5,.95,.99,1.]},
         mpc_over_control_period=sum(l['wall_s']>c['control']['dt_s'] for l in command),
         maximum_actual_replay_ode_error=max([r['actual_vs_replayed_ode_error'] or 0 for r in rows]),
@@ -151,4 +186,9 @@ def run(c,out):
         axes[0,col].set_title(scenario);axes[0,col].axhspan(-.01,.01,alpha=.1,color='green')
         axes[0,col].axvline(.32+1.6,color='grey');axes[1,col].axvline(.32+1.6,color='grey');axes[1,col].set_xlabel('Time [s]')
     axes[0,0].set_ylabel('Actual human lateral x [m]');axes[1,0].set_ylabel('Left contact force [N]');axes[0,0].legend(fontsize=7);save('causal_traces')
+    plt.figure(figsize=(9,3.8))
+    for i,(key,label) in enumerate([('max_joint_acceleration_ratio','joint acceleration'),('max_contact_torque_ratio','contact torque'),('max_contact_cap_ratio','contact force'),('max_domain_ratio','path domain')]):
+        rr=[next(r for r in constraints if r['candidate']==id and r['controller']=='mpc') for id in names]
+        plt.bar(x+(i-1.5)*.18,[r[key] for r in rr],.18,label=label)
+    plt.axhline(1,color='black',linewidth=.6);plt.xticks(x,names);plt.ylabel('Peak recorded constraint usage, nominal MPC');plt.legend(fontsize=8);save('constraint_usage')
     print(json.dumps(summary,indent=2))
