@@ -78,8 +78,8 @@ class PredictiveController:
             if self.warm is not None:args['x0']=self.warm
             result=self.solver(**args);stats=self.solver.stats();z=np.array(result['x']).ravel()
             residual=float(max(0,np.max(lower-self.G@z),np.max(self.G@z-upper))) if np.isfinite(z).all() else np.inf
-            log=dict(qp_status=stats.get('return_status'),qp_success=bool(stats.get('success')),qp_iterations=int(stats.get('iter_count',-1)),
-                qp_max_normalized_violation=residual)
+            log=dict(qp_status=stats.get('return_status'),qp_success=bool(stats.get('success')),qp_iterations=stats.get('iter_count'),
+                qp_max_normalized_violation=residual if np.isfinite(residual) else None)
             if stats.get('success') and residual<=self.options['acceptance_abs_residual']:
                 sent=float(z[self.ui]);self.warm=z
         except Exception as exc:log=dict(qp_status='EXCEPTION',exception=f'{type(exc).__name__}: {exc}')
