@@ -130,3 +130,18 @@ def test_independent_joint_replay_zero_and_nonlinear_contact(real_chart):
     assert quiet['valid'] and max(abs(np.array(quiet['terminal_human'])))<1e-14
     disturbed=replay(chart,m,state,control,.2,1,c)
     assert not disturbed['valid'] and 'human_terminal' in disturbed['reasons']
+
+
+def test_direct_linearized_joint_dynamics_with_midpoint_geometry(real_chart):
+    from h1_coupled.direct import optimize_iteration,replay
+    c,chart,e=real_chart;c=copy.deepcopy(c);c['direct']['geometry_subintervals']=[.5]
+    m=CoupledModel(c['_human'],c['contact'],.04);ref=np.zeros((9,14))
+    r=optimize_iteration(chart,m,ref,.32,1,c,trust=.015)
+    assert r['status']=='LINEARIZED_OPTIMUM'
+    state=r['states'];accel=r['acceleration']
+    assert np.max(abs(accel[0]))<1e-8
+    assert np.max(abs(state[-1]))<1e-7
+    for k,a in enumerate(accel):
+        assert np.allclose(state[k+1,2:16],state[k,2:16]+.04*state[k,16:]+.5*.04**2*a,atol=1e-8)
+        assert np.allclose(state[k+1,16:],state[k,16:]+.04*a,atol=1e-8)
+    assert replay(chart,m,state,accel,r['impulse_m_s'],1,c)['valid']

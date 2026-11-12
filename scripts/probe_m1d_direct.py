@@ -10,11 +10,13 @@ from h1_kinematics.assets import dump
 
 def run(output):
     out=Path(output);c=yaml.safe_load((out/'config.yaml').read_text());init_worker(c,out);rows=[]
-    for direct in json.loads((out/'direct.json').read_text()):
+    direct_rows=json.loads((out/'direct.json').read_text())
+    if (out/'direct_refined.json').exists():direct_rows+=json.loads((out/'direct_refined.json').read_text())
+    for direct in direct_rows:
         if direct['achieved_impulse_m_s'] is None:continue
         dv=direct['sign']*direct['achieved_impulse_m_s']
         case=cases_for(c,out,candidates=[direct['candidate']],horizons=[direct['horizon_s']],impulses=[dv],modes=['fixed'],methods=['offline'])[0]
-        case['case_id']='direct_probe_'+case['case_id'];case['path_file']=str(out/'paths'/(case['case_id']+'.npz'))
+        case['case_id']='probe_'+direct['case_id'];case['path_file']=str(out/'paths'/(case['case_id']+'.npz'))
         r=compute(case);dump(out/'cases'/(r['case_id']+'.json'),r)
         rows.append(dict(direct_case=direct['case_id'],same_impulse_m_s=dv,chart_case=r['case_id'],chart_status=r['status'],
             direct_status=direct['status']))

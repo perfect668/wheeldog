@@ -12,6 +12,7 @@ import json
 import time
 import yaml
 import subprocess
+import concurrent.futures
 import numpy as np
 from scipy.linalg import expm
 from scipy.optimize import linprog
@@ -49,6 +50,23 @@ def optimize_iteration(chart,model,reference,horizon,sign,config,trust=.15):
         row={ns*k+2+j:jac[1,j]-jac[7,j] for j in range(nj)}
         target=float((jac[1]-jac[7])@ref-errors[0,1]+errors[1,1]);tolerance=config['robot']['position_tolerance_m']/5
         ub.add(row,target+tolerance);ub.add({i:-v for i,v in row.items()},-target+tolerance)
+        # Constrain actual quadratic joint segments inside each control interval.
+        # Knot-only orientation constraints can miss inter-knot rotation errors.
+        if k<n:
+            for fraction in config['direct'].get('geometry_subintervals',[]):
+                t=fraction*dt;ref_mid=(1-fraction)*reference[k]+fraction*reference[k+1]
+                q_mid=chart.q0.copy();q_mid[robot.active]=q0+ref_mid
+                j_mid=robot.task_jacobian(q_mid,chart.b0,False)
+                err_mid=pose_error(robot.poses(q_mid,chart.b0),chart.initial).reshape(2,6)
+                specifications=[(j_mid[6*s+axis],err_mid[s,axis],axis) for s in range(2) for axis in [0,2,3,4,5]]
+                specifications.append((j_mid[1]-j_mid[7],err_mid[0,1]-err_mid[1,1],1))
+                for jac_row,error,axis in specifications:
+                    row={ns*k+2+j:jac_row[j] for j in range(nj)}
+                    row.update({ns*k+2+nj+j:jac_row[j]*t for j in range(nj)})
+                    row.update({ui+nj*k+j:jac_row[j]*.5*t*t for j in range(nj)})
+                    target=float(jac_row@ref_mid-error)
+                    tolerance=(config['robot']['position_tolerance_m'] if axis<3 else config['robot']['rotation_tolerance_rad'])/5
+                    ub.add(row,target+tolerance);ub.add({i:-v for i,v in row.items()},-target+tolerance)
         force_rows.append((fs,offsets))
         for f,offset in zip(fs,offsets):
             ub.add({ns*k+i:v for i,v in enumerate(f)},model.cap_y-offset)
@@ -184,7 +202,8 @@ def optimize_case(candidate,sign,c,out):
             log={k:v for k,v in result.items() if k not in ['states','acceleration']};log.update(start=label,iteration=iteration)
             if result['status']!='LINEARIZED_OPTIMUM':attempts.append(log);break
             states=result['states'];positions=states[:,2:2+nj];step=float(np.max(abs(positions-ref)));log['max_joint_iterate_change_rad']=step
-            raw=out/'direct_paths'/f'iterate_{candidate}_{sign:+d}_{label}_{iteration:02d}.npz'
+            prefix=c['direct'].get('label','direct')
+            raw=out/'direct_paths'/f'{prefix}_iterate_{candidate}_{sign:+d}_{label}_{iteration:02d}.npz'
             np.savez_compressed(raw,states=states,acceleration=result['acceleration'],impulse_m_s=result['impulse_m_s'],reference=ref)
             log['iterate_file']=str(raw)
             metrics=replay(chart,model,states,result['acceleration'],result['impulse_m_s'],sign,c)
@@ -193,7 +212,7 @@ def optimize_case(candidate,sign,c,out):
                 best=dict(result,metrics=metrics,start=label,iteration=iteration)
             ref=positions.copy()
             if metrics['valid'] and step<c['direct']['convergence_rad']:break
-    caseid=f'direct_{candidate}_{sign:+d}';path=out/'direct_paths'/(caseid+'.npz')
+    caseid=f"{c['direct'].get('label','direct')}_{candidate}_{sign:+d}";path=out/'direct_paths'/(caseid+'.npz')
     if best:
         replay(chart,model,best['states'],best['acceleration'],best['impulse_m_s'],sign,c,path)
     return dict(case_id=caseid,candidate=candidate,sign=sign,horizon_s=h,mode='fixed',
@@ -203,18 +222,25 @@ def optimize_case(candidate,sign,c,out):
         interpretation='Feasible local lower bound only; failed/rejected LP iterations do not prove global infeasibility')
 
 
-def run(output,workers=2):
+def run(output,workers=2,override=None):
     out=Path(output);c=yaml.safe_load((out/'config.yaml').read_text());(out/'direct_paths').mkdir(exist_ok=True)
-    dump(out/'direct_provenance.json',dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+    if override:c['direct'].update(yaml.safe_load(Path(override).read_text()))
+    prefix=c['direct'].get('label','direct')
+    saved_config=out/(prefix+'_config.yaml')
+    if saved_config.exists() and yaml.safe_load(saved_config.read_text())!=c:raise ValueError('direct configuration differs from saved run')
+    saved_config.write_text(yaml.safe_dump(c,sort_keys=False))
+    dump(out/(prefix+'_provenance.json'),dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
         tracked_status=subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],text=True).strip(),
         started_utc=__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()))
     rows=[]
-    for candidate in c['direct']['candidates']:
-        for sign in c['direct']['signs']:
-            r=optimize_case(candidate,sign,c,out);dump(out/(r['case_id']+'.json'),r);rows.append(r)
+    with concurrent.futures.ProcessPoolExecutor(max_workers=workers) as pool:
+        futures=[pool.submit(optimize_case,candidate,sign,c,out) for candidate in c['direct']['candidates'] for sign in c['direct']['signs']]
+        for future in futures:
+            r=future.result();dump(out/(r['case_id']+'.json'),r);rows.append(r)
             print(r['case_id'],r['status'],r['achieved_impulse_m_s'],r['elapsed_s'],flush=True)
-    dump(out/'direct.json',rows)
+    dump(out/(prefix+'.json'),rows)
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser();p.add_argument('output');run(p.parse_args().output)
+    p=argparse.ArgumentParser();p.add_argument('output');p.add_argument('--override');p.add_argument('--workers',type=int,default=2)
+    a=p.parse_args();run(a.output,workers=a.workers,override=a.override)

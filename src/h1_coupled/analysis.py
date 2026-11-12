@@ -139,8 +139,9 @@ def figures(out,main,sens,boundaries,stats):
         ax.tick_params(axis='x',rotation=70);ax.legend()
     fig.suptitle('One-factor sensitivity: impulses +/-0.16 and +/-0.24 m/s (model assumptions)')
     fig.tight_layout(rect=(0,0,1,.96));save(fig,'sensitivity')
-    if (out/'direct.json').exists():
-        direct=json.loads((out/'direct.json').read_text());fig,ax=plt.subplots(figsize=(8,5));x=np.arange(len(direct))
+    direct_file=out/('direct_refined.json' if (out/'direct_refined.json').exists() else 'direct.json')
+    if direct_file.exists():
+        direct=json.loads(direct_file.read_text());fig,ax=plt.subplots(figsize=(8,5));x=np.arange(len(direct))
         local=[];independent=[]
         for r in direct:
             b=next(b for b in boundaries if (b['candidate'],b['mode'],b['method'],b['horizon_s'],b['sign'])==(r['candidate'],'fixed','offline',1.6,r['sign']))

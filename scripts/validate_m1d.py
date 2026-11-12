@@ -44,7 +44,9 @@ def run(output):
         assert v['valid'] and v['terminal_met'];dense.append(dict(case_id=r['case_id'],validation=v))
     report['dense_2_5ms_replays']=dense
     direct=[]
-    for r in json.loads((out/'direct.json').read_text()):
+    direct_rows=json.loads((out/'direct.json').read_text())
+    if (out/'direct_refined.json').exists():direct_rows+=json.loads((out/'direct_refined.json').read_text())
+    for r in direct_rows:
         if not r['path_file']:continue
         cc,chart,_=get_chart(r['candidate'],'fixed');cc=copy.deepcopy(cc);cc['experiment']['validation_dt_s']=.0025
         m=CoupledModel(cc['_human'],cc['contact'],cc['experiment']['dt_s'])
