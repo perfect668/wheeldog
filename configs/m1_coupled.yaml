@@ -1,0 +1,71 @@
+seed: 20261112
+capability_config: configs/m1_capability.yaml
+human_config: configs/exp0.yaml
+candidates: [ik0024, ik0036, ik0001, ik0010]
+# Explicit uncalibrated virtual bilateral hand compliance, not a patient model.
+contact:
+  stiffness_per_hand_n_m: 250.0
+  damping_per_hand_ns_m: 15.0
+  vertical_per_hand_n: 30.0
+  resultant_cap_per_hand_n: 80.0
+  # Constant vertical support reduces leg-normal-force LIPM coefficient.
+  vertical_load_correction: true
+robot:
+  torso_budget_nm: 100.0  # each shared joint, assumed contact-only budget
+  profile: nominal
+  clearance_m: 0.002
+  position_tolerance_m: 0.0005
+  rotation_tolerance_rad: 0.001
+chart:
+  step_m: 0.002
+  extent_m: 0.12
+  domains_m: [0.005, 0.01, 0.02, 0.04, 0.08, 0.12]
+  inverse_policy: speed_weighted
+  # Joint acceleration is split between q'(y)*a and q''(y)*w^2.
+  acceleration_allocation: 0.70
+  velocity_safety_factor: 0.95
+experiment:
+  dt_s: 0.04
+  horizons_s: [1.2, 1.6, 2.0]
+  impulses_m_s: [-0.40, -0.32, -0.24, -0.16, -0.08, 0.0, 0.08, 0.16, 0.24, 0.32, 0.40]
+  modes: [fixed, mobile]
+  # Dense replay sample step; no continuous mesh certificate.
+  validation_dt_s: 0.005
+  collision_stride: 4  # 20 ms sampled mesh check
+  boundary_resolution_m_s: 0.005
+  lp_time_limit_s: 5.0
+feedback:
+  poles_s_inv: [-3.0, -4.0, -5.0, -6.0]
+  terminal_y_m: 0.005
+  terminal_speed_m_s: 0.02
+  # Recovery time requires staying in box to the final sample, not invariance.
+  minimum_settled_s: 0.20
+sensitivity:
+  candidates: [ik0024, ik0036]
+  horizon_s: 1.6
+  impulses_m_s: [-0.24, -0.16, 0.16, 0.24]
+  # One-factor overrides, identical for both configurations.
+  variants:
+    torso_60: {torso_budget_nm: 60.0}
+    torso_200: {torso_budget_nm: 200.0}
+    contact_cap_50: {resultant_cap_per_hand_n: 50.0}
+    contact_cap_120: {resultant_cap_per_hand_n: 120.0}
+    stiffness_150: {stiffness_per_hand_n_m: 150.0}
+    stiffness_400: {stiffness_per_hand_n_m: 400.0}
+    damping_5: {damping_per_hand_ns_m: 5.0}
+    damping_30: {damping_per_hand_ns_m: 30.0}
+    arm_acc_5: {joint_acceleration_rad_s2: 5.0}
+    arm_acc_30: {joint_acceleration_rad_s2: 30.0}
+    delay_0: {delay_s: 0.0}
+    delay_0_08: {delay_s: 0.08}
+    dt_0_02: {dt_s: 0.02}
+direct:
+  candidates: [ik0024, ik0036]
+  horizon_s: 1.6
+  signs: [-1, 1]
+  sequential_iterations: 24
+  trust_region_rad: 0.015
+  convergence_rad: 0.002
+  impulse_cap_m_s: 0.5
+  # All 14 joint acceleration sequences optimized; no fixed Cartesian path.
+  starts: [chart_seed, zero_seed]
