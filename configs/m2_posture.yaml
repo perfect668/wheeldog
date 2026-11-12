@@ -1,0 +1,76 @@
+seed: 20261113
+coupled_config: configs/m1_coupled.yaml
+# Four requested representatives, then a predeclared extension including static
+# force/instantaneous-speed extrema and two additional geometry configurations.
+candidates: [ik0024, ik0036, ik0001, ik0010, ik0000, ik0008, ik0018, ik0037]
+policies: [speed_weighted, uniform]
+score:
+  horizon_s: 1.6
+  impulse_cap_m_s: 0.5
+  sequential_iterations: 24
+  trust_region_rad: 0.015
+  geometry_subintervals: [0.5]
+  # Same seeds/budget for every candidate and sign; no M1-D optimized warmstart.
+  starts: [zero, speed_weighted, uniform]
+  seed_impulse_m_s: 0.08
+  signs: [-1, 1]
+  terminal: human_and_robot_return
+selection:
+  default: ik0001
+  # B uses the torque-budget-only bidirectional residual ray as a proxy.
+  # Also report contact-capped margin: all poses may tie under that metric.
+  force_metric: min_bidirectional_residual_contact_torque_ray
+  kinematic_metric: min_bidirectional_cooperative_velocity
+  future_metric: min_verified_directional_impulse
+control:
+  dt_s: 0.04
+  mpc_horizon_s: 2.0
+  state_scale: [0.1, 0.5, 0.1, 0.5]
+  state_weights: [20.0, 2.0, 1.0, 0.2]
+  acceleration_weight: 0.02
+  qp_eps_abs: 0.0000001
+  qp_eps_rel: 0.0000001
+  qp_max_iter: 6000
+  qp_timing_target_s: 0.03  # diagnostic; backend has no interruptible time limit
+  acceptance_abs_residual: 0.000002
+  # Same scalar governor as M1-D is the explicit MPC fallback.
+  fallback: fixed_feedback_governor
+  poles_s_inv: [-3, -4, -5, -6]
+  # Choice uses only initial geometry/constraints, never score or test event.
+  envelope_policy: max_speed_times_acceleration_times_width
+evaluation:
+  post_last_event_horizon_s: 1.6
+  observation_s: 0.8
+  validation_dt_s: 0.005
+  collision_stride: 4
+  sensitivity_impulses_m_s: [-0.26, -0.18, 0.18, 0.26]
+  sensitivity_onset_s: 0.32
+  variants:
+    nominal: {}
+    stiffness_150: {stiffness_per_hand_n_m: 150.0}
+    stiffness_400: {stiffness_per_hand_n_m: 400.0}
+    damping_5: {damping_per_hand_ns_m: 5.0}
+    damping_30: {damping_per_hand_ns_m: 30.0}
+    acceleration_5: {joint_acceleration_rad_s2: 5.0}
+    acceleration_30: {joint_acceleration_rad_s2: 30.0}
+    delay_0: {delay_s: 0.0}
+    delay_80ms: {delay_s: 0.08}
+# No scoring episode has a future event, nonzero pre-event velocity, or two
+# impulses. Test definitions are immutable before scoring and selection.
+test_scenarios:
+  - {id: pulse_n10, initial_v_m_s: 0, events: [[0.32, -0.10]]}
+  - {id: pulse_p10, initial_v_m_s: 0, events: [[0.32, 0.10]]}
+  - {id: pulse_n18, initial_v_m_s: 0, events: [[0.32, -0.18]]}
+  - {id: pulse_p18, initial_v_m_s: 0, events: [[0.32, 0.18]]}
+  - {id: pulse_n26, initial_v_m_s: 0, events: [[0.32, -0.26]]}
+  - {id: pulse_p26, initial_v_m_s: 0, events: [[0.32, 0.26]]}
+  - {id: pulse_n34, initial_v_m_s: 0, events: [[0.32, -0.34]]}
+  - {id: pulse_p34, initial_v_m_s: 0, events: [[0.32, 0.34]]}
+  - {id: moving_nn, initial_v_m_s: -0.06, events: [[0.56, -0.14]]}
+  - {id: moving_np, initial_v_m_s: -0.06, events: [[0.56, 0.14]]}
+  - {id: moving_pn, initial_v_m_s: 0.06, events: [[0.56, -0.14]]}
+  - {id: moving_pp, initial_v_m_s: 0.06, events: [[0.56, 0.14]]}
+  - {id: initial_n12, initial_v_m_s: -0.12, events: []}
+  - {id: initial_p12, initial_v_m_s: 0.12, events: []}
+  - {id: reverse_np, initial_v_m_s: 0, events: [[0.32, -0.18], [0.88, 0.10]]}
+  - {id: reverse_pn, initial_v_m_s: 0, events: [[0.32, 0.18], [0.88, -0.10]]}
