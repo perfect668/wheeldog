@@ -58,9 +58,10 @@ def run(c,out):
     methods['B_capped_order_tie']=sel['B_contact_capped_order_tie']
     for method,candidate in sel['core_four_methods'].items():methods['core4_'+method]=candidate
     table=[]
-    for group in ['nominal','sensitivity','all']+list(c['evaluation']['variants']):
+    for group in ['nominal','nominal_matched_sensitivity','sensitivity','all']+list(c['evaluation']['variants']):
         if group=='nominal' and any(t['group']=='nominal' for t in table):continue
-        group_rows=[r for r in rows if group=='all' or (group=='sensitivity' and r['variant']!='nominal') or r['variant']==group]
+        group_rows=[r for r in rows if group=='all' or (group=='sensitivity' and r['variant']!='nominal') or r['variant']==group
+            or (group=='nominal_matched_sensitivity' and r['variant']=='nominal' and r['scenario']['id'] in ['pulse_n18','pulse_p18','pulse_n26','pulse_p26'])]
         for controller in ['fixed','mpc']:
             rr=[r for r in group_rows if r['controller']==controller]
             for method,candidate in methods.items():
@@ -171,10 +172,10 @@ def run(c,out):
         ax.set_xticks(np.arange(len(shown)),[m.replace('_','\n',1) for m in shown]);ax.set_title(group+' holdout');ax.set_ylim(0,105);ax.legend()
     axes[0].set_ylabel('Recovery [%]; bars: sustained, marks: terminal');save('selection_controller_ablation')
     fig_,axes=plt.subplots(1,2,figsize=(11,4),sharey=True)
-    variants=list(c['evaluation']['variants'])
+    variants=['nominal_matched_sensitivity']+[v for v in c['evaluation']['variants'] if v!='nominal']
     for ax,ctrl in zip(axes,['fixed','mpc']):
         z=np.array([[next(r for r in table if r['group']==v and r['method']==method and r['controller']==ctrl)['sustained_rate'] for method in shown[:4]] for v in variants])
-        im=ax.imshow(z,vmin=0,vmax=1,cmap='viridis',aspect='auto');ax.set_xticks(range(4),shown[:4],rotation=15);ax.set_yticks(range(len(variants)),variants);ax.set_title(ctrl)
+        im=ax.imshow(z,vmin=0,vmax=1,cmap='viridis',aspect='auto');ax.set_xticks(range(4),shown[:4],rotation=15);ax.set_yticks(range(len(variants)),['nominal (matched 4)']+variants[1:]);ax.set_title(ctrl)
         for i in range(z.shape[0]):
             for j in range(4):ax.text(j,i,f'{100*z[i,j]:.0f}',ha='center',va='center',color='white' if z[i,j]<.6 else 'black')
     fig_.colorbar(im,ax=axes.ravel().tolist(),label='Sustained fraction',fraction=.02)
@@ -182,21 +183,26 @@ def run(c,out):
     fig_.suptitle('M2-A model simulation (uncalibrated robot/contact parameters)',fontsize=9)
     fig_.subplots_adjust(left=.16,right=.88,bottom=.16,top=.90,wspace=.08);fig_.savefig(fig/'sensitivity.png');fig_.savefig(fig/'sensitivity.pdf');plt.close(fig_)
     plt.figure(figsize=(6,3.5));plt.scatter([r['score'] for r in candidate_rates],[100*r['sustained_rate'] for r in candidate_rates])
-    for r in candidate_rates:plt.annotate(r['candidate'],(r['score'],100*r['sustained_rate']),fontsize=8)
-    plt.xlabel('Offline minimum lower bound [m/s]');plt.ylabel('Nominal causal MPC sustained [%]');save('score_closed_loop')
-    # Predeclared +/-0.26 future impulses; do not cherry-pick successful traces.
-    fig_,axes=plt.subplots(2,2,figsize=(10,6),sharex=True)
-    for col,scenario in enumerate(['pulse_n26','pulse_p26']):
-        for method in ['A_default','D_future']:
-            for ctrl,style in [('fixed',':'),('mpc','-')]:
-                rr=next(r for r in rows if r['variant']=='nominal' and r['scenario']['id']==scenario and r['candidate']==sel['methods'][method] and r['controller']==ctrl)
-                if rr['path_file']:
-                    with np.load(rr['path_file'],allow_pickle=False) as d:
-                        axes[0,col].plot(d['time_s'],d['actual_state'][:,0],style,label=f'{method}/{ctrl}')
-                        axes[1,col].plot(d['time_s'],d['actual_per_hand_force_n'][:,0],style)
-        axes[0,col].set_title(scenario);axes[0,col].axhspan(-.01,.01,alpha=.1,color='green')
-        axes[0,col].axvline(.32+1.6,color='grey');axes[1,col].axvline(.32+1.6,color='grey');axes[1,col].set_xlabel('Time [s]')
-    axes[0,0].set_ylabel('Actual human lateral x [m]');axes[1,0].set_ylabel('Left contact force [N]');axes[0,0].legend(fontsize=7);save('causal_traces')
+    offsets=[(-8,12),(-38,12),(-25,-12),(-10,-12),(-20,10),(-20,-16),(-40,-12),(-5,12)]
+    for r,offset in zip(candidate_rates,offsets):plt.annotate(r['candidate'],(r['score'],100*r['sustained_rate']),xytext=offset,textcoords='offset points',fontsize=8)
+    plt.ylim(-8,85);plt.xlabel('Offline minimum lower bound [m/s]');plt.ylabel('Nominal causal MPC sustained [%]');save('score_closed_loop')
+    # Both signs/controllers, no success-based trace filter. Original .26
+    # representative retained; add the smallest predefined holdout pulse .10.
+    for amplitude,filename in [('26','causal_traces'),('10','causal_traces_small')]:
+        fig_,axes=plt.subplots(2,2,figsize=(10,6),sharex=True)
+        for col,scenario in enumerate(['pulse_n'+amplitude,'pulse_p'+amplitude]):
+            for method in ['A_default','D_future']:
+                for ctrl,style in [('fixed',':'),('mpc','-')]:
+                    rr=next(r for r in rows if r['variant']=='nominal' and r['scenario']['id']==scenario and r['candidate']==sel['methods'][method] and r['controller']==ctrl)
+                    if rr['path_file']:
+                        with np.load(rr['path_file'],allow_pickle=False) as d:
+                            axes[0,col].plot(d['time_s'],d['actual_state'][:,0],style,label=f'{method}/{ctrl}')
+                            axes[1,col].plot(d['time_s'],d['actual_per_hand_force_n'][:,0],style)
+            axes[0,col].set_title(scenario);axes[0,col].axhspan(-.01,.01,alpha=.1,color='green')
+            for ax in axes[:,col]:
+                ax.axvspan(1.92,2.72,color='grey',alpha=.12);ax.set_xlim(0,2.72)
+            axes[1,col].set_xlabel('Time [s]; grey: planned observation window')
+        axes[0,0].set_ylabel('Actual human lateral x [m]');axes[1,0].set_ylabel('Left contact force [N]');axes[0,0].legend(fontsize=7);save(filename)
     plt.figure(figsize=(9,3.8))
     for i,(key,label) in enumerate([('max_joint_acceleration_ratio','joint acceleration'),('max_contact_torque_ratio','contact torque'),('max_contact_cap_ratio','contact force'),('max_domain_ratio','path domain')]):
         rr=[next(r for r in constraints if r['candidate']==id and r['controller']=='mpc') for id in names]
