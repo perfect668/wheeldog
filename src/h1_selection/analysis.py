@@ -103,6 +103,7 @@ def run(c,out):
     dump(out/'summary.json',summary)
     plt.rcParams.update({'font.size':9,'figure.dpi':140})
     def save(name):
+        plt.gcf().suptitle('M2-A model simulation (uncalibrated robot/contact parameters)',fontsize=9)
         plt.tight_layout();plt.savefig(fig/(name+'.png'));plt.savefig(fig/(name+'.pdf'));plt.close()
     names=[r['candidate'] for r in metrics];x=np.arange(len(names));width=.25
     plt.figure(figsize=(9,3.5))
@@ -132,7 +133,8 @@ def run(c,out):
             for j in range(4):ax.text(j,i,f'{100*z[i,j]:.0f}',ha='center',va='center',color='white' if z[i,j]<.6 else 'black')
     fig_.colorbar(im,ax=axes.ravel().tolist(),label='Sustained fraction',fraction=.02)
     # tight_layout cannot place a shared colorbar reliably; explicit margins.
-    fig_.subplots_adjust(left=.16,right=.88,bottom=.16,wspace=.08);fig_.savefig(fig/'sensitivity.png');fig_.savefig(fig/'sensitivity.pdf');plt.close(fig_)
+    fig_.suptitle('M2-A model simulation (uncalibrated robot/contact parameters)',fontsize=9)
+    fig_.subplots_adjust(left=.16,right=.88,bottom=.16,top=.90,wspace=.08);fig_.savefig(fig/'sensitivity.png');fig_.savefig(fig/'sensitivity.pdf');plt.close(fig_)
     plt.figure(figsize=(6,3.5));plt.scatter([r['score'] for r in candidate_rates],[100*r['sustained_rate'] for r in candidate_rates])
     for r in candidate_rates:plt.annotate(r['candidate'],(r['score'],100*r['sustained_rate']),fontsize=8)
     plt.xlabel('Offline minimum lower bound [m/s]');plt.ylabel('Nominal causal MPC sustained [%]');save('score_closed_loop')

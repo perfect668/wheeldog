@@ -57,6 +57,16 @@ def test_mpc_failure_uses_identical_pending_queue(config_model):
     assert p.queue[0]==.2 and log['governor']['delivered']==.1
 
 
+def test_nonfinite_solver_output_is_rejected_and_log_is_serializable(config_model):
+    c,m=config_model;p=PredictiveController(m,envelope(m),.04,c['control'])
+    class NonfiniteSolver:
+        def __call__(self,**kwargs):return {'x':np.full(p.size,np.nan)}
+        def stats(self):return dict(success=True,return_status='injected_nonfinite')
+    p.solver=NonfiniteSolver();a,log=p.command(np.zeros(4))
+    assert log['fallback'] and log['qp_max_normalized_violation'] is None and a==0
+    json.dumps(log,allow_nan=False)
+
+
 def test_pending_violation_and_invalid_delay_are_visible(config_model):
     c,m=config_model;p=PredictiveController(m,envelope(m),.08,c['control']);p.queue=[1.,1.]
     _,l=p.command(np.array([0.,0.,.12,.3]));assert l['pending_queue_constraint_violation'] and l['fallback']
