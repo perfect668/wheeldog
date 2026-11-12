@@ -54,6 +54,8 @@ def prepare(c,out):
     if saved.exists():raise ValueError('prepare requires a new output directory')
     saved.write_text(yaml.safe_dump(c,sort_keys=False))
     metadata=metadata_record(c['_capability']);metadata['frozen_integrity']=check_frozen()
+    metadata['capability_seed']=metadata['seed'];metadata['seed']=c['seed']
+    metadata['gravity_model']='Robot contact-only budgets exclude robot gravity; human uses explicit vertical-support-corrected LIPM'
     metadata['m1d_config_sha256']=sha256('configs/m1_coupled.yaml')
     metadata['scope']='Conditional coupled LIPM, passive bilateral contacts, contact-only robot budgets; not hardware'
     dump(out/'metadata.json',metadata)
