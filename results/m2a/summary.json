@@ -1,0 +1,114 @@
+{
+  "selection": {
+    "A_default": "ik0001",
+    "B_force": "ik0018",
+    "C_kinematic": "ik0037",
+    "D_future": "ik0037"
+  },
+  "runs": 768,
+  "terminal": 150,
+  "sustained": 150,
+  "failure_counts": {
+    "governor_no_admissible_acceleration": 246,
+    "qp_and_governor_failure": 239
+  },
+  "outcome_reason_counts": {
+    "EARLY_CONTROLLER_STOP": 485,
+    "RECOVERED": 150,
+    "HANDLE_RETURN_BOX": 87,
+    "HUMAN_TERMINAL_BOX": 46
+  },
+  "score_attempts": 1152,
+  "accepted_score_iterates": 1152,
+  "score_status_counts": {
+    "LINEARIZED_OPTIMUM": 1152
+  },
+  "duplicate_initializations": 8,
+  "nominal_candidate_spearman_rho": 0.901127113779166,
+  "rank_caveat": "Exploratory 8-candidate deterministic sample, no population significance claim",
+  "mpc_command_calls": 13405,
+  "mpc_fallback_calls": 2032,
+  "mpc_qp_status": {
+    "solved": 11373,
+    "maximum iterations reached": 1861,
+    "solved inaccurate": 171
+  },
+  "mpc_pending_queue_constraint_violations": 0,
+  "mpc_wall_quantiles_s": {
+    "0.5": 0.001552344998344779,
+    "0.95": 0.06662415378959849,
+    "0.99": 0.07186088366433978,
+    "1.0": 0.09931514703202993
+  },
+  "mpc_over_control_period": 2378,
+  "maximum_actual_replay_ode_error": 1.1386159755929354e-13,
+  "maximum_fk_position_error_m": 3.524359922052231e-08,
+  "maximum_fk_rotation_error_rad": 2.0771991733176902e-08,
+  "timing_caveat": "4 CPU workers; no interruptible wall-time limit or simulated deadline jitter; max_iter identical",
+  "peak_caveat": "Failed truncated trajectories have incomplete maxima; conditional completed-run metrics are selection-biased",
+  "initial_handle_position_spread_m": 3.545242002713658e-10,
+  "B_contact_capped_argmax": [
+    "ik0024",
+    "ik0036",
+    "ik0001",
+    "ik0010",
+    "ik0000",
+    "ik0008",
+    "ik0018",
+    "ik0037"
+  ],
+  "static_metric_spearman": {
+    "force_proxy_min_n": 0.951189731211342,
+    "instantaneous_min_m_s": 0.450563556889583
+  },
+  "paired_posture_ablation": [
+    {
+      "controller": "fixed",
+      "comparison": "D_future - A_default",
+      "n": 48,
+      "wins": 2,
+      "losses": 0,
+      "sustained_rate_difference": 0.041666666666666664
+    },
+    {
+      "controller": "fixed",
+      "comparison": "D_future - B_force",
+      "n": 48,
+      "wins": 2,
+      "losses": 0,
+      "sustained_rate_difference": 0.041666666666666664
+    },
+    {
+      "controller": "fixed",
+      "comparison": "D_future - C_kinematic",
+      "n": 48,
+      "wins": 0,
+      "losses": 0,
+      "sustained_rate_difference": 0.0
+    },
+    {
+      "controller": "mpc",
+      "comparison": "D_future - A_default",
+      "n": 48,
+      "wins": 8,
+      "losses": 0,
+      "sustained_rate_difference": 0.16666666666666666
+    },
+    {
+      "controller": "mpc",
+      "comparison": "D_future - B_force",
+      "n": 48,
+      "wins": 2,
+      "losses": 8,
+      "sustained_rate_difference": -0.125
+    },
+    {
+      "controller": "mpc",
+      "comparison": "D_future - C_kinematic",
+      "n": 48,
+      "wins": 0,
+      "losses": 0,
+      "sustained_rate_difference": 0.0
+    }
+  ]
+}

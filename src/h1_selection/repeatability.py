@@ -4,6 +4,7 @@ import argparse
 import json
 import shutil
 import concurrent.futures
+import yaml
 import numpy as np
 from h1_kinematics.assets import dump
 from .common import load_config,provenance
@@ -12,6 +13,7 @@ from .evaluation import compute,initialize
 
 def run(c,root,workers=4):
     root=Path(root);out=root/'repeatability'
+    if yaml.safe_load((root/'config.yaml').read_text())!=c:raise ValueError('repeatability requires unchanged prepared configuration')
     if out.exists():raise ValueError('repeatability diagnostic already exists')
     out.mkdir();(out/'charts').mkdir();(out/'paths').mkdir();(out/'cases').mkdir()
     for p in (root/'charts').glob('*.npz'):shutil.copyfile(p,out/'charts'/p.name)

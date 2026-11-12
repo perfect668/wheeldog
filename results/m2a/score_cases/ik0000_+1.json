@@ -1,0 +1,2312 @@
+{
+  "candidate": "ik0000",
+  "sign": 1,
+  "lower_bound_m_s": 0.33901872302378894,
+  "status": "VERIFIED_LOWER_BOUND",
+  "path_file": "results/m2a/score_paths/ik0000_+1.npz",
+  "metrics": {
+    "valid": true,
+    "reasons": [],
+    "terminal_human": [
+      0.0008757771705664243,
+      0.0006547895317847143
+    ],
+    "max_handle_position_error_m": 0.00023234619590875022,
+    "max_handle_rotation_error_rad": 0.00046976406503551496,
+    "max_contact_cap_ratio": 0.8352208312473858,
+    "max_torque_ratio": 0.6959010616799667,
+    "max_joint_velocity_ratio": 0.6413198458721688,
+    "max_joint_acceleration_ratio": 1.0,
+    "min_sampled_clearance_m": 0.00501151859978079,
+    "peak_human_x_m": 0.1101131009177591,
+    "terminal_linearization_error_m_m_s": [
+      0.0008757771705664243,
+      0.0006547895317847143
+    ],
+    "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+  },
+  "best_start": "uniform",
+  "seeds": [
+    {
+      "start": "zero",
+      "status": "ZERO",
+      "reference_sha256": "cc5e4944a985afa0160ad346863fde89add29d045f46d28429a6f5f7b96d6d43",
+      "duplicate_of": null
+    },
+    {
+      "start": "speed_weighted",
+      "status": "LINEAR_CHART_SEED",
+      "envelope": {
+        "radius_m": 0.04,
+        "y_lower_m": -0.04,
+        "y_upper_m": 0.04,
+        "speed_m_s": 0.3506305342269805,
+        "acceleration_m_s2": 2.9115439693788847,
+        "per_hand_force_lower_n": -74.16198487095663,
+        "per_hand_force_upper_n": 74.16198487095663,
+        "derivative_abs_bound": [
+          0.0379136292297611,
+          0.9537923332536811,
+          0.024056308097323564,
+          3.6063339968174857,
+          0.0173716480637337,
+          3.6000156893548247,
+          0.0038393786242856536,
+          0.3547053094023487,
+          1.1362584548841859,
+          0.3740888549637396,
+          2.93077862977602,
+          0.3016690683961146,
+          3.254026008603809,
+          0.2519354054171256
+        ],
+        "second_derivative_abs_bound": [
+          0.8832457204005101,
+          17.14803473877025,
+          0.34247358847837395,
+          33.03393101776705,
+          0.4848351046613523,
+          15.871389489927655,
+          0.14494703551278956,
+          6.451271462044621,
+          11.068633153620807,
+          2.580500354608862,
+          20.832520567752475,
+          5.317665161914481,
+          9.045707985051466,
+          1.0418974735393909
+        ],
+        "max_chart_position_error_m": 6.216844112597328e-11,
+        "max_chart_rotation_error_rad": 7.627800273531116e-11,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "limiting_torque_updates": [],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08L-W4C1C9-ZY2_joint_4"
+      },
+      "reference_sha256": "56312b81b0178d5d793c46fa95c07e2a8f7d41cdf6196cd03b1726a3bdc89fd5",
+      "duplicate_of": null
+    },
+    {
+      "start": "uniform",
+      "status": "LINEAR_CHART_SEED",
+      "envelope": {
+        "radius_m": 0.04,
+        "y_lower_m": -0.04,
+        "y_upper_m": 0.04,
+        "speed_m_s": 0.350630534213497,
+        "acceleration_m_s2": 2.911543969378873,
+        "per_hand_force_lower_n": -74.16198487095663,
+        "per_hand_force_upper_n": 74.16198487095663,
+        "derivative_abs_bound": [
+          0.04028086515470765,
+          0.9539153095167209,
+          0.016227451494665777,
+          3.6063339968175,
+          0.02347556068314441,
+          3.599986271288298,
+          0.006178474015881035,
+          0.408099981709753,
+          1.1560961651580126,
+          0.2538274414241607,
+          2.930778629776023,
+          0.38775583831674254,
+          3.241999148203055,
+          0.2973192284966376
+        ],
+        "second_derivative_abs_bound": [
+          0.8233032725885694,
+          17.150032332711028,
+          0.2527753991833604,
+          33.03393102030769,
+          0.43868068252493386,
+          15.872057801737547,
+          0.09431839178582313,
+          6.0925423577749145,
+          11.22081733316302,
+          2.7032472684442794,
+          20.832520569595445,
+          5.261998486870742,
+          9.154847279866397,
+          0.8164321195821577
+        ],
+        "max_chart_position_error_m": 6.103239475908865e-11,
+        "max_chart_rotation_error_rad": 1.2057216016970488e-10,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "limiting_torque_updates": [],
+        "velocity_acceleration_are_sufficient_envelopes": true,
+        "max_acceleration_coordinate": "AR5-5_08L-W4C1C9-ZY2_joint_4"
+      },
+      "reference_sha256": "70f55e31f323c93fd7e0fd7a49ed09db6988d3dbd83f2b11856936677968294d",
+      "duplicate_of": null
+    }
+  ],
+  "bounds_by_start": {
+    "zero": 0.30579208670943914,
+    "speed_weighted": 0.3389750098701445,
+    "uniform": 0.33901872302378894
+  },
+  "attempts": [
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.02019703545323718,
+      "start": "zero",
+      "iteration": 0,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_00.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00010228805968679847,
+          0.00015192876655892187
+        ],
+        "max_handle_position_error_m": 0.00018249350079609504,
+        "max_handle_rotation_error_rad": 0.0003950972165485488,
+        "max_contact_cap_ratio": 0.37793980152709855,
+        "max_torque_ratio": 0.39386479931212803,
+        "max_joint_velocity_ratio": 0.10742958658702939,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.005931875544592005,
+        "terminal_linearization_error_m_m_s": [
+          0.00010228805968679847,
+          0.00015192876655892187
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.03908672286818703,
+      "start": "zero",
+      "iteration": 1,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_01.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          3.1208637884677706e-05,
+          1.53935117305543e-05
+        ],
+        "max_handle_position_error_m": 0.00019218685922254967,
+        "max_handle_rotation_error_rad": 0.0005016858491843848,
+        "max_contact_cap_ratio": 0.3848611457888679,
+        "max_torque_ratio": 0.39387244742535565,
+        "max_joint_velocity_ratio": 0.15578792658837218,
+        "max_joint_acceleration_ratio": 1.000000000001088,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.011528926955318245,
+        "terminal_linearization_error_m_m_s": [
+          3.1208637884677706e-05,
+          1.53935117305543e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.05679790751199371,
+      "start": "zero",
+      "iteration": 2,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_02.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          3.499660187448811e-05,
+          -1.2822401181167612e-05
+        ],
+        "max_handle_position_error_m": 0.00020769576050518095,
+        "max_handle_rotation_error_rad": 0.00045985048149980567,
+        "max_contact_cap_ratio": 0.38926753444722256,
+        "max_torque_ratio": 0.3938591397397676,
+        "max_joint_velocity_ratio": 0.22075288646895752,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.01699687852761096,
+        "terminal_linearization_error_m_m_s": [
+          3.499660187448811e-05,
+          -1.2822401181167612e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.07469446656981732,
+      "start": "zero",
+      "iteration": 3,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_03.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -4.4084677310210625e-07,
+          -0.00011175211766817968
+        ],
+        "max_handle_position_error_m": 0.00022054609490320532,
+        "max_handle_rotation_error_rad": 0.00044511799221916417,
+        "max_contact_cap_ratio": 0.40296597073601986,
+        "max_torque_ratio": 0.39387197089437875,
+        "max_joint_velocity_ratio": 0.2278309204396115,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.022489291398560877,
+        "terminal_linearization_error_m_m_s": [
+          -4.4084677310210625e-07,
+          -0.00011175211766817968
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.09239068218050614,
+      "start": "zero",
+      "iteration": 4,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_04.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -7.848972388836356e-05,
+          -0.0002611499546506998
+        ],
+        "max_handle_position_error_m": 0.00021790340670357626,
+        "max_handle_rotation_error_rad": 0.000499103593993735,
+        "max_contact_cap_ratio": 0.4169523887050601,
+        "max_torque_ratio": 0.39386170841094925,
+        "max_joint_velocity_ratio": 0.3096639416062833,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.027998924080702998,
+        "terminal_linearization_error_m_m_s": [
+          -7.848972388836356e-05,
+          -0.0002611499546506998
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.10970004785892296,
+      "start": "zero",
+      "iteration": 5,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_05.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -0.00012295793841722246,
+          -0.0003507018048132676
+        ],
+        "max_handle_position_error_m": 0.00020684200333565155,
+        "max_handle_rotation_error_rad": 0.0004481477844199812,
+        "max_contact_cap_ratio": 0.4276849061603425,
+        "max_torque_ratio": 0.39383225776339714,
+        "max_joint_velocity_ratio": 0.36414886706414556,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.033427917765393604,
+        "terminal_linearization_error_m_m_s": [
+          -0.00012295793841722246,
+          -0.0003507018048132676
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.1258680797019148,
+      "start": "zero",
+      "iteration": 6,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_06.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -0.00020506657551721757,
+          -0.00045521836276665067
+        ],
+        "max_handle_position_error_m": 0.00021262619919943602,
+        "max_handle_rotation_error_rad": 0.0005344303104228901,
+        "max_contact_cap_ratio": 0.4468736982775406,
+        "max_torque_ratio": 0.393881883348689,
+        "max_joint_velocity_ratio": 0.38943060159389875,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.03854777680088268,
+        "terminal_linearization_error_m_m_s": [
+          -0.00020506657551721757,
+          -0.00045521836276665067
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.14112086788731115,
+      "start": "zero",
+      "iteration": 7,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_07.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -4.116568376229158e-05,
+          -0.0003126600294739994
+        ],
+        "max_handle_position_error_m": 0.00021440047875921747,
+        "max_handle_rotation_error_rad": 0.0005647069070252177,
+        "max_contact_cap_ratio": 0.46747176635978543,
+        "max_torque_ratio": 0.3938583669910327,
+        "max_joint_velocity_ratio": 0.4113551919012083,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0435204170703032,
+        "terminal_linearization_error_m_m_s": [
+          -4.116568376229158e-05,
+          -0.0003126600294739994
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.15547010917745466,
+      "start": "zero",
+      "iteration": 8,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_08.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -0.00011950643636972851,
+          -0.0004903857990818189
+        ],
+        "max_handle_position_error_m": 0.00021981077794619615,
+        "max_handle_rotation_error_rad": 0.000492908352006062,
+        "max_contact_cap_ratio": 0.4799828951660146,
+        "max_torque_ratio": 0.39387651030659937,
+        "max_joint_velocity_ratio": 0.4343184428505372,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.04822923297451677,
+        "terminal_linearization_error_m_m_s": [
+          -0.00011950643636972851,
+          -0.0004903857990818189
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.16946516953431306,
+      "start": "zero",
+      "iteration": 9,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_09.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -5.47289364848911e-05,
+          -0.0003160490305709056
+        ],
+        "max_handle_position_error_m": 0.000221533456727518,
+        "max_handle_rotation_error_rad": 0.000488108653838165,
+        "max_contact_cap_ratio": 0.4995638514275916,
+        "max_torque_ratio": 0.3938825722916684,
+        "max_joint_velocity_ratio": 0.4468291665741616,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.052807134468750766,
+        "terminal_linearization_error_m_m_s": [
+          -5.47289364848911e-05,
+          -0.0003160490305709056
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.18304813398354178,
+      "start": "zero",
+      "iteration": 10,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_10.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          9.516159124525879e-05,
+          -3.151424725488303e-05
+        ],
+        "max_handle_position_error_m": 0.0002247922568487072,
+        "max_handle_rotation_error_rad": 0.0005424211634633969,
+        "max_contact_cap_ratio": 0.5254446216297074,
+        "max_torque_ratio": 0.39388221743252827,
+        "max_joint_velocity_ratio": 0.4572009118926081,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05727531795749767,
+        "terminal_linearization_error_m_m_s": [
+          9.516159124525879e-05,
+          -3.151424725488303e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.19581610156331902,
+      "start": "zero",
+      "iteration": 11,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_11.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00012764351503549384,
+          2.75948448945928e-05
+        ],
+        "max_handle_position_error_m": 0.00022417647462314737,
+        "max_handle_rotation_error_rad": 0.0005327932846865211,
+        "max_contact_cap_ratio": 0.5456960467998219,
+        "max_torque_ratio": 0.3938827502755869,
+        "max_joint_velocity_ratio": 0.4934360660391867,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.061519836611996524,
+        "terminal_linearization_error_m_m_s": [
+          0.00012764351503549384,
+          2.75948448945928e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.20776084154022562,
+      "start": "zero",
+      "iteration": 12,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_12.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          4.706603352404647e-05,
+          -0.00022926444529790225
+        ],
+        "max_handle_position_error_m": 0.00021385742838296722,
+        "max_handle_rotation_error_rad": 0.0004795555641822265,
+        "max_contact_cap_ratio": 0.5598636225190298,
+        "max_torque_ratio": 0.3938854034765681,
+        "max_joint_velocity_ratio": 0.5111527248170995,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.06553451468528093,
+        "terminal_linearization_error_m_m_s": [
+          4.706603352404647e-05,
+          -0.00022926444529790225
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.21931998485812762,
+      "start": "zero",
+      "iteration": 13,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_13.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00018980552271125365,
+          -1.8237411214776147e-05
+        ],
+        "max_handle_position_error_m": 0.00020906600650607223,
+        "max_handle_rotation_error_rad": 0.000497078610587996,
+        "max_contact_cap_ratio": 0.5738897524163228,
+        "max_torque_ratio": 0.40560189941666785,
+        "max_joint_velocity_ratio": 0.5372856153115051,
+        "max_joint_acceleration_ratio": 1.0000000000000004,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.06941834784947136,
+        "terminal_linearization_error_m_m_s": [
+          0.00018980552271125365,
+          -1.8237411214776147e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.23021084331487124,
+      "start": "zero",
+      "iteration": 14,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_14.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0002275309248952058,
+          -3.268303747990973e-05
+        ],
+        "max_handle_position_error_m": 0.00021759623494937297,
+        "max_handle_rotation_error_rad": 0.0004985332677710677,
+        "max_contact_cap_ratio": 0.5953319748968251,
+        "max_torque_ratio": 0.43175502270885685,
+        "max_joint_velocity_ratio": 0.5636177766421044,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07311617815270668,
+        "terminal_linearization_error_m_m_s": [
+          0.0002275309248952058,
+          -3.268303747990973e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.24052105522242234,
+      "start": "zero",
+      "iteration": 15,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_15.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00020962328506604798,
+          -0.00012886448073837496
+        ],
+        "max_handle_position_error_m": 0.00023120095947671673,
+        "max_handle_rotation_error_rad": 0.00048014771572205437,
+        "max_contact_cap_ratio": 0.6195465756320455,
+        "max_torque_ratio": 0.46065185871708647,
+        "max_joint_velocity_ratio": 0.5832999981961041,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0766376769965512,
+        "terminal_linearization_error_m_m_s": [
+          0.00020962328506604798,
+          -0.00012886448073837496
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2500814048205615,
+      "start": "zero",
+      "iteration": 16,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_16.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00037296354615274366,
+          6.903113606463411e-05
+        ],
+        "max_handle_position_error_m": 0.00022209234371027784,
+        "max_handle_rotation_error_rad": 0.0005018315966485884,
+        "max_contact_cap_ratio": 0.6360655782668329,
+        "max_torque_ratio": 0.4796799329390636,
+        "max_joint_velocity_ratio": 0.5935591048391956,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07996590049591606,
+        "terminal_linearization_error_m_m_s": [
+          0.00037296354615274366,
+          6.903113606463411e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.25917831247982237,
+      "start": "zero",
+      "iteration": 17,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_17.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0004192643212866709,
+          0.0001136803344207068
+        ],
+        "max_handle_position_error_m": 0.00023017088061418495,
+        "max_handle_rotation_error_rad": 0.0005067319883135821,
+        "max_contact_cap_ratio": 0.6493661152608438,
+        "max_torque_ratio": 0.49484099850296304,
+        "max_joint_velocity_ratio": 0.6071095434961035,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0831524873071417,
+        "terminal_linearization_error_m_m_s": [
+          0.0004192643212866709,
+          0.0001136803344207068
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.26802153437174964,
+      "start": "zero",
+      "iteration": 18,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_18.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0006027128522514615,
+          0.0004874937217271427
+        ],
+        "max_handle_position_error_m": 0.00022347369836952065,
+        "max_handle_rotation_error_rad": 0.0004466626805908807,
+        "max_contact_cap_ratio": 0.6625472616819188,
+        "max_torque_ratio": 0.5097597155419765,
+        "max_joint_velocity_ratio": 0.6123755434006642,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005653952973571706,
+        "peak_human_x_m": 0.08625083862305484,
+        "terminal_linearization_error_m_m_s": [
+          0.0006027128522514615,
+          0.0004874937217271427
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.27661234515924016,
+      "start": "zero",
+      "iteration": 19,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_19.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0007828460932278473,
+          0.0006138390567471037
+        ],
+        "max_handle_position_error_m": 0.00022310615003116969,
+        "max_handle_rotation_error_rad": 0.0004665844519303627,
+        "max_contact_cap_ratio": 0.6830392627390232,
+        "max_torque_ratio": 0.532911845899974,
+        "max_joint_velocity_ratio": 0.6171862047738216,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005572149181994117,
+        "peak_human_x_m": 0.0892641132219696,
+        "terminal_linearization_error_m_m_s": [
+          0.0007828460932278473,
+          0.0006138390567471037
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2846248592768662,
+      "start": "zero",
+      "iteration": 20,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_20.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0011124809718019322,
+          0.0012878236826741633
+        ],
+        "max_handle_position_error_m": 0.00022463801622842183,
+        "max_handle_rotation_error_rad": 0.0005151080262107383,
+        "max_contact_cap_ratio": 0.7030838903669777,
+        "max_torque_ratio": 0.5551447469433641,
+        "max_joint_velocity_ratio": 0.6232124330247635,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005510864519537932,
+        "peak_human_x_m": 0.09200497793935061,
+        "terminal_linearization_error_m_m_s": [
+          0.0011124809718019322,
+          0.0012878236826741633
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2921463245521982,
+      "start": "zero",
+      "iteration": 21,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_21.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0012208120771286274,
+          0.0012661875439958464
+        ],
+        "max_handle_position_error_m": 0.00023214053657830665,
+        "max_handle_rotation_error_rad": 0.0005161471761548491,
+        "max_contact_cap_ratio": 0.7210390988404609,
+        "max_torque_ratio": 0.5746829445556273,
+        "max_joint_velocity_ratio": 0.6246935515159747,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.00546228036591219,
+        "peak_human_x_m": 0.09456344591218604,
+        "terminal_linearization_error_m_m_s": [
+          0.0012208120771286274,
+          0.0012661875439958464
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.29909047746150463,
+      "start": "zero",
+      "iteration": 22,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_22.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0012185027288168604,
+          0.001180648386181021
+        ],
+        "max_handle_position_error_m": 0.00022684526416009835,
+        "max_handle_rotation_error_rad": 0.0004748096004972755,
+        "max_contact_cap_ratio": 0.7324651579723963,
+        "max_torque_ratio": 0.5872561517959544,
+        "max_joint_velocity_ratio": 0.6313721716123623,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005428353544990822,
+        "peak_human_x_m": 0.09696723340614331,
+        "terminal_linearization_error_m_m_s": [
+          0.0012185027288168604,
+          0.001180648386181021
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.30579208670943914,
+      "start": "zero",
+      "iteration": 23,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_zero_23.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.001427587993011094,
+          0.0016112565529162078
+        ],
+        "max_handle_position_error_m": 0.00021647123907895388,
+        "max_handle_rotation_error_rad": 0.0005012649378434688,
+        "max_contact_cap_ratio": 0.743870357736964,
+        "max_torque_ratio": 0.5994993950024586,
+        "max_joint_velocity_ratio": 0.6272213376994065,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.00540411167830475,
+        "peak_human_x_m": 0.09928854162447069,
+        "terminal_linearization_error_m_m_s": [
+          0.001427587993011094,
+          0.0016112565529162078
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.10070353950983599,
+      "start": "speed_weighted",
+      "iteration": 0,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_00.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -1.9091198788169134e-05,
+          -1.3684355756925627e-05
+        ],
+        "max_handle_position_error_m": 0.00021790616671241243,
+        "max_handle_rotation_error_rad": 0.0005176076397325366,
+        "max_contact_cap_ratio": 0.4513287576940802,
+        "max_torque_ratio": 0.3938638592696397,
+        "max_joint_velocity_ratio": 0.16667428077131413,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.029818175381508914,
+        "terminal_linearization_error_m_m_s": [
+          -1.9091198788169134e-05,
+          -1.3684355756925627e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.11872933941743576,
+      "start": "speed_weighted",
+      "iteration": 1,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_01.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -7.557295845417199e-05,
+          -0.00012344169880973595
+        ],
+        "max_handle_position_error_m": 0.0002100126951459453,
+        "max_handle_rotation_error_rad": 0.0005607543266125571,
+        "max_contact_cap_ratio": 0.4648629439799191,
+        "max_torque_ratio": 0.3938605216579353,
+        "max_joint_velocity_ratio": 0.20407916864871808,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.035214327401044736,
+        "terminal_linearization_error_m_m_s": [
+          -7.557295845417199e-05,
+          -0.00012344169880973595
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.13619194994211004,
+      "start": "speed_weighted",
+      "iteration": 2,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_02.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -4.421514432830243e-05,
+          -8.982833409733245e-05
+        ],
+        "max_handle_position_error_m": 0.000213134533905094,
+        "max_handle_rotation_error_rad": 0.0005509615074758916,
+        "max_contact_cap_ratio": 0.4921477684369095,
+        "max_torque_ratio": 0.3938678670238754,
+        "max_joint_velocity_ratio": 0.26376227230817906,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.040451712753141814,
+        "terminal_linearization_error_m_m_s": [
+          -4.421514432830243e-05,
+          -8.982833409733245e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.1525771822906978,
+      "start": "speed_weighted",
+      "iteration": 3,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_03.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          9.99322609762829e-05,
+          3.646138650467907e-05
+        ],
+        "max_handle_position_error_m": 0.00021743266729289543,
+        "max_handle_rotation_error_rad": 0.0005105231213436945,
+        "max_contact_cap_ratio": 0.5109904891921611,
+        "max_torque_ratio": 0.39386491966282333,
+        "max_joint_velocity_ratio": 0.3306148077386734,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.045616490139197635,
+        "terminal_linearization_error_m_m_s": [
+          9.99322609762829e-05,
+          3.646138650467907e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.16772448814996274,
+      "start": "speed_weighted",
+      "iteration": 4,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_04.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          4.9056470842806177e-05,
+          -9.127720888379987e-05
+        ],
+        "max_handle_position_error_m": 0.00021837059318806232,
+        "max_handle_rotation_error_rad": 0.0005029583530090242,
+        "max_contact_cap_ratio": 0.5232627228121949,
+        "max_torque_ratio": 0.39385029325528337,
+        "max_joint_velocity_ratio": 0.3799324847260972,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05050821022963946,
+        "terminal_linearization_error_m_m_s": [
+          4.9056470842806177e-05,
+          -9.127720888379987e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.18215102441383102,
+      "start": "speed_weighted",
+      "iteration": 5,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_05.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00011042712517462841,
+          3.5818272938253556e-06
+        ],
+        "max_handle_position_error_m": 0.00021591026442685285,
+        "max_handle_rotation_error_rad": 0.0005318702610869606,
+        "max_contact_cap_ratio": 0.5495580932965385,
+        "max_torque_ratio": 0.3938724470061028,
+        "max_joint_velocity_ratio": 0.4023286159211825,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05515949094002093,
+        "terminal_linearization_error_m_m_s": [
+          0.00011042712517462841,
+          3.5818272938253556e-06
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.1956342990798346,
+      "start": "speed_weighted",
+      "iteration": 6,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_06.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00033084568590076915,
+          0.0002796071453460421
+        ],
+        "max_handle_position_error_m": 0.00021457748190205304,
+        "max_handle_rotation_error_rad": 0.0005061774314277613,
+        "max_contact_cap_ratio": 0.5627698484681248,
+        "max_torque_ratio": 0.3938780168291263,
+        "max_joint_velocity_ratio": 0.40912097091925315,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05967566193972212,
+        "terminal_linearization_error_m_m_s": [
+          0.00033084568590076915,
+          0.0002796071453460421
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.20846047335912998,
+      "start": "speed_weighted",
+      "iteration": 7,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_07.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0003535784925561078,
+          0.00015361774802404303
+        ],
+        "max_handle_position_error_m": 0.00022469106388356197,
+        "max_handle_rotation_error_rad": 0.0005083290719655293,
+        "max_contact_cap_ratio": 0.5841484445118715,
+        "max_torque_ratio": 0.41765763600728406,
+        "max_joint_velocity_ratio": 0.4249197173317091,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0639432997517452,
+        "terminal_linearization_error_m_m_s": [
+          0.0003535784925561078,
+          0.00015361774802404303
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.22077620168706458,
+      "start": "speed_weighted",
+      "iteration": 8,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_08.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0005129909233783635,
+          0.0003759062805850048
+        ],
+        "max_handle_position_error_m": 0.00022301532401561237,
+        "max_handle_rotation_error_rad": 0.00048547519321376733,
+        "max_contact_cap_ratio": 0.6068649069005495,
+        "max_torque_ratio": 0.44514992909964085,
+        "max_joint_velocity_ratio": 0.4593851036035325,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.06804698306204743,
+        "terminal_linearization_error_m_m_s": [
+          0.0005129909233783635,
+          0.0003759062805850048
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.23234786286293482,
+      "start": "speed_weighted",
+      "iteration": 9,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_09.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0006107310059235838,
+          0.0004325022138323505
+        ],
+        "max_handle_position_error_m": 0.00022416299519729634,
+        "max_handle_rotation_error_rad": 0.000509603164029949,
+        "max_contact_cap_ratio": 0.6251735245708379,
+        "max_torque_ratio": 0.4667208024764845,
+        "max_joint_velocity_ratio": 0.489799869955778,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07200412608518487,
+        "terminal_linearization_error_m_m_s": [
+          0.0006107310059235838,
+          0.0004325022138323505
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2428615474916306,
+      "start": "speed_weighted",
+      "iteration": 10,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_10.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0007354661430245959,
+          0.0007303597449208939
+        ],
+        "max_handle_position_error_m": 0.00023068820820602634,
+        "max_handle_rotation_error_rad": 0.0004984173586417281,
+        "max_contact_cap_ratio": 0.6372300290964751,
+        "max_torque_ratio": 0.4805376274539918,
+        "max_joint_velocity_ratio": 0.5253906735212308,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07570444883054703,
+        "terminal_linearization_error_m_m_s": [
+          0.0007354661430245959,
+          0.0007303597449208939
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2529606453524794,
+      "start": "speed_weighted",
+      "iteration": 11,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_11.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0006182931695319787,
+          0.0004431969335231334
+        ],
+        "max_handle_position_error_m": 0.00022345085224047156,
+        "max_handle_rotation_error_rad": 0.0004913785343249201,
+        "max_contact_cap_ratio": 0.6567326148250987,
+        "max_torque_ratio": 0.502730566180564,
+        "max_joint_velocity_ratio": 0.550423503415873,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0792493257831774,
+        "terminal_linearization_error_m_m_s": [
+          0.0006182931695319787,
+          0.0004431969335231334
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2625942864588328,
+      "start": "speed_weighted",
+      "iteration": 12,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_12.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0008011883181151729,
+          0.0007685742760590303
+        ],
+        "max_handle_position_error_m": 0.00023382459866893416,
+        "max_handle_rotation_error_rad": 0.000508409793504413,
+        "max_contact_cap_ratio": 0.6787513601348294,
+        "max_torque_ratio": 0.5275792069048026,
+        "max_joint_velocity_ratio": 0.5679042200271052,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.08261215760772089,
+        "terminal_linearization_error_m_m_s": [
+          0.0008011883181151729,
+          0.0007685742760590303
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2715960022714435,
+      "start": "speed_weighted",
+      "iteration": 13,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_13.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0008484095629090847,
+          0.0008382582072185463
+        ],
+        "max_handle_position_error_m": 0.0002194969027607884,
+        "max_handle_rotation_error_rad": 0.00047588896660844774,
+        "max_contact_cap_ratio": 0.6952952919805763,
+        "max_torque_ratio": 0.545922697994229,
+        "max_joint_velocity_ratio": 0.5890913316347715,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005701336178050493,
+        "peak_human_x_m": 0.08580457014830771,
+        "terminal_linearization_error_m_m_s": [
+          0.0008484095629090847,
+          0.0008382582072185463
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.28011568945709386,
+      "start": "speed_weighted",
+      "iteration": 14,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_14.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0007864580063506267,
+          0.0007078824022998199
+        ],
+        "max_handle_position_error_m": 0.00021689868406906887,
+        "max_handle_rotation_error_rad": 0.0004813950739272368,
+        "max_contact_cap_ratio": 0.7075317895931558,
+        "max_torque_ratio": 0.5594538290740761,
+        "max_joint_velocity_ratio": 0.6015910567567836,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005625232161495709,
+        "peak_human_x_m": 0.08886208990825865,
+        "terminal_linearization_error_m_m_s": [
+          0.0007864580063506267,
+          0.0007078824022998199
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2883486404796203,
+      "start": "speed_weighted",
+      "iteration": 15,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_15.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0010238663241338903,
+          0.0011830523652211662
+        ],
+        "max_handle_position_error_m": 0.00022298846510704533,
+        "max_handle_rotation_error_rad": 0.00047047544179035634,
+        "max_contact_cap_ratio": 0.7201015169667456,
+        "max_torque_ratio": 0.5729655311058147,
+        "max_joint_velocity_ratio": 0.6091417789170094,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005548370737722483,
+        "peak_human_x_m": 0.09180944461406616,
+        "terminal_linearization_error_m_m_s": [
+          0.0010238663241338903,
+          0.0011830523652211662
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.29634314428521863,
+      "start": "speed_weighted",
+      "iteration": 16,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_16.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0009763237713583576,
+          0.0009503472496232715
+        ],
+        "max_handle_position_error_m": 0.00022151588129595365,
+        "max_handle_rotation_error_rad": 0.00048623064200413425,
+        "max_contact_cap_ratio": 0.7369992944407712,
+        "max_torque_ratio": 0.5917872013244464,
+        "max_joint_velocity_ratio": 0.6135415141376226,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005475218319048906,
+        "peak_human_x_m": 0.09466920711238523,
+        "terminal_linearization_error_m_m_s": [
+          0.0009763237713583576,
+          0.0009503472496232715
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3039814793037449,
+      "start": "speed_weighted",
+      "iteration": 17,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_17.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0011159974661101692,
+          0.0012445611675695617
+        ],
+        "max_handle_position_error_m": 0.00022521283036741992,
+        "max_handle_rotation_error_rad": 0.0004894638013623682,
+        "max_contact_cap_ratio": 0.755516594996563,
+        "max_torque_ratio": 0.6115885659280896,
+        "max_joint_velocity_ratio": 0.620079541649159,
+        "max_joint_acceleration_ratio": 1.0000000000000644,
+        "min_sampled_clearance_m": 0.005400117576239034,
+        "peak_human_x_m": 0.0973963129398413,
+        "terminal_linearization_error_m_m_s": [
+          0.0011159974661101692,
+          0.0012445611675695617
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3107312837823689,
+      "start": "speed_weighted",
+      "iteration": 18,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_18.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.001429629469612106,
+          0.001640625244668704
+        ],
+        "max_handle_position_error_m": 0.00021696191497585368,
+        "max_handle_rotation_error_rad": 0.0004901229521776742,
+        "max_contact_cap_ratio": 0.7698686950591166,
+        "max_torque_ratio": 0.6267821211668226,
+        "max_joint_velocity_ratio": 0.6332419950989211,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005329314963004145,
+        "peak_human_x_m": 0.09987128591753656,
+        "terminal_linearization_error_m_m_s": [
+          0.001429629469612106,
+          0.001640625244668704
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.31678206645215307,
+      "start": "speed_weighted",
+      "iteration": 19,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_19.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.001451459471167509,
+          0.0017985660174142171
+        ],
+        "max_handle_position_error_m": 0.0002175678001497992,
+        "max_handle_rotation_error_rad": 0.0004865793908314941,
+        "max_contact_cap_ratio": 0.7797885885167358,
+        "max_torque_ratio": 0.6375631300495807,
+        "max_joint_velocity_ratio": 0.6265647393790035,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005261285131585478,
+        "peak_human_x_m": 0.10210935470621085,
+        "terminal_linearization_error_m_m_s": [
+          0.001451459471167509,
+          0.0017985660174142171
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.32265935731805373,
+      "start": "speed_weighted",
+      "iteration": 20,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_20.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0013093955631293982,
+          0.0013501766719167649
+        ],
+        "max_handle_position_error_m": 0.00022417731022959152,
+        "max_handle_rotation_error_rad": 0.0004984861116418976,
+        "max_contact_cap_ratio": 0.7934434574350475,
+        "max_torque_ratio": 0.6519864330017069,
+        "max_joint_velocity_ratio": 0.6218051350443996,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005191347812760165,
+        "peak_human_x_m": 0.10427405290120005,
+        "terminal_linearization_error_m_m_s": [
+          0.0013093955631293982,
+          0.0013501766719167649
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3282583648173068,
+      "start": "speed_weighted",
+      "iteration": 21,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_21.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0013083904072753256,
+          0.001406807709474139
+        ],
+        "max_handle_position_error_m": 0.0002233816548756716,
+        "max_handle_rotation_error_rad": 0.0005005993305353849,
+        "max_contact_cap_ratio": 0.8092431702062735,
+        "max_torque_ratio": 0.6685865134014176,
+        "max_joint_velocity_ratio": 0.6144996192628015,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005128812840148456,
+        "peak_human_x_m": 0.10631600072108076,
+        "terminal_linearization_error_m_m_s": [
+          0.0013083904072753256,
+          0.001406807709474139
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.33376447457566355,
+      "start": "speed_weighted",
+      "iteration": 22,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_22.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0012910210027972861,
+          0.00118717779177153
+        ],
+        "max_handle_position_error_m": 0.00021987084735545725,
+        "max_handle_rotation_error_rad": 0.0004627313342640689,
+        "max_contact_cap_ratio": 0.8232857743525279,
+        "max_torque_ratio": 0.6834205150250479,
+        "max_joint_velocity_ratio": 0.6338960304622558,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005069416109296307,
+        "peak_human_x_m": 0.1083217783646261,
+        "terminal_linearization_error_m_m_s": [
+          0.0012910210027972861,
+          0.00118717779177153
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3389750098701445,
+      "start": "speed_weighted",
+      "iteration": 23,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_speed_weighted_23.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0013106857100354924,
+          0.0012562844107941455
+        ],
+        "max_handle_position_error_m": 0.00022691160132376167,
+        "max_handle_rotation_error_rad": 0.0004727214813788753,
+        "max_contact_cap_ratio": 0.8352249456842035,
+        "max_torque_ratio": 0.6960065731261428,
+        "max_joint_velocity_ratio": 0.6406044718593449,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005021638753999863,
+        "peak_human_x_m": 0.11018526548821445,
+        "terminal_linearization_error_m_m_s": [
+          0.0013106857100354924,
+          0.0012562844107941455
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.10069118328083367,
+      "start": "uniform",
+      "iteration": 0,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_00.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -2.602295521413218e-05,
+          -2.1067250382551762e-05
+        ],
+        "max_handle_position_error_m": 0.00022051790688353362,
+        "max_handle_rotation_error_rad": 0.0005166308414265889,
+        "max_contact_cap_ratio": 0.4512297201500094,
+        "max_torque_ratio": 0.3938638161149956,
+        "max_joint_velocity_ratio": 0.16695921253531842,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.029813745032542215,
+        "terminal_linearization_error_m_m_s": [
+          -2.602295521413218e-05,
+          -2.1067250382551762e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.11870882375756023,
+      "start": "uniform",
+      "iteration": 1,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_01.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -6.580548116324955e-05,
+          -0.00010625502380685176
+        ],
+        "max_handle_position_error_m": 0.0002100089439841506,
+        "max_handle_rotation_error_rad": 0.0004979170837586062,
+        "max_contact_cap_ratio": 0.46487673723384687,
+        "max_torque_ratio": 0.3938605022985035,
+        "max_joint_velocity_ratio": 0.2040773564724975,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.0352067622533498,
+        "terminal_linearization_error_m_m_s": [
+          -6.580548116324955e-05,
+          -0.00010625502380685176
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.13617001660758657,
+      "start": "uniform",
+      "iteration": 2,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_02.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          -3.56238926866568e-05,
+          -8.23629341841371e-05
+        ],
+        "max_handle_position_error_m": 0.0002131930426893769,
+        "max_handle_rotation_error_rad": 0.0005501777083800062,
+        "max_contact_cap_ratio": 0.4921211711207705,
+        "max_torque_ratio": 0.3938678946213333,
+        "max_joint_velocity_ratio": 0.26376046013198806,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.04044718878457183,
+        "terminal_linearization_error_m_m_s": [
+          -3.56238926866568e-05,
+          -8.23629341841371e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.15255374087075713,
+      "start": "uniform",
+      "iteration": 3,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_03.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0001136659150667978,
+          5.086800194746029e-05
+        ],
+        "max_handle_position_error_m": 0.000218891876203124,
+        "max_handle_rotation_error_rad": 0.0005127079720212964,
+        "max_contact_cap_ratio": 0.510962798758019,
+        "max_torque_ratio": 0.3938639992297205,
+        "max_joint_velocity_ratio": 0.3300798445463829,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.04561186695541458,
+        "terminal_linearization_error_m_m_s": [
+          0.0001136659150667978,
+          5.086800194746029e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.1677116294667767,
+      "start": "uniform",
+      "iteration": 4,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_04.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          8.039571310979534e-05,
+          -5.073879971484761e-05
+        ],
+        "max_handle_position_error_m": 0.00021750404116943837,
+        "max_handle_rotation_error_rad": 0.0005166074826810464,
+        "max_contact_cap_ratio": 0.5233943393526768,
+        "max_torque_ratio": 0.3938590170909799,
+        "max_joint_velocity_ratio": 0.3795172528514096,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05050661159027481,
+        "terminal_linearization_error_m_m_s": [
+          8.039571310979534e-05,
+          -5.073879971484761e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.18211035255057084,
+      "start": "uniform",
+      "iteration": 5,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_05.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00023199446153624544,
+          0.00021574821675877958
+        ],
+        "max_handle_position_error_m": 0.00021674039152256525,
+        "max_handle_rotation_error_rad": 0.0005340994946320013,
+        "max_contact_cap_ratio": 0.5496805959263515,
+        "max_torque_ratio": 0.3938739937614562,
+        "max_joint_velocity_ratio": 0.3990898032989706,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05515912651432319,
+        "terminal_linearization_error_m_m_s": [
+          0.00023199446153624544,
+          0.00021574821675877958
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.1955220850445106,
+      "start": "uniform",
+      "iteration": 6,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_06.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0004210941767906773,
+          0.00045156574582368614
+        ],
+        "max_handle_position_error_m": 0.00021115219865038142,
+        "max_handle_rotation_error_rad": 0.0005025672788726539,
+        "max_contact_cap_ratio": 0.5624956686781399,
+        "max_torque_ratio": 0.39387560839971836,
+        "max_joint_velocity_ratio": 0.40817822767963846,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.05966751577367541,
+        "terminal_linearization_error_m_m_s": [
+          0.0004210941767906773,
+          0.00045156574582368614
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.20822345499445155,
+      "start": "uniform",
+      "iteration": 7,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_07.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00022776566673418669,
+          9.348177808055785e-05
+        ],
+        "max_handle_position_error_m": 0.00022446346307866571,
+        "max_handle_rotation_error_rad": 0.0005062070517106609,
+        "max_contact_cap_ratio": 0.5843899917072073,
+        "max_torque_ratio": 0.41791156032986065,
+        "max_joint_velocity_ratio": 0.4254644652326122,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.06387527632745434,
+        "terminal_linearization_error_m_m_s": [
+          0.00022776566673418669,
+          9.348177808055785e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.22048468127915394,
+      "start": "uniform",
+      "iteration": 8,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_08.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00038990304317589394,
+          0.0003669408572272071
+        ],
+        "max_handle_position_error_m": 0.0002182510673796091,
+        "max_handle_rotation_error_rad": 0.00048021889860897524,
+        "max_contact_cap_ratio": 0.6067688308602013,
+        "max_torque_ratio": 0.4450309793690314,
+        "max_joint_velocity_ratio": 0.46099438034415696,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.06797093743968247,
+        "terminal_linearization_error_m_m_s": [
+          0.00038990304317589394,
+          0.0003669408572272071
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2320165704285337,
+      "start": "uniform",
+      "iteration": 9,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_09.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0003027372337212996,
+          0.00023873814425253933
+        ],
+        "max_handle_position_error_m": 0.0002177924677369957,
+        "max_handle_rotation_error_rad": 0.00047894009346047863,
+        "max_contact_cap_ratio": 0.6248549123110865,
+        "max_torque_ratio": 0.4663437099800245,
+        "max_joint_velocity_ratio": 0.4938774567199858,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07188049926043331,
+        "terminal_linearization_error_m_m_s": [
+          0.0003027372337212996,
+          0.00023873814425253933
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.24256950569640387,
+      "start": "uniform",
+      "iteration": 10,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_10.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00026848811453946975,
+          0.00017512846610132966
+        ],
+        "max_handle_position_error_m": 0.0002318404580868668,
+        "max_handle_rotation_error_rad": 0.0005018762699697722,
+        "max_contact_cap_ratio": 0.6370181470256034,
+        "max_torque_ratio": 0.480148688289086,
+        "max_joint_velocity_ratio": 0.5268612030089285,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07559467405964124,
+        "terminal_linearization_error_m_m_s": [
+          0.00026848811453946975,
+          0.00017512846610132966
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.25269389945774534,
+      "start": "uniform",
+      "iteration": 11,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_11.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00017451736226217998,
+          -6.0981101468521835e-05
+        ],
+        "max_handle_position_error_m": 0.00021985977266676573,
+        "max_handle_rotation_error_rad": 0.0004910118110033156,
+        "max_contact_cap_ratio": 0.6566178999085934,
+        "max_torque_ratio": 0.5025777635934956,
+        "max_joint_velocity_ratio": 0.5510761587858266,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.07913244543100427,
+        "terminal_linearization_error_m_m_s": [
+          0.00017451736226217998,
+          -6.0981101468521835e-05
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.26236609164523106,
+      "start": "uniform",
+      "iteration": 12,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_12.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0003341245205990982,
+          0.00018322905185360846
+        ],
+        "max_handle_position_error_m": 0.00022764814665176528,
+        "max_handle_rotation_error_rad": 0.000498883189964907,
+        "max_contact_cap_ratio": 0.6787785784795852,
+        "max_torque_ratio": 0.5274109555652141,
+        "max_joint_velocity_ratio": 0.5685556030001491,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005717755551837841,
+        "peak_human_x_m": 0.08250325983271432,
+        "terminal_linearization_error_m_m_s": [
+          0.0003341245205990982,
+          0.00018322905185360846
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.27141383924140416,
+      "start": "uniform",
+      "iteration": 13,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_13.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00037254226073792405,
+          0.00027258178703336414
+        ],
+        "max_handle_position_error_m": 0.00022294833220447272,
+        "max_handle_rotation_error_rad": 0.0004688778470046233,
+        "max_contact_cap_ratio": 0.6951739970790319,
+        "max_torque_ratio": 0.5457770138888404,
+        "max_joint_velocity_ratio": 0.5860169057792246,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005669647036211546,
+        "peak_human_x_m": 0.08569099297215207,
+        "terminal_linearization_error_m_m_s": [
+          0.00037254226073792405,
+          0.00027258178703336414
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2800070921347142,
+      "start": "uniform",
+      "iteration": 14,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_14.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.00038966455033755245,
+          0.00022550493846297943
+        ],
+        "max_handle_position_error_m": 0.00023056455679374568,
+        "max_handle_rotation_error_rad": 0.00047220299109772447,
+        "max_contact_cap_ratio": 0.7075481244422431,
+        "max_torque_ratio": 0.5593972641302734,
+        "max_joint_velocity_ratio": 0.6016611309769666,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.0055953731688854515,
+        "peak_human_x_m": 0.0887733596087092,
+        "terminal_linearization_error_m_m_s": [
+          0.00038966455033755245,
+          0.00022550493846297943
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2882675817271386,
+      "start": "uniform",
+      "iteration": 15,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_15.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0005099352710549129,
+          0.0005036652945043807
+        ],
+        "max_handle_position_error_m": 0.00022261563955392914,
+        "max_handle_rotation_error_rad": 0.0004810888947851028,
+        "max_contact_cap_ratio": 0.7198625026602903,
+        "max_torque_ratio": 0.5728190128369594,
+        "max_joint_velocity_ratio": 0.6086527290335558,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005519003659068329,
+        "peak_human_x_m": 0.0917146994961582,
+        "terminal_linearization_error_m_m_s": [
+          0.0005099352710549129,
+          0.0005036652945043807
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.2962988165779081,
+      "start": "uniform",
+      "iteration": 16,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_16.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0005742288047528392,
+          0.0004588294321452118
+        ],
+        "max_handle_position_error_m": 0.00022420549587851045,
+        "max_handle_rotation_error_rad": 0.00046721234075761234,
+        "max_contact_cap_ratio": 0.7370530722354172,
+        "max_torque_ratio": 0.5916595275929754,
+        "max_joint_velocity_ratio": 0.6131203664356802,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.00544472637532367,
+        "peak_human_x_m": 0.09457976226687742,
+        "terminal_linearization_error_m_m_s": [
+          0.0005742288047528392,
+          0.0004588294321452118
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3039873951293487,
+      "start": "uniform",
+      "iteration": 17,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_17.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0007240657435785579,
+          0.0007740510914058514
+        ],
+        "max_handle_position_error_m": 0.00022793981102941228,
+        "max_handle_rotation_error_rad": 0.00046644782298695315,
+        "max_contact_cap_ratio": 0.754995185440442,
+        "max_torque_ratio": 0.61114798950346,
+        "max_joint_velocity_ratio": 0.6201616768710135,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005373713536830899,
+        "peak_human_x_m": 0.09731032813232542,
+        "terminal_linearization_error_m_m_s": [
+          0.0007240657435785579,
+          0.0007740510914058514
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3108644566160036,
+      "start": "uniform",
+      "iteration": 18,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_18.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0010242150318466557,
+          0.0011096744241359767
+        ],
+        "max_handle_position_error_m": 0.0002205012130275896,
+        "max_handle_rotation_error_rad": 0.0004903129188415253,
+        "max_contact_cap_ratio": 0.7692257827616509,
+        "max_torque_ratio": 0.626359570841021,
+        "max_joint_velocity_ratio": 0.6328844917138248,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005307162742621574,
+        "peak_human_x_m": 0.099803711890035,
+        "terminal_linearization_error_m_m_s": [
+          0.0010242150318466557,
+          0.0011096744241359767
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.31693226519681666,
+      "start": "uniform",
+      "iteration": 19,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_19.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0009526581022573455,
+          0.0010931280134625515
+        ],
+        "max_handle_position_error_m": 0.00021455459414553837,
+        "max_handle_rotation_error_rad": 0.0004870174835463418,
+        "max_contact_cap_ratio": 0.779582006387528,
+        "max_torque_ratio": 0.6373595337028903,
+        "max_joint_velocity_ratio": 0.6256955039783321,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005243662390790241,
+        "peak_human_x_m": 0.10203907203469163,
+        "terminal_linearization_error_m_m_s": [
+          0.0009526581022573455,
+          0.0010931280134625515
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.32278741770628805,
+      "start": "uniform",
+      "iteration": 20,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_20.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0009595616326022027,
+          0.0009809548201968794
+        ],
+        "max_handle_position_error_m": 0.0002170159065335601,
+        "max_handle_rotation_error_rad": 0.0004958572040027135,
+        "max_contact_cap_ratio": 0.7931878274617958,
+        "max_torque_ratio": 0.6514439932313323,
+        "max_joint_velocity_ratio": 0.6208815908375999,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005186917825139078,
+        "peak_human_x_m": 0.10419115383826871,
+        "terminal_linearization_error_m_m_s": [
+          0.0009595616326022027,
+          0.0009809548201968794
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.328381401184408,
+      "start": "uniform",
+      "iteration": 21,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_21.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0008448261755056712,
+          0.0008402266157052845
+        ],
+        "max_handle_position_error_m": 0.00022660475270589863,
+        "max_handle_rotation_error_rad": 0.0004977415152910906,
+        "max_contact_cap_ratio": 0.8087544337469252,
+        "max_torque_ratio": 0.668143116840496,
+        "max_joint_velocity_ratio": 0.6134356749269569,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005126479220104002,
+        "peak_human_x_m": 0.1062314000858777,
+        "terminal_linearization_error_m_m_s": [
+          0.0008448261755056712,
+          0.0008402266157052845
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.3338444451364437,
+      "start": "uniform",
+      "iteration": 22,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_22.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0007592801897395563,
+          0.0004858570784574746
+        ],
+        "max_handle_position_error_m": 0.00023030958478487134,
+        "max_handle_rotation_error_rad": 0.0004996072486889,
+        "max_contact_cap_ratio": 0.8229123635403527,
+        "max_torque_ratio": 0.683119637780285,
+        "max_joint_velocity_ratio": 0.6350231336976734,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.005070052135019253,
+        "peak_human_x_m": 0.10823101166259458,
+        "terminal_linearization_error_m_m_s": [
+          0.0007592801897395563,
+          0.0004858570784574746
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    },
+    {
+      "status": "LINEARIZED_OPTIMUM",
+      "solver_status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "impulse_m_s": 0.33901872302378894,
+      "start": "uniform",
+      "iteration": 23,
+      "iterate_file": "results/m2a/score_iterates/ik0000_+1_uniform_23.npz",
+      "validation": {
+        "valid": true,
+        "reasons": [],
+        "terminal_human": [
+          0.0008757771705664243,
+          0.0006547895317847143
+        ],
+        "max_handle_position_error_m": 0.00023234619590875022,
+        "max_handle_rotation_error_rad": 0.00046976406503551496,
+        "max_contact_cap_ratio": 0.8352208312473858,
+        "max_torque_ratio": 0.6959010616799667,
+        "max_joint_velocity_ratio": 0.6413198458721688,
+        "max_joint_acceleration_ratio": 1.0,
+        "min_sampled_clearance_m": 0.00501151859978079,
+        "peak_human_x_m": 0.1101131009177591,
+        "terminal_linearization_error_m_m_s": [
+          0.0008757771705664243,
+          0.0006547895317847143
+        ],
+        "interpretation": "Local sequential joint trajectory optimization; actual nonlinear geometry/contact replay, sampled collision"
+      }
+    }
+  ],
+  "elapsed_s": 182.68318508402444,
+  "information": "Offline amplitude maximization, same scenario class and search budget; NOT global maximum or online controller"
+}

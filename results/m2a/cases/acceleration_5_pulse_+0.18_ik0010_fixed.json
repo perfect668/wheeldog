@@ -1,0 +1,257 @@
+{
+  "case_id": "acceleration_5_pulse_+0.18_ik0010_fixed",
+  "variant": "acceleration_5",
+  "scenario": {
+    "id": "pulse_+0.18",
+    "initial_v_m_s": 0.0,
+    "events": [
+      [
+        0.32,
+        0.18
+      ]
+    ]
+  },
+  "candidate": "ik0010",
+  "controller": "fixed",
+  "random_draw_candidate": "ik0001",
+  "terminal_recovered": false,
+  "sustained_recovered": false,
+  "terminal_box_met_before_validity": false,
+  "observation_complete": false,
+  "recovery_time_s": null,
+  "terminal_time_s": 1.9200000000000002,
+  "observation_end_s": 2.72,
+  "definition": "Endpoint at last event +1.6s; sustained requires all sampled states in box for subsequent 0.8s, same causal controller",
+  "valid": true,
+  "failures": [
+    "governor_no_admissible_acceleration"
+  ],
+  "completed_intervals": 13,
+  "requested_intervals": 68,
+  "path_file": "results/m2a/paths/acceleration_5_pulse_+0.18_ik0010_fixed.npz",
+  "chart_policy": "speed_weighted",
+  "envelope": {
+    "radius_m": 0.01,
+    "y_lower_m": -0.01,
+    "y_upper_m": 0.01,
+    "speed_m_s": 0.0683026338276877,
+    "acceleration_m_s2": 0.4373614605960655,
+    "per_hand_force_lower_n": -74.16198487095663,
+    "per_hand_force_upper_n": 74.16198487095663,
+    "derivative_abs_bound": [
+      0.014396124220785145,
+      1.0088831849628583,
+      0.07515105197810006,
+      2.216715587627647,
+      0.09631542227906642,
+      3.046173524372624,
+      0.1324883870852364,
+      1.3690607311122014,
+      1.8120486822562936,
+      0.34076329080102313,
+      8.002534094407782,
+      0.4345704803906558,
+      5.653508209591278,
+      1.639115951919619
+    ],
+    "second_derivative_abs_bound": [
+      1.0182540873685781,
+      8.966585966804663,
+      0.4617487657273406,
+      14.337916408442286,
+      1.313105644821913,
+      5.401293342288227,
+      0.3444321182068666,
+      51.69897438920157,
+      124.14458328729428,
+      31.06513431968255,
+      290.1773884734746,
+      24.354600955864612,
+      144.79998725230558,
+      67.8951637071672
+    ],
+    "max_chart_position_error_m": 6.854360879106998e-09,
+    "max_chart_rotation_error_rad": 5.6168465224898255e-09,
+    "min_sampled_clearance_m": 0.0057017301994415764,
+    "limiting_torque_updates": [],
+    "velocity_acceleration_are_sufficient_envelopes": true,
+    "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4"
+  },
+  "rejected_envelopes": [],
+  "peak_human_x_m": 0.034707915599913264,
+  "peak_per_hand_force_n": 13.597228697553053,
+  "actual_max_torque_ratio": 0.4743392687634325,
+  "actual_vs_replayed_ode_error": 5.551115123125783e-17,
+  "validation": {
+    "valid": true,
+    "terminal_met": false,
+    "complete": false,
+    "reasons": [],
+    "recovery_time_s": null,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 6.98663349396611e-13,
+    "independent_ode_v_error_m_s": 2.263245146849613e-11,
+    "max_handle_position_error_m": 3.636279015573783e-09,
+    "max_handle_rotation_error_rad": 3.69172109813538e-09,
+    "contact_force_model_max_error_n": 2.0079495577363105e-07,
+    "max_joint_velocity_ratio": 0.09039236943528918,
+    "max_joint_acceleration_ratio": 0.7365580034201424,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.4743392687634325,
+    "max_contact_cap_ratio": 0.41171983576509164,
+    "min_sampled_clearance_m": 0.0057017301994415764,
+    "peak_human_x_m": 0.034707915599214594,
+    "peak_human_v_m_s": 0.18,
+    "peak_per_hand_lateral_force_n": 13.597228697038886,
+    "peak_handle_displacement_m": 0.005564722698275986,
+    "peak_handle_speed_m_s": 0.0683026338276877,
+    "terminal_state": [
+      0.034707915599214594,
+      0.16696862763039802,
+      -0.005564722698275986,
+      -0.0683026338276877
+    ],
+    "terminal_independent_human": [
+      0.03470791559991326,
+      0.16696862765303047
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "command_logs": [
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": 0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 0.00020604796009138227,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 6.99659576639533e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.9606973081827164e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 6.169301923364401e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.959300324320793e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 6.611901335418224e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 6.0228980146348476e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 6.584299262613058e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -8.000834435539293,
+      "sent": -0.4373614605960655,
+      "delivered": -0.0,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.824299296364188e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -8.082395988083855,
+      "sent": -0.4373614605960655,
+      "delivered": -0.4373614605960655,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.769700510427356e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -8.09220307256428,
+      "sent": -0.4373614605960655,
+      "delivered": -0.4373614605960655,
+      "allowed_lower": -0.4373614605960655,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.932897329330444e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -8.021409605536983,
+      "sent": -0.39548146390399563,
+      "delivered": -0.4373614605960655,
+      "allowed_lower": -0.39548146390399563,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.536398384720087e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -7.8940668212566285,
+      "sent": 0.0,
+      "delivered": -0.39548146390399563,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.4373614605960655,
+      "wall_s": 5.367398262023926e-05,
+      "missed_control_period": false
+    },
+    {
+      "reason": "governor_no_admissible_acceleration",
+      "raw": -7.990656656555261,
+      "lower": 1.2861667556137504,
+      "upper": 0.4373614605960655,
+      "wall_s": 4.47459751740098e-05,
+      "missed_control_period": false
+    }
+  ],
+  "controller_calls": 14,
+  "fallback_calls": 0,
+  "qp_status_counts": {
+    "not_applicable": 14
+  },
+  "control_wall_mean_s": 6.98679151745247e-05,
+  "control_wall_max_s": 0.00020604796009138227,
+  "missed_control_periods": 0,
+  "elapsed_s": 1.0420061759650707
+}

@@ -1,0 +1,275 @@
+{
+  "case_id": "damping_5_pulse_-0.18_ik0037_fixed",
+  "variant": "damping_5",
+  "scenario": {
+    "id": "pulse_-0.18",
+    "initial_v_m_s": 0.0,
+    "events": [
+      [
+        0.32,
+        -0.18
+      ]
+    ]
+  },
+  "candidate": "ik0037",
+  "controller": "fixed",
+  "random_draw_candidate": "ik0024",
+  "terminal_recovered": false,
+  "sustained_recovered": false,
+  "terminal_box_met_before_validity": false,
+  "observation_complete": false,
+  "recovery_time_s": null,
+  "terminal_time_s": 1.9200000000000002,
+  "observation_end_s": 2.72,
+  "definition": "Endpoint at last event +1.6s; sustained requires all sampled states in box for subsequent 0.8s, same causal controller",
+  "valid": true,
+  "failures": [
+    "governor_no_admissible_acceleration"
+  ],
+  "completed_intervals": 15,
+  "requested_intervals": 68,
+  "path_file": "results/m2a/paths/damping_5_pulse_-0.18_ik0037_fixed.npz",
+  "chart_policy": "speed_weighted",
+  "envelope": {
+    "radius_m": 0.08,
+    "y_lower_m": -0.08,
+    "y_upper_m": 0.08,
+    "speed_m_s": 0.40496196125807404,
+    "acceleration_m_s2": 2.9832840213609924,
+    "per_hand_force_lower_n": -74.16198487095663,
+    "per_hand_force_upper_n": 74.16198487095663,
+    "derivative_abs_bound": [
+      0.8175356605381686,
+      1.4620828527427596,
+      1.0745390858009554,
+      3.2756849310500713,
+      0.87373055569901,
+      3.2633850281287295,
+      0.49819542986043014,
+      0.5149358121941559,
+      1.4855502791112345,
+      0.4991392788124843,
+      3.5196112488176152,
+      0.4169091805552663,
+      3.5069617524002448,
+      0.34394399451972024
+    ],
+    "second_derivative_abs_bound": [
+      13.703323358653973,
+      8.624585683157653,
+      6.971654171660285,
+      19.88284726423382,
+      10.473196135510351,
+      8.377462948792484,
+      2.0889069301100442,
+      8.159308257236201,
+      12.834464838785506,
+      3.8093106475262895,
+      24.76459683337493,
+      6.892138773365996,
+      10.643805685450305,
+      2.5131074150107047
+    ],
+    "max_chart_position_error_m": 1.2835766233038686e-10,
+    "max_chart_rotation_error_rad": 2.8037937371748714e-10,
+    "min_sampled_clearance_m": 0.005072203076327022,
+    "limiting_torque_updates": [],
+    "velocity_acceleration_are_sufficient_envelopes": true,
+    "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4"
+  },
+  "rejected_envelopes": [],
+  "peak_human_x_m": 0.04690196298142776,
+  "peak_per_hand_force_n": 30.297464885196977,
+  "actual_max_torque_ratio": 0.45554018308351674,
+  "actual_vs_replayed_ode_error": 5.551115123125783e-17,
+  "validation": {
+    "valid": true,
+    "terminal_met": false,
+    "complete": false,
+    "reasons": [],
+    "recovery_time_s": null,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 1.3285310351829338e-12,
+    "independent_ode_v_error_m_s": 5.823883042488376e-11,
+    "max_handle_position_error_m": 5.2021933593598847e-11,
+    "max_handle_rotation_error_rad": 1.575683894420836e-10,
+    "contact_force_model_max_error_n": 6.339511493536065e-08,
+    "max_joint_velocity_ratio": 0.2856966044416767,
+    "max_joint_acceleration_ratio": 0.6188506773010077,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.4555401830832362,
+    "max_contact_cap_ratio": 0.5329658142264838,
+    "min_sampled_clearance_m": 0.005456696131710346,
+    "peak_human_x_m": 0.046901962980974696,
+    "peak_human_v_m_s": 0.18,
+    "peak_per_hand_lateral_force_n": 30.29746488651692,
+    "peak_handle_displacement_m": 0.06577859124294368,
+    "peak_handle_speed_m_s": 0.40496196125807404,
+    "terminal_state": [
+      -0.046901962980974696,
+      -0.13217857981286119,
+      0.06577859124294368,
+      0.2932866862946047
+    ],
+    "terminal_independent_human": [
+      -0.04690196298142775,
+      -0.13217857982820452
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "command_logs": [
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": 0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 0.00021101301535964012,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 7.10589811205864e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.850698264315724e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.577500607818365e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 7.656303932890296e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.350799230858684e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 7.105397526174784e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.784597644582391e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 9.276580904563748,
+      "sent": 2.9832840213609924,
+      "delivered": -0.0,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.471900269389153e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 7.403073254366362,
+      "sent": 2.9832840213609924,
+      "delivered": 2.9832840213609924,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 5.951395723968744e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 4.919713428118243,
+      "sent": 2.9832840213609924,
+      "delivered": 2.9832840213609924,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.9832840213609924,
+      "wall_s": 6.222998490557075e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 1.7535610715171095,
+      "sent": 1.1741969673688732,
+      "delivered": 2.9832840213609924,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 1.1741969673688732,
+      "wall_s": 6.0413964092731476e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.7022662429124229,
+      "sent": -0.7022662429124229,
+      "delivered": 1.1741969673688732,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 0.0,
+      "wall_s": 6.90569868311286e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -2.0896156311743095,
+      "sent": -2.0896156311743095,
+      "delivered": -0.7022662429124229,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 0.7022662429124233,
+      "wall_s": 6.0640973970294e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -2.4478383585254893,
+      "sent": -2.4478383585254893,
+      "delivered": -2.0896156311743095,
+      "allowed_lower": -2.9832840213609924,
+      "allowed_upper": 2.7918818740867333,
+      "wall_s": 6.24100212007761e-05,
+      "missed_control_period": false
+    },
+    {
+      "reason": "governor_no_admissible_acceleration",
+      "raw": -2.3147593655189063,
+      "lower": -2.9832840213609924,
+      "upper": -4.2083926075635825,
+      "wall_s": 4.770199302583933e-05,
+      "missed_control_period": false
+    }
+  ],
+  "controller_calls": 16,
+  "fallback_calls": 0,
+  "qp_status_counts": {
+    "not_applicable": 16
+  },
+  "control_wall_mean_s": 7.387574078165926e-05,
+  "control_wall_max_s": 0.00021101301535964012,
+  "missed_control_periods": 0,
+  "elapsed_s": 1.3567619179957546
+}

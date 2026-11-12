@@ -186,6 +186,8 @@ env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output result
 env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage test --workers 4
 env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage analysis
 env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.audit --output results/m2a_reproduction
+# Optional unchanged-parameter diagnostic on 36 existing scenarios:
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.repeatability --output results/m2a_reproduction --workers 4
 env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage freeze
 # Read-only check of delivered data (M0 through M2-A):
 env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --stage verify

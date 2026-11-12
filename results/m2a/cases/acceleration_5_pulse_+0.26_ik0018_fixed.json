@@ -1,0 +1,338 @@
+{
+  "case_id": "acceleration_5_pulse_+0.26_ik0018_fixed",
+  "variant": "acceleration_5",
+  "scenario": {
+    "id": "pulse_+0.26",
+    "initial_v_m_s": 0.0,
+    "events": [
+      [
+        0.32,
+        0.26
+      ]
+    ]
+  },
+  "candidate": "ik0018",
+  "controller": "fixed",
+  "random_draw_candidate": "ik0037",
+  "terminal_recovered": false,
+  "sustained_recovered": false,
+  "terminal_box_met_before_validity": false,
+  "observation_complete": false,
+  "recovery_time_s": null,
+  "terminal_time_s": 1.9200000000000002,
+  "observation_end_s": 2.72,
+  "definition": "Endpoint at last event +1.6s; sustained requires all sampled states in box for subsequent 0.8s, same causal controller",
+  "valid": true,
+  "failures": [
+    "governor_no_admissible_acceleration"
+  ],
+  "completed_intervals": 22,
+  "requested_intervals": 68,
+  "path_file": "results/m2a/paths/acceleration_5_pulse_+0.26_ik0018_fixed.npz",
+  "chart_policy": "uniform",
+  "envelope": {
+    "radius_m": 0.12,
+    "y_lower_m": -0.12,
+    "y_upper_m": 0.12,
+    "speed_m_s": 0.2917397464770999,
+    "acceleration_m_s2": 0.940023614032593,
+    "per_hand_force_lower_n": -74.16198487095663,
+    "per_hand_force_upper_n": 74.16198487095663,
+    "derivative_abs_bound": [
+      0.34096639555859426,
+      2.7445974115177663,
+      0.43769997142039213,
+      2.6734722502838504,
+      0.4524374987034393,
+      3.4572935342377065,
+      0.23615898735583074,
+      0.7976381642335315,
+      2.322834811342302,
+      0.8497515477401189,
+      3.723310720871578,
+      1.3722884521994414,
+      3.6161260199359844,
+      0.9974035096775977
+    ],
+    "second_derivative_abs_bound": [
+      3.4685213893160785,
+      10.143313094802604,
+      5.285185847740676,
+      11.422103801132566,
+      3.9883892392113784,
+      6.813982923572534,
+      3.670977218452326,
+      10.111942756937115,
+      12.659430833563919,
+      15.905497846802493,
+      14.588911868149344,
+      8.473546518348522,
+      4.186145797143073,
+      7.496619867417833
+    ],
+    "max_chart_position_error_m": 2.3656083163767465e-10,
+    "max_chart_rotation_error_rad": 4.519911675984479e-09,
+    "min_sampled_clearance_m": 0.002795094996955759,
+    "limiting_torque_updates": [],
+    "velocity_acceleration_are_sufficient_envelopes": true,
+    "max_acceleration_coordinate": "AR5-5_08R-W4C1C9-ZY2_joint_4"
+  },
+  "rejected_envelopes": [],
+  "peak_human_x_m": 0.11416377458592772,
+  "peak_per_hand_force_n": 60.00996351700267,
+  "actual_max_torque_ratio": 0.5054850920180312,
+  "actual_vs_replayed_ode_error": 3.0531133177191805e-16,
+  "validation": {
+    "valid": true,
+    "terminal_met": false,
+    "complete": false,
+    "reasons": [],
+    "recovery_time_s": null,
+    "dynamics_max_abs_error": 0.0,
+    "independent_ode_x_error_m": 3.190667174912676e-11,
+    "independent_ode_v_error_m_s": 2.578544738840449e-10,
+    "max_handle_position_error_m": 8.159257644104424e-11,
+    "max_handle_rotation_error_rad": 2.1014307188341015e-09,
+    "contact_force_model_max_error_n": 1.8577141958076027e-07,
+    "max_joint_velocity_ratio": 0.250367102531862,
+    "max_joint_acceleration_ratio": 0.6642600536626765,
+    "max_base_velocity_ratio": 0.0,
+    "max_base_acceleration_ratio": 0.0,
+    "max_torque_ratio": 0.505485091928346,
+    "max_contact_cap_ratio": 0.8386368887941897,
+    "min_sampled_clearance_m": 0.002797757085383143,
+    "peak_human_x_m": 0.11416377455402116,
+    "peak_human_v_m_s": 0.26,
+    "peak_per_hand_lateral_force_n": 60.00996350587915,
+    "peak_handle_displacement_m": 0.10554378324239608,
+    "peak_handle_speed_m_s": 0.2917397464770999,
+    "terminal_state": [
+      0.11416377455402116,
+      0.08473279289976095,
+      -0.10554378324239608,
+      -0.25413880191579613
+    ],
+    "terminal_independent_human": [
+      0.11416377458592783,
+      0.08473279310955487
+    ],
+    "interpretation": "Sampled geometry/contact constraints and independent human ODE; no continuous mesh guarantee or invariant terminal claim"
+  },
+  "command_logs": [
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": 0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 0.0001989110023714602,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.115902215242386e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.9677986428141594e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.5940006859600544e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.8681005612015724e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 7.033901056274772e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.623302422463894e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.0,
+      "sent": -0.0,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.7532975915819407e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -11.556760851334534,
+      "sent": -0.940023614032593,
+      "delivered": -0.0,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.125000072643161e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -11.428874689176274,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.355296889320016e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -11.134852001316276,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.2288989536464214e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -10.654977377923789,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.522801075130701e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -9.96847758708966,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.248398520052433e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -9.053479893374472,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.76950260438025e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -7.886967932208497,
+      "sent": -0.940023614032593,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.960103590041399e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -6.444735041795577,
+      "sent": -0.7133283636993447,
+      "delivered": -0.940023614032593,
+      "allowed_lower": -0.7133283636993447,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.7905970606952906e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -4.882010126804523,
+      "sent": 0.0,
+      "delivered": -0.7133283636993447,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.369499558582902e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -3.6058531948729104,
+      "sent": 0.0,
+      "delivered": 0.0,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.253400351852179e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -2.169360488392435,
+      "sent": 0.0,
+      "delivered": 0.0,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 5.763396620750427e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": -0.5644655606875766,
+      "sent": 0.0,
+      "delivered": 0.0,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.550404941663146e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 1.21724457379592,
+      "sent": 0.940023614032593,
+      "delivered": 0.0,
+      "allowed_lower": 0.0,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.456300616264343e-05,
+      "missed_control_period": false
+    },
+    {
+      "raw": 2.4353528572186987,
+      "sent": 0.940023614032593,
+      "delivered": 0.940023614032593,
+      "allowed_lower": -0.940023614032593,
+      "allowed_upper": 0.940023614032593,
+      "wall_s": 6.101198960095644e-05,
+      "missed_control_period": false
+    },
+    {
+      "reason": "governor_no_admissible_acceleration",
+      "raw": 3.657663962978432,
+      "lower": 4.523538402476932,
+      "upper": 0.940023614032593,
+      "wall_s": 5.058804526925087e-05,
+      "missed_control_period": false
+    }
+  ],
+  "controller_calls": 23,
+  "fallback_calls": 0,
+  "qp_status_counts": {
+    "not_applicable": 23
+  },
+  "control_wall_mean_s": 6.452217728466444e-05,
+  "control_wall_max_s": 0.0001989110023714602,
+  "missed_control_periods": 0,
+  "elapsed_s": 1.6674200069974177
+}
