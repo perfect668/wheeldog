@@ -162,3 +162,40 @@ optimizer iterations (including rejected ones) are in `direct_paths/`.
 `boundaries.csv` contains local success/failure brackets, not global proofs;
 `figures/` contains data-generated PNG/PDF plots. M0/M1/M1-C stay frozen.
 This milestone stops for review; no subsequent method or hardware phase starts.
+
+## M2-A: future recovery score and initial posture selection
+
+Branch `m2/posture-selection` preserves the earlier frozen milestones. The
+predeclared model/protocol is `docs/M2_POSTURE_SELECTION_MODEL.md`; final results
+and checks are in `docs/M2_POSTURE_SELECTION_RESULTS.md` and
+`docs/M2_TEST_REPORT.md`. Scores are verified offline trajectory lower bounds.
+The constrained causal MPC observes actual FK/contact-driven human state and
+has no access to future disturbance events. A separate 0.8 s observation window
+distinguishes endpoint recovery from sustained recovery.
+
+Reuse local `.venv-m1`, audited H1 assets, and installed CasADi (no new asset or
+GPU downloads). `requirements-m2.txt` records the actual CPU dependency versions.
+From the repository root, choose a **new** reproduction directory:
+
+```bash
+export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+env -u PYTHONPATH .venv-m1/bin/python -m pytest -q
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage prepare
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage score --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage select
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage test --workers 4
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage analysis
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.audit --output results/m2a_reproduction
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --output results/m2a_reproduction --stage freeze
+# Read-only check of delivered data (M0 through M2-A):
+env -u PYTHONPATH .venv-m1/bin/python -m h1_selection.experiment --stage verify
+```
+
+`results/m2a/score_iterates/` retains every direct-optimization iterate and seed;
+`score_cases/` records acceptance and failure reasons. `selection.json` is frozen
+before holdout testing. `cases/` and `paths/` retain all 768 closed-loop attempts,
+including failed/truncated runs, actual contact forces, observed human states,
+joint/base traces, budgets and controller logs. Tables/PNG/PDF figures can be
+regenerated with `--stage analysis`. `dense_audit/` is a separate denser replay;
+it does not overwrite main decisions. Successful model simulation is not H1
+hardware validation, global optimality, or an invariant-set guarantee.
