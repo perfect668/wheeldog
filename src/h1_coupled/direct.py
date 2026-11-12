@@ -11,6 +11,7 @@ import argparse
 import json
 import time
 import yaml
+import subprocess
 import numpy as np
 from scipy.linalg import expm
 from scipy.optimize import linprog
@@ -204,6 +205,9 @@ def optimize_case(candidate,sign,c,out):
 
 def run(output,workers=2):
     out=Path(output);c=yaml.safe_load((out/'config.yaml').read_text());(out/'direct_paths').mkdir(exist_ok=True)
+    dump(out/'direct_provenance.json',dict(source_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        tracked_status=subprocess.check_output(['git','status','--porcelain','--untracked-files=no'],text=True).strip(),
+        started_utc=__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat()))
     rows=[]
     for candidate in c['direct']['candidates']:
         for sign in c['direct']['signs']:
