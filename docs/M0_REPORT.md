@@ -151,6 +151,8 @@
 - [ ] `PHYRC-SMOKE-PASS`：未出现，原始 smoke exit 2。
 - [ ] 本次仿真图片/视频、仿真 CPU/RAM/GPU 占用：尚无真实运行，未伪造。
 
+开发仓库分支为 `dynadress/m0`，初始证据提交 `30f70a63f616182edf7a032b60d1209ec283ce5a`；上游仍是独立 Git checkout，未提交研究修改。`docs/UPSTREAM_ASSETS.lock.json` 保存原始资产锁文件副本，`docs/DOCKER_RUNTIME_CONFIG.json` 保存实际 NVIDIA runtime 配置。
+
 报告、源码分析、脚本和实际日志同时保存在远端和本地。上游完整仓库/资产位于远端 `upstream/`；本地只保留源码审阅快照与额外下载资产，不把该快照称为完整可运行 checkout。
 
 下一步首先在平台侧解决 Docker 能力、单卡挂载、内存与磁盘，再运行 `scripts/resume_m0.sh`。任何图像/视频采集适配都应在独立脚本中进行，保留上游 smoke 原样。M1 的具体修改边界已列于第 9 节和源码分析文档，不应在补齐 M0 前提前编写辨识/世界模型/MPC。
