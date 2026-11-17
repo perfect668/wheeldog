@@ -1,6 +1,6 @@
 # DynaDress — M0 部署基础
 
-当前状态：**无卡实例准备已完成部分工作，原始仿真未通过验收**。
+当前状态：**原生（绕过 Docker）部署已通过真实 smoke、headless 采集和 GUI 验证**。详见 `docs/M0_REPORT.md`。
 
 远端工作目录：`/root/gpufree-data/dynadress/`。数据盘在实例关机后保留，但平台提示释放实例会丢失，且不会包含在系统镜像中；必须另做备份。
 
@@ -16,4 +16,4 @@
 上游：<https://github.com/rirolab/PhyRC_2027_Challenge>
 
 固定提交：`48ffff25c9ff86cda3a2a21c7fc33d9022afa2fc`。
-Isaac Sim 严格使用上游 Dockerfile 锁定的 6.0.1 digest，不改用预装环境、不变更 FEM、不提前开发算法。
+Docker 路线因服务器 daemon 权限不可用；本次按用户授权使用预装 Isaac Sim `6.0.1-rc.7+release.42383.32955d8d.gl` 原生运行，应用配置为 6.0.1。该版本未证明与固定 NGC digest 文件等价。FEM、上游源码和研究方向不变。
