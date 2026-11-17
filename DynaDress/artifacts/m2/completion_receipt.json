@@ -1,0 +1,137 @@
+{
+  "complete": true,
+  "completed_wall_ns": 1794913267155191017,
+  "episodes": 100,
+  "model_sha256": "4af7c1c4c31e00ac328424598fd33e66a2d22f94a063f2d3ec68d1e9b22c56f2",
+  "commands": [
+    {
+      "name": "final_collect_two",
+      "command": [
+        "python3",
+        "/root/gpufree-data/dynadress/scripts/m2_batch.py"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794912907615277716,
+      "end_wall_ns": 1794913065346256586,
+      "log": "setup_logs/m2/final_collect_two.log"
+    },
+    {
+      "name": "wrist_replay",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/run_native.sh",
+        "python",
+        "/root/gpufree-data/dynadress/scripts/m2_wrist_replay.py",
+        "/root/gpufree-data/dynadress/artifacts/m2/episodes/e000_k0_d0_f0_r0"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913065346610058,
+      "end_wall_ns": 1794913126435583104,
+      "log": "setup_logs/m2/wrist_replay.log"
+    },
+    {
+      "name": "final_dataset",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/m2_model_python.sh",
+        "/root/gpufree-data/dynadress/scripts/m2_dataset.py"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913126435948811,
+      "end_wall_ns": 1794913138134650501,
+      "log": "setup_logs/m2/final_dataset.log"
+    },
+    {
+      "name": "final_validate",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/m2_model_python.sh",
+        "/root/gpufree-data/dynadress/scripts/m2_validate_episodes.py"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913138134999230,
+      "end_wall_ns": 1794913145515091223,
+      "log": "setup_logs/m2/final_validate.log"
+    },
+    {
+      "name": "final_train",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/m2_model_python.sh",
+        "/root/gpufree-data/dynadress/scripts/m2_train.py",
+        "--epochs",
+        "100"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913145515525157,
+      "end_wall_ns": 1794913256008441136,
+      "log": "setup_logs/m2/final_train.log"
+    },
+    {
+      "name": "final_evaluate",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/m2_model_python.sh",
+        "/root/gpufree-data/dynadress/scripts/m2_evaluate.py"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913256008815981,
+      "end_wall_ns": 1794913263503271618,
+      "log": "setup_logs/m2/final_evaluate.log"
+    },
+    {
+      "name": "final_collection_analysis",
+      "command": [
+        "/root/gpufree-data/dynadress/scripts/m2_model_python.sh",
+        "/root/gpufree-data/dynadress/scripts/m2_analyze_collection.py"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913263503651213,
+      "end_wall_ns": 1794913265818992389,
+      "log": "setup_logs/m2/final_collection_analysis.log"
+    },
+    {
+      "name": "encode_e000_k0_d0_f0_r0",
+      "command": [
+        "python3",
+        "/root/gpufree-data/dynadress/scripts/m11_encode.py",
+        "/root/gpufree-data/dynadress/artifacts/m2/episodes/e000_k0_d0_f0_r0"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913265820144893,
+      "end_wall_ns": 1794913266223936922,
+      "log": "setup_logs/m2/encode_e000_k0_d0_f0_r0.log"
+    },
+    {
+      "name": "encode_e001_k0_d0_f0_r1",
+      "command": [
+        "python3",
+        "/root/gpufree-data/dynadress/scripts/m11_encode.py",
+        "/root/gpufree-data/dynadress/artifacts/m2/episodes/e001_k0_d0_f0_r1"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913266224319860,
+      "end_wall_ns": 1794913266650685337,
+      "log": "setup_logs/m2/encode_e001_k0_d0_f0_r1.log"
+    },
+    {
+      "name": "encode_e018_k0_d1_f4_r0",
+      "command": [
+        "python3",
+        "/root/gpufree-data/dynadress/scripts/m11_encode.py",
+        "/root/gpufree-data/dynadress/artifacts/m2/episodes/e018_k0_d1_f4_r0"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913266651358957,
+      "end_wall_ns": 1794913266905080051,
+      "log": "setup_logs/m2/encode_e018_k0_d1_f4_r0.log"
+    },
+    {
+      "name": "encode_e051_k2_d1_f0_r1",
+      "command": [
+        "python3",
+        "/root/gpufree-data/dynadress/scripts/m11_encode.py",
+        "/root/gpufree-data/dynadress/artifacts/m2/episodes/e051_k2_d1_f0_r1"
+      ],
+      "returncode": 0,
+      "start_wall_ns": 1794913266906015233,
+      "end_wall_ns": 1794913267154060945,
+      "log": "setup_logs/m2/encode_e051_k2_d1_f0_r1.log"
+    }
+  ]
+}

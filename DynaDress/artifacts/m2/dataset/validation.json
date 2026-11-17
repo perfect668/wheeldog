@@ -1,0 +1,28 @@
+{
+  "complete_episodes": 100,
+  "missing": [],
+  "successes": 84,
+  "splits": {
+    "train": {
+      "episodes": 70,
+      "parameter_groups": 35
+    },
+    "validation": {
+      "episodes": 14,
+      "parameter_groups": 7
+    },
+    "test": {
+      "episodes": 16,
+      "parameter_groups": 8
+    }
+  },
+  "checks": [
+    "240Hz physical clock / 20Hz control",
+    "fixed reference",
+    "complete episode and parameter group split",
+    "finite features; no missing load imputation",
+    "unavailable contacts and physical sensor preserved",
+    "parameter plan consistency"
+  ],
+  "legacy_m11": "six earlier episodes retained separately; no new load measurement, excluded from supervised load targets"
+}

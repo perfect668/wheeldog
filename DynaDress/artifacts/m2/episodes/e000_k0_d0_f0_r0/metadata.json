@@ -1,0 +1,382 @@
+{
+  "schema_version": "m2.1",
+  "load_channel": {
+    "source": "PhysX ArticulationView.get_link_incoming_joint_force",
+    "raw_order": [
+      "Fx_N",
+      "Fy_N",
+      "Fz_N",
+      "Tx_Nm",
+      "Ty_Nm",
+      "Tz_Nm"
+    ],
+    "raw_frame": "incoming joint child frame, origin at localPos1",
+    "residual_frame": "world axes, origin at wrist incoming joint",
+    "residual_formula": "sum Newton-Euler inertial/gravity support minus parent-on-child incoming reaction",
+    "limitations": "net external estimate; not garment-only contact or calibrated physical F/T sensor; includes attachment/other contacts/model error",
+    "bodies": {
+      "L": [
+        "tn__AR55_08LW4C1C9ZY2_link7_yX09G",
+        "tool_L_finger_a",
+        "tool_L_finger_b"
+      ],
+      "R": [
+        "tn__AR55_08RW4C1C9ZY2_link7_yX09G",
+        "tool_R_finger_a",
+        "tool_R_finger_b"
+      ]
+    },
+    "mass_kg": {
+      "L": [
+        0.5299999713897705,
+        0.03999999910593033,
+        0.03999999910593033
+      ],
+      "R": [
+        0.5299999713897705,
+        0.03999999910593033,
+        0.03999999910593033
+      ]
+    },
+    "child_joint_frames": {
+      "L": {
+        "position_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "R": {
+        "position_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  },
+  "without_cloth": false,
+  "config": {
+    "human": {
+      "shoulder": [
+        1.1,
+        0,
+        1.8
+      ],
+      "reference": [
+        0.0,
+        1.0,
+        0.0,
+        0.35
+      ],
+      "stiffness": [
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "damping": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "initial_hand_gap_m": 0.08,
+    "wrist_roll_deg": {
+      "L": 0,
+      "R": 180
+    },
+    "robot_gains": {
+      "stiffness": 500,
+      "damping": 40
+    },
+    "joint_speed_rad_s": 0.5,
+    "end_effector_speed_m_s": 0.025,
+    "tracking_gate_m": 0.006,
+    "tracking_abort_m": 0.03,
+    "target_forearm_fraction": 0.28,
+    "grasp_patch_count": 5,
+    "max_seconds": 25,
+    "seed": 20261117,
+    "rgb_hz": 2,
+    "sample_hz": 20,
+    "garment": {
+      "friction": 0.1
+    },
+    "initial_offset_m": [
+      -0.0010568033608747648,
+      0.00468928119604063,
+      0.0012039089419454952
+    ],
+    "action_profile": "baseline",
+    "cloth_hz": 0,
+    "episode_id": "e000_k0_d0_f0_r0",
+    "ik_seed_file": "dynadress/configs/m2_ik_seed.json",
+    "ik_candidates": 1,
+    "output_group": "m2/episodes",
+    "parameter_group": "k0_d0_f0",
+    "record_rgb": true
+  },
+  "seed": 20261117,
+  "offset_y_m": 0.0,
+  "physics_hz": 240,
+  "control_hz": 20,
+  "sample_hz": 20,
+  "rgb_hz": 2,
+  "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+  "ik_preflight": {
+    "L": {
+      "position_error_m": 5.873841673459452e-09,
+      "rotation_error_rad": 1.7336960716221347e-08,
+      "minimum_joint_margin_rad": 0.1043374360614312,
+      "min_jacobian_singular": 0.18813652010409398,
+      "elbow_outward_m": 0.27499866484506985,
+      "seed_index": 0
+    },
+    "R": {
+      "position_error_m": 5.139073292608462e-09,
+      "rotation_error_rad": 8.033358921982366e-09,
+      "minimum_joint_margin_rad": 0.15281592568769853,
+      "min_jacobian_singular": 0.18774037515736114,
+      "elbow_outward_m": 0.2579200144849322,
+      "seed_index": 0
+    }
+  },
+  "preset": {
+    "radius_m": 0.06623700088142503,
+    "perimeter_m": 0.41617935072981105,
+    "initialization": "analytic one-time opened sleeve preset; FEM rest state unchanged"
+  },
+  "grasp_indices": {
+    "L": [
+      3575,
+      3591,
+      3592,
+      3594,
+      3607,
+      3608,
+      3610,
+      3623,
+      3624,
+      3626,
+      3639,
+      3640,
+      3641,
+      3655,
+      3656,
+      3657,
+      3670,
+      3671,
+      3672,
+      3685,
+      3686,
+      14675,
+      14676,
+      14678,
+      14679,
+      14684,
+      14686,
+      14723,
+      14724,
+      14725,
+      14726,
+      14727,
+      14732,
+      14734,
+      14771,
+      14772,
+      14773,
+      14774,
+      14775,
+      14780,
+      14782,
+      14819,
+      14820,
+      14821,
+      14822,
+      14823,
+      14829,
+      14830,
+      14866,
+      14867,
+      14868,
+      14869,
+      14870,
+      14871,
+      14873,
+      14912,
+      14913,
+      14914,
+      14915,
+      14917,
+      14919,
+      14920,
+      14955,
+      14956,
+      14957,
+      14958,
+      14959,
+      14960,
+      14962,
+      14963,
+      14998,
+      14999,
+      15003
+    ],
+    "R": [
+      3263,
+      3277,
+      3278,
+      3291,
+      3292,
+      3305,
+      3306,
+      3307,
+      3320,
+      3321,
+      3322,
+      3347,
+      3348,
+      3349,
+      3350,
+      3351,
+      3352,
+      3367,
+      3369,
+      3385,
+      3386,
+      3402,
+      13747,
+      13748,
+      13749,
+      13751,
+      13784,
+      13786,
+      13787,
+      13788,
+      13789,
+      13791,
+      13792,
+      13825,
+      13826,
+      13827,
+      13828,
+      13829,
+      13830,
+      13831,
+      13832,
+      13834,
+      13868,
+      13869,
+      13870,
+      13871,
+      13872,
+      13874,
+      13875,
+      13911,
+      13912,
+      13913,
+      13914,
+      13915,
+      13917,
+      13918,
+      13921,
+      13992,
+      13993,
+      13995,
+      13996,
+      13997,
+      13998,
+      13999,
+      14000,
+      14001,
+      14002,
+      14003,
+      14004,
+      14005,
+      14006,
+      14008,
+      14051,
+      14052,
+      14053,
+      14054,
+      14057,
+      14058,
+      14059,
+      14100,
+      14105,
+      14107,
+      14109,
+      14110,
+      14156
+    ]
+  },
+  "state_writes": "human and cloth initialization only; no later node/pose overwrites",
+  "self_collision_enabled": true,
+  "cloth_collision_filter": "none",
+  "robot_internal_wrist_filtered_pairs": [
+    [
+      "/World/H1/Geometry/base_link/tn__AR55_08LW4C1C9ZY2_link1_yX09G/tn__AR55_08LW4C1C9ZY2_link2_yX09G/tn__AR55_08LW4C1C9ZY2_link3_yX09G/tn__AR55_08LW4C1C9ZY2_link4_yX09G/tn__AR55_08LW4C1C9ZY2_link5_yX09G",
+      "/World/H1/Geometry/base_link/tn__AR55_08LW4C1C9ZY2_link1_yX09G/tn__AR55_08LW4C1C9ZY2_link2_yX09G/tn__AR55_08LW4C1C9ZY2_link3_yX09G/tn__AR55_08LW4C1C9ZY2_link4_yX09G/tn__AR55_08LW4C1C9ZY2_link5_yX09G/tn__AR55_08LW4C1C9ZY2_link6_yX09G/tn__AR55_08LW4C1C9ZY2_link7_yX09G"
+    ],
+    [
+      "/World/H1/Geometry/base_link/tn__AR55_08RW4C1C9ZY2_link1_yX09G/tn__AR55_08RW4C1C9ZY2_link2_yX09G/tn__AR55_08RW4C1C9ZY2_link3_yX09G/tn__AR55_08RW4C1C9ZY2_link4_yX09G/tn__AR55_08RW4C1C9ZY2_link5_yX09G",
+      "/World/H1/Geometry/base_link/tn__AR55_08RW4C1C9ZY2_link1_yX09G/tn__AR55_08RW4C1C9ZY2_link2_yX09G/tn__AR55_08RW4C1C9ZY2_link3_yX09G/tn__AR55_08RW4C1C9ZY2_link4_yX09G/tn__AR55_08RW4C1C9ZY2_link5_yX09G/tn__AR55_08RW4C1C9ZY2_link6_yX09G/tn__AR55_08RW4C1C9ZY2_link7_yX09G"
+    ]
+  ],
+  "sim_only_gripper": true,
+  "human_position_stiffness": 0,
+  "human_damping": "implicit velocity drive",
+  "upstream_commit": "48ffff25c9ff86cda3a2a21c7fc33d9022afa2fc",
+  "isaac_version": "6.0.1-rc.7+release.42383.32955d8d.gl",
+  "project_commit": "58c22cc9338efde561931e8c81901ce0802ef43a",
+  "project_dirty": true,
+  "code_sha256": {
+    "scripts/m2_collect_episode.py": "c9f0ab8ff25d33a18eec333ceb86e0c41a013d077782fded020056cb9e3b51f7",
+    "dynadress/robots/h1.py": "e2f270850cbd042ad0eddfbd7a985542b991ecf473db02a077706f9b1ba4eb24",
+    "dynadress/garments/cuff.py": "9a0ff4ff883d6d8f4c5b8c7434b1e08119628900d49ff6c91b42618641ff6f58",
+    "dynadress/interaction/wrist_load.py": "a52ada339156722fb46d91c07b8864c27c4d29abecab1c733a771ee00c02be41",
+    "dynadress/interaction/excitation.py": "b821594f6b1fd5ce44d9dd521d326ac84e724d05e95c7df20384505ffbe408a0",
+    "dynadress/human/passive_arm.py": "c072d56019698988576ce88c63342f3477ad62dae5eed1077f3d2e5382356413",
+    "scripts/run_native.sh": "275356e84588f932776abd8bdeaca175117de80d220c9e7694c20a0bf07ee922"
+  },
+  "high_dim_sampling": "cloth initial/final; optional snapshots; RGB configurable; unobserved contact/sensor fields null",
+  "complete": true,
+  "outcome": "success",
+  "termination_reason": "geometric_completion"
+}

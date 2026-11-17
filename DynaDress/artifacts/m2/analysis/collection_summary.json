@@ -1,0 +1,46 @@
+{
+  "episodes": 100,
+  "successes": 84,
+  "failures": 16,
+  "termination_counts": {
+    "geometric_completion": 84,
+    "time_budget_exhausted": 1,
+    "initial_aperture_or_hold_not_stable": 15
+  },
+  "valid_states": 26465,
+  "total_simulated_s": 1398.300072927028,
+  "combinations": 50,
+  "independent_values": {
+    "K": [
+      4.0,
+      8.0,
+      12.0,
+      16.0,
+      20.0
+    ],
+    "D": [
+      0.5,
+      2.0
+    ],
+    "friction": [
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.8
+    ]
+  },
+  "max_no_cloth_force_residual_N": 3.001770408169001e-06,
+  "max_no_cloth_torque_residual_Nm": 4.998083009644345e-07,
+  "resource_sampling": "setup_logs/m2/resources.jsonl; 10 s interval, finite monitored window",
+  "resources": {
+    "samples": 998,
+    "gpu_peak_MiB": 5288.0,
+    "gpu_mean_utilization_percent": 83.01603206412825,
+    "process_peak_RSS_GiB": 8.416702270507812,
+    "process_peak_CPU_percent": 130.10282437639077,
+    "interval_s": 10,
+    "cpu_clock_ticks_per_second": 100,
+    "limitation": "sampled peaks, not instantaneous full-run guarantees; may include offline model process"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "source_episode": "/root/gpufree-data/dynadress/artifacts/m2/episodes/e000_k0_d0_f0_r0",
+  "physics_hz": 240,
+  "control_hz": 20,
+  "samples": 300,
+  "replay": "identical recorded end-effector command sequence; scene contains H1 only, no cloth or human",
+  "load_channel": {
+    "source": "PhysX ArticulationView.get_link_incoming_joint_force",
+    "raw_order": [
+      "Fx_N",
+      "Fy_N",
+      "Fz_N",
+      "Tx_Nm",
+      "Ty_Nm",
+      "Tz_Nm"
+    ],
+    "raw_frame": "incoming joint child frame, origin at localPos1",
+    "residual_frame": "world axes, origin at wrist incoming joint",
+    "residual_formula": "sum Newton-Euler inertial/gravity support minus parent-on-child incoming reaction",
+    "limitations": "net external estimate; not garment-only contact or calibrated physical F/T sensor; includes attachment/other contacts/model error",
+    "bodies": {
+      "L": [
+        "tn__AR55_08LW4C1C9ZY2_link7_yX09G",
+        "tool_L_finger_a",
+        "tool_L_finger_b"
+      ],
+      "R": [
+        "tn__AR55_08RW4C1C9ZY2_link7_yX09G",
+        "tool_R_finger_a",
+        "tool_R_finger_b"
+      ]
+    },
+    "mass_kg": {
+      "L": [
+        0.5299999713897705,
+        0.03999999910593033,
+        0.03999999910593033
+      ],
+      "R": [
+        0.5299999713897705,
+        0.03999999910593033,
+        0.03999999910593033
+      ]
+    },
+    "child_joint_frames": {
+      "L": {
+        "position_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "R": {
+        "position_m": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_matrix": [
+          [
+            1.0,
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      }
+    }
+  },
+  "force_rmse_N": 7.965373650715502e-07,
+  "torque_rmse_Nm": 5.775385575075489e-07,
+  "maximum_force_norm_N": 3.582520305022523e-06,
+  "maximum_torque_norm_Nm": 3.279259534955662e-06,
+  "maximum_target_tracking_m": 0.002672732309527481,
+  "scope": "validates own-weight and inertial compensation; not a calibration of garment-only contact or a physical sensor"
+}

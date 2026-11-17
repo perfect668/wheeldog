@@ -42,7 +42,13 @@ link_path "$UPSTREAM" /project
 link_path "$UPSTREAM/scripts" /scripts
 link_path "$UPSTREAM/output" /output
 exec 9>"$UPSTREAM/cache/runtime.lock"
+# M2 workers only read the prepared runtime; prepare and all legacy runs stay exclusive.
+if [[ "${DYNADRESS_READ_ONLY_RUNTIME:-0}" == 1 ]]; then
+    [[ "$MODE" == python ]] || { echo 'Shared runtime lock is only allowed for prepared Python runs.' >&2; exit 2; }
+    flock -s -n 9 || { echo 'Exclusive runtime operation is active.' >&2; exit 2; }
+else
 flock -n 9 || { echo 'Another prepare/run holds the upstream runtime lock.' >&2; exit 2; }
+fi
 if [[ "$MODE" == prepare ]]; then
     /usr/bin/python3 "$UPSTREAM/scripts/fetch_assets.py" --check
     cp -a "$UPSTREAM/src/PhyRC_Sim/." "$UPSTREAM/.runtime/PhyRC_Sim/"
