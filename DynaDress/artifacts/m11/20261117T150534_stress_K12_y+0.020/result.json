@@ -1,0 +1,67 @@
+{
+  "success": false,
+  "termination_reason": "initial_aperture_or_hold_not_stable",
+  "transitions": [
+    {
+      "from": "robot_hold",
+      "to": "hold",
+      "simulation_s": 0.7500000391155481,
+      "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+    }
+  ],
+  "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+  "simulation_duration_s": 3.7500001955777407,
+  "robot_only_hold_max_error_m": {
+    "L": 9.427094529909632e-08,
+    "R": 4.553753157692348e-06
+  },
+  "cloth_hold_max_error_m": {
+    "L": 0.0007428273136849561,
+    "R": 0.00027249473659686073
+  },
+  "hand_entered": false,
+  "wrist_entered": false,
+  "final_geometry": {
+    "center_m": [
+      0.3869192607700825,
+      0.022795350829255767,
+      1.531455932557583
+    ],
+    "normal": [
+      0.8224151783088013,
+      0.003631174047630072,
+      0.5688761632045575
+    ],
+    "area_m2": 0.01143217690988619,
+    "spans_m": [
+      0.13678767635530897,
+      0.12407815414474739
+    ],
+    "planarity_rms_m": 0.007830912357604062,
+    "axial_from_wrist_m": -0.21277078983035858,
+    "target_from_wrist_m": 0.0728,
+    "hand_section": {
+      "inside": false,
+      "center_inside": true,
+      "edge_clearance_m": 0.036213142404120116,
+      "required_m": 0.04075466985974724,
+      "normal_alignment": 0.9270376387879855,
+      "plane_distance_m": 0.0824034417058243,
+      "area_m2": 0.01143217690988619,
+      "planarity_rms_m": 0.007830912357604062
+    },
+    "forearm_section": {
+      "inside": false,
+      "center_inside": true,
+      "edge_clearance_m": 0.03621314240412014,
+      "required_m": 0.04075466985974724,
+      "normal_alignment": 0.9270376387879855,
+      "plane_distance_m": 0.19828314655432244,
+      "area_m2": 0.01143217690988619,
+      "planarity_rms_m": 0.007830912357604062
+    }
+  },
+  "rigid_contact_pairs": [],
+  "retries": 0,
+  "frames": 38
+}

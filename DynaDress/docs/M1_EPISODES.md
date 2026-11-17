@@ -1,5 +1,6 @@
 # M1 episode 字段与复现
 
+> 本文保留 a7d836e 交付时的历史状态和命令；M1.1 已更新集成脚本并得到成功穿袖记录。当前状态/命令见 [M11_REPORT.md](M11_REPORT.md)，新任务字段见 [M11_EPISODES.md](M11_EPISODES.md)。不要将下述旧集成命令当作新版入口。
 当前数据为独立诊断及失败集成实验，**不是成功穿袖数据集**。远端根目录 `/root/gpufree-data/dynadress/artifacts/m1/`；本地仅同步轻量证据，完整逐帧布料 NPZ 留在远端。
 
 每个 episode 包含 `metadata.json`、`samples.jsonl`、`result.json`、相机 PNG 和可选高维状态。`metadata.complete` 只表示记录正常关闭；任务成功必须另看结果，不能把 `diagnostic_complete` 当作穿袖成功。进程异常时未关闭的 metadata 保留 `complete:false`。

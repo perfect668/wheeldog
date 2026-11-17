@@ -1,0 +1,91 @@
+{
+  "success": true,
+  "termination_reason": "geometric_completion",
+  "transitions": [
+    {
+      "from": "robot_hold",
+      "to": "hold",
+      "simulation_s": 0.7500000391155481,
+      "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+    },
+    {
+      "from": "hold",
+      "to": "align",
+      "simulation_s": 1.7500000912696123,
+      "reason": "measured stable grasp and usable aperture"
+    },
+    {
+      "from": "align",
+      "to": "insert",
+      "simulation_s": 1.900000099092722,
+      "reason": "aligned cuff contains projected hand section"
+    },
+    {
+      "from": "insert",
+      "to": "advance",
+      "simulation_s": 10.550000550225377,
+      "reason": "hand and wrist passed the measured opening"
+    },
+    {
+      "from": "advance",
+      "to": "complete",
+      "simulation_s": 14.850000774487853,
+      "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+    }
+  ],
+  "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+  "simulation_duration_s": 14.850000774487853,
+  "robot_only_hold_max_error_m": {
+    "L": 4.666646539485543e-06,
+    "R": 1.3492161703547149e-06
+  },
+  "cloth_hold_max_error_m": {
+    "L": 0.0007176757755417989,
+    "R": 0.0003936969163717681
+  },
+  "hand_entered": true,
+  "wrist_entered": true,
+  "final_geometry": {
+    "center_m": [
+      0.6943983100354671,
+      -0.004103152483003214,
+      1.5495100930333137
+    ],
+    "normal": [
+      0.7985159116422561,
+      0.006982204165880446,
+      0.6019332086528562
+    ],
+    "area_m2": 0.011672515080228374,
+    "spans_m": [
+      0.1356511843477255,
+      0.13759139766990366
+    ],
+    "planarity_rms_m": 0.006638516105768887,
+    "axial_from_wrist_m": 0.0716301095413426,
+    "target_from_wrist_m": 0.0728,
+    "hand_section": {
+      "inside": true,
+      "center_inside": true,
+      "edge_clearance_m": 0.040241205532760255,
+      "required_m": 0.0394064311215185,
+      "normal_alignment": 0.9613686077379002,
+      "plane_distance_m": -0.19430076428911597,
+      "area_m2": 0.011672515080228374,
+      "planarity_rms_m": 0.006638516105768887
+    },
+    "forearm_section": {
+      "inside": true,
+      "center_inside": true,
+      "edge_clearance_m": 0.040241205532760185,
+      "required_m": 0.0394064311215185,
+      "normal_alignment": 0.9613686077379002,
+      "plane_distance_m": -0.07412968832187854,
+      "area_m2": 0.011672515080228374,
+      "planarity_rms_m": 0.006638516105768887
+    }
+  },
+  "rigid_contact_pairs": [],
+  "retries": 0,
+  "frames": 149
+}

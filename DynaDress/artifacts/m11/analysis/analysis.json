@@ -1,0 +1,590 @@
+[
+  {
+    "episode": "artifacts/m11/20261117T144712_trajectory02",
+    "success": true,
+    "termination_reason": "geometric_completion",
+    "sample_count": 298,
+    "simulated_s": 14.850000774487853,
+    "clock_check": "passed",
+    "K": 4,
+    "offset_y_m": 0.0,
+    "maximum_tracking_error_m": [
+      0.0031111863933124487,
+      0.004297474910133245
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.002617062906040009,
+      0.0034242293256069025
+    ],
+    "maximum_grasp_error_m": [
+      0.0013883296855457436,
+      0.0036677321544385964
+    ],
+    "maximum_human_displacement_rad": [
+      0.02009369060397148,
+      0.16236919164657593,
+      0.008112026378512383,
+      0.061384791135787986
+    ],
+    "maximum_robot_dq_including_jaws": 0.12794090807437897,
+    "final_geometry": {
+      "center_m": [
+        0.6943983100354671,
+        -0.004103152483003214,
+        1.5495100930333137
+      ],
+      "normal": [
+        0.7985159116422561,
+        0.006982204165880446,
+        0.6019332086528562
+      ],
+      "area_m2": 0.011672515080228374,
+      "spans_m": [
+        0.1356511843477255,
+        0.13759139766990366
+      ],
+      "planarity_rms_m": 0.006638516105768887,
+      "axial_from_wrist_m": 0.0716301095413426,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.040241205532760255,
+        "required_m": 0.0394064311215185,
+        "normal_alignment": 0.9613686077379002,
+        "plane_distance_m": -0.19430076428911597,
+        "area_m2": 0.011672515080228374,
+        "planarity_rms_m": 0.006638516105768887
+      },
+      "forearm_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.040241205532760185,
+        "required_m": 0.0394064311215185,
+        "normal_alignment": 0.9613686077379002,
+        "plane_distance_m": -0.07412968832187854,
+        "area_m2": 0.011672515080228374,
+        "planarity_rms_m": 0.006638516105768887
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      },
+      {
+        "from": "hold",
+        "to": "align",
+        "simulation_s": 1.7500000912696123,
+        "reason": "measured stable grasp and usable aperture"
+      },
+      {
+        "from": "align",
+        "to": "insert",
+        "simulation_s": 1.900000099092722,
+        "reason": "aligned cuff contains projected hand section"
+      },
+      {
+        "from": "insert",
+        "to": "advance",
+        "simulation_s": 10.550000550225377,
+        "reason": "hand and wrist passed the measured opening"
+      },
+      {
+        "from": "advance",
+        "to": "complete",
+        "simulation_s": 14.850000774487853,
+        "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+      }
+    ],
+    "source_samples_sha256": "ec1b0925bc8bd03d5423f3b7282c413ce66d7c1516264bfcf605236160d28ff8"
+  },
+  {
+    "episode": "artifacts/m11/20261117T145136_batch_K4_y-0.005",
+    "success": true,
+    "termination_reason": "geometric_completion",
+    "sample_count": 299,
+    "simulated_s": 14.900000777095556,
+    "clock_check": "passed",
+    "K": 4.0,
+    "offset_y_m": -0.005,
+    "maximum_tracking_error_m": [
+      0.0032580076185954334,
+      0.004370136062597033
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.002551315177336197,
+      0.003590725192220836
+    ],
+    "maximum_grasp_error_m": [
+      0.001338134800824674,
+      0.004018137668143185
+    ],
+    "maximum_human_displacement_rad": [
+      0.020079199224710464,
+      0.1661738157272339,
+      0.004634914454072714,
+      0.0852543354034424
+    ],
+    "maximum_robot_dq_including_jaws": 0.1239810511469841,
+    "final_geometry": {
+      "center_m": [
+        0.6953738085925579,
+        -0.004107102856505662,
+        1.5480585068464279
+      ],
+      "normal": [
+        0.7919536985822693,
+        -0.002428480274256932,
+        0.6105763193781932
+      ],
+      "area_m2": 0.011820384130888479,
+      "spans_m": [
+        0.1351554558200205,
+        0.13954389003821743
+      ],
+      "planarity_rms_m": 0.005696737416765853,
+      "axial_from_wrist_m": 0.07174425692926155,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.04052142469732003,
+        "required_m": 0.0394475787365274,
+        "normal_alignment": 0.9602832674567585,
+        "plane_distance_m": -0.19446334677177612,
+        "area_m2": 0.011820384130888479,
+        "planarity_rms_m": 0.005696737416765853
+      },
+      "forearm_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.04052142469732028,
+        "required_m": 0.0394475787365274,
+        "normal_alignment": 0.9602832674567585,
+        "plane_distance_m": -0.07442793833968118,
+        "area_m2": 0.011820384130888479,
+        "planarity_rms_m": 0.005696737416765853
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      },
+      {
+        "from": "hold",
+        "to": "align",
+        "simulation_s": 1.7500000912696123,
+        "reason": "measured stable grasp and usable aperture"
+      },
+      {
+        "from": "align",
+        "to": "insert",
+        "simulation_s": 1.8500000964850187,
+        "reason": "aligned cuff contains projected hand section"
+      },
+      {
+        "from": "insert",
+        "to": "advance",
+        "simulation_s": 10.550000550225377,
+        "reason": "hand and wrist passed the measured opening"
+      },
+      {
+        "from": "advance",
+        "to": "complete",
+        "simulation_s": 14.900000777095556,
+        "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+      }
+    ],
+    "source_samples_sha256": "d5fa5dd4d1c0adef63273ced5cffc4db39030527da68f9e41fdc0643e818b00e"
+  },
+  {
+    "episode": "artifacts/m11/20261117T145459_batch_K4_y+0.005",
+    "success": true,
+    "termination_reason": "geometric_completion",
+    "sample_count": 300,
+    "simulated_s": 14.95000077970326,
+    "clock_check": "passed",
+    "K": 4.0,
+    "offset_y_m": 0.005,
+    "maximum_tracking_error_m": [
+      0.003122725806637251,
+      0.004203779589311185
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.0027787552237378737,
+      0.0032771382928626883
+    ],
+    "maximum_grasp_error_m": [
+      0.0012126921896976378,
+      0.004002210458484325
+    ],
+    "maximum_human_displacement_rad": [
+      0.019418906420469284,
+      0.16523879766464233,
+      0.008034632541239262,
+      0.061885619163513206
+    ],
+    "maximum_robot_dq_including_jaws": 0.12826639413833618,
+    "final_geometry": {
+      "center_m": [
+        0.6946523927152157,
+        -0.00410643032664666,
+        1.548976045846939
+      ],
+      "normal": [
+        0.8038017579337233,
+        0.013010824714265581,
+        0.594754951541314
+      ],
+      "area_m2": 0.011713385343491766,
+      "spans_m": [
+        0.13425452508358698,
+        0.13819732730789458
+      ],
+      "planarity_rms_m": 0.006793285668665398,
+      "axial_from_wrist_m": 0.07144416549251505,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.04012960886250305,
+        "required_m": 0.03927660655639601,
+        "normal_alignment": 0.9648090966168134,
+        "plane_distance_m": -0.19481239858120228,
+        "area_m2": 0.011713385343491766,
+        "planarity_rms_m": 0.006793285668665398
+      },
+      "forearm_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.04012960886250312,
+        "required_m": 0.03927660655639601,
+        "normal_alignment": 0.9648090966168134,
+        "plane_distance_m": -0.07421126150410047,
+        "area_m2": 0.011713385343491766,
+        "planarity_rms_m": 0.006793285668665398
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      },
+      {
+        "from": "hold",
+        "to": "align",
+        "simulation_s": 1.7500000912696123,
+        "reason": "measured stable grasp and usable aperture"
+      },
+      {
+        "from": "align",
+        "to": "insert",
+        "simulation_s": 2.0000001043081284,
+        "reason": "aligned cuff contains projected hand section"
+      },
+      {
+        "from": "insert",
+        "to": "advance",
+        "simulation_s": 10.650000555440784,
+        "reason": "hand and wrist passed the measured opening"
+      },
+      {
+        "from": "advance",
+        "to": "complete",
+        "simulation_s": 14.95000077970326,
+        "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+      }
+    ],
+    "source_samples_sha256": "6aba1edcc9d32f470f485526f7c4330aec2b1b18dcded6dad0e10d18c3342c41"
+  },
+  {
+    "episode": "artifacts/m11/20261117T145818_batch_K12_y+0.000",
+    "success": true,
+    "termination_reason": "geometric_completion",
+    "sample_count": 290,
+    "simulated_s": 14.450000753626227,
+    "clock_check": "passed",
+    "K": 12.0,
+    "offset_y_m": 0.0,
+    "maximum_tracking_error_m": [
+      0.003749449490144196,
+      0.004545042699290104
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.0026865683405569384,
+      0.003780913312774661
+    ],
+    "maximum_grasp_error_m": [
+      0.00145851724819762,
+      0.0040242279270098335
+    ],
+    "maximum_human_displacement_rad": [
+      0.01910359226167202,
+      0.12080460786819458,
+      0.0077538881450891495,
+      0.042379343509674094
+    ],
+    "maximum_robot_dq_including_jaws": 0.12806497514247894,
+    "final_geometry": {
+      "center_m": [
+        0.6869975343346596,
+        -0.0038852159806992857,
+        1.5583604097366333
+      ],
+      "normal": [
+        0.7865210110289933,
+        -0.00033290245848507927,
+        0.6175634286337586
+      ],
+      "area_m2": 0.011549653764786668,
+      "spans_m": [
+        0.13655322145040638,
+        0.13627943467762244
+      ],
+      "planarity_rms_m": 0.006273276031274746,
+      "axial_from_wrist_m": 0.0719211213972391,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.040577064394883275,
+        "required_m": 0.03975359290414932,
+        "normal_alignment": 0.9522878509123568,
+        "plane_distance_m": -0.19245743119861017,
+        "area_m2": 0.011549653764786668,
+        "planarity_rms_m": 0.006273276031274746
+      },
+      "forearm_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.040577064394883275,
+        "required_m": 0.03975359290414932,
+        "normal_alignment": 0.9522878509123568,
+        "plane_distance_m": -0.07342144983456553,
+        "area_m2": 0.011549653764786668,
+        "planarity_rms_m": 0.006273276031274746
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      },
+      {
+        "from": "hold",
+        "to": "align",
+        "simulation_s": 1.7500000912696123,
+        "reason": "measured stable grasp and usable aperture"
+      },
+      {
+        "from": "align",
+        "to": "insert",
+        "simulation_s": 1.900000099092722,
+        "reason": "aligned cuff contains projected hand section"
+      },
+      {
+        "from": "insert",
+        "to": "advance",
+        "simulation_s": 10.550000550225377,
+        "reason": "hand and wrist passed the measured opening"
+      },
+      {
+        "from": "advance",
+        "to": "complete",
+        "simulation_s": 14.450000753626227,
+        "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+      }
+    ],
+    "source_samples_sha256": "4f88ba6c24eeb947e7b71043eae262b42849698ef95a40826af4c1e1491c204a"
+  },
+  {
+    "episode": "artifacts/m11/20261117T150136_batch_K12_y+0.005",
+    "success": true,
+    "termination_reason": "geometric_completion",
+    "sample_count": 294,
+    "simulated_s": 14.65000076405704,
+    "clock_check": "passed",
+    "K": 12.0,
+    "offset_y_m": 0.005,
+    "maximum_tracking_error_m": [
+      0.0044212827654506424,
+      0.005313382287852159
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.0034706204898592437,
+      0.004708841940140781
+    ],
+    "maximum_grasp_error_m": [
+      0.001391657229097543,
+      0.004251617793855301
+    ],
+    "maximum_human_displacement_rad": [
+      0.016019338741898537,
+      0.1308019757270813,
+      0.006328015588223934,
+      0.052883589267730735
+    ],
+    "maximum_robot_dq_including_jaws": 0.12405172735452652,
+    "final_geometry": {
+      "center_m": [
+        0.6895840220153332,
+        -0.002707693600677885,
+        1.5540224581956863
+      ],
+      "normal": [
+        0.7992338440072482,
+        -0.008398386947329504,
+        0.6009615043329155
+      ],
+      "area_m2": 0.012070375611498353,
+      "spans_m": [
+        0.1343439709795715,
+        0.13934011039485417
+      ],
+      "planarity_rms_m": 0.005160517503633877,
+      "axial_from_wrist_m": 0.07211407890099138,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.04085684553412732,
+        "required_m": 0.03933413090437815,
+        "normal_alignment": 0.9632816068206165,
+        "plane_distance_m": -0.1945356762775503,
+        "area_m2": 0.012070375611498353,
+        "planarity_rms_m": 0.005160517503633877
+      },
+      "forearm_section": {
+        "inside": true,
+        "center_inside": true,
+        "edge_clearance_m": 0.040856845534127384,
+        "required_m": 0.03933413090437815,
+        "normal_alignment": 0.9632816068206165,
+        "plane_distance_m": -0.07412547542497326,
+        "area_m2": 0.012070375611498353,
+        "planarity_rms_m": 0.005160517503633877
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      },
+      {
+        "from": "hold",
+        "to": "align",
+        "simulation_s": 1.7500000912696123,
+        "reason": "measured stable grasp and usable aperture"
+      },
+      {
+        "from": "align",
+        "to": "insert",
+        "simulation_s": 2.0000001043081284,
+        "reason": "aligned cuff contains projected hand section"
+      },
+      {
+        "from": "insert",
+        "to": "advance",
+        "simulation_s": 10.650000555440784,
+        "reason": "hand and wrist passed the measured opening"
+      },
+      {
+        "from": "advance",
+        "to": "complete",
+        "simulation_s": 14.65000076405704,
+        "reason": "containment, target forearm section and stable grasp held for 0.5 s"
+      }
+    ],
+    "source_samples_sha256": "f9cc5c22fa1b4d9cc154c0b53e24f8c226ecb567c25720c9a9127da6a75a23cf"
+  },
+  {
+    "episode": "artifacts/m11/20261117T150534_stress_K12_y+0.020",
+    "success": false,
+    "termination_reason": "initial_aperture_or_hold_not_stable",
+    "sample_count": 76,
+    "simulated_s": 3.7500001955777407,
+    "clock_check": "passed",
+    "K": 12.0,
+    "offset_y_m": 0.02,
+    "maximum_tracking_error_m": [
+      0.0007428273136849561,
+      0.00027249473659686073
+    ],
+    "maximum_precontrol_tracking_error_m": [
+      0.0007428273136849561,
+      0.00027249473659686073
+    ],
+    "maximum_grasp_error_m": [
+      0.0014575267238418044,
+      0.00397705712967985
+    ],
+    "maximum_human_displacement_rad": [
+      2.862461447885288e-15,
+      0.0,
+      5.385815584677922e-16,
+      5.960464455334602e-09
+    ],
+    "maximum_robot_dq_including_jaws": 0.016660645604133606,
+    "final_geometry": {
+      "center_m": [
+        0.3869192607700825,
+        0.022795350829255767,
+        1.531455932557583
+      ],
+      "normal": [
+        0.8224151783088013,
+        0.003631174047630072,
+        0.5688761632045575
+      ],
+      "area_m2": 0.01143217690988619,
+      "spans_m": [
+        0.13678767635530897,
+        0.12407815414474739
+      ],
+      "planarity_rms_m": 0.007830912357604062,
+      "axial_from_wrist_m": -0.21277078983035858,
+      "target_from_wrist_m": 0.0728,
+      "hand_section": {
+        "inside": false,
+        "center_inside": true,
+        "edge_clearance_m": 0.036213142404120116,
+        "required_m": 0.04075466985974724,
+        "normal_alignment": 0.9270376387879855,
+        "plane_distance_m": 0.0824034417058243,
+        "area_m2": 0.01143217690988619,
+        "planarity_rms_m": 0.007830912357604062
+      },
+      "forearm_section": {
+        "inside": false,
+        "center_inside": true,
+        "edge_clearance_m": 0.03621314240412014,
+        "required_m": 0.04075466985974724,
+        "normal_alignment": 0.9270376387879855,
+        "plane_distance_m": 0.19828314655432244,
+        "area_m2": 0.01143217690988619,
+        "planarity_rms_m": 0.007830912357604062
+      }
+    },
+    "transitions": [
+      {
+        "from": "robot_hold",
+        "to": "hold",
+        "simulation_s": 0.7500000391155481,
+        "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+      }
+    ],
+    "source_samples_sha256": "75ff1ed8ade1b2fc305d3b40e01564be93ada67f0102befdc87eb6168df461e2"
+  }
+]
