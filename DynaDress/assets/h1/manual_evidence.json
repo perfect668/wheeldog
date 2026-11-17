@@ -1,0 +1,140 @@
+{
+  "source_path": "/home/user/文档/xwechat_files/wxid_l9fl2nbdz34h22_e244/msg/file/2026-11/2.轮式人形机器人产品手册.pdf",
+  "sha256": "694a8a3572f61e19b608624c120252a51ba5799b68e8ac917491b88f88ced722",
+  "bytes": 3559289,
+  "document": "Helios 系列轮式人形机器人产品手册",
+  "document_id_cover": "DOC-00003457",
+  "revision": "A",
+  "revision_date": "2026-03-15",
+  "note": "部分偶数页页眉为 DOC-00003456/A；PDF页码=印刷正文页码+4。仅记录手册声明，未确认适用本机具体批次。",
+  "evidence": [
+    {
+      "pdf_page": 27,
+      "printed_page": 23,
+      "section": "3.1/3.2",
+      "values": {
+        "steering_wheel_modules": 4,
+        "nominal_dof_without_hand": 23,
+        "standing_dimensions_mm": [
+          680,
+          640,
+          1736
+        ],
+        "squat_height_mm": 1142,
+        "transport_height_mm": 930
+      }
+    },
+    {
+      "pdf_page": 29,
+      "printed_page": 25,
+      "section": "3.3",
+      "values": {
+        "approx_total_mass_kg": 190,
+        "base_motion_wording": "全向",
+        "base_dof": 3,
+        "max_base_speed_m_s": 1.5,
+        "arm_working_radius_mm": 650,
+        "single_arm_payload_kg": 5,
+        "repeatability_mm": 0.1,
+        "arm_joint_sensing": "内置扭矩传感器、双编码器",
+        "arm_bus": "EtherCAT",
+        "interfaces": "C++/Python SDK (arm/torso), ROS2 (arm/torso/base)"
+      }
+    },
+    {
+      "pdf_page": 34,
+      "printed_page": 30,
+      "section": "3.7.1/3.7.2",
+      "values": {
+        "arm_name": "AR5",
+        "arm_axis_count": 7,
+        "max_reach_printed_without_unit": 683,
+        "approx_arm_mass_kg": 11,
+        "joint_ranges_deg": [
+          [
+            -178,
+            178
+          ],
+          [
+            -120,
+            120
+          ],
+          [
+            -178,
+            178
+          ],
+          [
+            -60,
+            145
+          ],
+          [
+            -178,
+            178
+          ],
+          [
+            -60,
+            60
+          ],
+          [
+            -90,
+            90
+          ]
+        ],
+        "joint_max_speeds_deg_s": [
+          175,
+          175,
+          270,
+          300,
+          240,
+          240,
+          240
+        ],
+        "zero_axis_wording": "A1/A3/A5/A7 +Z in arm base, A2/A4/A6 +Y in arm base"
+      }
+    },
+    {
+      "pdf_page": 36,
+      "printed_page": 32,
+      "section": "3.7.4.1",
+      "values": {
+        "wrist_payload_allowable_moment_Nm": {
+          "axis5": 12,
+          "axis6": 4.5
+        },
+        "wrist_payload_allowable_inertia_kg_m2": {
+          "axis5": 0.33,
+          "axis6": 0.1
+        }
+      }
+    },
+    {
+      "pdf_page": 37,
+      "printed_page": 33,
+      "section": "3.7.4.4",
+      "values": {
+        "joint_torque_limit_Nm": [
+          182,
+          182,
+          134,
+          134,
+          35,
+          35,
+          35
+        ]
+      },
+      "qualification": "手册用语为关节力矩限额；持续/峰值、温度/时长、控制模式和本机适用性未给出，未用于本轮计算"
+    }
+  ],
+  "unconfirmed": [
+    "manual applicability to supplied 0.8 asset / actual H1 serial number",
+    "URDF vs manual axis7 direction and limit",
+    "URDF vs manual torque limits",
+    "wheel steering/drive kinematic mapping",
+    "torso/neck real limits and zero mapping",
+    "continuous vs peak torque and thermal derating",
+    "control/sensing frequencies and end-to-end latency",
+    "force response/force slew rate",
+    "contact grip handle transform/load geometry",
+    "base acceleration/braking/support polygon/ground friction"
+  ]
+}

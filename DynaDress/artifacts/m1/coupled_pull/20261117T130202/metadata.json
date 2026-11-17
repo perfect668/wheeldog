@@ -1,0 +1,66 @@
+{
+  "scope": "minimal H1/cuff/passive-arm integration attempt; no seated-manikin integration",
+  "seed": 0,
+  "physics_hz": 240,
+  "control_hz": 20,
+  "sample_hz": 10,
+  "stiffness": [
+    4.0,
+    4.0,
+    4.0,
+    4.0
+  ],
+  "damping": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "q_ref": [
+    0.0,
+    1.2,
+    0.0,
+    0.3
+  ],
+  "human_collision_enabled": true,
+  "original_state_writes": "initialization only",
+  "source_commit": "48ffff25c9ff86cda3a2a21c7fc33d9022afa2fc",
+  "grasp_indices": {
+    "L": [
+      3623,
+      14820,
+      3639,
+      14772,
+      14867,
+      3607,
+      3655,
+      14914,
+      14724,
+      3671,
+      3591,
+      14960
+    ],
+    "R": [
+      3349,
+      13912,
+      3320,
+      14000,
+      13869,
+      3351,
+      3305,
+      14006,
+      13826,
+      3290,
+      3368,
+      13783
+    ]
+  },
+  "sim_only_gripper": true,
+  "high_dim_sampling": "10 Hz cloth NPZ and RGB; fixed diagnostic budget <=120 frames",
+  "isaac_version": "6.0.1-rc.7+release.42383.32955d8d.gl",
+  "diagnostic_unattached": false,
+  "diagnostic_filter_robot": false,
+  "complete": true,
+  "outcome": "failure",
+  "termination_reason": "end_effector_tracking_error"
+}

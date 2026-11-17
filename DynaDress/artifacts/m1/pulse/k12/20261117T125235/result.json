@@ -1,0 +1,64 @@
+{
+  "clock_contract": "explicit one physics step per effort update; rendering delta_time=0",
+  "simulation_duration_s": 6.000000312924385,
+  "test": "commanded_torque_pulse",
+  "stiffness": [
+    12.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "damping": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "q_ref": [
+    0.0,
+    -1.3,
+    0.0,
+    0.3
+  ],
+  "state_writes": "reset only",
+  "drive_stiffness": 0,
+  "drive_damping": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "actual_drive_stiffness": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "actual_drive_damping": [
+    [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "damping_implementation": "implicit velocity drive, stiffness zero, target velocity zero; explicit effort excludes D*dq to avoid double damping",
+  "gravity": "PhysX generalized gravity compensation; effort added each physics tick",
+  "max_deviation_rad": [
+    9.86328085872401e-09,
+    0.11412780284881596,
+    5.561336946513507e-10,
+    0.015961241722106945
+  ],
+  "final_error_rad": [
+    -7.962756430786311e-13,
+    2.7346611022993628e-05,
+    2.578180758347568e-14,
+    6.747245788585321e-06
+  ],
+  "finite": true,
+  "source_gravity_contact": "solver generalized gravity is not contact force",
+  "passed": true
+}
