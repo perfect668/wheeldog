@@ -85,6 +85,26 @@ def main():
     save(fig,out,'ambiguous_conditions')
     (out/'figure_selection.json').write_text(json.dumps(dict(identification_pair=best['pair_id'],ambiguous_pair=confusing['pair_id'],correct_final_KD_case_available=bool(correct),
         rule='among correct final active K/D MAP cases, max matched-time p(true KD) gain over passive; ambiguity=min active p(true class)'),indent=2))
+    # Actual human excitation must be checked independently of belief entropy.
+    fig,axes=plt.subplots(2,2,figsize=(10,6),sharex=True)
+    for col,pair in enumerate((confusing['pair_id'],best['pair_id'])):
+        e=next(e for e in act if e['pair_id']==pair)
+        d=dict(np.load(out/(e['episode_id']+'.npz')))
+        b=read_json(out/(e['episode_id']+'_beliefs.json'))
+        axes[0,col].plot(d['time'],np.linalg.norm(d['state'][:,:4]-[0,1,0,.35],axis=-1)*1000)
+        axes[0,col].axhline(2,color='gray',ls='--',label='2 mrad deviation')
+        axes[0,col].set_title(f"Active {pair}: true K={e['K']}, D={e['D']}, mu={e['mu']}")
+        axes[1,col].plot([u['observed_until_s'] for u in b['updates']],[u['after']['full']['mean'][0] for u in b['updates']],color=COLORS['active'])
+        axes[1,col].axhline(e['K'],color='black',ls='--',label='True K')
+        for ax in axes[:,col]:
+            ax.axvspan(e['trigger_s'],e['trigger_s']+1.,color=COLORS['active'],alpha=.15)
+            ax.grid(alpha=.2)
+        axes[1,col].set_xlabel('Simulation time [s]')
+    axes[0,0].set_ylabel('Actual human |q - q_ref| [mrad]')
+    axes[1,0].set_ylabel('Posterior mean K [Nm/rad]')
+    axes[0,0].legend();axes[1,0].legend()
+    fig.suptitle('Proxy-triggered probe precedes measurable human motion')
+    save(fig,out,'probe_observability')
     diag=json.loads((out/'mu_diagnosis.json').read_text())['pairs']
     fig,axs=plt.subplots(1,2,figsize=(10,3.7))
     for ax,stage in zip(axs,('probe','late_sliding')):
