@@ -51,7 +51,7 @@ def collect(cfg,a):
     out.mkdir(parents=True,exist_ok=False);(out/'config.json').write_text(json.dumps(cfg,indent=2))
     print('M2_PREFLIGHT',json.dumps(ik_info),'OUTPUT',out,flush=True)
     result={'success':False,'termination_reason':None,'transitions':[],'scope':'real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM'}
-    episode=None;sensors=None;high_frequency=None
+    episode=None;sensors=None;high_frequency=None;identifier=None
     try:
         import torch
         torch.set_num_threads(1)
@@ -129,7 +129,15 @@ def collect(cfg,a):
               'project_dirty':bool(subprocess.check_output(['git','-C',str(ROOT),'status','--porcelain'],text=True).strip()),
               'code_sha256':{str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [Path(__file__),ROOT/'dynadress/robots/h1.py',ROOT/'dynadress/garments/cuff.py',ROOT/'dynadress/interaction/wrist_load.py',ROOT/'dynadress/interaction/excitation.py',ROOT/'dynadress/human/passive_arm.py',ROOT/'scripts/run_native.sh']},
               'high_dim_sampling':'cloth initial/final; optional snapshots; RGB configurable; unobserved contact/sensor fields null'}
+        if cfg.get('c2_mode'):
+            c2_sources=sorted((ROOT/'dynadress/inference').glob('*.py'))
+            c2_sources.extend([ROOT/'artifacts/c2/calibration/calibration.json',ROOT/'artifacts/c2/probe_calibration/calibration.json',ROOT/'artifacts/m21/model/best.pt'])
+            meta['c2_source_sha256']={str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in c2_sources}
         episode=Episode(out,meta)
+        if cfg.get('c2_mode'):
+            from dynadress.inference.online import OnlineIdentifier
+            from dynadress.models.features import extract, pose_feature
+            identifier=OnlineIdentifier(ROOT,out,cfg['c2_mode'],ref,seed=cfg['seed'])
         if a.high_frequency:
             from dynadress.recording.high_frequency import HighFrequencyRecorder
             high_frequency=HighFrequencyRecorder(out)
@@ -181,7 +189,35 @@ def collect(cfg,a):
             if step%12==0:
                 load_raw,load_estimate=load_sensor.read()
                 if state=='insert' and excitation_start is None:excitation_start=t
-                probe=excitation(cfg['action_profile'],None if excitation_start is None else t-excitation_start)
+                if identifier is None:
+                    probe=excitation(cfg['action_profile'],None if excitation_start is None else t-excitation_start)
+                else:
+                    # This observable-only boundary excludes privileged K/D/mu,
+                    # holding efforts, outcome and legacy probe template IDs.
+                    observed={'solver_state':{'value':{'geometry':geometry,
+                        'cuff_keypoints_m':None if positions is None else positions[cuff],
+                        'human_q_rad':qh,'human_dq_rad_s':dqh,'robot_q':qr,
+                        'robot_dq':cpu(robot.get_joint_velocities()),'end_effector_actual':actual}},
+                        'estimated_load':{'available':load_estimate is not None,'value':load_estimate},
+                        'action':{'end_effector_targets':commanded,
+                            'end_effector_delta_world_m':{s:np.zeros(3) for s in 'LR'},
+                            'rotation_delta_world_rad':{s:np.zeros(3) for s in 'LR'}}}
+                    feature=extract(observed)
+                    identifier.observe(None if feature is None else feature[0],t)
+                    def c2_ik_feasible(actions):
+                        seed=dict(desired)
+                        for action in actions:
+                            previous=dict(seed)
+                            for side,index in zip('LR',(0,9)):
+                                target=np.eye(4);target[:3,3]=action[index:index+3]
+                                r=action[index+3:index+9].reshape(3,2)
+                                target[:3,:3]=np.column_stack([r,np.cross(r[:,0],r[:,1])])
+                                sol,error=model.solve(side,target,seed,35,margin=.05)
+                                if error['position_error_m']>.002 or error['rotation_error_rad']>.02:return False
+                                seed.update(sol)
+                            if any(abs(seed[n]-previous[n])>cfg['joint_speed_rad_s']*.05+1e-5 for n in seed):return False
+                        return True
+                    probe=identifier.control(t,state,tracking,commanded,haxis,arm_rot[:,1],cfg['end_effector_speed_m_s'],c2_ik_feasible)
                 if not np.isfinite(np.r_[qr,qh]).all() or (positions is not None and not np.isfinite(positions).all()):result['termination_reason']='nonfinite'
                 elif any(not model.limits[n][0]-.002<=qdict[n]<=model.limits[n][1]+.002 for n in model.names):result['termination_reason']='robot_joint_limit'
                 elif max(tracking.values())>cfg['tracking_abort_m']:result['termination_reason']='end_effector_tracking_error'
@@ -265,6 +301,11 @@ def collect(cfg,a):
                     'end_effector_actual':{s:v.tolist() for s,v in actual.items()},'end_effector_tracking_error_m':tracking,'human_hand_tip_m':htip,'human_wrist_m':wrist,'human_elbow_m':hp[:3],
                     'cuff_keypoints_m':None if positions is None else positions[cuff],'geometry':geometry,'grasp_error_m':grasp_error,'hand_entered':tip_entered,'wrist_entered':wrist_entered},
                     estimated_load=load_estimate,commanded_wrench={'human_explicit_Nm':hold,'gravity_compensation_Nm':gravity},privileged={'K':imp.stiffness,'D':imp.damping,'q_ref':imp.reference,'garment_friction':cfg['garment']['friction']})
+                if identifier is not None:
+                    sent=np.concatenate([*[pose_feature(commanded[s]) for s in 'LR'],
+                        *[commanded[s][:3,3]-previous_commanded[s][:3,3] for s in 'LR'],
+                        *[Rotation.from_matrix(commanded[s][:3,:3]@previous_commanded[s][:3,:3].T).as_rotvec() for s in 'LR']])
+                    identifier.sent(sent,t,tracking)
                 previous_commanded={s:v.copy() for s,v in commanded.items()}
                 if step%240==0:print('M2_STEP',step,state,'TRACK',tracking,'GEOMETRY',json.dumps(geometry,default=serial),'GRASP',grasp_error,flush=True)
             if high_frequency is not None:
@@ -318,6 +359,7 @@ def collect(cfg,a):
         if episode is not None:episode.close('failure',result['termination_reason'])
         raise
     finally:
+        if identifier is not None:identifier.close()
         if high_frequency is not None:high_frequency.close()
         if sensors is not None:
             try:sensors.close()

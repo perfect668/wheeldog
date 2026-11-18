@@ -1,0 +1,62 @@
+{
+  "human": {
+    "shoulder": [
+      1.1,
+      0,
+      1.8
+    ],
+    "reference": [
+      0.0,
+      1.0,
+      0.0,
+      0.35
+    ],
+    "stiffness": [
+      4.0,
+      4.0,
+      4.0,
+      4.0
+    ],
+    "damping": [
+      2.0,
+      2.0,
+      2.0,
+      2.0
+    ]
+  },
+  "initial_hand_gap_m": 0.08,
+  "wrist_roll_deg": {
+    "L": 0,
+    "R": 180
+  },
+  "robot_gains": {
+    "stiffness": 500,
+    "damping": 40
+  },
+  "joint_speed_rad_s": 0.5,
+  "end_effector_speed_m_s": 0.025,
+  "tracking_gate_m": 0.006,
+  "tracking_abort_m": 0.03,
+  "target_forearm_fraction": 0.28,
+  "grasp_patch_count": 5,
+  "max_seconds": 25.0,
+  "seed": 20261119,
+  "rgb_hz": 8,
+  "sample_hz": 20,
+  "garment": {
+    "friction": 0.8
+  },
+  "initial_offset_m": [
+    0.0,
+    0.003,
+    0.0
+  ],
+  "action_profile": "baseline",
+  "cloth_hz": 0,
+  "episode_id": "c2_paired_p03_passive",
+  "ik_seed_file": "dynadress/configs/m2_ik_seed.json",
+  "ik_candidates": 1,
+  "output_group": "c2/paired",
+  "c2_mode": "passive",
+  "record_rgb": false
+}

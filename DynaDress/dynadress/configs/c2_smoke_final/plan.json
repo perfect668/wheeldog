@@ -1,0 +1,60 @@
+{
+  "experiment": "C2",
+  "seed": 20261119,
+  "initial_offset_m": [
+    0.0,
+    0.003,
+    0.0
+  ],
+  "duration_s": 25.0,
+  "source_commit": "8cb2b3be62571629b0834aada8bf0255e0df169d",
+  "episodes": [
+    {
+      "episode_id": "c2_smoke_final_p00_passive",
+      "pair_id": "p00",
+      "mode": "passive",
+      "config": "dynadress/configs/c2_smoke_final/c2_smoke_final_p00_passive.json",
+      "K": 12.0,
+      "D": 0.5,
+      "mu": 0.1,
+      "seed": 20261119,
+      "initial_offset_m": [
+        0.0,
+        0.003,
+        0.0
+      ]
+    },
+    {
+      "episode_id": "c2_smoke_final_p00_fixed",
+      "pair_id": "p00",
+      "mode": "fixed",
+      "config": "dynadress/configs/c2_smoke_final/c2_smoke_final_p00_fixed.json",
+      "K": 12.0,
+      "D": 0.5,
+      "mu": 0.1,
+      "seed": 20261119,
+      "initial_offset_m": [
+        0.0,
+        0.003,
+        0.0
+      ]
+    },
+    {
+      "episode_id": "c2_smoke_final_p00_active",
+      "pair_id": "p00",
+      "mode": "active",
+      "config": "dynadress/configs/c2_smoke_final/c2_smoke_final_p00_active.json",
+      "K": 12.0,
+      "D": 0.5,
+      "mu": 0.1,
+      "seed": 20261119,
+      "initial_offset_m": [
+        0.0,
+        0.003,
+        0.0
+      ]
+    }
+  ],
+  "comparison": "same observed contact+stable tracking trigger, 1.0s opportunity, original servo/termination",
+  "purpose": "Final multivariate Student-t and smooth probe native smoke"
+}
