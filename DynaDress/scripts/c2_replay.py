@@ -11,6 +11,7 @@ from dynadress.inference.belief import JointBelief, hypotheses, SegmentLikelihoo
 from dynadress.inference.predictor import FrozenPredictor, CHECKPOINT_SHA256
 from dynadress.inference.segments import summary, phase
 from dynadress.human.geometry import axial_progress
+from scripts.c2_metrics import error_components
 QREF=np.array([0.,1.,0.,.35],dtype=np.float32)
 
 
@@ -71,7 +72,7 @@ def replay_episode(d,predictor,likelihood,grid):
             yp=(predictions[-2] if mode=='middle' else predictions[-1] if mode=='oracle' else np.einsum('n,ntd->td',beliefs[mode].weights,pred))
             for n in (5,10):
                 e=yp[n-1]-d['state'][t+n]
-                vals=dict(q=e[:4],dq=e[4:8],progress=e[g['progress'][0]:g['progress'][1]],load=e[-12:])
+                vals=error_components(e,g)
                 for name,value in vals.items():errors.setdefault(f'{mode}/{n*.05:.2f}/{name}',[]).extend(value.tolist())
         for mode,b in beliefs.items(): b.update(y,means,likelihood,ph,human_only=mode=='human_only')
         rows.append(dict(anchor_index=t,segment_start_s=float(d['time'][t]),observed_until_s=float(d['time'][t+5]),

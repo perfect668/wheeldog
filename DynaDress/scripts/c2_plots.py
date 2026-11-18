@@ -63,7 +63,7 @@ def main():
         return e['after']['p_true_KD']-passive['after']['p_true_KD']
     best=max(pool,key=benefit)
     confusing=min(act,key=lambda e:e['after']['p_true_resistance_class'])
-    pair_curve(entries,out,best['pair_id'],'Correct final K/D case; shaded probing window','identification_pair')
+    pair_curve(entries,out,best['pair_id'],('Correct final K/D case' if correct else 'Best available K/D case')+'; shaded probing window','identification_pair')
     pair_curve(entries,out,confusing['pair_id'],'Most confused active resistance-class case','ambiguous_pair')
     twins=[e for e in act if e['K']==confusing['K'] and e['D']==confusing['D']]
     fig,axes=plt.subplots(2,2,figsize=(10,6.5),sharex=True)
@@ -83,7 +83,7 @@ def main():
     axes[0,0].legend();axes[1,0].set_xlabel('Simulation time [s]');axes[1,1].set_xlabel('Simulation time [s]')
     fig.suptitle(f"Ambiguous friction conditions: active, K={confusing['K']}, D={confusing['D']}")
     save(fig,out,'ambiguous_conditions')
-    (out/'figure_selection.json').write_text(json.dumps(dict(identification_pair=best['pair_id'],ambiguous_pair=confusing['pair_id'],
+    (out/'figure_selection.json').write_text(json.dumps(dict(identification_pair=best['pair_id'],ambiguous_pair=confusing['pair_id'],correct_final_KD_case_available=bool(correct),
         rule='among correct final active K/D MAP cases, max matched-time p(true KD) gain over passive; ambiguity=min active p(true class)'),indent=2))
     diag=json.loads((out/'mu_diagnosis.json').read_text())['pairs']
     fig,axs=plt.subplots(1,2,figsize=(10,3.7))

@@ -11,6 +11,7 @@ from dynadress.inference.belief import JointBelief,hypotheses,entropy
 from dynadress.inference.predictor import FrozenPredictor,CHECKPOINT_SHA256
 from dynadress.human.geometry import axial_progress,arm_landmarks
 from scripts.c2_replay import QREF,dump,get_history
+from scripts.c2_metrics import error_components
 
 
 def loadlines(path):return [json.loads(x) for x in path.read_text().splitlines() if x.strip()]
@@ -23,15 +24,19 @@ def belief_at(updates,t,mode='full'):
 
 def score_belief(s,truth):
     b=JointBelief();w=np.asarray(s['joint']);kd,mu=b.marginal(w)
+    ks=np.unique(b.grid[:,0]);ds=np.unique(b.grid[:,1])
+    pk=np.asarray([w[b.grid[:,0]==v].sum() for v in ks]);pd=np.asarray([w[b.grid[:,1]==v].sum() for v in ds])
     true=np.isclose(b.grid,truth,atol=1e-6).all(-1)
     classes=s['effective_sliding_resistance'];label='low' if truth[2]<=.2 else 'high' if truth[2]>=.5 else 'medium'
     return dict(p_true_joint=float(w[true].sum()),p_true_KD=float(kd[np.isclose(b.kd,truth[:2]).all(-1)].sum()),
+        p_true_K=float(pk[np.isclose(ks,truth[0])].sum()),p_true_D=float(pd[np.isclose(ds,truth[1])].sum()),
         p_true_mu=float(mu[np.isclose(b.mu,truth[2])].sum()),p_true_resistance_class=classes[label],
         true_resistance_class=label,predicted_resistance_class=max(classes,key=classes.get),
         K_abs_error=abs(float(s['mean'][0])-truth[0]),D_abs_error=abs(float(s['mean'][1])-truth[1]),
-        K_map_correct=bool(np.isclose(s['map'][0],truth[0])),D_map_correct=bool(np.isclose(s['map'][1],truth[1])),
+        K_map_correct=bool(np.isclose(ks[pk.argmax()],truth[0])),D_map_correct=bool(np.isclose(ds[pd.argmax()],truth[1])),
+        joint_map_K_correct=bool(np.isclose(s['map'][0],truth[0])),joint_map_D_correct=bool(np.isclose(s['map'][1],truth[1])),
         resistance_class_correct=max(classes,key=classes.get)==label,entropy_KD=entropy(kd),entropy_mu=entropy(mu),
-        p_KD=kd.tolist(),p_mu=mu.tolist())
+        p_KD=kd.tolist(),p_K=pk.tolist(),p_D=pd.tolist(),p_mu=mu.tolist())
 
 
 def prediction_metrics(d,updates,predictor):
@@ -49,8 +54,8 @@ def prediction_metrics(d,updates,predictor):
             true=d['state'][t+n];target=true[g['progress'][0]]
             for mode,value in yp.items():
                 diff=value[n-1]-true
-                for name,sl in [('q',slice(0,4)),('dq',slice(4,8)),('progress',slice(*g['progress'])),('load',slice(-12,None))]:
-                    errors.setdefault(f'{mode}/{n*.05:.2f}/{name}',[]).extend(diff[sl].tolist())
+                for name,values in error_components(diff,g).items():
+                    errors.setdefault(f'{mode}/{n*.05:.2f}/{name}',[]).extend(values.tolist())
             for mode,value in [('oracle_model',yp['oracle']),('posterior_model',yp['full']),('impedance_translation_prior',prior)]:
                 fk=axial_progress(value[n-1,:4],value[n-1,slice(*g['cuff_center'])])
                 geometry.setdefault(f'{mode}/{n*.05:.2f}/fk_progress_m',[]).append(float(fk-target))
@@ -98,10 +103,16 @@ def main():
             landmark_error.append(float(np.linalg.norm(fk['wrist']-s['human_wrist_m'])))
         # Validate complete feature/action replay against actual native sent log.
         from dynadress.models.features import extract
-        extracted=[extract(r) for r in valid];extracted=[x for x in extracted if x is not None]
+        paired=[(r,extract(r)) for r in valid];paired=[(r,x) for r,x in paired if x is not None]
+        valid=[r for r,_ in paired];extracted=[x for _,x in paired]
         sraw=np.asarray([x[0] for x in extracted]);araw=np.asarray([x[1] for x in extracted])
         if sraw.shape!=d['state'].shape or not np.allclose(sraw,d['state'],atol=1e-6) or not np.allclose(araw,d['action'],atol=1e-6):
             raise AssertionError('Online feature/action mismatch with raw solver log')
+        # Keep the native counters and timestamps, never reconstruct them from
+        # nominal frequency. These are provenance, not model inference inputs.
+        for field in ('physics_step','control_step','sample_wall_time_ns','simulation_time_s'):
+            d[field]=np.asarray([r[field] for r in valid])
+        d['task_stage']=np.asarray([r['action']['state'] for r in valid])
         d['condition']=np.r_[[e['K']]*4,[e['D']]*4,e['mu'],QREF].astype(np.float32)
         prediction,geometry=prediction_metrics(d,updates,predictor) if predictor else ({},{})
         actions=loadlines(path/'c2_actions.jsonl')

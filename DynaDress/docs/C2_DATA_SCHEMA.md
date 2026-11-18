@@ -27,7 +27,7 @@
 
 `time` 和 belief 时间为回合相对模拟秒；原 `samples.jsonl` 的时间是 World 模拟时间，首样本通常约0.008333s，两者相差初始化偏置。RGB 的 `frame_index.jsonl` 保留原始模拟时间与物理步。
 
-`artifacts/c2/evaluation/episode_metrics.csv` 是审阅主表，`metrics.json` 包含完整数组和来源哈希；36个 NPZ、beliefs JSON 和 actions JSONL 保留所有成败。评分脚本逐帧核对在线 state/action 与原始 solver/action 日志，避免记录错位。
+`artifacts/c2/evaluation/episode_metrics.csv` 是审阅主表，`metrics.json` 包含完整数组和来源哈希；36个 NPZ、beliefs JSON（审阅包使用无损 `.json.gz` 压缩）和 actions JSONL 保留所有成败。评分脚本逐帧核对在线 state/action 与原始 solver/action 日志，避免记录错位。审阅 NPZ 另保留原始 physics_step、control_step、sample_wall_time_ns、simulation_time_s 和 task_stage；这些是记录来源信息，不传入预测或辨识。
 
 ## 后验与似然
 
