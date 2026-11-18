@@ -29,6 +29,8 @@
 
 `artifacts/c2/evaluation/episode_metrics.csv` 是审阅主表，`metrics.json` 包含完整数组和来源哈希；36个 NPZ、beliefs JSON（审阅包使用无损 `.json.gz` 压缩）和 actions JSONL 保留所有成败。评分脚本逐帧核对在线 state/action 与原始 solver/action 日志，避免记录错位。审阅 NPZ 另保留原始 physics_step、control_step、sample_wall_time_ns、simulation_time_s 和 task_stage；这些是记录来源信息，不传入预测或辨识。
 
+`contact_proxy_duration_s` 为阶段代理累计时长，不是求解器真实接触时长；`probe_elapsed_s` 为实际到达的探测窗口时长。离线评分另外记录窗口内 `matched_window_human_max_qref_error_rad`、`matched_window_human_max_speed_rad_s` 和首次超过0.002rad偏移的 `first_human_qref_error_over_0p002_s`，用于核查探测是否实际激励人体。本批窗口内人体几乎不动，后验收缩不能当作可靠辨识证据，详见报告。
+
 ## 后验与似然
 
 网格按 `itertools.product(K,D,μ)` 排列，共50个联合假设。K为4/8/12/16/20 Nm/rad，D为0.5/2 Nm·s/rad，μ为0.1/0.2/0.3/0.5/0.8。K/D各复制到4关节。联合均匀先验为1/50；p(K,D)为10维，p(μ)为5维。衣物低/中/高有效滑动阻力分别聚合 μ≤0.2、μ=0.3、μ≥0.5；初始类别概率为0.4/0.2/0.4，类别不是均匀先验。
