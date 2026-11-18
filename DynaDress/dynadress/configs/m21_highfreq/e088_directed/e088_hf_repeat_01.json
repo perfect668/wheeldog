@@ -1,0 +1,69 @@
+{
+  "human": {
+    "shoulder": [
+      1.1,
+      0,
+      1.8
+    ],
+    "reference": [
+      0.0,
+      1.0,
+      0.0,
+      0.35
+    ],
+    "stiffness": [
+      20.0,
+      20.0,
+      20.0,
+      20.0
+    ],
+    "damping": [
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ]
+  },
+  "initial_hand_gap_m": 0.08,
+  "wrist_roll_deg": {
+    "L": 0,
+    "R": 180
+  },
+  "robot_gains": {
+    "stiffness": 500,
+    "damping": 40
+  },
+  "joint_speed_rad_s": 0.5,
+  "end_effector_speed_m_s": 0.025,
+  "tracking_gate_m": 0.006,
+  "tracking_abort_m": 0.03,
+  "target_forearm_fraction": 0.28,
+  "grasp_patch_count": 5,
+  "max_seconds": 25,
+  "seed": 20261205,
+  "rgb_hz": 2,
+  "sample_hz": 20,
+  "garment": {
+    "friction": 0.8
+  },
+  "initial_offset_m": [
+    -0.000950976721731143,
+    -0.0026177928262440912,
+    0.0008975836948707998
+  ],
+  "action_profile": "baseline",
+  "cloth_hz": 0,
+  "episode_id": "e088_hf_repeat_01",
+  "ik_seed_file": "dynadress/configs/m2_ik_seed.json",
+  "ik_candidates": 1,
+  "output_group": "m21/highfreq/e088_directed",
+  "parameter_group": "k4_d0_f4",
+  "record_rgb": false,
+  "m21_diagnostic": {
+    "base_episode": "e088_k4_d0_f4_r0",
+    "base_config_sha256": "3deb7c5f56889481f8846ddee35b3743abc07723cd46172ec530432c45fafb64",
+    "status": "new diagnostic rerun; excluded from original training/validation/test splits",
+    "variation": "none; matching original physical parameters and controller",
+    "variation_m": 0.0
+  }
+}

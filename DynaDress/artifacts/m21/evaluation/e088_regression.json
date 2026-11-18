@@ -1,0 +1,117 @@
+{
+  "episode": "e088_k4_d0_f4_r0",
+  "parameter_group": "k4_d0_f4",
+  "status": "Regression/design case; not independent held-out evidence",
+  "peak_time_s": 11.20833391789347,
+  "peak_force_N": [
+    663.7626342773438,
+    637.804443359375
+  ],
+  "cases": [
+    {
+      "anchor": "at_peak",
+      "anchor_index": 208,
+      "anchor_time_s": 11.20833391789347,
+      "horizon_s": 2.0,
+      "observed_reference_distance_at_anchor_rad": 0.029775705188512802,
+      "final_observed_reference_distance_rad": 0.07363352924585342,
+      "final_observed_q_rad": [
+        -0.023514803498983383,
+        0.9313230514526367,
+        0.009689138270914555,
+        0.3423483669757843
+      ],
+      "models": {
+        "persistence": {
+          "human_q_rmse_rad": 0.015538006089627743,
+          "first_second_human_q_rmse_rad": 0.009425758384168148,
+          "final_human_q_rmse_rad": 0.02644442208111286,
+          "final_reference_distance_rad": 0.029775705188512802,
+          "maximum_absolute_q_rad": 0.9797398447990417,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        },
+        "pure_prior": {
+          "human_q_rmse_rad": 0.025356628000736237,
+          "first_second_human_q_rmse_rad": 0.020184947177767754,
+          "final_human_q_rmse_rad": 0.03516276553273201,
+          "final_reference_distance_rad": 0.003572943387553096,
+          "maximum_absolute_q_rad": 1.0263952016830444,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        },
+        "m2": {
+          "human_q_rmse_rad": 2.2251129150390625,
+          "first_second_human_q_rmse_rad": 0.9830930233001709,
+          "final_human_q_rmse_rad": 3.8839004039764404,
+          "final_reference_distance_rad": 7.760902404785156,
+          "maximum_absolute_q_rad": 6.91095495223999,
+          "predicted_joint_limit_violations": 72,
+          "finite": true
+        },
+        "structured": {
+          "human_q_rmse_rad": 0.012974714860320091,
+          "first_second_human_q_rmse_rad": 0.007321960758417845,
+          "final_human_q_rmse_rad": 0.024994224309921265,
+          "final_reference_distance_rad": 0.025156840682029724,
+          "maximum_absolute_q_rad": 0.9972534775733948,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        }
+      }
+    },
+    {
+      "anchor": "after_peak_0p2s",
+      "anchor_index": 212,
+      "anchor_time_s": 11.408333928324282,
+      "horizon_s": 2.0,
+      "observed_reference_distance_at_anchor_rad": 0.030641447752714157,
+      "final_observed_reference_distance_rad": 0.08003682643175125,
+      "final_observed_q_rad": [
+        -0.02449520118534565,
+        0.924825131893158,
+        0.009413877502083778,
+        0.3418761193752289
+      ],
+      "models": {
+        "persistence": {
+          "human_q_rmse_rad": 0.0152690215036273,
+          "first_second_human_q_rmse_rad": 0.007619322277605534,
+          "final_human_q_rmse_rad": 0.027161730453372,
+          "final_reference_distance_rad": 0.030641447752714157,
+          "maximum_absolute_q_rad": 0.976448118686676,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        },
+        "pure_prior": {
+          "human_q_rmse_rad": 0.027210725471377373,
+          "first_second_human_q_rmse_rad": 0.019549734890460968,
+          "final_human_q_rmse_rad": 0.04000091552734375,
+          "final_reference_distance_rad": 3.745660433196463e-05,
+          "maximum_absolute_q_rad": 1.0135382413864136,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        },
+        "m2": {
+          "human_q_rmse_rad": 0.007434449158608913,
+          "first_second_human_q_rmse_rad": 0.004364147316664457,
+          "final_human_q_rmse_rad": 0.012164505198597908,
+          "final_reference_distance_rad": 0.08603168278932571,
+          "maximum_absolute_q_rad": 0.9758432507514954,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        },
+        "structured": {
+          "human_q_rmse_rad": 0.006518829148262739,
+          "first_second_human_q_rmse_rad": 0.004494324326515198,
+          "final_human_q_rmse_rad": 0.011987444013357162,
+          "final_reference_distance_rad": 0.10323145985603333,
+          "maximum_absolute_q_rad": 0.9754953384399414,
+          "predicted_joint_limit_violations": 0,
+          "finite": true
+        }
+      }
+    }
+  ],
+  "note": "Long open-loop forecasts use the same recorded actions; no future state is assimilated. Joint-limit counts diagnose predictions; outputs are not clipped for evaluation."
+}

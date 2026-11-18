@@ -1,0 +1,378 @@
+{
+  "canonical_base": "163301343152ffd5a1b658d973e379e1d75b1509",
+  "delivery_branch": "codex/dynadress-m2.1",
+  "standalone_local_base": "195c988087940d600fbc433d5ade754303b39c4d",
+  "native_remote_base": "90e9cdee242233d4b3b8c2db79736414256c98fc",
+  "baseline_core_source_byte_equal": [
+    "dynadress/human/passive_arm.py",
+    "dynadress/models/world_model.py",
+    "dynadress/models/features.py",
+    "dynadress/interaction/wrist_load.py",
+    "scripts/m2_train.py",
+    "scripts/m2_collect_episode.py"
+  ],
+  "review_policy": "Selected source, reports, checkpoints, quantitative evidence and figures only. No raw simulation assets, frames, videos or full 100 episode logs.",
+  "raw_server_root": "/root/gpufree-data/dynadress",
+  "full_dataset": "artifacts/m2/dataset/ (100 NPZ + metadata, about12MB); Git keeps only selected examples",
+  "full_raw_hf": "artifacts/m21/highfreq/e088_directed/<episode>/physics_240hz.jsonl",
+  "file_count_excluding_manifest": 89,
+  "bytes_excluding_manifest": 11072080,
+  "files": {
+    "README.md": {
+      "bytes": 3023,
+      "sha256": "23f40f261d85dd92c7be959cb3b0cfe98bb95e0fc0bcb00961f268a0e3830aff"
+    },
+    "artifacts/m2/dataset/e088_k4_d0_f4_r0.npz": {
+      "bytes": 122154,
+      "sha256": "c545879b0b22b80f44547e93c258d5f6700ae21a6834ab84c3ce430e8479c400"
+    },
+    "artifacts/m21/completion_receipt.json": {
+      "bytes": 1310,
+      "sha256": "b0e5705b6f7cdeecf15c1ae12c10a2a5db3fa20d04ea7f692dd4ef8e70bd8b62"
+    },
+    "artifacts/m21/dynamics/data_regime_audit.json": {
+      "bytes": 5216,
+      "sha256": "c6c60c1a9d03a6b08c715b765b8137584aa6cda728d566a0fd7026e73204cc23"
+    },
+    "artifacts/m21/dynamics/evidence_manifest.json": {
+      "bytes": 2760,
+      "sha256": "56cf0449ce7bdbf26d8d2ba41aeadd39460dfef5086b2897aadf246d5d0b4c37"
+    },
+    "artifacts/m21/dynamics/impedance_validation.png": {
+      "bytes": 281120,
+      "sha256": "6927c4568694f6a11a1d42454bed1dd7605de2e10cfc78068a450937223d6d7c"
+    },
+    "artifacts/m21/dynamics/m1_k4_d1.npz": {
+      "bytes": 95491,
+      "sha256": "a9867e68dda4034f3364c2f90689f4f64bf44b48bc7f4360c5a9c73d71d9a956"
+    },
+    "artifacts/m21/dynamics/m2_k20_d2.npz": {
+      "bytes": 80469,
+      "sha256": "a9dd753c7103b4131be116b5c3c0ab1be1d6dbaeac80686d98347976ed026ede"
+    },
+    "artifacts/m21/dynamics/m2_k4_d05.npz": {
+      "bytes": 102282,
+      "sha256": "f262796456a2f7cc93e762e187eb9fe12780ea4c2a9294c0f5561c3462665f36"
+    },
+    "artifacts/m21/dynamics/physx_reference.json": {
+      "bytes": 7878,
+      "sha256": "00c690ff0c049c2669ee0d8ffdd38ecb1956ae0f8cd3c8174af9750fe4c48aad"
+    },
+    "artifacts/m21/dynamics/validation.json": {
+      "bytes": 2832,
+      "sha256": "32a33794277359ce49b450b35552312ddf43a4fa42bb29c94d67e1345d9e66b3"
+    },
+    "artifacts/m21/evaluation/comparison_table.md": {
+      "bytes": 1303,
+      "sha256": "3c14521384e20af319f3d61b96c61fd81cfcc4eb288359a9a79ce7cde65fac7a"
+    },
+    "artifacts/m21/evaluation/directed/horizon_comparison.png": {
+      "bytes": 348856,
+      "sha256": "2f2ba4fad317bd7feaa5edcdb55947b97a2f57f73330b4921211757616130a4a"
+    },
+    "artifacts/m21/evaluation/directed/metrics.json": {
+      "bytes": 128586,
+      "sha256": "1ea6ceabca588043272ed787ad892b62e65b8132f6400a065b0076401cd22a0a"
+    },
+    "artifacts/m21/evaluation/e088_at_peak_comparison.png": {
+      "bytes": 244839,
+      "sha256": "c8a7221b184b39dd23ad33bc34e2a6fb522e0ccdbfba8c4e1e9c36d5eec17c62"
+    },
+    "artifacts/m21/evaluation/e088_at_peak_detail.png": {
+      "bytes": 282640,
+      "sha256": "0c515c060986756a88efb5d590d88e89cc484136e170e24c8b15a7077eed9d77"
+    },
+    "artifacts/m21/evaluation/e088_load_and_equivalent_action.png": {
+      "bytes": 230450,
+      "sha256": "45acfe87e72ae4db881687e65b34c975dc01a87e1de1129ab8db4feb37088ccd"
+    },
+    "artifacts/m21/evaluation/e088_regression.json": {
+      "bytes": 4562,
+      "sha256": "31e3437c1f49ea81a28b609bf8a9a5a0ea45349255ebb6b25d3d1736a6648e7e"
+    },
+    "artifacts/m21/evaluation/e088_regression_predictions.npz": {
+      "bytes": 237174,
+      "sha256": "375fc0133399e8b6a9839d9bb7384d9d25b713f18d030c7fe4debe0751819429"
+    },
+    "artifacts/m21/evaluation/evaluation_receipt.json": {
+      "bytes": 791,
+      "sha256": "6a0cb70eb24083f34058163d350532a658045206bc895e74df685e5d13786088"
+    },
+    "artifacts/m21/evaluation/friction_load_intervention.png": {
+      "bytes": 138218,
+      "sha256": "e221e944c7922d045cf199e0efc9a0e0fdaf025405b52d688ea71a282d676deb"
+    },
+    "artifacts/m21/evaluation/horizon_comparison.png": {
+      "bytes": 371773,
+      "sha256": "58c376e328f2c23130926cf284777b27b5e63ca5c671a94b9136a77077c6c4c1"
+    },
+    "artifacts/m21/evaluation/learning_curve.png": {
+      "bytes": 72207,
+      "sha256": "638469f52e61a70bc5de4599093eda26f873be2cd2d37e9fd3b1e2b577201abb"
+    },
+    "artifacts/m21/evaluation/m2_original_metrics.json": {
+      "bytes": 26988,
+      "sha256": "90fa4b1574e546ecc4c2fbb803291a6f3460cb267b1652a05531516324861555"
+    },
+    "artifacts/m21/evaluation/metrics.json": {
+      "bytes": 428899,
+      "sha256": "6d86784d8c6cf99490a749f3c92d34bc35954e4eb8655a1621e3ace9bf41fdc0"
+    },
+    "artifacts/m21/evaluation/property_ablation.png": {
+      "bytes": 171464,
+      "sha256": "18d121ba26286884093650456a8933ecb702bda3449098f5db48903db6fbc19c"
+    },
+    "artifacts/m21/evaluation/property_interventions.json": {
+      "bytes": 16392,
+      "sha256": "8b5887da37a71c6f379e040e54c046a28a76f103bbb6582638afd99423f831ae"
+    },
+    "artifacts/m21/evaluation/property_interventions.npz": {
+      "bytes": 135263,
+      "sha256": "04cd016a704279e6a7f686c4b8491fbce9705677fcf46f45e60f722642a4d753"
+    },
+    "artifacts/m21/evaluation/property_interventions.png": {
+      "bytes": 319870,
+      "sha256": "81016d033787daa64f336f6a80f23d98cc7224f00f792306723799424feff996"
+    },
+    "artifacts/m21/evaluation_stride1/comparison_table.md": {
+      "bytes": 1306,
+      "sha256": "6940dc41c4efbe5ccd1cfb182103a731222f0333651cfef7754b17453240bd6e"
+    },
+    "artifacts/m21/evaluation_stride1/e088_regression.json": {
+      "bytes": 4562,
+      "sha256": "31e3437c1f49ea81a28b609bf8a9a5a0ea45349255ebb6b25d3d1736a6648e7e"
+    },
+    "artifacts/m21/evaluation_stride1/evaluation_receipt.json": {
+      "bytes": 861,
+      "sha256": "a97eeeec383d838929fc1dc00bfcd74844267b503f14a5ca45bd7a953de8c78b"
+    },
+    "artifacts/m21/evaluation_stride1/horizon_comparison.png": {
+      "bytes": 275698,
+      "sha256": "a70851c1e70b600b92381489c812fb4c4ad18681242114a824aec96a42ba073d"
+    },
+    "artifacts/m21/evaluation_stride1/m2_original_metrics.json": {
+      "bytes": 26988,
+      "sha256": "90fa4b1574e546ecc4c2fbb803291a6f3460cb267b1652a05531516324861555"
+    },
+    "artifacts/m21/evaluation_stride1/metrics.json": {
+      "bytes": 428788,
+      "sha256": "64088216bd4a1dd42c714316afbe97d289478423d48b9d64cfc34d21ff4939ac"
+    },
+    "artifacts/m21/evaluation_stride1/property_interventions.json": {
+      "bytes": 16392,
+      "sha256": "8b5887da37a71c6f379e040e54c046a28a76f103bbb6582638afd99423f831ae"
+    },
+    "artifacts/m21/example_prediction.npz": {
+      "bytes": 24476,
+      "sha256": "0f6c01695426a3fdcb73f65c88fdbdf0509f8a78a2bcbec27456b12d42542c33"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_offset_02_peak.png": {
+      "bytes": 423000,
+      "sha256": "f21bb66848d4f62ac47e8664aac32f07ecfdec5def172d0fa5905b634cfacda7"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_offset_02_traces.npz": {
+      "bytes": 1156222,
+      "sha256": "3a139532a008ab9ff9272c842fa580bb16fd2135fb798e533967830e0205f3f1"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_repeat_00_peak.png": {
+      "bytes": 348086,
+      "sha256": "6f75abae8e78a9a95618f3474c58df897dc46997bc298c4601f1d93a4bc69412"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_repeat_00_peak_excerpt.json": {
+      "bytes": 566646,
+      "sha256": "9beba2dd36041fada4e3cafda021284c0cf4d760dffcbefe762d391d58a9d7df"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_repeat_00_traces.npz": {
+      "bytes": 1158684,
+      "sha256": "67ceec99139efc5f3235c6e178e4e7f13e3cd5690c4bc34952a780835341410d"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_repeat_01_peak.png": {
+      "bytes": 421618,
+      "sha256": "888bf47c37879521cc8b0b07501ce557e4fa838b794554f1429277eeaa9c8e1f"
+    },
+    "artifacts/m21/highfreq/analysis/e088_hf_repeat_01_traces.npz": {
+      "bytes": 1158361,
+      "sha256": "f37f8772adfd83e4c5b354a745dc0119b56fe5bbd100f45914e6d6e84d0a543d"
+    },
+    "artifacts/m21/highfreq/analysis/summary.json": {
+      "bytes": 34437,
+      "sha256": "eaff2e7c7909f62ad8275251e70211d7b74ef28197b62838fca2074e86066bd1"
+    },
+    "artifacts/m21/highfreq/environment.json": {
+      "bytes": 1875,
+      "sha256": "967a2fb0e60d1e579e10162d85f32e92ba4352309167be5450695b56221d3217"
+    },
+    "artifacts/m21/model/best.pt": {
+      "bytes": 489723,
+      "sha256": "55b895974648a64a98910db5291a87363fe07b985c74ab70cad1ea6c42a89525"
+    },
+    "artifacts/m21/model/learning_curve.json": {
+      "bytes": 24064,
+      "sha256": "20f2f928b5f6f047330366de3061497c60fd31f2cc98fa7bdd85bf33135900b5"
+    },
+    "artifacts/m21/model/training_config.json": {
+      "bytes": 19424,
+      "sha256": "740d9defdc083318b104e0f8aebcdab3a8414654d0ba0959cbacd79addf2e689"
+    },
+    "artifacts/m21/validation_evaluation/evaluation_receipt.json": {
+      "bytes": 736,
+      "sha256": "c575bcec52b8aa8ef179ca74be388ade8d69358b2e2badadb6184ab135b40d2e"
+    },
+    "artifacts/m21/validation_evaluation/m2_original_metrics.json": {
+      "bytes": 26988,
+      "sha256": "90fa4b1574e546ecc4c2fbb803291a6f3460cb267b1652a05531516324861555"
+    },
+    "artifacts/m21/validation_evaluation/metrics.json": {
+      "bytes": 383959,
+      "sha256": "6082bdc758e35fb04b927f06872857f418c61a77b1d07f7ddd161bc2a816774e"
+    },
+    "docs/M21_DYNAMICS.md": {
+      "bytes": 6833,
+      "sha256": "8c09b636573683b0319ae9b08bdf685db6ad77c501902e6d7da694002186060e"
+    },
+    "docs/M21_HIGHFREQ.md": {
+      "bytes": 8684,
+      "sha256": "2d7d611fde2df5d5b70bf530d436efad2ff0fb84128a36b8b4b609789230db25"
+    },
+    "docs/M21_REPORT.md": {
+      "bytes": 18956,
+      "sha256": "7b8b8f1a23f105db36b8d421807e3fd2106a101c63828741bf2432fccc2a61a1"
+    },
+    "dynadress/configs/m21_highfreq/e088_directed/e088_hf_offset_02.json": {
+      "bytes": 1422,
+      "sha256": "2f7effab8c2d32996a37a58144d31210320acdce86b7c05462a88d0141eb3c23"
+    },
+    "dynadress/configs/m21_highfreq/e088_directed/e088_hf_repeat_00.json": {
+      "bytes": 1460,
+      "sha256": "0fa04f7508325e244986c6f10079d3acea5ba548bd2706e4eec4e92643d65490"
+    },
+    "dynadress/configs/m21_highfreq/e088_directed/e088_hf_repeat_01.json": {
+      "bytes": 1460,
+      "sha256": "95e9a89b997312df65e5af9db94e98ec0a3afd4000efa2b13c58dea5e86272ea"
+    },
+    "dynadress/configs/m21_highfreq/e088_directed/plan.json": {
+      "bytes": 483,
+      "sha256": "35425e3bb9b2df3dc723d58d379046d424dea99bc325bf21c0a54c55a403fe25"
+    },
+    "dynadress/models/impedance.py": {
+      "bytes": 6969,
+      "sha256": "e81cbe5aa83d6ab5eee1ac3839f1b7e1c179ea456b33a32ee0d3d79792d48039"
+    },
+    "dynadress/models/structured_world_model.py": {
+      "bytes": 6760,
+      "sha256": "e7760e6b9a9827232222476a70a02d5cb42df9538974f69da7e7f7062e150a8e"
+    },
+    "dynadress/recording/high_frequency.py": {
+      "bytes": 4287,
+      "sha256": "0f890df8427fc36b933ebb54955cee84368c3e8cc45f0a61218220475d0a2d9e"
+    },
+    "scripts/m21_analyze_highfreq.py": {
+      "bytes": 10799,
+      "sha256": "4442bd65e8557d100ec85c2d9a742c30516b7251dff8e8c014ac3fd645bfa934"
+    },
+    "scripts/m21_dynamics_audit.py": {
+      "bytes": 2192,
+      "sha256": "f7bd57d886fa804d27e3403a6e7b11f33fd142bdb0dcad11da262c935e8777d3"
+    },
+    "scripts/m21_dynamics_probe.py": {
+      "bytes": 4232,
+      "sha256": "e18275a99ed1f3d2dfb09b1c47eb8d15dd393b6e79bc8ca56b5b7dcf5ba27800"
+    },
+    "scripts/m21_dynamics_validate.py": {
+      "bytes": 3212,
+      "sha256": "c1b52e987e119c7f7a00863f5f71af050200c8badcd5b06ddaf3c8781559b60a"
+    },
+    "scripts/m21_evaluate.py": {
+      "bytes": 27588,
+      "sha256": "0feb91f6813d22296cc4ec50623c51a4cd6218d974f3df03cac1ef6a20de4309"
+    },
+    "scripts/m21_highfreq.py": {
+      "bytes": 2643,
+      "sha256": "a189b4cdef4a0b33d9248fc0302f94f9e6514553f723d3d5149c79e7c80239b4"
+    },
+    "scripts/m21_plots.py": {
+      "bytes": 11612,
+      "sha256": "16a6a0d0fad96adc57ce65b35ef86e64bb369a3a1794abddd8f5211f82b78885"
+    },
+    "scripts/m21_predict.py": {
+      "bytes": 3221,
+      "sha256": "ae190011481131224d603420df530c23ab96fec45d2c5a6ff93c78d1fa107220"
+    },
+    "scripts/m21_train.py": {
+      "bytes": 9044,
+      "sha256": "916546ec79fe6d8133ea802b2b4a4ff03455009553c468cec0662f66e00fba3c"
+    },
+    "scripts/m2_collect_episode.py": {
+      "bytes": 31463,
+      "sha256": "7910dbbddf60ef23b12c3c0c34aa0216c9fc35747c6738d21db14d674b196dc1"
+    },
+    "setup_logs/m21/dynamics_tests.log": {
+      "bytes": 105,
+      "sha256": "7d746796561cc152a01e02d073ea93b350813e7410c76cd22c94d2ffe2232029"
+    },
+    "setup_logs/m21/dynamics_validate.log": {
+      "bytes": 2833,
+      "sha256": "e7bc170e0eaa85eff5f6f6e9635fa6b2505fe4d92794dc810b5483424da5756a"
+    },
+    "setup_logs/m21/evaluate_stride1.log": {
+      "bytes": 3112,
+      "sha256": "bc9066817071822d140427989a3e9bd8e307659b322913ba8b8ad5a1a20b37d9"
+    },
+    "setup_logs/m21/evaluate_test_directed.log": {
+      "bytes": 3234,
+      "sha256": "6f3aa808ace5c832914022773480173d70c739c042c301961f2764eac87a1c4f"
+    },
+    "setup_logs/m21/evaluate_validation.log": {
+      "bytes": 3029,
+      "sha256": "979392d84bae2f28bd22bb21aff8a7d4cfde03f881de65e373f89c3c9cfb9ae2"
+    },
+    "setup_logs/m21/highfreq_analysis.log": {
+      "bytes": 676,
+      "sha256": "15256429e4a852a76be2e9f0de7e535278be37265056c87dd8378f4818f77f72"
+    },
+    "setup_logs/m21/highfreq_test.log": {
+      "bytes": 271,
+      "sha256": "19df55379ee87e56cdf8627b2b3b2cb55ce1c8109dad639392ee35fb5a05c4ad"
+    },
+    "setup_logs/m21/plots_stride1.log": {
+      "bytes": 52,
+      "sha256": "e56548507ef56ac4f243caca7b89a9daac4233d1de558cee07ffd019d7a0acf4"
+    },
+    "setup_logs/m21/plots_test.log": {
+      "bytes": 73,
+      "sha256": "03f24ab281573f9dfe812ddfc6756b92ead3df8694aa45d2f998a7fba4f05a8a"
+    },
+    "setup_logs/m21/test_evaluation.log": {
+      "bytes": 831,
+      "sha256": "5af684e8c617faebc4cec650e86114b884401dc4b94eb0bad0dbfd6c67b477ff"
+    },
+    "setup_logs/m21/tests.log": {
+      "bytes": 3713,
+      "sha256": "521c704656986143681265cc712699d7c7f18e250ca4aa87adb8ed55c5e4043b"
+    },
+    "setup_logs/m21/tests_receipt.json": {
+      "bytes": 153,
+      "sha256": "dc1bc2be86d7be6f7f70d348c50c42690d6e3e3e6a8a7cf232ae10854cbaad40"
+    },
+    "setup_logs/m21/train.log": {
+      "bytes": 20562,
+      "sha256": "5e372c5e6b1a59d6177b3ce46c7412169a767744f6608d63dc4a3bb9358fa965"
+    },
+    "tests/test_m21_dynamics.py": {
+      "bytes": 3464,
+      "sha256": "7d1ca0a954affdb2b952ab142b6342eb8e20d2d13b40001dec4be4933397a3d7"
+    },
+    "tests/test_m21_evaluation.py": {
+      "bytes": 3388,
+      "sha256": "d0c37e6957880f1efd35f83d6f04ff7cfdd34c4a0fddc003dcd9abdf05409851"
+    },
+    "tests/test_m21_high_frequency.py": {
+      "bytes": 2586,
+      "sha256": "7e54e4125d4adeb056469a5ef2481297209eb1e27bcfba7759d6188c0d29c3f3"
+    },
+    "tests/test_m21_model.py": {
+      "bytes": 2974,
+      "sha256": "9eaa6280caae3bc1cad3e195b78d04c816120210d2b66933075f437dbfe38887"
+    }
+  }
+}

@@ -13,6 +13,7 @@ p.add_argument('--config',type=Path,default=ROOT/'dynadress/configs/m2_pilot.jso
 p.add_argument('--gui',action='store_true');p.add_argument('--seconds',type=float)
 p.add_argument('--stiffness',type=float);p.add_argument('--offset-y',type=float,default=0.)
 p.add_argument('--tag',default=None);p.add_argument('--without-cloth',action='store_true');p.add_argument('--no-rgb',action='store_true')
+p.add_argument('--high-frequency',action='store_true',help='observation-only M2.1 240 Hz diagnostic; default collection unchanged')
 from dynadress.interaction.excitation import command as excitation
 from dynadress.interaction.wrist_load import WristLoad
 from dynadress.robots.h1 import H1Kinematics
@@ -50,7 +51,7 @@ def collect(cfg,a):
     out.mkdir(parents=True,exist_ok=False);(out/'config.json').write_text(json.dumps(cfg,indent=2))
     print('M2_PREFLIGHT',json.dumps(ik_info),'OUTPUT',out,flush=True)
     result={'success':False,'termination_reason':None,'transitions':[],'scope':'real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM'}
-    episode=None;sensors=None
+    episode=None;sensors=None;high_frequency=None
     try:
         import torch
         torch.set_num_threads(1)
@@ -129,6 +130,15 @@ def collect(cfg,a):
               'code_sha256':{str(f.relative_to(ROOT)):hashlib.sha256(f.read_bytes()).hexdigest() for f in [Path(__file__),ROOT/'dynadress/robots/h1.py',ROOT/'dynadress/garments/cuff.py',ROOT/'dynadress/interaction/wrist_load.py',ROOT/'dynadress/interaction/excitation.py',ROOT/'dynadress/human/passive_arm.py',ROOT/'scripts/run_native.sh']},
               'high_dim_sampling':'cloth initial/final; optional snapshots; RGB configurable; unobserved contact/sensor fields null'}
         episode=Episode(out,meta)
+        if a.high_frequency:
+            from dynadress.recording.high_frequency import HighFrequencyRecorder
+            high_frequency=HighFrequencyRecorder(out)
+            hf_source=ROOT/'dynadress/recording/high_frequency.py'
+            (out/'high_frequency_source.json').write_text(json.dumps({'source_sha256':{
+                str(hf_source.relative_to(ROOT)):hashlib.sha256(hf_source.read_bytes()).hexdigest(),
+                str(Path(__file__).relative_to(ROOT)):hashlib.sha256(Path(__file__).read_bytes()).hexdigest()},
+                'base_config_sha256':cfg.get('m21_diagnostic',{}).get('base_config_sha256'),
+                'sampling_phase':'pre-integration; same solver read methods as 20 Hz'},indent=2))
         if not a.no_rgb:
             sensors=RGBDSensors(stage,w,[],{'default_dimensions':{'width':800,'height':600},'cameras':[{'id':'task','mount':'world','eye_world_m':[1.5,-1.0,1.95],'target_world_m':[.5,0,1.55],'horizontal_fov_deg':55,'clip_m':[.05,20]}]})
         cloth=None;state='robot_hold';state_since=0.;command_center=center.copy();commanded={s:v.copy() for s,v in goals.items()};desired=dict(q0)
@@ -257,6 +267,34 @@ def collect(cfg,a):
                     estimated_load=load_estimate,commanded_wrench={'human_explicit_Nm':hold,'gravity_compensation_Nm':gravity},privileged={'K':imp.stiffness,'D':imp.damping,'q_ref':imp.reference,'garment_friction':cfg['garment']['friction']})
                 previous_commanded={s:v.copy() for s,v in commanded.items()}
                 if step%240==0:print('M2_STEP',step,state,'TRACK',tracking,'GEOMETRY',json.dumps(geometry,default=serial),'GRASP',grasp_error,flush=True)
+            if high_frequency is not None:
+                # Same pre-integration load snapshot on control steps; extra reads
+                # between them observe the solver without applying any commands.
+                hf_raw,hf_estimate=(load_raw,load_estimate) if step%12==0 else load_sensor.read()
+                live=cpu(robot._articulation_view._physics_view.get_link_transforms())[0]
+                hf_cloth=None
+                if cloth is not None:
+                    hf_positions=positions if positions is not None else cloth.get_vertice_positions()
+                    hf_ring=hf_positions[cuff]
+                    hf_hp=cpu(human._articulation_view._physics_view.get_link_transforms())[0,forearm_index]
+                    hf_axis=Rotation.from_quat(hf_hp[3:]).as_matrix()[:,2]
+                    hf_plane=opening(hf_ring,hf_axis)
+                    hf_grasp={}
+                    for side in 'LR':
+                        pose=live[link_indices[side]]
+                        expected=local_anchors[side]@Rotation.from_quat(pose[3:]).as_matrix().T+pose[:3]
+                        hf_grasp[side]={'maximum_error_m':float(np.max(np.linalg.norm(hf_positions[anchors[side]]-expected,axis=1))),
+                            'attached_nodes_m':hf_positions[anchors[side]],'expected_nodes_m':expected,'indices':anchors[side]}
+                    hf_cloth={'ring_m':hf_ring,'opening':hf_plane,'attachments':hf_grasp,
+                        'human_forearm_origin_m':hf_hp[:3],'human_forearm_axis':hf_axis,
+                        'axial_from_wrist_m':float((hf_plane['center']-(hf_hp[:3]-.26*hf_axis))@hf_axis)}
+                high_frequency.write(dict(physics_step=int(w.current_time_step_index),control_step=step//12,
+                    simulation_time_s=float(w.current_time),relative_time_s=t,state=state,
+                    solver_state=hf_raw,estimated_load=hf_estimate,
+                    human={'q_rad':qh,'dq_rad_s':dqh,'explicit_effort_Nm':hold,'gravity_compensation_Nm':gravity,
+                        'expected_damping_Nm':-np.asarray(imp.damping)*dqh,'reference_rad':ref},
+                    cuff=hf_cloth,actual_wrist_poses_world_xyzw={s:live[link_indices[s]] for s in 'LR'},
+                    target_end_effector={s:v for s,v in commanded.items()}))
             if cloth is not None and cfg.get('cloth_hz',0)>0 and step%max(1,round(240/cfg['cloth_hz']))==0:
                 np.savez_compressed(out/f'cloth_{step:06d}.npz',positions=cloth.get_vertice_positions(),physics_step=int(w.current_time_step_index))
             if sensors is not None and step%max(1,round(240/cfg['rgb_hz']))==0:
@@ -280,6 +318,7 @@ def collect(cfg,a):
         if episode is not None:episode.close('failure',result['termination_reason'])
         raise
     finally:
+        if high_frequency is not None:high_frequency.close()
         if sensors is not None:
             try:sensors.close()
             except Exception:pass

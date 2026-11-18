@@ -1,0 +1,3137 @@
+{
+  "split": "directed e088 regression reruns",
+  "evaluated_episodes": 3,
+  "evaluated_parameter_groups": 1,
+  "windows": 186,
+  "per_episode": [
+    {
+      "episode": "e088_hf_offset_02",
+      "windows": 62,
+      "attributes": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.800000011920929,
+        0.0,
+        1.0,
+        0.0,
+        0.3499999940395355
+      ],
+      "result": {
+        "success": true,
+        "termination_reason": "geometric_completion",
+        "transitions": [
+          {
+            "from": "robot_hold",
+            "to": "hold",
+            "simulation_s": 0.7500000391155481,
+            "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+          },
+          {
+            "from": "hold",
+            "to": "align",
+            "simulation_s": 1.7500000912696123,
+            "reason": "measured stable grasp and usable aperture"
+          },
+          {
+            "from": "align",
+            "to": "insert",
+            "simulation_s": 1.8000000938773155,
+            "reason": "aligned cuff contains projected hand section"
+          },
+          {
+            "from": "insert",
+            "to": "advance",
+            "simulation_s": 10.550000550225377,
+            "reason": "hand and wrist passed the measured opening"
+          },
+          {
+            "from": "advance",
+            "to": "complete",
+            "simulation_s": 14.400000751018524,
+            "reason": "containment, target forearm section and stable grasp held across ten samples (0.45 s)"
+          }
+        ],
+        "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+        "simulation_duration_s": 14.400000751018524,
+        "robot_only_hold_max_error_m": {
+          "L": 3.792938173660145e-06,
+          "R": 3.1427432715934477e-06
+        },
+        "cloth_hold_max_error_m": {
+          "L": 0.0009549737242750539,
+          "R": 0.0006211947668202955
+        },
+        "hand_entered": true,
+        "wrist_entered": true,
+        "final_geometry": {
+          "center_m": [
+            0.6868957512080669,
+            -0.007260557517292909,
+            1.5587536990642548
+          ],
+          "normal": [
+            0.8048811977939485,
+            0.005527089022172539,
+            0.5934102364509055
+          ],
+          "area_m2": 0.012155593271801757,
+          "spans_m": [
+            0.1309248843856488,
+            0.13495050544272155
+          ],
+          "planarity_rms_m": 0.0060802313677099035,
+          "axial_from_wrist_m": 0.07257543528347855,
+          "target_from_wrist_m": 0.0728,
+          "hand_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04082788602365568,
+            "required_m": 0.03951076256655195,
+            "normal_alignment": 0.958621445832633,
+            "plane_distance_m": -0.19298799225165905,
+            "area_m2": 0.012155593271801757,
+            "planarity_rms_m": 0.0060802313677099035
+          },
+          "forearm_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04082788602365561,
+            "required_m": 0.03951076256655195,
+            "normal_alignment": 0.958621445832633,
+            "plane_distance_m": -0.0731603115225799,
+            "area_m2": 0.012155593271801757,
+            "planarity_rms_m": 0.0060802313677099035
+          }
+        },
+        "rigid_contact_pairs": [],
+        "retries": 0,
+        "frames": 0
+      },
+      "metrics": {
+        "persistence": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0008684576605446637,
+            "human_dq_rmse_rad_s": 0.03651087358593941,
+            "cuff_center_rmse_mm": 0.6965039968490601,
+            "progress_rmse_mm": 1.150547981262207,
+            "cuff_points_rmse_mm": 0.6997590661048889,
+            "load_force_rmse_N": 1.1354237794876099,
+            "load_torque_rmse_Nm": 0.0618889257311821
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.003327504498884082,
+            "human_dq_rmse_rad_s": 0.022496478632092476,
+            "cuff_center_rmse_mm": 3.4921090602874756,
+            "progress_rmse_mm": 5.760700702667236,
+            "cuff_points_rmse_mm": 3.504534959793091,
+            "load_force_rmse_N": 0.8685826063156128,
+            "load_torque_rmse_Nm": 0.04817237704992294
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.00537585886195302,
+            "human_dq_rmse_rad_s": 0.02446635067462921,
+            "cuff_center_rmse_mm": 7.005838871002197,
+            "progress_rmse_mm": 11.508567810058594,
+            "cuff_points_rmse_mm": 7.02634334564209,
+            "load_force_rmse_N": 0.7269513607025146,
+            "load_torque_rmse_Nm": 0.039863571524620056
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.008536706678569317,
+            "human_dq_rmse_rad_s": 0.03321782127022743,
+            "cuff_center_rmse_mm": 14.094470024108887,
+            "progress_rmse_mm": 22.955429077148438,
+            "cuff_points_rmse_mm": 14.124981880187988,
+            "load_force_rmse_N": 1.1635195016860962,
+            "load_torque_rmse_Nm": 0.054314032196998596
+          }
+        },
+        "pure_prior": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0036978316493332386,
+            "human_dq_rmse_rad_s": 0.0940689817070961,
+            "cuff_center_rmse_mm": 0.06292736530303955,
+            "progress_rmse_mm": 0.13336384296417236,
+            "cuff_points_rmse_mm": 0.08675698190927505,
+            "load_force_rmse_N": 1.1354237794876099,
+            "load_torque_rmse_Nm": 0.0618889257311821
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.01819704659283161,
+            "human_dq_rmse_rad_s": 0.08287828415632248,
+            "cuff_center_rmse_mm": 0.16538773477077484,
+            "progress_rmse_mm": 0.4672258794307709,
+            "cuff_points_rmse_mm": 0.3043568432331085,
+            "load_force_rmse_N": 0.8685826063156128,
+            "load_torque_rmse_Nm": 0.04817237704992294
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.019434353336691856,
+            "human_dq_rmse_rad_s": 0.04770183190703392,
+            "cuff_center_rmse_mm": 0.2656604051589966,
+            "progress_rmse_mm": 0.8126225471496582,
+            "cuff_points_rmse_mm": 0.521098792552948,
+            "load_force_rmse_N": 0.7269513607025146,
+            "load_torque_rmse_Nm": 0.039863571524620056
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.022047800943255424,
+            "human_dq_rmse_rad_s": 0.041941072791814804,
+            "cuff_center_rmse_mm": 0.4109974205493927,
+            "progress_rmse_mm": 1.531002402305603,
+            "cuff_points_rmse_mm": 0.8390582799911499,
+            "load_force_rmse_N": 1.1635195016860962,
+            "load_torque_rmse_Nm": 0.054314032196998596
+          }
+        },
+        "m2": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0008105399901978672,
+            "human_dq_rmse_rad_s": 0.029060758650302887,
+            "cuff_center_rmse_mm": 0.1188926175236702,
+            "progress_rmse_mm": 0.34001123905181885,
+            "cuff_points_rmse_mm": 0.16736246645450592,
+            "load_force_rmse_N": 0.8034668564796448,
+            "load_torque_rmse_Nm": 0.04651012271642685
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.001958089182153344,
+            "human_dq_rmse_rad_s": 0.01978481374680996,
+            "cuff_center_rmse_mm": 0.24839961528778076,
+            "progress_rmse_mm": 0.531195342540741,
+            "cuff_points_rmse_mm": 0.469779908657074,
+            "load_force_rmse_N": 0.9161754846572876,
+            "load_torque_rmse_Nm": 0.05146263912320137
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0027453815564513206,
+            "human_dq_rmse_rad_s": 0.01792132668197155,
+            "cuff_center_rmse_mm": 0.411396861076355,
+            "progress_rmse_mm": 1.0077178478240967,
+            "cuff_points_rmse_mm": 0.8128349184989929,
+            "load_force_rmse_N": 0.8657634854316711,
+            "load_torque_rmse_Nm": 0.038421329110860825
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.004886358045041561,
+            "human_dq_rmse_rad_s": 0.02130461484193802,
+            "cuff_center_rmse_mm": 0.726177453994751,
+            "progress_rmse_mm": 2.0664124488830566,
+            "cuff_points_rmse_mm": 1.4604299068450928,
+            "load_force_rmse_N": 0.7314108610153198,
+            "load_torque_rmse_Nm": 0.03590761497616768
+          }
+        },
+        "structured": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0009111780091188848,
+            "human_dq_rmse_rad_s": 0.022221459075808525,
+            "cuff_center_rmse_mm": 0.08761870861053467,
+            "progress_rmse_mm": 0.09060928225517273,
+            "cuff_points_rmse_mm": 0.20354332029819489,
+            "load_force_rmse_N": 1.0963802337646484,
+            "load_torque_rmse_Nm": 0.05232890322804451
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0010040253400802612,
+            "human_dq_rmse_rad_s": 0.025859974324703217,
+            "cuff_center_rmse_mm": 0.3570299744606018,
+            "progress_rmse_mm": 0.2905869781970978,
+            "cuff_points_rmse_mm": 0.917345404624939,
+            "load_force_rmse_N": 1.0800002813339233,
+            "load_torque_rmse_Nm": 0.05337907746434212
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0014441211242228746,
+            "human_dq_rmse_rad_s": 0.014250457286834717,
+            "cuff_center_rmse_mm": 0.7101036310195923,
+            "progress_rmse_mm": 0.4840119481086731,
+            "cuff_points_rmse_mm": 1.749403953552246,
+            "load_force_rmse_N": 0.9105350375175476,
+            "load_torque_rmse_Nm": 0.045853424817323685
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.002464932855218649,
+            "human_dq_rmse_rad_s": 0.022528022527694702,
+            "cuff_center_rmse_mm": 1.550551176071167,
+            "progress_rmse_mm": 0.9471190571784973,
+            "cuff_points_rmse_mm": 3.509918689727783,
+            "load_force_rmse_N": 0.9896805286407471,
+            "load_torque_rmse_Nm": 0.04757267236709595
+          }
+        },
+        "mean_properties": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0011201676679775119,
+            "human_dq_rmse_rad_s": 0.026509681716561317,
+            "cuff_center_rmse_mm": 0.07912725955247879,
+            "progress_rmse_mm": 0.09275002777576447,
+            "cuff_points_rmse_mm": 0.18005651235580444,
+            "load_force_rmse_N": 1.1709591150283813,
+            "load_torque_rmse_Nm": 0.05303240194916725
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.003338700160384178,
+            "human_dq_rmse_rad_s": 0.019549069926142693,
+            "cuff_center_rmse_mm": 0.2732238173484802,
+            "progress_rmse_mm": 0.3035885989665985,
+            "cuff_points_rmse_mm": 0.7849476337432861,
+            "load_force_rmse_N": 1.1854095458984375,
+            "load_torque_rmse_Nm": 0.05148623511195183
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.00322057050652802,
+            "human_dq_rmse_rad_s": 0.019786980003118515,
+            "cuff_center_rmse_mm": 0.5230523943901062,
+            "progress_rmse_mm": 0.4405612647533417,
+            "cuff_points_rmse_mm": 1.4117650985717773,
+            "load_force_rmse_N": 1.0506789684295654,
+            "load_torque_rmse_Nm": 0.04399069398641586
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.004759191069751978,
+            "human_dq_rmse_rad_s": 0.02389301359653473,
+            "cuff_center_rmse_mm": 0.9825744032859802,
+            "progress_rmse_mm": 0.8474900126457214,
+            "cuff_points_rmse_mm": 2.5596842765808105,
+            "load_force_rmse_N": 1.1738426685333252,
+            "load_torque_rmse_Nm": 0.04580042511224747
+          }
+        },
+        "mean_K": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0023363265208899975,
+            "human_dq_rmse_rad_s": 0.043811213225126266,
+            "cuff_center_rmse_mm": 0.08761870861053467,
+            "progress_rmse_mm": 0.09060928225517273,
+            "cuff_points_rmse_mm": 0.20354332029819489,
+            "load_force_rmse_N": 1.0963802337646484,
+            "load_torque_rmse_Nm": 0.05232890322804451
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.00405626418069005,
+            "human_dq_rmse_rad_s": 0.026271648705005646,
+            "cuff_center_rmse_mm": 0.30642592906951904,
+            "progress_rmse_mm": 0.3277573585510254,
+            "cuff_points_rmse_mm": 0.9078261852264404,
+            "load_force_rmse_N": 1.108346700668335,
+            "load_torque_rmse_Nm": 0.05022914707660675
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0033857927192002535,
+            "human_dq_rmse_rad_s": 0.02303594909608364,
+            "cuff_center_rmse_mm": 0.5690973997116089,
+            "progress_rmse_mm": 0.4458617866039276,
+            "cuff_points_rmse_mm": 1.6689263582229614,
+            "load_force_rmse_N": 0.9819907546043396,
+            "load_torque_rmse_Nm": 0.043743375688791275
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.005673630628734827,
+            "human_dq_rmse_rad_s": 0.02215101197361946,
+            "cuff_center_rmse_mm": 1.1310148239135742,
+            "progress_rmse_mm": 0.8443701863288879,
+            "cuff_points_rmse_mm": 3.15633225440979,
+            "load_force_rmse_N": 1.0449663400650024,
+            "load_torque_rmse_Nm": 0.04584168642759323
+          }
+        },
+        "mean_D": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0005409770528785884,
+            "human_dq_rmse_rad_s": 0.022315064445137978,
+            "cuff_center_rmse_mm": 0.08761870861053467,
+            "progress_rmse_mm": 0.09060928225517273,
+            "cuff_points_rmse_mm": 0.20354332029819489,
+            "load_force_rmse_N": 1.0963802337646484,
+            "load_torque_rmse_Nm": 0.05232890322804451
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.001158028724603355,
+            "human_dq_rmse_rad_s": 0.024744678288698196,
+            "cuff_center_rmse_mm": 0.3620491027832031,
+            "progress_rmse_mm": 0.2901679575443268,
+            "cuff_points_rmse_mm": 0.9272793531417847,
+            "load_force_rmse_N": 1.0578783750534058,
+            "load_torque_rmse_Nm": 0.05268101394176483
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0013942552031949162,
+            "human_dq_rmse_rad_s": 0.015419360250234604,
+            "cuff_center_rmse_mm": 0.7214738130569458,
+            "progress_rmse_mm": 0.4747282862663269,
+            "cuff_points_rmse_mm": 1.768036127090454,
+            "load_force_rmse_N": 0.9226518273353577,
+            "load_torque_rmse_Nm": 0.0466754250228405
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.0024033798836171627,
+            "human_dq_rmse_rad_s": 0.023830406367778778,
+            "cuff_center_rmse_mm": 1.5766923427581787,
+            "progress_rmse_mm": 0.9542123079299927,
+            "cuff_points_rmse_mm": 3.5595569610595703,
+            "load_force_rmse_N": 1.0205696821212769,
+            "load_torque_rmse_Nm": 0.0484129898250103
+          }
+        },
+        "mean_friction": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0008106777677312493,
+            "human_dq_rmse_rad_s": 0.024958757683634758,
+            "cuff_center_rmse_mm": 0.07912725955247879,
+            "progress_rmse_mm": 0.09275002777576447,
+            "cuff_points_rmse_mm": 0.18005651235580444,
+            "load_force_rmse_N": 1.1709591150283813,
+            "load_torque_rmse_Nm": 0.05303240194916725
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.001713294885121286,
+            "human_dq_rmse_rad_s": 0.026649201288819313,
+            "cuff_center_rmse_mm": 0.29959234595298767,
+            "progress_rmse_mm": 0.3032369911670685,
+            "cuff_points_rmse_mm": 0.7874078154563904,
+            "load_force_rmse_N": 1.2421280145645142,
+            "load_torque_rmse_Nm": 0.05656157806515694
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0024453052319586277,
+            "human_dq_rmse_rad_s": 0.013509614393115044,
+            "cuff_center_rmse_mm": 0.5981444716453552,
+            "progress_rmse_mm": 0.480106383562088,
+            "cuff_points_rmse_mm": 1.461276650428772,
+            "load_force_rmse_N": 0.9496315717697144,
+            "load_torque_rmse_Nm": 0.04443846270442009
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.0030036417301744223,
+            "human_dq_rmse_rad_s": 0.02245519496500492,
+            "cuff_center_rmse_mm": 1.3293609619140625,
+            "progress_rmse_mm": 0.8959370255470276,
+            "cuff_points_rmse_mm": 2.8675293922424316,
+            "load_force_rmse_N": 1.074163794517517,
+            "load_torque_rmse_Nm": 0.04845864325761795
+          }
+        }
+      },
+      "structured_joint_limits": {
+        "endpoints": {
+          "0.05": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0011789798736572
+          },
+          "0.25": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.001552939414978
+          },
+          "0.5": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0013031959533691
+          },
+          "1.0": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0009691715240479
+          }
+        },
+        "all_steps_component_violations": 0,
+        "all_steps_total_components": 4960,
+        "maximum_violation_rad": 0.0,
+        "maximum_absolute_q_rad": 1.0015647411346436,
+        "note": "Actual USD angular limits; counting predictions does not impose a prediction hard stop"
+      }
+    },
+    {
+      "episode": "e088_hf_repeat_00",
+      "windows": 62,
+      "attributes": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.800000011920929,
+        0.0,
+        1.0,
+        0.0,
+        0.3499999940395355
+      ],
+      "result": {
+        "success": true,
+        "termination_reason": "geometric_completion",
+        "transitions": [
+          {
+            "from": "robot_hold",
+            "to": "hold",
+            "simulation_s": 0.7500000391155481,
+            "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+          },
+          {
+            "from": "hold",
+            "to": "align",
+            "simulation_s": 1.7500000912696123,
+            "reason": "measured stable grasp and usable aperture"
+          },
+          {
+            "from": "align",
+            "to": "insert",
+            "simulation_s": 1.8000000938773155,
+            "reason": "aligned cuff contains projected hand section"
+          },
+          {
+            "from": "insert",
+            "to": "advance",
+            "simulation_s": 10.550000550225377,
+            "reason": "hand and wrist passed the measured opening"
+          },
+          {
+            "from": "advance",
+            "to": "complete",
+            "simulation_s": 14.400000751018524,
+            "reason": "containment, target forearm section and stable grasp held across ten samples (0.45 s)"
+          }
+        ],
+        "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+        "simulation_duration_s": 14.400000751018524,
+        "robot_only_hold_max_error_m": {
+          "L": 5.130125524373438e-06,
+          "R": 4.17303418796758e-08
+        },
+        "cloth_hold_max_error_m": {
+          "L": 0.0006693236982680978,
+          "R": 0.00041500228653742506
+        },
+        "hand_entered": true,
+        "wrist_entered": true,
+        "final_geometry": {
+          "center_m": [
+            0.686085219681263,
+            -0.005795803628279828,
+            1.5601759925484657
+          ],
+          "normal": [
+            0.8063043435244652,
+            -0.0037361967983336655,
+            0.5914890924159677
+          ],
+          "area_m2": 0.012129651319546134,
+          "spans_m": [
+            0.1321244011318834,
+            0.13712340234457138
+          ],
+          "planarity_rms_m": 0.005263377078679688,
+          "axial_from_wrist_m": 0.07271716368413106,
+          "target_from_wrist_m": 0.0728,
+          "hand_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04103303668595979,
+            "required_m": 0.03947307592085631,
+            "normal_alignment": 0.959611963519261,
+            "plane_distance_m": -0.1934901197514002,
+            "area_m2": 0.012129651319546134,
+            "planarity_rms_m": 0.005263377078679688
+          },
+          "forearm_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04103303668595973,
+            "required_m": 0.03947307592085631,
+            "normal_alignment": 0.959611963519261,
+            "plane_distance_m": -0.07353862431149269,
+            "area_m2": 0.012129651319546134,
+            "planarity_rms_m": 0.005263377078679688
+          }
+        },
+        "rigid_contact_pairs": [],
+        "retries": 0,
+        "frames": 0
+      },
+      "metrics": {
+        "persistence": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0010106315603479743,
+            "human_dq_rmse_rad_s": 0.009248478338122368,
+            "cuff_center_rmse_mm": 0.6946040391921997,
+            "progress_rmse_mm": 1.148943543434143,
+            "cuff_points_rmse_mm": 0.7003194093704224,
+            "load_force_rmse_N": 0.48155447840690613,
+            "load_torque_rmse_Nm": 0.027467122301459312
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0039049838669598103,
+            "human_dq_rmse_rad_s": 0.02278611995279789,
+            "cuff_center_rmse_mm": 3.4945006370544434,
+            "progress_rmse_mm": 5.769331932067871,
+            "cuff_points_rmse_mm": 3.5099005699157715,
+            "load_force_rmse_N": 0.880641758441925,
+            "load_torque_rmse_Nm": 0.03324258327484131
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.006460175383836031,
+            "human_dq_rmse_rad_s": 0.023151511326432228,
+            "cuff_center_rmse_mm": 7.013508319854736,
+            "progress_rmse_mm": 11.5313138961792,
+            "cuff_points_rmse_mm": 7.037271976470947,
+            "load_force_rmse_N": 1.45748770236969,
+            "load_torque_rmse_Nm": 0.05911797657608986
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.009575956501066685,
+            "human_dq_rmse_rad_s": 0.02895529195666313,
+            "cuff_center_rmse_mm": 14.108736991882324,
+            "progress_rmse_mm": 22.990520477294922,
+            "cuff_points_rmse_mm": 14.140807151794434,
+            "load_force_rmse_N": 1.4654804468154907,
+            "load_torque_rmse_Nm": 0.05571068450808525
+          }
+        },
+        "pure_prior": {
+          "0.05": {
+            "human_q_rmse_rad": 0.004214399494230747,
+            "human_dq_rmse_rad_s": 0.09125775098800659,
+            "cuff_center_rmse_mm": 0.0675378069281578,
+            "progress_rmse_mm": 0.145204558968544,
+            "cuff_points_rmse_mm": 0.10828237235546112,
+            "load_force_rmse_N": 0.48155447840690613,
+            "load_torque_rmse_Nm": 0.027467122301459312
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.01708703115582466,
+            "human_dq_rmse_rad_s": 0.07673522084951401,
+            "cuff_center_rmse_mm": 0.18695013225078583,
+            "progress_rmse_mm": 0.5242728590965271,
+            "cuff_points_rmse_mm": 0.35744786262512207,
+            "load_force_rmse_N": 0.880641758441925,
+            "load_torque_rmse_Nm": 0.03324258327484131
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.01845514588057995,
+            "human_dq_rmse_rad_s": 0.04571674391627312,
+            "cuff_center_rmse_mm": 0.29883822798728943,
+            "progress_rmse_mm": 0.9353947639465332,
+            "cuff_points_rmse_mm": 0.6137183308601379,
+            "load_force_rmse_N": 1.45748770236969,
+            "load_torque_rmse_Nm": 0.05911797657608986
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.02101253904402256,
+            "human_dq_rmse_rad_s": 0.0384686253964901,
+            "cuff_center_rmse_mm": 0.45655593276023865,
+            "progress_rmse_mm": 1.7500277757644653,
+            "cuff_points_rmse_mm": 0.9762865900993347,
+            "load_force_rmse_N": 1.4654804468154907,
+            "load_torque_rmse_Nm": 0.05571068450808525
+          }
+        },
+        "m2": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0004370459064375609,
+            "human_dq_rmse_rad_s": 0.00764200696721673,
+            "cuff_center_rmse_mm": 0.1130269318819046,
+            "progress_rmse_mm": 0.33283817768096924,
+            "cuff_points_rmse_mm": 0.2079639881849289,
+            "load_force_rmse_N": 0.23728695511817932,
+            "load_torque_rmse_Nm": 0.014671486802399158
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0016156798228621483,
+            "human_dq_rmse_rad_s": 0.010733268223702908,
+            "cuff_center_rmse_mm": 0.31297871470451355,
+            "progress_rmse_mm": 0.7223665118217468,
+            "cuff_points_rmse_mm": 0.529958188533783,
+            "load_force_rmse_N": 0.35639601945877075,
+            "load_torque_rmse_Nm": 0.019358623772859573
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.002773003187030554,
+            "human_dq_rmse_rad_s": 0.012692240066826344,
+            "cuff_center_rmse_mm": 0.5008232593536377,
+            "progress_rmse_mm": 1.2227423191070557,
+            "cuff_points_rmse_mm": 0.909334123134613,
+            "load_force_rmse_N": 0.7983114123344421,
+            "load_torque_rmse_Nm": 0.043481506407260895
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.004397765267640352,
+            "human_dq_rmse_rad_s": 0.011669912375509739,
+            "cuff_center_rmse_mm": 0.7668877840042114,
+            "progress_rmse_mm": 2.2861745357513428,
+            "cuff_points_rmse_mm": 1.5435941219329834,
+            "load_force_rmse_N": 0.536819338798523,
+            "load_torque_rmse_Nm": 0.030215922743082047
+          }
+        },
+        "structured": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0016387100331485271,
+            "human_dq_rmse_rad_s": 0.02157643809914589,
+            "cuff_center_rmse_mm": 0.11403284221887589,
+            "progress_rmse_mm": 0.10747505724430084,
+            "cuff_points_rmse_mm": 0.25229576230049133,
+            "load_force_rmse_N": 0.5258654952049255,
+            "load_torque_rmse_Nm": 0.028127918019890785
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0018822407582774758,
+            "human_dq_rmse_rad_s": 0.015742233023047447,
+            "cuff_center_rmse_mm": 0.492689847946167,
+            "progress_rmse_mm": 0.34875786304473877,
+            "cuff_points_rmse_mm": 1.0799270868301392,
+            "load_force_rmse_N": 0.5922622680664062,
+            "load_torque_rmse_Nm": 0.02949463203549385
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.002011507749557495,
+            "human_dq_rmse_rad_s": 0.014814046211540699,
+            "cuff_center_rmse_mm": 0.9812774658203125,
+            "progress_rmse_mm": 0.6790083646774292,
+            "cuff_points_rmse_mm": 1.9484212398529053,
+            "load_force_rmse_N": 0.9034943580627441,
+            "load_torque_rmse_Nm": 0.043440885841846466
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.0031599632930010557,
+            "human_dq_rmse_rad_s": 0.01990184746682644,
+            "cuff_center_rmse_mm": 2.046412229537964,
+            "progress_rmse_mm": 1.1560630798339844,
+            "cuff_points_rmse_mm": 3.7188079357147217,
+            "load_force_rmse_N": 0.8356854319572449,
+            "load_torque_rmse_Nm": 0.04018853232264519
+          }
+        },
+        "mean_properties": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0021114330738782883,
+            "human_dq_rmse_rad_s": 0.03826199099421501,
+            "cuff_center_rmse_mm": 0.1032196581363678,
+            "progress_rmse_mm": 0.10927045345306396,
+            "cuff_points_rmse_mm": 0.22998669743537903,
+            "load_force_rmse_N": 0.6444483399391174,
+            "load_torque_rmse_Nm": 0.031822655349969864
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0063128178007900715,
+            "human_dq_rmse_rad_s": 0.013342824764549732,
+            "cuff_center_rmse_mm": 0.36976805329322815,
+            "progress_rmse_mm": 0.44365009665489197,
+            "cuff_points_rmse_mm": 1.0122265815734863,
+            "load_force_rmse_N": 0.9160783290863037,
+            "load_torque_rmse_Nm": 0.038363222032785416
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.005279057659208775,
+            "human_dq_rmse_rad_s": 0.02189917489886284,
+            "cuff_center_rmse_mm": 0.7206739783287048,
+            "progress_rmse_mm": 0.5754597783088684,
+            "cuff_points_rmse_mm": 1.6854592561721802,
+            "load_force_rmse_N": 1.1821943521499634,
+            "load_torque_rmse_Nm": 0.050362952053546906
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.00593142444267869,
+            "human_dq_rmse_rad_s": 0.016385240480303764,
+            "cuff_center_rmse_mm": 1.3232543468475342,
+            "progress_rmse_mm": 1.095401644706726,
+            "cuff_points_rmse_mm": 2.646092653274536,
+            "load_force_rmse_N": 1.038347840309143,
+            "load_torque_rmse_Nm": 0.045656777918338776
+          }
+        },
+        "mean_K": {
+          "0.05": {
+            "human_q_rmse_rad": 0.003921492490917444,
+            "human_dq_rmse_rad_s": 0.07067645341157913,
+            "cuff_center_rmse_mm": 0.11403284221887589,
+            "progress_rmse_mm": 0.10747505724430084,
+            "cuff_points_rmse_mm": 0.25229576230049133,
+            "load_force_rmse_N": 0.5258654952049255,
+            "load_torque_rmse_Nm": 0.028127918019890785
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.005372197367250919,
+            "human_dq_rmse_rad_s": 0.018478985875844955,
+            "cuff_center_rmse_mm": 0.3899408280849457,
+            "progress_rmse_mm": 0.3814767003059387,
+            "cuff_points_rmse_mm": 0.9918480515480042,
+            "load_force_rmse_N": 0.7359577417373657,
+            "load_torque_rmse_Nm": 0.030454380437731743
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.004128052853047848,
+            "human_dq_rmse_rad_s": 0.027363834902644157,
+            "cuff_center_rmse_mm": 0.7040838599205017,
+            "progress_rmse_mm": 0.6039206981658936,
+            "cuff_points_rmse_mm": 1.7260406017303467,
+            "load_force_rmse_N": 1.1142635345458984,
+            "load_torque_rmse_Nm": 0.046672191470861435
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.006306415889412165,
+            "human_dq_rmse_rad_s": 0.018924668431282043,
+            "cuff_center_rmse_mm": 1.3554900884628296,
+            "progress_rmse_mm": 0.9888114929199219,
+            "cuff_points_rmse_mm": 3.118892192840576,
+            "load_force_rmse_N": 0.8341326713562012,
+            "load_torque_rmse_Nm": 0.03807855769991875
+          }
+        },
+        "mean_D": {
+          "0.05": {
+            "human_q_rmse_rad": 0.001150562078692019,
+            "human_dq_rmse_rad_s": 0.017628800123929977,
+            "cuff_center_rmse_mm": 0.11403284221887589,
+            "progress_rmse_mm": 0.10747505724430084,
+            "cuff_points_rmse_mm": 0.25229576230049133,
+            "load_force_rmse_N": 0.5258654952049255,
+            "load_torque_rmse_Nm": 0.028127918019890785
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0024691326543688774,
+            "human_dq_rmse_rad_s": 0.013406178914010525,
+            "cuff_center_rmse_mm": 0.5034956336021423,
+            "progress_rmse_mm": 0.3577900826931,
+            "cuff_points_rmse_mm": 1.110044002532959,
+            "load_force_rmse_N": 0.5992573499679565,
+            "load_torque_rmse_Nm": 0.030203841626644135
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0021369392052292824,
+            "human_dq_rmse_rad_s": 0.014218606054782867,
+            "cuff_center_rmse_mm": 1.0026576519012451,
+            "progress_rmse_mm": 0.6696401834487915,
+            "cuff_points_rmse_mm": 2.008662700653076,
+            "load_force_rmse_N": 0.8569741249084473,
+            "load_torque_rmse_Nm": 0.042276762425899506
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.003170088864862919,
+            "human_dq_rmse_rad_s": 0.017736520618200302,
+            "cuff_center_rmse_mm": 2.080044746398926,
+            "progress_rmse_mm": 1.176008701324463,
+            "cuff_points_rmse_mm": 3.8227696418762207,
+            "load_force_rmse_N": 0.8629843592643738,
+            "load_torque_rmse_Nm": 0.040667686611413956
+          }
+        },
+        "mean_friction": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0014547188766300678,
+            "human_dq_rmse_rad_s": 0.02051500603556633,
+            "cuff_center_rmse_mm": 0.1032196581363678,
+            "progress_rmse_mm": 0.10927045345306396,
+            "cuff_points_rmse_mm": 0.22998669743537903,
+            "load_force_rmse_N": 0.6444483399391174,
+            "load_torque_rmse_Nm": 0.031822655349969864
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0018028755439445376,
+            "human_dq_rmse_rad_s": 0.01633528806269169,
+            "cuff_center_rmse_mm": 0.43687790632247925,
+            "progress_rmse_mm": 0.3338775932788849,
+            "cuff_points_rmse_mm": 0.9328852295875549,
+            "load_force_rmse_N": 0.8095787167549133,
+            "load_torque_rmse_Nm": 0.03509601578116417
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.002123065758496523,
+            "human_dq_rmse_rad_s": 0.015094082802534103,
+            "cuff_center_rmse_mm": 0.8790339231491089,
+            "progress_rmse_mm": 0.6481406688690186,
+            "cuff_points_rmse_mm": 1.6032100915908813,
+            "load_force_rmse_N": 1.142063856124878,
+            "load_torque_rmse_Nm": 0.05017589032649994
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.003280614735558629,
+            "human_dq_rmse_rad_s": 0.020402388647198677,
+            "cuff_center_rmse_mm": 1.8824286460876465,
+            "progress_rmse_mm": 1.0770848989486694,
+            "cuff_points_rmse_mm": 2.9478986263275146,
+            "load_force_rmse_N": 0.9996237754821777,
+            "load_torque_rmse_Nm": 0.04500769451260567
+          }
+        }
+      },
+      "structured_joint_limits": {
+        "endpoints": {
+          "0.05": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0014135837554932
+          },
+          "0.25": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0004292726516724
+          },
+          "0.5": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.000722885131836
+          },
+          "1.0": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0004689693450928
+          }
+        },
+        "all_steps_component_violations": 0,
+        "all_steps_total_components": 4960,
+        "maximum_violation_rad": 0.0,
+        "maximum_absolute_q_rad": 1.0014135837554932,
+        "note": "Actual USD angular limits; counting predictions does not impose a prediction hard stop"
+      }
+    },
+    {
+      "episode": "e088_hf_repeat_01",
+      "windows": 62,
+      "attributes": [
+        20.0,
+        20.0,
+        20.0,
+        20.0,
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.800000011920929,
+        0.0,
+        1.0,
+        0.0,
+        0.3499999940395355
+      ],
+      "result": {
+        "success": true,
+        "termination_reason": "geometric_completion",
+        "transitions": [
+          {
+            "from": "robot_hold",
+            "to": "hold",
+            "simulation_s": 0.7500000391155481,
+            "reason": "robot-only hold passed; one-time opened preset and native grasp initialized"
+          },
+          {
+            "from": "hold",
+            "to": "align",
+            "simulation_s": 1.7500000912696123,
+            "reason": "measured stable grasp and usable aperture"
+          },
+          {
+            "from": "align",
+            "to": "insert",
+            "simulation_s": 1.8000000938773155,
+            "reason": "aligned cuff contains projected hand section"
+          },
+          {
+            "from": "insert",
+            "to": "advance",
+            "simulation_s": 10.550000550225377,
+            "reason": "hand and wrist passed the measured opening"
+          },
+          {
+            "from": "advance",
+            "to": "complete",
+            "simulation_s": 14.400000751018524,
+            "reason": "containment, target forearm section and stable grasp held across ten samples (0.45 s)"
+          }
+        ],
+        "scope": "real ROKAE H1, simulation grippers; one-time pregrasp preset; original PhyRC FEM",
+        "simulation_duration_s": 14.400000751018524,
+        "robot_only_hold_max_error_m": {
+          "L": 5.130125524373438e-06,
+          "R": 4.17303418796758e-08
+        },
+        "cloth_hold_max_error_m": {
+          "L": 0.0005188948953932212,
+          "R": 0.0005824991121635239
+        },
+        "hand_entered": true,
+        "wrist_entered": true,
+        "final_geometry": {
+          "center_m": [
+            0.6855867765843868,
+            -0.005800823295430746,
+            1.5605319544672966
+          ],
+          "normal": [
+            0.8096985850422082,
+            0.007960369306309221,
+            0.5867919852052795
+          ],
+          "area_m2": 0.011485055465158121,
+          "spans_m": [
+            0.13513034901795473,
+            0.13553623836860612
+          ],
+          "planarity_rms_m": 0.005632613853089733,
+          "axial_from_wrist_m": 0.07232109614517507,
+          "target_from_wrist_m": 0.0728,
+          "hand_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04118501019857074,
+            "required_m": 0.03940097455193963,
+            "normal_alignment": 0.9615127185690974,
+            "plane_distance_m": -0.19362747818202133,
+            "area_m2": 0.011485055465158121,
+            "planarity_rms_m": 0.005632613853089733
+          },
+          "forearm_section": {
+            "inside": true,
+            "center_inside": true,
+            "edge_clearance_m": 0.04118501019857097,
+            "required_m": 0.03940097455193963,
+            "normal_alignment": 0.9615127185690974,
+            "plane_distance_m": -0.07343838836088411,
+            "area_m2": 0.011485055465158121,
+            "planarity_rms_m": 0.005632613853089733
+          }
+        },
+        "rigid_contact_pairs": [],
+        "retries": 0,
+        "frames": 0
+      },
+      "metrics": {
+        "persistence": {
+          "0.05": {
+            "human_q_rmse_rad": 0.000864681729581207,
+            "human_dq_rmse_rad_s": 0.013299938291311264,
+            "cuff_center_rmse_mm": 0.6968897581100464,
+            "progress_rmse_mm": 1.1543296575546265,
+            "cuff_points_rmse_mm": 0.701682984828949,
+            "load_force_rmse_N": 1.161590814590454,
+            "load_torque_rmse_Nm": 0.057240553200244904
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.003212044946849346,
+            "human_dq_rmse_rad_s": 0.020503634586930275,
+            "cuff_center_rmse_mm": 3.4921088218688965,
+            "progress_rmse_mm": 5.7726216316223145,
+            "cuff_points_rmse_mm": 3.5087177753448486,
+            "load_force_rmse_N": 1.4626431465148926,
+            "load_torque_rmse_Nm": 0.06717357784509659
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.005113854538649321,
+            "human_dq_rmse_rad_s": 0.01751653663814068,
+            "cuff_center_rmse_mm": 7.003988742828369,
+            "progress_rmse_mm": 11.52783203125,
+            "cuff_points_rmse_mm": 7.0323004722595215,
+            "load_force_rmse_N": 1.7142248153686523,
+            "load_torque_rmse_Nm": 0.07732681930065155
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.008367381989955902,
+            "human_dq_rmse_rad_s": 0.017945406958460808,
+            "cuff_center_rmse_mm": 14.077465057373047,
+            "progress_rmse_mm": 22.984943389892578,
+            "cuff_points_rmse_mm": 14.122740745544434,
+            "load_force_rmse_N": 2.2047674655914307,
+            "load_torque_rmse_Nm": 0.1063980981707573
+          }
+        },
+        "pure_prior": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0031836694106459618,
+            "human_dq_rmse_rad_s": 0.07956331968307495,
+            "cuff_center_rmse_mm": 0.06177714467048645,
+            "progress_rmse_mm": 0.13820672035217285,
+            "cuff_points_rmse_mm": 0.0980481207370758,
+            "load_force_rmse_N": 1.161590814590454,
+            "load_torque_rmse_Nm": 0.057240553200244904
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.01684674248099327,
+            "human_dq_rmse_rad_s": 0.07652495801448822,
+            "cuff_center_rmse_mm": 0.16762728989124298,
+            "progress_rmse_mm": 0.46324917674064636,
+            "cuff_points_rmse_mm": 0.34730634093284607,
+            "load_force_rmse_N": 1.4626431465148926,
+            "load_torque_rmse_Nm": 0.06717357784509659
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.018230842426419258,
+            "human_dq_rmse_rad_s": 0.04494120553135872,
+            "cuff_center_rmse_mm": 0.2823002338409424,
+            "progress_rmse_mm": 0.8127865791320801,
+            "cuff_points_rmse_mm": 0.6080208420753479,
+            "load_force_rmse_N": 1.7142248153686523,
+            "load_torque_rmse_Nm": 0.07732681930065155
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.02088499628007412,
+            "human_dq_rmse_rad_s": 0.03511609882116318,
+            "cuff_center_rmse_mm": 0.4800167679786682,
+            "progress_rmse_mm": 1.560709834098816,
+            "cuff_points_rmse_mm": 1.0084158182144165,
+            "load_force_rmse_N": 2.2047674655914307,
+            "load_torque_rmse_Nm": 0.1063980981707573
+          }
+        },
+        "m2": {
+          "0.05": {
+            "human_q_rmse_rad": 0.00041218174737878144,
+            "human_dq_rmse_rad_s": 0.00708203949034214,
+            "cuff_center_rmse_mm": 0.0969812273979187,
+            "progress_rmse_mm": 0.28465303778648376,
+            "cuff_points_rmse_mm": 0.19485847651958466,
+            "load_force_rmse_N": 0.3147371709346771,
+            "load_torque_rmse_Nm": 0.02038717083632946
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0019458979368209839,
+            "human_dq_rmse_rad_s": 0.00853398721665144,
+            "cuff_center_rmse_mm": 0.29436901211738586,
+            "progress_rmse_mm": 0.5963347554206848,
+            "cuff_points_rmse_mm": 0.5788392424583435,
+            "load_force_rmse_N": 0.39021846652030945,
+            "load_torque_rmse_Nm": 0.02225619927048683
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.002648602705448866,
+            "human_dq_rmse_rad_s": 0.006524687632918358,
+            "cuff_center_rmse_mm": 0.46603861451148987,
+            "progress_rmse_mm": 1.0688163042068481,
+            "cuff_points_rmse_mm": 0.9572877287864685,
+            "load_force_rmse_N": 0.49295467138290405,
+            "load_torque_rmse_Nm": 0.028214363381266594
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.004566764459013939,
+            "human_dq_rmse_rad_s": 0.00890322681516409,
+            "cuff_center_rmse_mm": 0.7741078734397888,
+            "progress_rmse_mm": 2.1096041202545166,
+            "cuff_points_rmse_mm": 1.6389306783676147,
+            "load_force_rmse_N": 1.1735402345657349,
+            "load_torque_rmse_Nm": 0.0629267767071724
+          }
+        },
+        "structured": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0015086197527125478,
+            "human_dq_rmse_rad_s": 0.019096173346042633,
+            "cuff_center_rmse_mm": 0.10891349613666534,
+            "progress_rmse_mm": 0.10807345062494278,
+            "cuff_points_rmse_mm": 0.2018757462501526,
+            "load_force_rmse_N": 0.706021785736084,
+            "load_torque_rmse_Nm": 0.038820598274469376
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.001774472650140524,
+            "human_dq_rmse_rad_s": 0.011925854720175266,
+            "cuff_center_rmse_mm": 0.45074158906936646,
+            "progress_rmse_mm": 0.316796213388443,
+            "cuff_points_rmse_mm": 0.9003052711486816,
+            "load_force_rmse_N": 0.7317243218421936,
+            "load_torque_rmse_Nm": 0.04096367955207825
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0021857027895748615,
+            "human_dq_rmse_rad_s": 0.012674890458583832,
+            "cuff_center_rmse_mm": 0.8929425477981567,
+            "progress_rmse_mm": 0.4803614318370819,
+            "cuff_points_rmse_mm": 1.6999008655548096,
+            "load_force_rmse_N": 0.7462733387947083,
+            "load_torque_rmse_Nm": 0.041399694979190826
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.003672830294817686,
+            "human_dq_rmse_rad_s": 0.013909257017076015,
+            "cuff_center_rmse_mm": 1.9077359437942505,
+            "progress_rmse_mm": 0.846024215221405,
+            "cuff_points_rmse_mm": 3.4670917987823486,
+            "load_force_rmse_N": 1.2168766260147095,
+            "load_torque_rmse_Nm": 0.0663774386048317
+          }
+        },
+        "mean_properties": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0016014287248253822,
+            "human_dq_rmse_rad_s": 0.029758136719465256,
+            "cuff_center_rmse_mm": 0.10035745799541473,
+            "progress_rmse_mm": 0.10601198673248291,
+            "cuff_points_rmse_mm": 0.1693444848060608,
+            "load_force_rmse_N": 0.7520236968994141,
+            "load_torque_rmse_Nm": 0.04446810483932495
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.004847025498747826,
+            "human_dq_rmse_rad_s": 0.012359372340142727,
+            "cuff_center_rmse_mm": 0.35516172647476196,
+            "progress_rmse_mm": 0.41704875230789185,
+            "cuff_points_rmse_mm": 0.7362831234931946,
+            "load_force_rmse_N": 0.8995303511619568,
+            "load_torque_rmse_Nm": 0.05228529870510101
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.005123719573020935,
+            "human_dq_rmse_rad_s": 0.011749465949833393,
+            "cuff_center_rmse_mm": 0.6979439854621887,
+            "progress_rmse_mm": 0.5707839727401733,
+            "cuff_points_rmse_mm": 1.317760944366455,
+            "load_force_rmse_N": 0.9234400391578674,
+            "load_torque_rmse_Nm": 0.05336388573050499
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.006327569019049406,
+            "human_dq_rmse_rad_s": 0.01115051656961441,
+            "cuff_center_rmse_mm": 1.370209813117981,
+            "progress_rmse_mm": 1.0122789144515991,
+            "cuff_points_rmse_mm": 2.3134076595306396,
+            "load_force_rmse_N": 1.2134451866149902,
+            "load_torque_rmse_Nm": 0.07254594564437866
+          }
+        },
+        "mean_K": {
+          "0.05": {
+            "human_q_rmse_rad": 0.003103720024228096,
+            "human_dq_rmse_rad_s": 0.05661952123045921,
+            "cuff_center_rmse_mm": 0.10891349613666534,
+            "progress_rmse_mm": 0.10807345062494278,
+            "cuff_points_rmse_mm": 0.2018757462501526,
+            "load_force_rmse_N": 0.706021785736084,
+            "load_torque_rmse_Nm": 0.038820598274469376
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.005563037469983101,
+            "human_dq_rmse_rad_s": 0.01430769544094801,
+            "cuff_center_rmse_mm": 0.3869793713092804,
+            "progress_rmse_mm": 0.4146265685558319,
+            "cuff_points_rmse_mm": 0.8845664262771606,
+            "load_force_rmse_N": 0.8032034039497375,
+            "load_torque_rmse_Nm": 0.04234600439667702
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.004602906294167042,
+            "human_dq_rmse_rad_s": 0.015963470563292503,
+            "cuff_center_rmse_mm": 0.7261095643043518,
+            "progress_rmse_mm": 0.467340350151062,
+            "cuff_points_rmse_mm": 1.571207880973816,
+            "load_force_rmse_N": 0.7976037263870239,
+            "load_torque_rmse_Nm": 0.041721802204847336
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.006946489680558443,
+            "human_dq_rmse_rad_s": 0.013006754219532013,
+            "cuff_center_rmse_mm": 1.4585349559783936,
+            "progress_rmse_mm": 0.7080402970314026,
+            "cuff_points_rmse_mm": 2.9332497119903564,
+            "load_force_rmse_N": 1.1585925817489624,
+            "load_torque_rmse_Nm": 0.06749090552330017
+          }
+        },
+        "mean_D": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0010054794838652015,
+            "human_dq_rmse_rad_s": 0.015684444457292557,
+            "cuff_center_rmse_mm": 0.10891349613666534,
+            "progress_rmse_mm": 0.10807345062494278,
+            "cuff_points_rmse_mm": 0.2018757462501526,
+            "load_force_rmse_N": 0.706021785736084,
+            "load_torque_rmse_Nm": 0.038820598274469376
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.002146962098777294,
+            "human_dq_rmse_rad_s": 0.011522946879267693,
+            "cuff_center_rmse_mm": 0.4579719603061676,
+            "progress_rmse_mm": 0.3295641839504242,
+            "cuff_points_rmse_mm": 0.9188231825828552,
+            "load_force_rmse_N": 0.7581074237823486,
+            "load_torque_rmse_Nm": 0.04144030436873436
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.002503774594515562,
+            "human_dq_rmse_rad_s": 0.01050438079982996,
+            "cuff_center_rmse_mm": 0.9109534621238708,
+            "progress_rmse_mm": 0.4841555953025818,
+            "cuff_points_rmse_mm": 1.7543500661849976,
+            "load_force_rmse_N": 0.7847048044204712,
+            "load_torque_rmse_Nm": 0.04177569970488548
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.0038204616867005825,
+            "human_dq_rmse_rad_s": 0.011815459467470646,
+            "cuff_center_rmse_mm": 1.9419384002685547,
+            "progress_rmse_mm": 0.8757364749908447,
+            "cuff_points_rmse_mm": 3.5731844902038574,
+            "load_force_rmse_N": 1.1717853546142578,
+            "load_torque_rmse_Nm": 0.06495766341686249
+          }
+        },
+        "mean_friction": {
+          "0.05": {
+            "human_q_rmse_rad": 0.0012499188305810094,
+            "human_dq_rmse_rad_s": 0.017681671306490898,
+            "cuff_center_rmse_mm": 0.10035745799541473,
+            "progress_rmse_mm": 0.10601198673248291,
+            "cuff_points_rmse_mm": 0.1693444848060608,
+            "load_force_rmse_N": 0.7520236968994141,
+            "load_torque_rmse_Nm": 0.04446810483932495
+          },
+          "0.25": {
+            "human_q_rmse_rad": 0.0015424999874085188,
+            "human_dq_rmse_rad_s": 0.012454313226044178,
+            "cuff_center_rmse_mm": 0.396986186504364,
+            "progress_rmse_mm": 0.30652517080307007,
+            "cuff_points_rmse_mm": 0.7035760879516602,
+            "load_force_rmse_N": 0.8105915784835815,
+            "load_torque_rmse_Nm": 0.05036205053329468
+          },
+          "0.5": {
+            "human_q_rmse_rad": 0.0018638292094692588,
+            "human_dq_rmse_rad_s": 0.012733835726976395,
+            "cuff_center_rmse_mm": 0.7921897172927856,
+            "progress_rmse_mm": 0.5285446047782898,
+            "cuff_points_rmse_mm": 1.278931975364685,
+            "load_force_rmse_N": 0.8600742816925049,
+            "load_torque_rmse_Nm": 0.05201521888375282
+          },
+          "1.0": {
+            "human_q_rmse_rad": 0.0031613248866051435,
+            "human_dq_rmse_rad_s": 0.01387104019522667,
+            "cuff_center_rmse_mm": 1.7085647583007812,
+            "progress_rmse_mm": 1.0296998023986816,
+            "cuff_points_rmse_mm": 2.588273286819458,
+            "load_force_rmse_N": 1.308180332183838,
+            "load_torque_rmse_Nm": 0.07397116720676422
+          }
+        }
+      },
+      "structured_joint_limits": {
+        "endpoints": {
+          "0.05": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0017778873443604
+          },
+          "0.25": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0014077425003052
+          },
+          "0.5": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0009794235229492
+          },
+          "1.0": {
+            "component_violations": 0,
+            "windows_with_any_violation": 0,
+            "evaluated_windows": 62,
+            "maximum_absolute_q_rad": 1.0006916522979736
+          }
+        },
+        "all_steps_component_violations": 0,
+        "all_steps_total_components": 4960,
+        "maximum_violation_rad": 0.0,
+        "maximum_absolute_q_rad": 1.0017778873443604,
+        "note": "Actual USD angular limits; counting predictions does not impose a prediction hard stop"
+      }
+    }
+  ],
+  "metrics": {
+    "persistence": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000917109427973628,
+        "human_dq_rmse_rad_s": 0.023061269894242287,
+        "cuff_center_rmse_mm": 0.6959999799728394,
+        "progress_rmse_mm": 1.1512759923934937,
+        "cuff_points_rmse_mm": 0.7005876898765564,
+        "load_force_rmse_N": 0.9781572818756104,
+        "load_torque_rmse_Nm": 0.05118972063064575
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0034946827217936516,
+        "human_dq_rmse_rad_s": 0.021952204406261444,
+        "cuff_center_rmse_mm": 3.4929065704345703,
+        "progress_rmse_mm": 5.767553806304932,
+        "cuff_points_rmse_mm": 3.507718563079834,
+        "load_force_rmse_N": 1.1059370040893555,
+        "load_torque_rmse_Nm": 0.051439084112644196
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.005679942201822996,
+        "human_dq_rmse_rad_s": 0.02191973105072975,
+        "cuff_center_rmse_mm": 7.007779598236084,
+        "progress_rmse_mm": 11.522576332092285,
+        "cuff_points_rmse_mm": 7.031973361968994,
+        "load_force_rmse_N": 1.365197777748108,
+        "load_torque_rmse_Nm": 0.06072746962308884
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.008842838928103447,
+        "human_dq_rmse_rad_s": 0.027470408007502556,
+        "cuff_center_rmse_mm": 14.093563079833984,
+        "progress_rmse_mm": 22.97696876525879,
+        "cuff_points_rmse_mm": 14.129511833190918,
+        "load_force_rmse_N": 1.669571876525879,
+        "load_torque_rmse_Nm": 0.07610136270523071
+      }
+    },
+    "pure_prior": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0037224933039397,
+        "human_dq_rmse_rad_s": 0.08851981908082962,
+        "cuff_center_rmse_mm": 0.06412909924983978,
+        "progress_rmse_mm": 0.13901004195213318,
+        "cuff_points_rmse_mm": 0.09809057414531708,
+        "load_force_rmse_N": 0.9781572818756104,
+        "load_torque_rmse_Nm": 0.05118972063064575
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.017386889085173607,
+        "human_dq_rmse_rad_s": 0.07876796275377274,
+        "cuff_center_rmse_mm": 0.17359182238578796,
+        "progress_rmse_mm": 0.4857166111469269,
+        "cuff_points_rmse_mm": 0.33715662360191345,
+        "load_force_rmse_N": 1.1059370040893555,
+        "load_torque_rmse_Nm": 0.051439084112644196
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.01871407777070999,
+        "human_dq_rmse_rad_s": 0.0461345799267292,
+        "cuff_center_rmse_mm": 0.2825910747051239,
+        "progress_rmse_mm": 0.855558454990387,
+        "cuff_points_rmse_mm": 0.5824899673461914,
+        "load_force_rmse_N": 1.365197777748108,
+        "load_torque_rmse_Nm": 0.06072746962308884
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.02132147178053856,
+        "human_dq_rmse_rad_s": 0.038609277456998825,
+        "cuff_center_rmse_mm": 0.4501030743122101,
+        "progress_rmse_mm": 1.6168261766433716,
+        "cuff_points_rmse_mm": 0.9441144466400146,
+        "load_force_rmse_N": 1.669571876525879,
+        "load_torque_rmse_Nm": 0.07610136270523071
+      }
+    },
+    "m2": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000582488311920315,
+        "human_dq_rmse_rad_s": 0.01782398484647274,
+        "cuff_center_rmse_mm": 0.110024094581604,
+        "progress_rmse_mm": 0.32011258602142334,
+        "cuff_points_rmse_mm": 0.19081321358680725,
+        "load_force_rmse_N": 0.5166957974433899,
+        "load_torque_rmse_Nm": 0.030518192797899246
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0018467135960236192,
+        "human_dq_rmse_rad_s": 0.01389809139072895,
+        "cuff_center_rmse_mm": 0.2865374982357025,
+        "progress_rmse_mm": 0.6217172741889954,
+        "cuff_points_rmse_mm": 0.5280794501304626,
+        "load_force_rmse_N": 0.6106461882591248,
+        "load_torque_rmse_Nm": 0.034246642142534256
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.002722851699218154,
+        "human_dq_rmse_rad_s": 0.013226721435785294,
+        "cuff_center_rmse_mm": 0.4608916640281677,
+        "progress_rmse_mm": 1.1034735441207886,
+        "cuff_points_rmse_mm": 0.8951701521873474,
+        "load_force_rmse_N": 0.7370779514312744,
+        "load_torque_rmse_Nm": 0.037250906229019165
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.004621405620127916,
+        "human_dq_rmse_rad_s": 0.014936988241970539,
+        "cuff_center_rmse_mm": 0.756018877029419,
+        "progress_rmse_mm": 2.156160354614258,
+        "cuff_points_rmse_mm": 1.5493688583374023,
+        "load_force_rmse_N": 0.8564137816429138,
+        "load_torque_rmse_Nm": 0.04532158747315407
+      }
+    },
+    "structured": {
+      "0.05": {
+        "human_q_rmse_rad": 0.001389430370181799,
+        "human_dq_rmse_rad_s": 0.021007932722568512,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0016020456096157432,
+        "human_dq_rmse_rad_s": 0.018786363303661346,
+        "cuff_center_rmse_mm": 0.4371809959411621,
+        "progress_rmse_mm": 0.31960010528564453,
+        "cuff_points_rmse_mm": 0.9692462682723999,
+        "load_force_rmse_N": 0.8271629810333252,
+        "load_torque_rmse_Nm": 0.04241573065519333
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0019069125410169363,
+        "human_dq_rmse_rad_s": 0.013942553661763668,
+        "cuff_center_rmse_mm": 0.8688111901283264,
+        "progress_rmse_mm": 0.5555979013442993,
+        "cuff_points_rmse_mm": 1.8024448156356812,
+        "load_force_rmse_N": 0.8567963242530823,
+        "load_torque_rmse_Nm": 0.043602682650089264
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.00313852122053504,
+        "human_dq_rmse_rad_s": 0.019122960045933723,
+        "cuff_center_rmse_mm": 1.846751093864441,
+        "progress_rmse_mm": 0.9915095567703247,
+        "cuff_points_rmse_mm": 3.5669682025909424,
+        "load_force_rmse_N": 1.0260971784591675,
+        "load_torque_rmse_Nm": 0.05254915729165077
+      }
+    },
+    "mean_properties": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0016610738821327686,
+        "human_dq_rmse_rad_s": 0.031897179782390594,
+        "cuff_center_rmse_mm": 0.09484555572271347,
+        "progress_rmse_mm": 0.10292576998472214,
+        "cuff_points_rmse_mm": 0.1949288547039032,
+        "load_force_rmse_N": 0.8854374885559082,
+        "load_torque_rmse_Nm": 0.04397927224636078
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.004983046092092991,
+        "human_dq_rmse_rad_s": 0.015415913425385952,
+        "cuff_center_rmse_mm": 0.3354198932647705,
+        "progress_rmse_mm": 0.3928193151950836,
+        "cuff_points_rmse_mm": 0.8530060648918152,
+        "load_force_rmse_N": 1.0088855028152466,
+        "load_torque_rmse_Nm": 0.0478062778711319
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0046365587040781975,
+        "human_dq_rmse_rad_s": 0.018340742215514183,
+        "cuff_center_rmse_mm": 0.6532178521156311,
+        "progress_rmse_mm": 0.5326169729232788,
+        "cuff_points_rmse_mm": 1.4799039363861084,
+        "load_force_rmse_N": 1.0573948621749878,
+        "load_torque_rmse_Nm": 0.04939403384923935
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.005711678881198168,
+        "human_dq_rmse_rad_s": 0.01792285405099392,
+        "cuff_center_rmse_mm": 1.2374610900878906,
+        "progress_rmse_mm": 0.9904296398162842,
+        "cuff_points_rmse_mm": 2.51035475730896,
+        "load_force_rmse_N": 1.1443370580673218,
+        "load_torque_rmse_Nm": 0.05611041188240051
+      }
+    },
+    "mean_K": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0031869318336248398,
+        "human_dq_rmse_rad_s": 0.05808141827583313,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.005041863303631544,
+        "human_dq_rmse_rad_s": 0.02030092291533947,
+        "cuff_center_rmse_mm": 0.3631821274757385,
+        "progress_rmse_mm": 0.3763263523578644,
+        "cuff_points_rmse_mm": 0.9292234182357788,
+        "load_force_rmse_N": 0.8972554802894592,
+        "load_torque_rmse_Nm": 0.04180757701396942
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.004069854971021414,
+        "human_dq_rmse_rad_s": 0.022614646703004837,
+        "cuff_center_rmse_mm": 0.6700350642204285,
+        "progress_rmse_mm": 0.510529100894928,
+        "cuff_points_rmse_mm": 1.656625747680664,
+        "load_force_rmse_N": 0.9733209013938904,
+        "load_torque_rmse_Nm": 0.04409264773130417
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.0063302102498710155,
+        "human_dq_rmse_rad_s": 0.018420876935124397,
+        "cuff_center_rmse_mm": 1.3221032619476318,
+        "progress_rmse_mm": 0.854796290397644,
+        "cuff_points_rmse_mm": 3.0710408687591553,
+        "load_force_rmse_N": 1.0214481353759766,
+        "load_torque_rmse_Nm": 0.05198223888874054
+      }
+    },
+    "mean_D": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000935848627705127,
+        "human_dq_rmse_rad_s": 0.018750453367829323,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0020039204973727465,
+        "human_dq_rmse_rad_s": 0.017557553946971893,
+        "cuff_center_rmse_mm": 0.44509392976760864,
+        "progress_rmse_mm": 0.32701873779296875,
+        "cuff_points_rmse_mm": 0.9893230199813843,
+        "load_force_rmse_N": 0.827232837677002,
+        "load_torque_rmse_Nm": 0.04244549572467804
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0020639237482100725,
+        "human_dq_rmse_rad_s": 0.013543355278670788,
+        "cuff_center_rmse_mm": 0.8861307501792908,
+        "progress_rmse_mm": 0.5502095222473145,
+        "cuff_points_rmse_mm": 1.8473786115646362,
+        "load_force_rmse_N": 0.8566315174102783,
+        "load_torque_rmse_Nm": 0.043631523847579956
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.003184421919286251,
+        "human_dq_rmse_rad_s": 0.01845785602927208,
+        "cuff_center_rmse_mm": 1.878267765045166,
+        "progress_rmse_mm": 1.0100218057632446,
+        "cuff_points_rmse_mm": 3.653841018676758,
+        "load_force_rmse_N": 1.026220440864563,
+        "load_torque_rmse_Nm": 0.052336014807224274
+      }
+    },
+    "mean_friction": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0012021790025755763,
+        "human_dq_rmse_rad_s": 0.021263793110847473,
+        "cuff_center_rmse_mm": 0.09484555572271347,
+        "progress_rmse_mm": 0.10292576998472214,
+        "cuff_points_rmse_mm": 0.1949288547039032,
+        "load_force_rmse_N": 0.8854374885559082,
+        "load_torque_rmse_Nm": 0.04397927224636078
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0016896789893507957,
+        "human_dq_rmse_rad_s": 0.019426196813583374,
+        "cuff_center_rmse_mm": 0.3821936249732971,
+        "progress_rmse_mm": 0.31484630703926086,
+        "cuff_points_rmse_mm": 0.8134914636611938,
+        "load_force_rmse_N": 0.9755953550338745,
+        "load_torque_rmse_Nm": 0.048191558569669724
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0021572194527834654,
+        "human_dq_rmse_rad_s": 0.013814141973853111,
+        "cuff_center_rmse_mm": 0.7655155062675476,
+        "progress_rmse_mm": 0.5567607879638672,
+        "cuff_points_rmse_mm": 1.4538774490356445,
+        "load_force_rmse_N": 0.9909319281578064,
+        "load_torque_rmse_Nm": 0.04898292198777199
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.003150569973513484,
+        "human_dq_rmse_rad_s": 0.019260486587882042,
+        "cuff_center_rmse_mm": 1.6562942266464233,
+        "progress_rmse_mm": 1.0038421154022217,
+        "cuff_points_rmse_mm": 2.8054702281951904,
+        "load_force_rmse_N": 1.1349612474441528,
+        "load_torque_rmse_Nm": 0.05728776752948761
+      }
+    }
+  },
+  "all_horizons": {
+    "persistence": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000917109427973628,
+        "human_dq_rmse_rad_s": 0.023061269894242287,
+        "cuff_center_rmse_mm": 0.6959999799728394,
+        "progress_rmse_mm": 1.1512759923934937,
+        "cuff_points_rmse_mm": 0.7005876898765564,
+        "load_force_rmse_N": 0.9781572818756104,
+        "load_torque_rmse_Nm": 0.05118972063064575
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.0016113343881443143,
+        "human_dq_rmse_rad_s": 0.01565185748040676,
+        "cuff_center_rmse_mm": 1.3942575454711914,
+        "progress_rmse_mm": 2.3057281970977783,
+        "cuff_points_rmse_mm": 1.401380181312561,
+        "load_force_rmse_N": 0.9558067321777344,
+        "load_torque_rmse_Nm": 0.04563305154442787
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.0022556765470653772,
+        "human_dq_rmse_rad_s": 0.017268873751163483,
+        "cuff_center_rmse_mm": 2.0931975841522217,
+        "progress_rmse_mm": 3.4622974395751953,
+        "cuff_points_rmse_mm": 2.1028902530670166,
+        "load_force_rmse_N": 1.0699442625045776,
+        "load_torque_rmse_Nm": 0.05329182371497154
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.002809753641486168,
+        "human_dq_rmse_rad_s": 0.024036595597863197,
+        "cuff_center_rmse_mm": 2.7929413318634033,
+        "progress_rmse_mm": 4.6174421310424805,
+        "cuff_points_rmse_mm": 2.8051605224609375,
+        "load_force_rmse_N": 1.2771251201629639,
+        "load_torque_rmse_Nm": 0.060302119702100754
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0034946827217936516,
+        "human_dq_rmse_rad_s": 0.021952204406261444,
+        "cuff_center_rmse_mm": 3.4929065704345703,
+        "progress_rmse_mm": 5.767553806304932,
+        "cuff_points_rmse_mm": 3.507718563079834,
+        "load_force_rmse_N": 1.1059370040893555,
+        "load_torque_rmse_Nm": 0.051439084112644196
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.004011180251836777,
+        "human_dq_rmse_rad_s": 0.019093448296189308,
+        "cuff_center_rmse_mm": 4.19448709487915,
+        "progress_rmse_mm": 6.91955041885376,
+        "cuff_points_rmse_mm": 4.211435794830322,
+        "load_force_rmse_N": 1.1913321018218994,
+        "load_torque_rmse_Nm": 0.05412054434418678
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.004458400886505842,
+        "human_dq_rmse_rad_s": 0.020361391827464104,
+        "cuff_center_rmse_mm": 4.896451950073242,
+        "progress_rmse_mm": 8.073294639587402,
+        "cuff_points_rmse_mm": 4.915416717529297,
+        "load_force_rmse_N": 1.1515367031097412,
+        "load_torque_rmse_Nm": 0.05418028309941292
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.004827073309570551,
+        "human_dq_rmse_rad_s": 0.02488975040614605,
+        "cuff_center_rmse_mm": 5.5994720458984375,
+        "progress_rmse_mm": 9.225784301757812,
+        "cuff_points_rmse_mm": 5.620336055755615,
+        "load_force_rmse_N": 1.5174424648284912,
+        "load_torque_rmse_Nm": 0.06774771958589554
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.005284701939672232,
+        "human_dq_rmse_rad_s": 0.026588961482048035,
+        "cuff_center_rmse_mm": 6.30288028717041,
+        "progress_rmse_mm": 10.3732271194458,
+        "cuff_points_rmse_mm": 6.325483798980713,
+        "load_force_rmse_N": 1.4066566228866577,
+        "load_torque_rmse_Nm": 0.0626620426774025
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.005679942201822996,
+        "human_dq_rmse_rad_s": 0.02191973105072975,
+        "cuff_center_rmse_mm": 7.007779598236084,
+        "progress_rmse_mm": 11.522576332092285,
+        "cuff_points_rmse_mm": 7.031973361968994,
+        "load_force_rmse_N": 1.365197777748108,
+        "load_torque_rmse_Nm": 0.06072746962308884
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.00599115714430809,
+        "human_dq_rmse_rad_s": 0.022191429510712624,
+        "cuff_center_rmse_mm": 7.713003158569336,
+        "progress_rmse_mm": 12.67350959777832,
+        "cuff_points_rmse_mm": 7.7386064529418945,
+        "load_force_rmse_N": 1.337244987487793,
+        "load_torque_rmse_Nm": 0.061958350241184235
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.006273442879319191,
+        "human_dq_rmse_rad_s": 0.027710312977433205,
+        "cuff_center_rmse_mm": 8.419232368469238,
+        "progress_rmse_mm": 13.823446273803711,
+        "cuff_points_rmse_mm": 8.446194648742676,
+        "load_force_rmse_N": 1.6055409908294678,
+        "load_torque_rmse_Nm": 0.07153970003128052
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.006617974489927292,
+        "human_dq_rmse_rad_s": 0.02775588259100914,
+        "cuff_center_rmse_mm": 9.12588882446289,
+        "progress_rmse_mm": 14.968042373657227,
+        "cuff_points_rmse_mm": 9.154085159301758,
+        "load_force_rmse_N": 1.5225679874420166,
+        "load_torque_rmse_Nm": 0.0676942989230156
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.006960456259548664,
+        "human_dq_rmse_rad_s": 0.023625852540135384,
+        "cuff_center_rmse_mm": 9.834081649780273,
+        "progress_rmse_mm": 16.11467933654785,
+        "cuff_points_rmse_mm": 9.863469123840332,
+        "load_force_rmse_N": 1.4723684787750244,
+        "load_torque_rmse_Nm": 0.06575707346200943
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.007260332349687815,
+        "human_dq_rmse_rad_s": 0.024943344295024872,
+        "cuff_center_rmse_mm": 10.542402267456055,
+        "progress_rmse_mm": 17.262798309326172,
+        "cuff_points_rmse_mm": 10.572985649108887,
+        "load_force_rmse_N": 1.421427607536316,
+        "load_torque_rmse_Nm": 0.06578433513641357
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.00753662409260869,
+        "human_dq_rmse_rad_s": 0.027277734130620956,
+        "cuff_center_rmse_mm": 11.251805305480957,
+        "progress_rmse_mm": 18.409879684448242,
+        "cuff_points_rmse_mm": 11.283485412597656,
+        "load_force_rmse_N": 1.64138925075531,
+        "load_torque_rmse_Nm": 0.07394365966320038
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.007870295085012913,
+        "human_dq_rmse_rad_s": 0.027924615889787674,
+        "cuff_center_rmse_mm": 11.961429595947266,
+        "progress_rmse_mm": 19.551008224487305,
+        "cuff_points_rmse_mm": 11.994173049926758,
+        "load_force_rmse_N": 1.5669175386428833,
+        "load_torque_rmse_Nm": 0.0700794905424118
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.008217099122703075,
+        "human_dq_rmse_rad_s": 0.024224452674388885,
+        "cuff_center_rmse_mm": 12.672186851501465,
+        "progress_rmse_mm": 20.69325065612793,
+        "cuff_points_rmse_mm": 12.706010818481445,
+        "load_force_rmse_N": 1.5049887895584106,
+        "load_torque_rmse_Nm": 0.06768859922885895
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.008539392612874508,
+        "human_dq_rmse_rad_s": 0.0255043376237154,
+        "cuff_center_rmse_mm": 13.382647514343262,
+        "progress_rmse_mm": 21.836103439331055,
+        "cuff_points_rmse_mm": 13.417567253112793,
+        "load_force_rmse_N": 1.4574973583221436,
+        "load_torque_rmse_Nm": 0.06827287375926971
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.008842838928103447,
+        "human_dq_rmse_rad_s": 0.027470408007502556,
+        "cuff_center_rmse_mm": 14.093563079833984,
+        "progress_rmse_mm": 22.97696876525879,
+        "cuff_points_rmse_mm": 14.129511833190918,
+        "load_force_rmse_N": 1.669571876525879,
+        "load_torque_rmse_Nm": 0.07610136270523071
+      }
+    },
+    "pure_prior": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0037224933039397,
+        "human_dq_rmse_rad_s": 0.08851981908082962,
+        "cuff_center_rmse_mm": 0.06412909924983978,
+        "progress_rmse_mm": 0.13901004195213318,
+        "cuff_points_rmse_mm": 0.09809057414531708,
+        "load_force_rmse_N": 0.9781572818756104,
+        "load_torque_rmse_Nm": 0.05118972063064575
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.007050489541143179,
+        "human_dq_rmse_rad_s": 0.0896216556429863,
+        "cuff_center_rmse_mm": 0.09926176816225052,
+        "progress_rmse_mm": 0.2398657202720642,
+        "cuff_points_rmse_mm": 0.16311149299144745,
+        "load_force_rmse_N": 0.9558067321777344,
+        "load_torque_rmse_Nm": 0.04563305154442787
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.01068846508860588,
+        "human_dq_rmse_rad_s": 0.09093883633613586,
+        "cuff_center_rmse_mm": 0.12440214306116104,
+        "progress_rmse_mm": 0.32504841685295105,
+        "cuff_points_rmse_mm": 0.22210898995399475,
+        "load_force_rmse_N": 1.0699442625045776,
+        "load_torque_rmse_Nm": 0.05329182371497154
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.014191989786922932,
+        "human_dq_rmse_rad_s": 0.09031189233064651,
+        "cuff_center_rmse_mm": 0.14732125401496887,
+        "progress_rmse_mm": 0.4008435606956482,
+        "cuff_points_rmse_mm": 0.27829086780548096,
+        "load_force_rmse_N": 1.2771251201629639,
+        "load_torque_rmse_Nm": 0.060302119702100754
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.017386889085173607,
+        "human_dq_rmse_rad_s": 0.07876796275377274,
+        "cuff_center_rmse_mm": 0.17359182238578796,
+        "progress_rmse_mm": 0.4857166111469269,
+        "cuff_points_rmse_mm": 0.33715662360191345,
+        "load_force_rmse_N": 1.1059370040893555,
+        "load_torque_rmse_Nm": 0.051439084112644196
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.019911615177989006,
+        "human_dq_rmse_rad_s": 0.05222465842962265,
+        "cuff_center_rmse_mm": 0.19843707978725433,
+        "progress_rmse_mm": 0.5658808350563049,
+        "cuff_points_rmse_mm": 0.39168137311935425,
+        "load_force_rmse_N": 1.1913321018218994,
+        "load_torque_rmse_Nm": 0.05412054434418678
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.021333923563361168,
+        "human_dq_rmse_rad_s": 0.02600833587348461,
+        "cuff_center_rmse_mm": 0.2201080173254013,
+        "progress_rmse_mm": 0.6405943632125854,
+        "cuff_points_rmse_mm": 0.443006306886673,
+        "load_force_rmse_N": 1.1515367031097412,
+        "load_torque_rmse_Nm": 0.05418028309941292
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.021477490663528442,
+        "human_dq_rmse_rad_s": 0.02494669146835804,
+        "cuff_center_rmse_mm": 0.2419397234916687,
+        "progress_rmse_mm": 0.7094720005989075,
+        "cuff_points_rmse_mm": 0.49130985140800476,
+        "load_force_rmse_N": 1.5174424648284912,
+        "load_torque_rmse_Nm": 0.06774771958589554
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.020500507205724716,
+        "human_dq_rmse_rad_s": 0.03861384838819504,
+        "cuff_center_rmse_mm": 0.26314887404441833,
+        "progress_rmse_mm": 0.7814939618110657,
+        "cuff_points_rmse_mm": 0.5377979874610901,
+        "load_force_rmse_N": 1.4066566228866577,
+        "load_torque_rmse_Nm": 0.0626620426774025
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.01871407777070999,
+        "human_dq_rmse_rad_s": 0.0461345799267292,
+        "cuff_center_rmse_mm": 0.2825910747051239,
+        "progress_rmse_mm": 0.855558454990387,
+        "cuff_points_rmse_mm": 0.5824899673461914,
+        "load_force_rmse_N": 1.365197777748108,
+        "load_torque_rmse_Nm": 0.06072746962308884
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.016577832400798798,
+        "human_dq_rmse_rad_s": 0.048311758786439896,
+        "cuff_center_rmse_mm": 0.3013576567173004,
+        "progress_rmse_mm": 0.9275500774383545,
+        "cuff_points_rmse_mm": 0.6246105432510376,
+        "load_force_rmse_N": 1.337244987487793,
+        "load_torque_rmse_Nm": 0.061958350241184235
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.01460291352123022,
+        "human_dq_rmse_rad_s": 0.04227665439248085,
+        "cuff_center_rmse_mm": 0.3212704360485077,
+        "progress_rmse_mm": 0.9996156692504883,
+        "cuff_points_rmse_mm": 0.6646291017532349,
+        "load_force_rmse_N": 1.6055409908294678,
+        "load_torque_rmse_Nm": 0.07153970003128052
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.013263818807899952,
+        "human_dq_rmse_rad_s": 0.030052267014980316,
+        "cuff_center_rmse_mm": 0.3377745747566223,
+        "progress_rmse_mm": 1.0701451301574707,
+        "cuff_points_rmse_mm": 0.7017611861228943,
+        "load_force_rmse_N": 1.5225679874420166,
+        "load_torque_rmse_Nm": 0.0676942989230156
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.012754961848258972,
+        "human_dq_rmse_rad_s": 0.01657622680068016,
+        "cuff_center_rmse_mm": 0.35409313440322876,
+        "progress_rmse_mm": 1.1464580297470093,
+        "cuff_points_rmse_mm": 0.7392841577529907,
+        "load_force_rmse_N": 1.4723684787750244,
+        "load_torque_rmse_Nm": 0.06575707346200943
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.01309284195303917,
+        "human_dq_rmse_rad_s": 0.025422055274248123,
+        "cuff_center_rmse_mm": 0.3711453080177307,
+        "progress_rmse_mm": 1.2233022451400757,
+        "cuff_points_rmse_mm": 0.7764341831207275,
+        "load_force_rmse_N": 1.421427607536316,
+        "load_torque_rmse_Nm": 0.06578433513641357
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.014175180345773697,
+        "human_dq_rmse_rad_s": 0.0393533781170845,
+        "cuff_center_rmse_mm": 0.39011338353157043,
+        "progress_rmse_mm": 1.301415205001831,
+        "cuff_points_rmse_mm": 0.8120798468589783,
+        "load_force_rmse_N": 1.64138925075531,
+        "load_torque_rmse_Nm": 0.07394365966320038
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.015850123018026352,
+        "human_dq_rmse_rad_s": 0.04798601567745209,
+        "cuff_center_rmse_mm": 0.4047696888446808,
+        "progress_rmse_mm": 1.3763184547424316,
+        "cuff_points_rmse_mm": 0.8451163172721863,
+        "load_force_rmse_N": 1.5669175386428833,
+        "load_torque_rmse_Nm": 0.0700794905424118
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.017804956063628197,
+        "human_dq_rmse_rad_s": 0.048515550792217255,
+        "cuff_center_rmse_mm": 0.4177793264389038,
+        "progress_rmse_mm": 1.454025387763977,
+        "cuff_points_rmse_mm": 0.8780323266983032,
+        "load_force_rmse_N": 1.5049887895584106,
+        "load_torque_rmse_Nm": 0.06768859922885895
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.01972176879644394,
+        "human_dq_rmse_rad_s": 0.045303329825401306,
+        "cuff_center_rmse_mm": 0.4325447380542755,
+        "progress_rmse_mm": 1.5342867374420166,
+        "cuff_points_rmse_mm": 0.9115599393844604,
+        "load_force_rmse_N": 1.4574973583221436,
+        "load_torque_rmse_Nm": 0.06827287375926971
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.02132147178053856,
+        "human_dq_rmse_rad_s": 0.038609277456998825,
+        "cuff_center_rmse_mm": 0.4501030743122101,
+        "progress_rmse_mm": 1.6168261766433716,
+        "cuff_points_rmse_mm": 0.9441144466400146,
+        "load_force_rmse_N": 1.669571876525879,
+        "load_torque_rmse_Nm": 0.07610136270523071
+      }
+    },
+    "m2": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000582488311920315,
+        "human_dq_rmse_rad_s": 0.01782398484647274,
+        "cuff_center_rmse_mm": 0.110024094581604,
+        "progress_rmse_mm": 0.32011258602142334,
+        "cuff_points_rmse_mm": 0.19081321358680725,
+        "load_force_rmse_N": 0.5166957974433899,
+        "load_torque_rmse_Nm": 0.030518192797899246
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.0009390930645167828,
+        "human_dq_rmse_rad_s": 0.011798192746937275,
+        "cuff_center_rmse_mm": 0.15247689187526703,
+        "progress_rmse_mm": 0.36176598072052,
+        "cuff_points_rmse_mm": 0.2846168577671051,
+        "load_force_rmse_N": 0.6204168796539307,
+        "load_torque_rmse_Nm": 0.03131027892231941
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.0012847179314121604,
+        "human_dq_rmse_rad_s": 0.0167499128729105,
+        "cuff_center_rmse_mm": 0.19424593448638916,
+        "progress_rmse_mm": 0.4186565577983856,
+        "cuff_points_rmse_mm": 0.3701651096343994,
+        "load_force_rmse_N": 0.6413737535476685,
+        "load_torque_rmse_Nm": 0.035260871052742004
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.0015898103592917323,
+        "human_dq_rmse_rad_s": 0.015406896360218525,
+        "cuff_center_rmse_mm": 0.23920901119709015,
+        "progress_rmse_mm": 0.5047217607498169,
+        "cuff_points_rmse_mm": 0.44900473952293396,
+        "load_force_rmse_N": 0.7759754061698914,
+        "load_torque_rmse_Nm": 0.039980702102184296
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0018467135960236192,
+        "human_dq_rmse_rad_s": 0.01389809139072895,
+        "cuff_center_rmse_mm": 0.2865374982357025,
+        "progress_rmse_mm": 0.6217172741889954,
+        "cuff_points_rmse_mm": 0.5280794501304626,
+        "load_force_rmse_N": 0.6106461882591248,
+        "load_torque_rmse_Nm": 0.034246642142534256
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.0020004967227578163,
+        "human_dq_rmse_rad_s": 0.012839652597904205,
+        "cuff_center_rmse_mm": 0.32281583547592163,
+        "progress_rmse_mm": 0.7027239799499512,
+        "cuff_points_rmse_mm": 0.6069720387458801,
+        "load_force_rmse_N": 0.6330975294113159,
+        "load_torque_rmse_Nm": 0.0333411730825901
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.002153480425477028,
+        "human_dq_rmse_rad_s": 0.01724734902381897,
+        "cuff_center_rmse_mm": 0.3570128083229065,
+        "progress_rmse_mm": 0.7880280613899231,
+        "cuff_points_rmse_mm": 0.6820281744003296,
+        "load_force_rmse_N": 0.6773598194122314,
+        "load_torque_rmse_Nm": 0.037083350121974945
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.0023464064579457045,
+        "human_dq_rmse_rad_s": 0.01518298964947462,
+        "cuff_center_rmse_mm": 0.39303821325302124,
+        "progress_rmse_mm": 0.8877213597297668,
+        "cuff_points_rmse_mm": 0.7532161474227905,
+        "load_force_rmse_N": 0.788775622844696,
+        "load_torque_rmse_Nm": 0.0419398657977581
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.0025420174933969975,
+        "human_dq_rmse_rad_s": 0.013165787793695927,
+        "cuff_center_rmse_mm": 0.42979055643081665,
+        "progress_rmse_mm": 1.002259612083435,
+        "cuff_points_rmse_mm": 0.822677493095398,
+        "load_force_rmse_N": 0.6455087661743164,
+        "load_torque_rmse_Nm": 0.03682656213641167
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.002722851699218154,
+        "human_dq_rmse_rad_s": 0.013226721435785294,
+        "cuff_center_rmse_mm": 0.4608916640281677,
+        "progress_rmse_mm": 1.1034735441207886,
+        "cuff_points_rmse_mm": 0.8951701521873474,
+        "load_force_rmse_N": 0.7370779514312744,
+        "load_torque_rmse_Nm": 0.037250906229019165
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.0029081522952765226,
+        "human_dq_rmse_rad_s": 0.017037173733115196,
+        "cuff_center_rmse_mm": 0.4900941848754883,
+        "progress_rmse_mm": 1.2049452066421509,
+        "cuff_points_rmse_mm": 0.9643585085868835,
+        "load_force_rmse_N": 0.7629992365837097,
+        "load_torque_rmse_Nm": 0.04036232829093933
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.003119694534689188,
+        "human_dq_rmse_rad_s": 0.015109026804566383,
+        "cuff_center_rmse_mm": 0.5177419185638428,
+        "progress_rmse_mm": 1.3086211681365967,
+        "cuff_points_rmse_mm": 1.0296809673309326,
+        "load_force_rmse_N": 0.8312807083129883,
+        "load_torque_rmse_Nm": 0.04345366358757019
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.003302171593531966,
+        "human_dq_rmse_rad_s": 0.013833276927471161,
+        "cuff_center_rmse_mm": 0.54628986120224,
+        "progress_rmse_mm": 1.416037678718567,
+        "cuff_points_rmse_mm": 1.0940675735473633,
+        "load_force_rmse_N": 0.6580306887626648,
+        "load_torque_rmse_Nm": 0.03749661520123482
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.0034614098258316517,
+        "human_dq_rmse_rad_s": 0.013352937996387482,
+        "cuff_center_rmse_mm": 0.5743554830551147,
+        "progress_rmse_mm": 1.5246256589889526,
+        "cuff_points_rmse_mm": 1.1623705625534058,
+        "load_force_rmse_N": 0.7264336943626404,
+        "load_torque_rmse_Nm": 0.03755407780408859
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.003644981887191534,
+        "human_dq_rmse_rad_s": 0.017130030319094658,
+        "cuff_center_rmse_mm": 0.6023917198181152,
+        "progress_rmse_mm": 1.6319525241851807,
+        "cuff_points_rmse_mm": 1.2280936241149902,
+        "load_force_rmse_N": 0.7545664310455322,
+        "load_torque_rmse_Nm": 0.04055057466030121
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.0038588549941778183,
+        "human_dq_rmse_rad_s": 0.014990484341979027,
+        "cuff_center_rmse_mm": 0.6332402229309082,
+        "progress_rmse_mm": 1.7376339435577393,
+        "cuff_points_rmse_mm": 1.2920986413955688,
+        "load_force_rmse_N": 0.8361162543296814,
+        "load_torque_rmse_Nm": 0.04423721507191658
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.0040499866008758545,
+        "human_dq_rmse_rad_s": 0.012940796092152596,
+        "cuff_center_rmse_mm": 0.6638627648353577,
+        "progress_rmse_mm": 1.8418676853179932,
+        "cuff_points_rmse_mm": 1.3548598289489746,
+        "load_force_rmse_N": 0.6642402410507202,
+        "load_torque_rmse_Nm": 0.037657469511032104
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.004222664050757885,
+        "human_dq_rmse_rad_s": 0.01312098279595375,
+        "cuff_center_rmse_mm": 0.6933549642562866,
+        "progress_rmse_mm": 1.9482651948928833,
+        "cuff_points_rmse_mm": 1.4215749502182007,
+        "load_force_rmse_N": 0.7465695142745972,
+        "load_torque_rmse_Nm": 0.03825933113694191
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.004412517417222261,
+        "human_dq_rmse_rad_s": 0.016683178022503853,
+        "cuff_center_rmse_mm": 0.7237365245819092,
+        "progress_rmse_mm": 2.0534565448760986,
+        "cuff_points_rmse_mm": 1.4863471984863281,
+        "load_force_rmse_N": 0.7612490653991699,
+        "load_torque_rmse_Nm": 0.04097040742635727
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.004621405620127916,
+        "human_dq_rmse_rad_s": 0.014936988241970539,
+        "cuff_center_rmse_mm": 0.756018877029419,
+        "progress_rmse_mm": 2.156160354614258,
+        "cuff_points_rmse_mm": 1.5493688583374023,
+        "load_force_rmse_N": 0.8564137816429138,
+        "load_torque_rmse_Nm": 0.04532158747315407
+      }
+    },
+    "structured": {
+      "0.05": {
+        "human_q_rmse_rad": 0.001389430370181799,
+        "human_dq_rmse_rad_s": 0.021007932722568512,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.001740258070640266,
+        "human_dq_rmse_rad_s": 0.014952419325709343,
+        "cuff_center_rmse_mm": 0.18601255118846893,
+        "progress_rmse_mm": 0.1791832447052002,
+        "cuff_points_rmse_mm": 0.42439430952072144,
+        "load_force_rmse_N": 0.8174422979354858,
+        "load_torque_rmse_Nm": 0.04145665094256401
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.001721980283036828,
+        "human_dq_rmse_rad_s": 0.01860804297029972,
+        "cuff_center_rmse_mm": 0.27117228507995605,
+        "progress_rmse_mm": 0.23264671862125397,
+        "cuff_points_rmse_mm": 0.6158608198165894,
+        "load_force_rmse_N": 0.8748806715011597,
+        "load_torque_rmse_Nm": 0.04432182013988495
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.001654130988754332,
+        "human_dq_rmse_rad_s": 0.018101828172802925,
+        "cuff_center_rmse_mm": 0.35563862323760986,
+        "progress_rmse_mm": 0.27973484992980957,
+        "cuff_points_rmse_mm": 0.7984713912010193,
+        "load_force_rmse_N": 0.9566952586174011,
+        "load_torque_rmse_Nm": 0.049931902438402176
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0016020456096157432,
+        "human_dq_rmse_rad_s": 0.018786363303661346,
+        "cuff_center_rmse_mm": 0.4371809959411621,
+        "progress_rmse_mm": 0.31960010528564453,
+        "cuff_points_rmse_mm": 0.9692462682723999,
+        "load_force_rmse_N": 0.8271629810333252,
+        "load_torque_rmse_Nm": 0.04241573065519333
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.0015800317050889134,
+        "human_dq_rmse_rad_s": 0.013992751948535442,
+        "cuff_center_rmse_mm": 0.5230372548103333,
+        "progress_rmse_mm": 0.3636491000652313,
+        "cuff_points_rmse_mm": 1.1373778581619263,
+        "load_force_rmse_N": 0.8196033239364624,
+        "load_torque_rmse_Nm": 0.04212859272956848
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.001618787762708962,
+        "human_dq_rmse_rad_s": 0.016323870047926903,
+        "cuff_center_rmse_mm": 0.6094658374786377,
+        "progress_rmse_mm": 0.4135229289531708,
+        "cuff_points_rmse_mm": 1.3063199520111084,
+        "load_force_rmse_N": 0.8949328660964966,
+        "load_torque_rmse_Nm": 0.04476585239171982
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.0017528224270790815,
+        "human_dq_rmse_rad_s": 0.017523828893899918,
+        "cuff_center_rmse_mm": 0.6969243288040161,
+        "progress_rmse_mm": 0.4659515917301178,
+        "cuff_points_rmse_mm": 1.475765347480774,
+        "load_force_rmse_N": 0.9680616855621338,
+        "load_torque_rmse_Nm": 0.05042516067624092
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.0018718139035627246,
+        "human_dq_rmse_rad_s": 0.018415680155158043,
+        "cuff_center_rmse_mm": 0.7805318832397461,
+        "progress_rmse_mm": 0.5073718428611755,
+        "cuff_points_rmse_mm": 1.6385897397994995,
+        "load_force_rmse_N": 0.8773530125617981,
+        "load_torque_rmse_Nm": 0.04421306774020195
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0019069125410169363,
+        "human_dq_rmse_rad_s": 0.013942553661763668,
+        "cuff_center_rmse_mm": 0.8688111901283264,
+        "progress_rmse_mm": 0.5555979013442993,
+        "cuff_points_rmse_mm": 1.8024448156356812,
+        "load_force_rmse_N": 0.8567963242530823,
+        "load_torque_rmse_Nm": 0.043602682650089264
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.0019177969079464674,
+        "human_dq_rmse_rad_s": 0.01636478304862976,
+        "cuff_center_rmse_mm": 0.958550751209259,
+        "progress_rmse_mm": 0.6051419973373413,
+        "cuff_points_rmse_mm": 1.9690485000610352,
+        "load_force_rmse_N": 0.9303312301635742,
+        "load_torque_rmse_Nm": 0.04648495465517044
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.002043935004621744,
+        "human_dq_rmse_rad_s": 0.01758655719459057,
+        "cuff_center_rmse_mm": 1.0501307249069214,
+        "progress_rmse_mm": 0.6579552292823792,
+        "cuff_points_rmse_mm": 2.1389079093933105,
+        "load_force_rmse_N": 0.9413866400718689,
+        "load_torque_rmse_Nm": 0.05064430087804794
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.0021329266019165516,
+        "human_dq_rmse_rad_s": 0.01867113634943962,
+        "cuff_center_rmse_mm": 1.1387284994125366,
+        "progress_rmse_mm": 0.6926709413528442,
+        "cuff_points_rmse_mm": 2.3050148487091064,
+        "load_force_rmse_N": 0.8542601466178894,
+        "load_torque_rmse_Nm": 0.043988581746816635
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.0022073902655392885,
+        "human_dq_rmse_rad_s": 0.014078347012400627,
+        "cuff_center_rmse_mm": 1.2323384284973145,
+        "progress_rmse_mm": 0.7347013354301453,
+        "cuff_points_rmse_mm": 2.473710298538208,
+        "load_force_rmse_N": 0.8574091196060181,
+        "load_torque_rmse_Nm": 0.04430359974503517
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.002324473112821579,
+        "human_dq_rmse_rad_s": 0.016786647960543633,
+        "cuff_center_rmse_mm": 1.3285408020019531,
+        "progress_rmse_mm": 0.7810176610946655,
+        "cuff_points_rmse_mm": 2.647080898284912,
+        "load_force_rmse_N": 0.9472804069519043,
+        "load_torque_rmse_Nm": 0.046923521906137466
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.00252105132676661,
+        "human_dq_rmse_rad_s": 0.018422415480017662,
+        "cuff_center_rmse_mm": 1.4278175830841064,
+        "progress_rmse_mm": 0.8291429281234741,
+        "cuff_points_rmse_mm": 2.8255624771118164,
+        "load_force_rmse_N": 0.9642319679260254,
+        "load_torque_rmse_Nm": 0.05151177942752838
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.0026819887571036816,
+        "human_dq_rmse_rad_s": 0.019170857965946198,
+        "cuff_center_rmse_mm": 1.528056263923645,
+        "progress_rmse_mm": 0.8696081638336182,
+        "cuff_points_rmse_mm": 3.0042951107025146,
+        "load_force_rmse_N": 0.8838810324668884,
+        "load_torque_rmse_Nm": 0.044701069593429565
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.0028077526949346066,
+        "human_dq_rmse_rad_s": 0.014999092556536198,
+        "cuff_center_rmse_mm": 1.631407618522644,
+        "progress_rmse_mm": 0.9081411957740784,
+        "cuff_points_rmse_mm": 3.1867125034332275,
+        "load_force_rmse_N": 0.9060314893722534,
+        "load_torque_rmse_Nm": 0.04540642723441124
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.002941633341833949,
+        "human_dq_rmse_rad_s": 0.01747642457485199,
+        "cuff_center_rmse_mm": 1.7374738454818726,
+        "progress_rmse_mm": 0.9491453170776367,
+        "cuff_points_rmse_mm": 3.374253988265991,
+        "load_force_rmse_N": 1.0073494911193848,
+        "load_torque_rmse_Nm": 0.04796146601438522
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.00313852122053504,
+        "human_dq_rmse_rad_s": 0.019122960045933723,
+        "cuff_center_rmse_mm": 1.846751093864441,
+        "progress_rmse_mm": 0.9915095567703247,
+        "cuff_points_rmse_mm": 3.5669682025909424,
+        "load_force_rmse_N": 1.0260971784591675,
+        "load_torque_rmse_Nm": 0.05254915729165077
+      }
+    },
+    "mean_properties": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0016610738821327686,
+        "human_dq_rmse_rad_s": 0.031897179782390594,
+        "cuff_center_rmse_mm": 0.09484555572271347,
+        "progress_rmse_mm": 0.10292576998472214,
+        "cuff_points_rmse_mm": 0.1949288547039032,
+        "load_force_rmse_N": 0.8854374885559082,
+        "load_torque_rmse_Nm": 0.04397927224636078
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.0028514766599982977,
+        "human_dq_rmse_rad_s": 0.01627536304295063,
+        "cuff_center_rmse_mm": 0.1473572850227356,
+        "progress_rmse_mm": 0.18845120072364807,
+        "cuff_points_rmse_mm": 0.36431893706321716,
+        "load_force_rmse_N": 1.0248545408248901,
+        "load_torque_rmse_Nm": 0.04728758707642555
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.0037504169158637524,
+        "human_dq_rmse_rad_s": 0.017887534573674202,
+        "cuff_center_rmse_mm": 0.20553001761436462,
+        "progress_rmse_mm": 0.26335564255714417,
+        "cuff_points_rmse_mm": 0.5318846702575684,
+        "load_force_rmse_N": 1.0096932649612427,
+        "load_torque_rmse_Nm": 0.04900476709008217
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.004475174471735954,
+        "human_dq_rmse_rad_s": 0.018580786883831024,
+        "cuff_center_rmse_mm": 0.27144500613212585,
+        "progress_rmse_mm": 0.3350902795791626,
+        "cuff_points_rmse_mm": 0.696066677570343,
+        "load_force_rmse_N": 1.1453790664672852,
+        "load_torque_rmse_Nm": 0.05537790060043335
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.004983046092092991,
+        "human_dq_rmse_rad_s": 0.015415913425385952,
+        "cuff_center_rmse_mm": 0.3354198932647705,
+        "progress_rmse_mm": 0.3928193151950836,
+        "cuff_points_rmse_mm": 0.8530060648918152,
+        "load_force_rmse_N": 1.0088855028152466,
+        "load_torque_rmse_Nm": 0.0478062778711319
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.005188808776438236,
+        "human_dq_rmse_rad_s": 0.013790758326649666,
+        "cuff_center_rmse_mm": 0.40217265486717224,
+        "progress_rmse_mm": 0.4334607422351837,
+        "cuff_points_rmse_mm": 1.0003721714019775,
+        "load_force_rmse_N": 1.0184556245803833,
+        "load_torque_rmse_Nm": 0.048583075404167175
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.0052438885904848576,
+        "human_dq_rmse_rad_s": 0.019519513472914696,
+        "cuff_center_rmse_mm": 0.46857187151908875,
+        "progress_rmse_mm": 0.4664134979248047,
+        "cuff_points_rmse_mm": 1.1386971473693848,
+        "load_force_rmse_N": 1.050215244293213,
+        "load_torque_rmse_Nm": 0.050370343029499054
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.005156832281500101,
+        "human_dq_rmse_rad_s": 0.01849757321178913,
+        "cuff_center_rmse_mm": 0.5340718626976013,
+        "progress_rmse_mm": 0.4943191409111023,
+        "cuff_points_rmse_mm": 1.2656090259552002,
+        "load_force_rmse_N": 1.1606048345565796,
+        "load_torque_rmse_Nm": 0.05576249957084656
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.004950940143316984,
+        "human_dq_rmse_rad_s": 0.0184420645236969,
+        "cuff_center_rmse_mm": 0.5932043790817261,
+        "progress_rmse_mm": 0.5101189017295837,
+        "cuff_points_rmse_mm": 1.3773698806762695,
+        "load_force_rmse_N": 1.0958704948425293,
+        "load_torque_rmse_Nm": 0.05037956312298775
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0046365587040781975,
+        "human_dq_rmse_rad_s": 0.018340742215514183,
+        "cuff_center_rmse_mm": 0.6532178521156311,
+        "progress_rmse_mm": 0.5326169729232788,
+        "cuff_points_rmse_mm": 1.4799039363861084,
+        "load_force_rmse_N": 1.0573948621749878,
+        "load_torque_rmse_Nm": 0.04939403384923935
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.004440820310264826,
+        "human_dq_rmse_rad_s": 0.022988861426711082,
+        "cuff_center_rmse_mm": 0.7116670608520508,
+        "progress_rmse_mm": 0.5727020502090454,
+        "cuff_points_rmse_mm": 1.580450415611267,
+        "load_force_rmse_N": 1.0988916158676147,
+        "load_torque_rmse_Nm": 0.052018336951732635
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.004421210382133722,
+        "human_dq_rmse_rad_s": 0.019037391990423203,
+        "cuff_center_rmse_mm": 0.7681707143783569,
+        "progress_rmse_mm": 0.627721905708313,
+        "cuff_points_rmse_mm": 1.6810033321380615,
+        "load_force_rmse_N": 1.1625903844833374,
+        "load_torque_rmse_Nm": 0.05576784908771515
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.004452887456864119,
+        "human_dq_rmse_rad_s": 0.01698973961174488,
+        "cuff_center_rmse_mm": 0.8200609683990479,
+        "progress_rmse_mm": 0.670769989490509,
+        "cuff_points_rmse_mm": 1.778296947479248,
+        "load_force_rmse_N": 1.1151039600372314,
+        "load_torque_rmse_Nm": 0.05092645436525345
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.004468787461519241,
+        "human_dq_rmse_rad_s": 0.015493431128561497,
+        "cuff_center_rmse_mm": 0.8754013776779175,
+        "progress_rmse_mm": 0.7174006104469299,
+        "cuff_points_rmse_mm": 1.8765778541564941,
+        "load_force_rmse_N": 1.0583608150482178,
+        "load_torque_rmse_Nm": 0.04954687878489494
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.004608454182744026,
+        "human_dq_rmse_rad_s": 0.02063964121043682,
+        "cuff_center_rmse_mm": 0.9320148229598999,
+        "progress_rmse_mm": 0.7711894512176514,
+        "cuff_points_rmse_mm": 1.9779517650604248,
+        "load_force_rmse_N": 1.106093168258667,
+        "load_torque_rmse_Nm": 0.051966290920972824
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.004831355530768633,
+        "human_dq_rmse_rad_s": 0.01744234189391136,
+        "cuff_center_rmse_mm": 0.9906361699104309,
+        "progress_rmse_mm": 0.8264422416687012,
+        "cuff_points_rmse_mm": 2.081813335418701,
+        "load_force_rmse_N": 1.1578246355056763,
+        "load_torque_rmse_Nm": 0.05594398453831673
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.005053640343248844,
+        "human_dq_rmse_rad_s": 0.015846053138375282,
+        "cuff_center_rmse_mm": 1.0492647886276245,
+        "progress_rmse_mm": 0.87252277135849,
+        "cuff_points_rmse_mm": 2.1853370666503906,
+        "load_force_rmse_N": 1.1095037460327148,
+        "load_torque_rmse_Nm": 0.050945818424224854
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.0052112555131316185,
+        "human_dq_rmse_rad_s": 0.01513330265879631,
+        "cuff_center_rmse_mm": 1.1100046634674072,
+        "progress_rmse_mm": 0.9102288484573364,
+        "cuff_points_rmse_mm": 2.290668249130249,
+        "load_force_rmse_N": 1.0524195432662964,
+        "load_torque_rmse_Nm": 0.04962977021932602
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.005435571074485779,
+        "human_dq_rmse_rad_s": 0.020568760111927986,
+        "cuff_center_rmse_mm": 1.1726211309432983,
+        "progress_rmse_mm": 0.9503154754638672,
+        "cuff_points_rmse_mm": 2.3995091915130615,
+        "load_force_rmse_N": 1.107718825340271,
+        "load_torque_rmse_Nm": 0.052222512662410736
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.005711678881198168,
+        "human_dq_rmse_rad_s": 0.01792285405099392,
+        "cuff_center_rmse_mm": 1.2374610900878906,
+        "progress_rmse_mm": 0.9904296398162842,
+        "cuff_points_rmse_mm": 2.51035475730896,
+        "load_force_rmse_N": 1.1443370580673218,
+        "load_torque_rmse_Nm": 0.05611041188240051
+      }
+    },
+    "mean_K": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0031869318336248398,
+        "human_dq_rmse_rad_s": 0.05808141827583313,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.004031625110656023,
+        "human_dq_rmse_rad_s": 0.02685120515525341,
+        "cuff_center_rmse_mm": 0.15738752484321594,
+        "progress_rmse_mm": 0.2258962094783783,
+        "cuff_points_rmse_mm": 0.42064252495765686,
+        "load_force_rmse_N": 1.1091910600662231,
+        "load_torque_rmse_Nm": 0.04412101209163666
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.00456565897911787,
+        "human_dq_rmse_rad_s": 0.027271268889307976,
+        "cuff_center_rmse_mm": 0.22048278152942657,
+        "progress_rmse_mm": 0.29082924127578735,
+        "cuff_points_rmse_mm": 0.5979524850845337,
+        "load_force_rmse_N": 0.9602954387664795,
+        "load_torque_rmse_Nm": 0.04499558359384537
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.00509910611435771,
+        "human_dq_rmse_rad_s": 0.01772593893110752,
+        "cuff_center_rmse_mm": 0.29721954464912415,
+        "progress_rmse_mm": 0.3401299715042114,
+        "cuff_points_rmse_mm": 0.7655936479568481,
+        "load_force_rmse_N": 1.0189096927642822,
+        "load_torque_rmse_Nm": 0.05023076385259628
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.005041863303631544,
+        "human_dq_rmse_rad_s": 0.02030092291533947,
+        "cuff_center_rmse_mm": 0.3631821274757385,
+        "progress_rmse_mm": 0.3763263523578644,
+        "cuff_points_rmse_mm": 0.9292234182357788,
+        "load_force_rmse_N": 0.8972554802894592,
+        "load_torque_rmse_Nm": 0.04180757701396942
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.00473358016461134,
+        "human_dq_rmse_rad_s": 0.01957869343459606,
+        "cuff_center_rmse_mm": 0.42778638005256653,
+        "progress_rmse_mm": 0.3885939419269562,
+        "cuff_points_rmse_mm": 1.0848790407180786,
+        "load_force_rmse_N": 0.934893786907196,
+        "load_torque_rmse_Nm": 0.043071478605270386
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.004508793819695711,
+        "human_dq_rmse_rad_s": 0.02253095805644989,
+        "cuff_center_rmse_mm": 0.4928043484687805,
+        "progress_rmse_mm": 0.4061068892478943,
+        "cuff_points_rmse_mm": 1.235841989517212,
+        "load_force_rmse_N": 0.9326557517051697,
+        "load_torque_rmse_Nm": 0.04507356882095337
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.004391954746097326,
+        "human_dq_rmse_rad_s": 0.01993870921432972,
+        "cuff_center_rmse_mm": 0.5570032596588135,
+        "progress_rmse_mm": 0.4425812363624573,
+        "cuff_points_rmse_mm": 1.3850607872009277,
+        "load_force_rmse_N": 1.0364887714385986,
+        "load_torque_rmse_Nm": 0.050119366496801376
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.004141701385378838,
+        "human_dq_rmse_rad_s": 0.025178061798214912,
+        "cuff_center_rmse_mm": 0.6118914484977722,
+        "progress_rmse_mm": 0.47143641114234924,
+        "cuff_points_rmse_mm": 1.523324966430664,
+        "load_force_rmse_N": 0.9619413018226624,
+        "load_torque_rmse_Nm": 0.04387585446238518
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.004069854971021414,
+        "human_dq_rmse_rad_s": 0.022614646703004837,
+        "cuff_center_rmse_mm": 0.6700350642204285,
+        "progress_rmse_mm": 0.510529100894928,
+        "cuff_points_rmse_mm": 1.656625747680664,
+        "load_force_rmse_N": 0.9733209013938904,
+        "load_torque_rmse_Nm": 0.04409264773130417
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.004278477746993303,
+        "human_dq_rmse_rad_s": 0.021100683137774467,
+        "cuff_center_rmse_mm": 0.7308620810508728,
+        "progress_rmse_mm": 0.5619001388549805,
+        "cuff_points_rmse_mm": 1.7937434911727905,
+        "load_force_rmse_N": 0.9852336049079895,
+        "load_torque_rmse_Nm": 0.04683757945895195
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.004601992666721344,
+        "human_dq_rmse_rad_s": 0.017183827236294746,
+        "cuff_center_rmse_mm": 0.7919080853462219,
+        "progress_rmse_mm": 0.6172311305999756,
+        "cuff_points_rmse_mm": 1.9367254972457886,
+        "load_force_rmse_N": 1.0548133850097656,
+        "load_torque_rmse_Nm": 0.05068869888782501
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.004637683276087046,
+        "human_dq_rmse_rad_s": 0.023672793060541153,
+        "cuff_center_rmse_mm": 0.8492094278335571,
+        "progress_rmse_mm": 0.6418893337249756,
+        "cuff_points_rmse_mm": 2.073664903640747,
+        "load_force_rmse_N": 0.9548755288124084,
+        "load_torque_rmse_Nm": 0.0439339280128479
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.004740212578326464,
+        "human_dq_rmse_rad_s": 0.021817754954099655,
+        "cuff_center_rmse_mm": 0.9120383858680725,
+        "progress_rmse_mm": 0.6663590669631958,
+        "cuff_points_rmse_mm": 2.2095539569854736,
+        "load_force_rmse_N": 0.9650225043296814,
+        "load_torque_rmse_Nm": 0.04457376152276993
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.005070041865110397,
+        "human_dq_rmse_rad_s": 0.02121127024292946,
+        "cuff_center_rmse_mm": 0.9765593409538269,
+        "progress_rmse_mm": 0.7011509537696838,
+        "cuff_points_rmse_mm": 2.348450183868408,
+        "load_force_rmse_N": 0.9955950975418091,
+        "load_torque_rmse_Nm": 0.04734698683023453
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.005440366920083761,
+        "human_dq_rmse_rad_s": 0.017472606152296066,
+        "cuff_center_rmse_mm": 1.0439025163650513,
+        "progress_rmse_mm": 0.7430030703544617,
+        "cuff_points_rmse_mm": 2.492825508117676,
+        "load_force_rmse_N": 1.0321075916290283,
+        "load_torque_rmse_Nm": 0.050975251942873
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.005540359765291214,
+        "human_dq_rmse_rad_s": 0.023460643365979195,
+        "cuff_center_rmse_mm": 1.111135482788086,
+        "progress_rmse_mm": 0.7723298072814941,
+        "cuff_points_rmse_mm": 2.635133743286133,
+        "load_force_rmse_N": 0.9428938031196594,
+        "load_torque_rmse_Nm": 0.04453658685088158
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.005667077377438545,
+        "human_dq_rmse_rad_s": 0.022531991824507713,
+        "cuff_center_rmse_mm": 1.1797137260437012,
+        "progress_rmse_mm": 0.7932031750679016,
+        "cuff_points_rmse_mm": 2.7770586013793945,
+        "load_force_rmse_N": 0.95870041847229,
+        "load_torque_rmse_Nm": 0.04551492631435394
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.005980736576020718,
+        "human_dq_rmse_rad_s": 0.02206273004412651,
+        "cuff_center_rmse_mm": 1.2497583627700806,
+        "progress_rmse_mm": 0.8208033442497253,
+        "cuff_points_rmse_mm": 2.9215869903564453,
+        "load_force_rmse_N": 0.9876925945281982,
+        "load_torque_rmse_Nm": 0.048295386135578156
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.0063302102498710155,
+        "human_dq_rmse_rad_s": 0.018420876935124397,
+        "cuff_center_rmse_mm": 1.3221032619476318,
+        "progress_rmse_mm": 0.854796290397644,
+        "cuff_points_rmse_mm": 3.0710408687591553,
+        "load_force_rmse_N": 1.0214481353759766,
+        "load_torque_rmse_Nm": 0.05198223888874054
+      }
+    },
+    "mean_D": {
+      "0.05": {
+        "human_q_rmse_rad": 0.000935848627705127,
+        "human_dq_rmse_rad_s": 0.018750453367829323,
+        "cuff_center_rmse_mm": 0.10415162146091461,
+        "progress_rmse_mm": 0.10237318277359009,
+        "cuff_points_rmse_mm": 0.22048191726207733,
+        "load_force_rmse_N": 0.811798632144928,
+        "load_torque_rmse_Nm": 0.04097370058298111
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.0014143497683107853,
+        "human_dq_rmse_rad_s": 0.012135357595980167,
+        "cuff_center_rmse_mm": 0.18809852004051208,
+        "progress_rmse_mm": 0.17647026479244232,
+        "cuff_points_rmse_mm": 0.42222878336906433,
+        "load_force_rmse_N": 0.7991831302642822,
+        "load_torque_rmse_Nm": 0.041186705231666565
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.001711632707156241,
+        "human_dq_rmse_rad_s": 0.01632104441523552,
+        "cuff_center_rmse_mm": 0.27426522970199585,
+        "progress_rmse_mm": 0.23455527424812317,
+        "cuff_points_rmse_mm": 0.6188386678695679,
+        "load_force_rmse_N": 0.8801258206367493,
+        "load_torque_rmse_Nm": 0.04425837844610214
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.0018869525520130992,
+        "human_dq_rmse_rad_s": 0.016891002655029297,
+        "cuff_center_rmse_mm": 0.3610204756259918,
+        "progress_rmse_mm": 0.285921573638916,
+        "cuff_points_rmse_mm": 0.8098492622375488,
+        "load_force_rmse_N": 0.9601872563362122,
+        "load_torque_rmse_Nm": 0.05008268728852272
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0020039204973727465,
+        "human_dq_rmse_rad_s": 0.017557553946971893,
+        "cuff_center_rmse_mm": 0.44509392976760864,
+        "progress_rmse_mm": 0.32701873779296875,
+        "cuff_points_rmse_mm": 0.9893230199813843,
+        "load_force_rmse_N": 0.827232837677002,
+        "load_torque_rmse_Nm": 0.04244549572467804
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.0019688245374709368,
+        "human_dq_rmse_rad_s": 0.013857046142220497,
+        "cuff_center_rmse_mm": 0.5325331091880798,
+        "progress_rmse_mm": 0.3674516975879669,
+        "cuff_points_rmse_mm": 1.1644048690795898,
+        "load_force_rmse_N": 0.8216641545295715,
+        "load_torque_rmse_Nm": 0.04238371178507805
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.0019497429020702839,
+        "human_dq_rmse_rad_s": 0.0173353161662817,
+        "cuff_center_rmse_mm": 0.6208043098449707,
+        "progress_rmse_mm": 0.41289475560188293,
+        "cuff_points_rmse_mm": 1.3383699655532837,
+        "load_force_rmse_N": 0.9220096468925476,
+        "load_torque_rmse_Nm": 0.04526086151599884
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.001990992808714509,
+        "human_dq_rmse_rad_s": 0.0169623214751482,
+        "cuff_center_rmse_mm": 0.7103267312049866,
+        "progress_rmse_mm": 0.46270984411239624,
+        "cuff_points_rmse_mm": 1.5119304656982422,
+        "load_force_rmse_N": 0.937282145023346,
+        "load_torque_rmse_Nm": 0.04985589534044266
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.002074160845950246,
+        "human_dq_rmse_rad_s": 0.017063960433006287,
+        "cuff_center_rmse_mm": 0.7960361242294312,
+        "progress_rmse_mm": 0.502756655216217,
+        "cuff_points_rmse_mm": 1.6790707111358643,
+        "load_force_rmse_N": 0.8729238510131836,
+        "load_torque_rmse_Nm": 0.04407872259616852
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0020639237482100725,
+        "human_dq_rmse_rad_s": 0.013543355278670788,
+        "cuff_center_rmse_mm": 0.8861307501792908,
+        "progress_rmse_mm": 0.5502095222473145,
+        "cuff_points_rmse_mm": 1.8473786115646362,
+        "load_force_rmse_N": 0.8566315174102783,
+        "load_torque_rmse_Nm": 0.043631523847579956
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.0020728381350636482,
+        "human_dq_rmse_rad_s": 0.01706896722316742,
+        "cuff_center_rmse_mm": 0.9777061939239502,
+        "progress_rmse_mm": 0.6030148267745972,
+        "cuff_points_rmse_mm": 2.0178518295288086,
+        "load_force_rmse_N": 0.9621639251708984,
+        "load_torque_rmse_Nm": 0.04684773460030556
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.002175961621105671,
+        "human_dq_rmse_rad_s": 0.017176439985632896,
+        "cuff_center_rmse_mm": 1.070841670036316,
+        "progress_rmse_mm": 0.6601069569587708,
+        "cuff_points_rmse_mm": 2.191394329071045,
+        "load_force_rmse_N": 0.9224721789360046,
+        "load_torque_rmse_Nm": 0.05029063671827316
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.0022900209296494722,
+        "human_dq_rmse_rad_s": 0.01652534306049347,
+        "cuff_center_rmse_mm": 1.1609019041061401,
+        "progress_rmse_mm": 0.6984895467758179,
+        "cuff_points_rmse_mm": 2.3618576526641846,
+        "load_force_rmse_N": 0.8528154492378235,
+        "load_torque_rmse_Nm": 0.04382866621017456
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.0023228328209370375,
+        "human_dq_rmse_rad_s": 0.013538923114538193,
+        "cuff_center_rmse_mm": 1.2559432983398438,
+        "progress_rmse_mm": 0.7424055337905884,
+        "cuff_points_rmse_mm": 2.5353658199310303,
+        "load_force_rmse_N": 0.8631556034088135,
+        "load_torque_rmse_Nm": 0.044432785362005234
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.0024195059668272734,
+        "human_dq_rmse_rad_s": 0.01731891557574272,
+        "cuff_center_rmse_mm": 1.353389859199524,
+        "progress_rmse_mm": 0.7914704084396362,
+        "cuff_points_rmse_mm": 2.7127628326416016,
+        "load_force_rmse_N": 0.9815852046012878,
+        "load_torque_rmse_Nm": 0.04722383990883827
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.0025887866504490376,
+        "human_dq_rmse_rad_s": 0.01767461746931076,
+        "cuff_center_rmse_mm": 1.4538921117782593,
+        "progress_rmse_mm": 0.84251868724823,
+        "cuff_points_rmse_mm": 2.894937515258789,
+        "load_force_rmse_N": 0.956059992313385,
+        "load_torque_rmse_Nm": 0.05125704035162926
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.0027704546228051186,
+        "human_dq_rmse_rad_s": 0.016997845843434334,
+        "cuff_center_rmse_mm": 1.5554547309875488,
+        "progress_rmse_mm": 0.8855056166648865,
+        "cuff_points_rmse_mm": 3.078005313873291,
+        "load_force_rmse_N": 0.888907790184021,
+        "load_torque_rmse_Nm": 0.0445086695253849
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.0028677259106189013,
+        "human_dq_rmse_rad_s": 0.014466596767306328,
+        "cuff_center_rmse_mm": 1.6601409912109375,
+        "progress_rmse_mm": 0.9248594641685486,
+        "cuff_points_rmse_mm": 3.265219211578369,
+        "load_force_rmse_N": 0.9202777743339539,
+        "load_torque_rmse_Nm": 0.045573342591524124
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.0029989522881805897,
+        "human_dq_rmse_rad_s": 0.01797964610159397,
+        "cuff_center_rmse_mm": 1.7675315141677856,
+        "progress_rmse_mm": 0.9668704271316528,
+        "cuff_points_rmse_mm": 3.4570412635803223,
+        "load_force_rmse_N": 1.049429178237915,
+        "load_torque_rmse_Nm": 0.04830656573176384
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.003184421919286251,
+        "human_dq_rmse_rad_s": 0.01845785602927208,
+        "cuff_center_rmse_mm": 1.878267765045166,
+        "progress_rmse_mm": 1.0100218057632446,
+        "cuff_points_rmse_mm": 3.653841018676758,
+        "load_force_rmse_N": 1.026220440864563,
+        "load_torque_rmse_Nm": 0.052336014807224274
+      }
+    },
+    "mean_friction": {
+      "0.05": {
+        "human_q_rmse_rad": 0.0012021790025755763,
+        "human_dq_rmse_rad_s": 0.021263793110847473,
+        "cuff_center_rmse_mm": 0.09484555572271347,
+        "progress_rmse_mm": 0.10292576998472214,
+        "cuff_points_rmse_mm": 0.1949288547039032,
+        "load_force_rmse_N": 0.8854374885559082,
+        "load_torque_rmse_Nm": 0.04397927224636078
+      },
+      "0.1": {
+        "human_q_rmse_rad": 0.001551079680211842,
+        "human_dq_rmse_rad_s": 0.01490504015237093,
+        "cuff_center_rmse_mm": 0.167047381401062,
+        "progress_rmse_mm": 0.1727282702922821,
+        "cuff_points_rmse_mm": 0.37014734745025635,
+        "load_force_rmse_N": 0.8740065097808838,
+        "load_torque_rmse_Nm": 0.0445084348320961
+      },
+      "0.15": {
+        "human_q_rmse_rad": 0.0015927791828289628,
+        "human_dq_rmse_rad_s": 0.018912771716713905,
+        "cuff_center_rmse_mm": 0.23808631300926208,
+        "progress_rmse_mm": 0.22394025325775146,
+        "cuff_points_rmse_mm": 0.5296729803085327,
+        "load_force_rmse_N": 0.9288895726203918,
+        "load_torque_rmse_Nm": 0.047668177634477615
+      },
+      "0.2": {
+        "human_q_rmse_rad": 0.0016149686416611075,
+        "human_dq_rmse_rad_s": 0.018323691561818123,
+        "cuff_center_rmse_mm": 0.3105328679084778,
+        "progress_rmse_mm": 0.2708998918533325,
+        "cuff_points_rmse_mm": 0.6772133111953735,
+        "load_force_rmse_N": 1.0666033029556274,
+        "load_torque_rmse_Nm": 0.0542253777384758
+      },
+      "0.25": {
+        "human_q_rmse_rad": 0.0016896789893507957,
+        "human_dq_rmse_rad_s": 0.019426196813583374,
+        "cuff_center_rmse_mm": 0.3821936249732971,
+        "progress_rmse_mm": 0.31484630703926086,
+        "cuff_points_rmse_mm": 0.8134914636611938,
+        "load_force_rmse_N": 0.9755953550338745,
+        "load_torque_rmse_Nm": 0.048191558569669724
+      },
+      "0.3": {
+        "human_q_rmse_rad": 0.0017606846522539854,
+        "human_dq_rmse_rad_s": 0.014241517521440983,
+        "cuff_center_rmse_mm": 0.4576699435710907,
+        "progress_rmse_mm": 0.36204782128334045,
+        "cuff_points_rmse_mm": 0.9450056552886963,
+        "load_force_rmse_N": 0.9494239091873169,
+        "load_torque_rmse_Nm": 0.04719388112425804
+      },
+      "0.35": {
+        "human_q_rmse_rad": 0.001828649896197021,
+        "human_dq_rmse_rad_s": 0.01674070954322815,
+        "cuff_center_rmse_mm": 0.5338029861450195,
+        "progress_rmse_mm": 0.4134977459907532,
+        "cuff_points_rmse_mm": 1.0767204761505127,
+        "load_force_rmse_N": 0.9916272759437561,
+        "load_torque_rmse_Nm": 0.04958537966012955
+      },
+      "0.4": {
+        "human_q_rmse_rad": 0.001963093876838684,
+        "human_dq_rmse_rad_s": 0.017820054665207863,
+        "cuff_center_rmse_mm": 0.6114741563796997,
+        "progress_rmse_mm": 0.4657583236694336,
+        "cuff_points_rmse_mm": 1.2066653966903687,
+        "load_force_rmse_N": 1.1251755952835083,
+        "load_torque_rmse_Nm": 0.05593129247426987
+      },
+      "0.45": {
+        "human_q_rmse_rad": 0.002110751112923026,
+        "human_dq_rmse_rad_s": 0.018279515206813812,
+        "cuff_center_rmse_mm": 0.6865067481994629,
+        "progress_rmse_mm": 0.5084461569786072,
+        "cuff_points_rmse_mm": 1.330403208732605,
+        "load_force_rmse_N": 1.0562078952789307,
+        "load_torque_rmse_Nm": 0.05105392262339592
+      },
+      "0.5": {
+        "human_q_rmse_rad": 0.0021572194527834654,
+        "human_dq_rmse_rad_s": 0.013814141973853111,
+        "cuff_center_rmse_mm": 0.7655155062675476,
+        "progress_rmse_mm": 0.5567607879638672,
+        "cuff_points_rmse_mm": 1.4538774490356445,
+        "load_force_rmse_N": 0.9909319281578064,
+        "load_torque_rmse_Nm": 0.04898292198777199
+      },
+      "0.55": {
+        "human_q_rmse_rad": 0.0021469853818416595,
+        "human_dq_rmse_rad_s": 0.016822561621665955,
+        "cuff_center_rmse_mm": 0.8460057377815247,
+        "progress_rmse_mm": 0.6060388088226318,
+        "cuff_points_rmse_mm": 1.57975435256958,
+        "load_force_rmse_N": 1.0259225368499756,
+        "load_torque_rmse_Nm": 0.05146823078393936
+      },
+      "0.6": {
+        "human_q_rmse_rad": 0.0022339955903589725,
+        "human_dq_rmse_rad_s": 0.01786397024989128,
+        "cuff_center_rmse_mm": 0.9285416007041931,
+        "progress_rmse_mm": 0.6581661105155945,
+        "cuff_points_rmse_mm": 1.7072187662124634,
+        "load_force_rmse_N": 1.1110278367996216,
+        "load_torque_rmse_Nm": 0.05625452846288681
+      },
+      "0.65": {
+        "human_q_rmse_rad": 0.002354942262172699,
+        "human_dq_rmse_rad_s": 0.018567722290754318,
+        "cuff_center_rmse_mm": 1.0090152025222778,
+        "progress_rmse_mm": 0.6947896480560303,
+        "cuff_points_rmse_mm": 1.8321733474731445,
+        "load_force_rmse_N": 1.0528815984725952,
+        "load_torque_rmse_Nm": 0.051425639539957047
+      },
+      "0.7": {
+        "human_q_rmse_rad": 0.002430960536003113,
+        "human_dq_rmse_rad_s": 0.014107117429375648,
+        "cuff_center_rmse_mm": 1.093792200088501,
+        "progress_rmse_mm": 0.7370375990867615,
+        "cuff_points_rmse_mm": 1.959267020225525,
+        "load_force_rmse_N": 0.9869650602340698,
+        "load_torque_rmse_Nm": 0.04958153888583183
+      },
+      "0.75": {
+        "human_q_rmse_rad": 0.0025033080019056797,
+        "human_dq_rmse_rad_s": 0.017183732241392136,
+        "cuff_center_rmse_mm": 1.1812293529510498,
+        "progress_rmse_mm": 0.7840430736541748,
+        "cuff_points_rmse_mm": 2.091979503631592,
+        "load_force_rmse_N": 1.0338001251220703,
+        "load_torque_rmse_Nm": 0.05192798748612404
+      },
+      "0.8": {
+        "human_q_rmse_rad": 0.0026413763407617807,
+        "human_dq_rmse_rad_s": 0.018576521426439285,
+        "cuff_center_rmse_mm": 1.271950602531433,
+        "progress_rmse_mm": 0.8328372240066528,
+        "cuff_points_rmse_mm": 2.228813886642456,
+        "load_force_rmse_N": 1.1124491691589355,
+        "load_torque_rmse_Nm": 0.05683593079447746
+      },
+      "0.85": {
+        "human_q_rmse_rad": 0.002793158171698451,
+        "human_dq_rmse_rad_s": 0.019012026488780975,
+        "cuff_center_rmse_mm": 1.3636261224746704,
+        "progress_rmse_mm": 0.8754236698150635,
+        "cuff_points_rmse_mm": 2.3665807247161865,
+        "load_force_rmse_N": 1.0567055940628052,
+        "load_torque_rmse_Nm": 0.051722075790166855
+      },
+      "0.9": {
+        "human_q_rmse_rad": 0.0028987706173211336,
+        "human_dq_rmse_rad_s": 0.01507420465350151,
+        "cuff_center_rmse_mm": 1.4582196474075317,
+        "progress_rmse_mm": 0.9158744812011719,
+        "cuff_points_rmse_mm": 2.507427215576172,
+        "load_force_rmse_N": 1.003432035446167,
+        "load_torque_rmse_Nm": 0.050154250115156174
+      },
+      "0.95": {
+        "human_q_rmse_rad": 0.0029919168446213007,
+        "human_dq_rmse_rad_s": 0.01788163371384144,
+        "cuff_center_rmse_mm": 1.5555987358093262,
+        "progress_rmse_mm": 0.9594060778617859,
+        "cuff_points_rmse_mm": 2.6543121337890625,
+        "load_force_rmse_N": 1.063671588897705,
+        "load_torque_rmse_Nm": 0.05249432474374771
+      },
+      "1.0": {
+        "human_q_rmse_rad": 0.003150569973513484,
+        "human_dq_rmse_rad_s": 0.019260486587882042,
+        "cuff_center_rmse_mm": 1.6562942266464233,
+        "progress_rmse_mm": 1.0038421154022217,
+        "cuff_points_rmse_mm": 2.8054702281951904,
+        "load_force_rmse_N": 1.1349612474441528,
+        "load_torque_rmse_Nm": 0.05728776752948761
+      }
+    }
+  },
+  "provenance": [
+    {
+      "episode": "e088_hf_offset_02",
+      "samples_sha256": "3562dc69f27ac747c49adcb468ddf584e710f8c346fcd1d418deb563de3b5dc0",
+      "config_sha256": "3fb3e096d3b33775ca960733e523afc1d9ffde77c283e8b171e88a5ae67fba41"
+    },
+    {
+      "episode": "e088_hf_repeat_00",
+      "samples_sha256": "01657fc7ec8570babcb219c4e9a4cd6af632d08ad70ce54e10a11117480c97e3",
+      "config_sha256": "3fe1b98447303a0acedfbb1c76042367baae1dc43803b8241a3e2315048368d1"
+    },
+    {
+      "episode": "e088_hf_repeat_01",
+      "samples_sha256": "8ac9efdf349c3419c9948443ecf01a0fee26a187d18511b3056bca873711c503",
+      "config_sha256": "9133b45fa93edfbd218790ea44e2baeb82ccab1b51b5888f4387a4442355aca2"
+    }
+  ],
+  "evaluation": "New physical executions, same e088 design/regression parameter combination. Deterministic condition repeats and a small alignment perturbation. Not an independent parameter-generalization test, not included in frozen M2 scores."
+}
