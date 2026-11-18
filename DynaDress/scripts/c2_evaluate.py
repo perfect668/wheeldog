@@ -130,8 +130,9 @@ def main():
             targets_reached=int(result.get('hand_entered',False))+int(result.get('wrist_entered',False))+int(result['success']),
             probe_window_peak_L_R_N=during.max(0).tolist() if len(during) else None,
             tracking_interrupted_samples=sum(x['tracking_interrupted'] for x in actions),
-            effective_contact_summary_duration_s=sum(max(0.,min(x['observed_until_s'],post)-max(x['segment_start_s'],pre)) for x in phases if x['phase']!='precontact'),
-            probe_opportunity_duration_s=1.0 if selection else 0.,control_step_actions=len(actions),
+            contact_proxy_duration_s=sum(max(0.,min(x['observed_until_s'],post)-max(x['segment_start_s'],pre)) for x in phases if x['phase']!='precontact'),
+            probe_opportunity_duration_s=1.0 if selection else 0.,
+            probe_elapsed_s=0. if selection is None else float(np.clip(times[-1]-selection['trigger_s'],0.,1.)),control_step_actions=len(actions),
             simulation_duration_s=result['simulation_duration_s'],prediction_rmse=prediction,geometry_prediction_rmse=geometry,
             source_hashes={f:hashlib.sha256((path/f).read_bytes()).hexdigest() for f in ('samples.jsonl','observable_sequence.npz','belief.jsonl','result.json')})
         metrics.append(row);np.savez_compressed(a.output/(e['episode_id']+'.npz'),**{k:v for k,v in d.items() if k!='condition'})
@@ -157,7 +158,7 @@ def main():
     dump(a.output/'metrics.json',report)
     flat=[]
     for r in metrics:
-        row={k:r[k] for k in ('episode_id','pair_id','mode','K','D','mu','success','termination_reason','selected','trigger_s','matched_pre_s','matched_post_s','relative_progress_at_post_m','final_progress_m','integrated_external_force_norm_sum_Ns','matched_window_integrated_external_force_norm_sum_Ns','targets_reached','simulation_duration_s','tracking_interrupted_samples','probe_opportunity_duration_s')}
+        row={k:r[k] for k in ('episode_id','pair_id','mode','K','D','mu','success','termination_reason','selected','trigger_s','matched_pre_s','matched_post_s','relative_progress_at_post_m','final_progress_m','integrated_external_force_norm_sum_Ns','matched_window_integrated_external_force_norm_sum_Ns','targets_reached','simulation_duration_s','tracking_interrupted_samples','probe_opportunity_duration_s','probe_elapsed_s','contact_proxy_duration_s')}
         for stage in ('before','after','final'):
             row.update({f'{stage}_{k}':v for k,v in r[stage].items() if isinstance(v,(float,int,bool,str))})
         row['wrist_peak_L_N'],row['wrist_peak_R_N']=r['wrist_peak_L_R_N'];flat.append(row)
